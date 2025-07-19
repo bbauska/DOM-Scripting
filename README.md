@@ -1,939 +1,593 @@
-# DOM-Scripting
-DOM Scripting: Web Design with JavaScript and the Document Object Model: Second Edition Copyright © 2010 by Jeremy Keith with Jeffrey Sambells
+<h1 id="dom-scripting">DOM-Scripting</h1>
+<p>DOM Scripting: Web Design with JavaScript and the Document Object Model: Second Edition 
+Copyright © 2010 by Jeremy Keith with Jeffrey Sambells</p>
 
-**DOM Scripting**
+<b>DOM Scripting</b>
 
-> Web Design with JavaScript and the Document Object Model
+Web Design with JavaScript and the Document Object Model
 
 Second Edition
 
-> ■ ■ ■
->
-> Jeremy Keith with Jeffrey Sambells
->
-> **DOM Scripting: Web Design with JavaScript and the Document Object
-> Model: Second Edition**
->
-> Copyright © 2010 by Jeremy Keith with Jeffrey Sambells
->
-> All rights reserved. No part of this work may be reproduced or
-> transmitted in any form or by any means, electronic or mechanical,
-> including photocopying, recording, or by any information storage or
-> retrieval system, without the prior written permission of the
-> copyright owner and the publisher.
->
-> ISBN-13 (pbk): 978-1-4302-3389-3
->
-> ISBN-13 (electronic): 978-1-4302-3390-9
->
-> Printed and bound in the United States of America 9 8 7 6 5 4 3 2 1
->
-> Trademarked names, logos, and images may appear in this book. Rather
-> than use a trademark symbol with every occurrence of a trademarked
-> name, logo, or image we use the names, logos, and images only in an
-> editorial fashion and to the benefit of the trademark owner, with no
-> intention of infringement of the trademark.
->
-> The use in this publication of trade names, trademarks, service marks,
-> and similar terms, even if they are not identified as such, is not to
-> be taken as an expression of opinion as to whether or not they are
-> subject to proprietary rights.
->
-> Publisher and President: Paul Manning
->
-> Lead Editor: Ben Renow-Clarke
->
-> Technical Reviewer: Rob Drimmie
->
-> Editorial Board: Steve Anglin, Mark Beckner, Ewan Buckingham, Gary
-> Cornell, Jonathan Gennick, Jonathan Hassell, Michelle Lowman, Matthew
-> Moodie, Duncan Parkes, Jeffrey
->
-> Pepper, Frank Pohlmann, Douglas Pundick, Ben Renow-Clarke, Dominic
-> Shakeshaft, Matt Wade, Tom Welsh
->
-> Coordinating Editors: Candace English
->
-> Copy Editor: Jim Compton and Marilyn Smith
->
-> Compositor: MacPS, LLC
->
-> Indexer: Toma Mulligan
->
-> Artist: April Milne
->
-> Cover Designer: Anna Ishchenko
->
-> Distributed to the book trade worldwide by Springer Science+Business
-> Media, LLC., 233 Spring Street, 6th Floor, New York, NY 10013. Phone
-> 1-800-SPRINGER, fax (201) 348-4505, e-mail orders-ny@springer-sbm.com,
-> or visit [www.springeronline.com.](http://www.springeronline.com/)
->
-> For information on translations, please e-mail rights@apress.com, or
-> visit [www.apress.com.](http://www.apress.com/)
->
-> Apress and friends of ED books may be purchased in bulk for academic,
-> corporate, or promotional use. eBook versions and licenses are also
-> available for most titles. For more information, reference our Special
-> Bulk Sales--eBook Licensing web page at
-> [www.apress.com/info/bulksales.](http://www.apress.com/info/bulksales)
->
-> The information in this book is distributed on an "as is" basis,
-> without warranty. Although every precaution has been taken in the
-> preparation of this work, neither the author(s) nor Apress shall have
-> any liability to any person or entity with respect to any loss or
-> damage caused or alleged to be caused directly or indirectly by the
-> information contained in this work.
->
-> *For Jessica, my wordridden wife*
->
-> *---Jeremy*
->
-> *For Stephanie, Addison, and Hayden, always by my side*
->
-> *---Jeffrey*
->
-> ■**Contents
-> v**
->
-> ■**About the Authors
-> xiii**
->
-> ■**About the Technical Reviewer
-> xiv**
->
-> ■**Acknowledgments
-> xv**
->
-> ■**Introduction
-> xvi**
->
-> ■**Chapter 1: A Brief History of JavaScript
-> 1**
->
-> ■**Chapter 2: JavaScript Syntax
-> 7**
->
-> ■**Chapter 3: The Document Object Model
-> 31**
->
-> ■**Chapter 4: A JavaScript Image Gallery
-> 45**
->
-> ■**Chapter 5: Best Practices
-> 59**
->
-> ■**Chapter 6: The Image Gallery Revisited
-> 73**
->
-> ■**Chapter 7: Creating Markup on the Fly
-> 95**
->
-> ■**Chapter 8: Enhancing Content
-> 123**
->
-> ■**Chapter 9: CSS-DOM
-...
-> 149**
->
-> ■**Chapter 10: An Animated Slideshow
-> 175**
->
-> ■**Chapter 11: HTML5
-> 205**
->
-> ■**Chapter 12: Putting It All Together
-> 227** ■**Appendix: DOM Scripting Libraries
-> 279**
->
-> ■**Index
-> 303** ■**Contents at a Glance
-> iv**
->
-> ■**About the Authors
-> xiii**
->
-> ■**About the Technical Reviewer
-> xiv**
->
-> ■**Acknowledgments
-> xv**
->
-> ■**Introduction
-> xvi**
->
-> ■**Chapter 1: A Brief History of JavaScript
->
-> **1** The origins of JavaScript \...
-> 1
->
-> The Document Object Model
-> 2
->
-> The browser wars
-> 3
->
-> The D word: DHTML
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 3
->
-> Clash of the browsers
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 3
->
-> Raising the standard
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 4
->
-> Thinking outside the browser
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 4
->
-> The end of the browser wars
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 4
->
-> A new beginning
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 5
->
-> What's next?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 5
->
-> ■**Chapter 2: JavaScript Syntax
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 7** What you'll need
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 7
->
-> Syntax
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 9
->
-> Statements
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 9
->
-> Comments
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 10
->
-> Variables
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 10
 
-# ■ CONTENTS 
+Jeremy Keith with Jeffrey Sambells
 
-> Data types
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 12
->
-> Arrays
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 14
->
-> Objects
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 16
->
-> Operations
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 17
->
-> Arithmetic operators
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 17
->
-> Conditional statements
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 19
->
-> Comparison operators
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 20
->
-> Logical operators
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 21
->
-> Looping statements
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 22
->
-> The while loop
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 22
->
-> The for loop
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 24 Functions
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 24
->
-> Objects
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 27
->
-> Native objects
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 28
->
-> Host objects
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 29
->
-> What's
-> next?\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 29
->
-> ■**Chapter 3: The Document Object Model
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 31**
->
-> D is for document
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 31 Objects of desire
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 31 Dial M for model
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 32
->
-> Nodes
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 33
->
-> Element nodes
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 34
->
-> Text nodes
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 34
->
-> Attribute nodes
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 34
->
-> Cascading Style Sheets
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 35
->
-> Getting Elements
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 37
->
-> Taking
-> stock\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 41
->
-> Getting and Setting Attributes
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 41 getAttribute
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 41
->
-> ■ CONTENTS
->
-> setAttribute
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 43 What's next?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 44
->
-> ■**Chapter 4: A JavaScript Image Gallery
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.... 45**
->
-> The
-> markup\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 45
->
-> The JavaScript
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 47
->
-> A DOM diversion
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 48
->
-> Finishing the function
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 49
->
-> Applying the JavaScript
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 49
->
-> Event
-> handlers\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 49
->
-> Expanding the function
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 51
->
-> Introducing childNodes
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 51
->
-> Introducing the nodeType property
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 52
->
-> Adding a description in the markup
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 53
->
-> Changing the description with JavaScript
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 54
->
-> Introducing the nodeValue property
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 54
->
-> Introducing firstChild and lastChild
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 55
->
-> Using nodeValue to update the description
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 55
->
-> What's next?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 58
->
-> ■**Chapter 5: Best Practices
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 59**
->
-> Mistakes of the past
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 59
->
-> Don't blame the messenger
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 59
->
-> The Flash
-> mob\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 60
->
-> Question everything
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 60
->
-> Graceful degradation
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 61
->
-> The javascript: pseudo-protocol
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 62
->
-> Inline event handlers
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 62
->
-> Who cares?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 63
->
-> The lessons of CSS
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 63 Separation of structure and style
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 63
->
-> ■ CONTENTS
->
-> Progressive
-> enhancement\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 64 Unobtrusive JavaScript
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 65
->
-> Backward compatibility
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 67
->
-> Object
-> detection\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 67
->
-> Browser
-> sniffing\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 68
->
-> Performance considerations
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 69
->
-> Minimizing DOM access and markup
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 69
->
-> Assembling and placing
-> scripts\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 70
->
-> Minification
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 70
->
-> What's next?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 71
->
-> ■**Chapter 6: The Image Gallery Revisited
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 73**
->
-> A quick recap
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 73 Does it degrade gracefully?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 74
->
-> Is the JavaScript unobtrusive?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 75
->
-> Adding the event handler
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 75
->
-> Share the load
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 80 Assuming too much
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 82 Fine-tuning
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 84
->
-> Keyboard
-> access\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 86
->
-> Beware of onkeypress
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 87 Sharing hooks with CSS
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 88 DOM Core and HTML-DOM
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 91
->
-> What's next?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 92
->
-> ■**Chapter 7: Creating Markup on the Fly
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 95**
->
-> Some old-school methods
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 95 document.write
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 95 innerHTML
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 97
->
-> DOM methods
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 100 createElement
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 101
->
-> ■ CONTENTS
->
-> appendChild\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 102 createTextNode
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 103
->
-> A more complex combination
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 105
->
-> Revisiting the image gallery
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 107
->
-> Inserting a new element before an existing one
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\.... 109
->
-> Inserting a new element after an existing one
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\... 110
->
-> The finished image gallery
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 112
->
-> Ajax
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 116
->
-> The XMLHttpRequest object
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 116
->
-> Progressive enhancement with Ajax
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 121
->
-> Hijax
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 121
->
-> What's next?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 122
->
-> ■**Chapter 8: Enhancing Content
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\..... 123**
->
-> What not to do
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 123
->
-> Making the invisible
-> visible\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 124
->
-> The content
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 124
->
-> The markup: HTML, XHTML, or HTML5
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 125
->
-> The CSS
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 127
->
-> The JavaScript
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 128
->
-> Displaying abbreviations
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 128
->
-> Writing the displayAbbreviations function
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 129
->
-> Creating the markup
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 131
->
-> A browser bomb
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 136
->
-> Displaying citations
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 139
->
-> Writing the displayCitations function
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 140 Displaying access keys
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 145 Retrieving and attaching information
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\.... 148
->
-> What's next?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 148
->
-> ■ CONTENTS
->
-> ■**Chapter 9: CSS-DOM
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 149**
->
-> Three sheets to the Web
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 149
->
-> Structure
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 149 Presentation
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 150 Behavior
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 150
->
-> Separation
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 151
->
-> The style property
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 152
->
-> Getting styles
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 153
->
-> Setting styles
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 158
->
-> Knowing when to use DOM styling .
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\... 160
->
-> Styling elements in the node tree
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 160 Repetitive styling
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 164
->
-> Responding to events
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 168 className .
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 170
->
-> Abstracting a function
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 173
->
-> What's next? .
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 174
->
-> ■**Chapter 10: An Animated Slideshow
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 175**
+<b>DOM Scripting: Web Design with JavaScript and the Document Object
+Model: Second Edition</b>
+
+Copyright © 2010 by Jeremy Keith with Jeffrey Sambells
+
+All rights reserved. No part of this work may be reproduced or
+transmitted in any form or by any means, electronic or mechanical,
+including photocopying, recording, or by any information storage or
+retrieval system, without the prior written permission of the
+copyright owner and the publisher.
+
+ISBN-13 (pbk): 978-1-4302-3389-3
+
+ISBN-13 (electronic): 978-1-4302-3390-9
+
+Printed and bound in the United States of America 9 8 7 6 5 4 3 2 1
+
+Trademarked names, logos, and images may appear in this book. Rather
+than use a trademark symbol with every occurrence of a trademarked
+name, logo, or image we use the names, logos, and images only in an
+editorial fashion and to the benefit of the trademark owner, with no
+intention of infringement of the trademark.
+
+The use in this publication of trade names, trademarks, service marks,
+and similar terms, even if they are not identified as such, is not to
+be taken as an expression of opinion as to whether or not they are
+subject to proprietary rights.
+
+Publisher and President: Paul Manning
+
+Lead Editor: Ben Renow-Clarke
+
+Technical Reviewer: Rob Drimmie
+
+Editorial Board: Steve Anglin, Mark Beckner, Ewan Buckingham, Gary
+Cornell, Jonathan Gennick, Jonathan Hassell, Michelle Lowman, Matthew
+Moodie, Duncan Parkes, Jeffrey
+
+Pepper, Frank Pohlmann, Douglas Pundick, Ben Renow-Clarke, Dominic
+Shakeshaft, Matt Wade, Tom Welsh
+
+Coordinating Editors: Candace English
+
+Copy Editor: Jim Compton and Marilyn Smith
+
+Compositor: MacPS, LLC
+
+Indexer: Toma Mulligan
+
+Artist: April Milne
+
+Cover Designer: Anna Ishchenko
+
+Distributed to the book trade worldwide by Springer Science+Business
+Media, LLC., 233 Spring Street, 6th Floor, New York, NY 10013. Phone
+1-800-SPRINGER, fax (201) 348-4505, e-mail orders-ny@springer-sbm.com,
+or visit [www.springeronline.com.](http://www.springeronline.com/)
+
+For information on translations, please e-mail rights@apress.com, or
+visit [www.apress.com.](http://www.apress.com/)
+
+Apress and friends of ED books may be purchased in bulk for academic,
+corporate, or promotional use. eBook versions and licenses are also
+available for most titles. For more information, reference our Special
+Bulk Sales--eBook Licensing web page at
+[www.apress.com/info/bulksales.](http://www.apress.com/info/bulksales)
+
+The information in this book is distributed on an "as is" basis,
+without warranty. Although every precaution has been taken in the
+preparation of this work, neither the author(s) nor Apress shall have
+any liability to any person or entity with respect to any loss or
+damage caused or alleged to be caused directly or indirectly by the
+information contained in this work.
+
+*For Jessica, my wordridden wife*
+
+*---Jeremy*
+*For Stephanie, Addison, and Hayden, always by my side*
+*---Jeffrey*
+<b>Contents
+v</b>
+<b>About the Authors
+xiii</b>
+<b>About the Technical Reviewer
+xiv</b>
+<b>Acknowledgments
+xv</b>
+<b>Introduction
+xvi</b>
+<b>Chapter 1: A Brief History of JavaScript
+1</b>
+<b>Chapter 2: JavaScript Syntax
+7</b>
+<b>Chapter 3: The Document Object Model
+31</b>
+<b>Chapter 4: A JavaScript Image Gallery
+45</b>
+<b>Chapter 5: Best Practices
+59</b>
+<b>Chapter 6: The Image Gallery Revisited
+73</b>
+<b>Chapter 7: Creating Markup on the Fly
+95</b>
+<b>Chapter 8: Enhancing Content
+123</b>
+<b>Chapter 9: CSS-DOM
+149</b>
+<b>Chapter 10: An Animated Slideshow
+175</b>
+<b>Chapter 11: HTML5
+205</b>
+<b>Chapter 12: Putting It All Together 
+227</b
+<b>Appendix: DOM Scripting Libraries
+279</b>
+<b>Index
+303</b
+<b>Contents at a Glance iv</b>
+
+<b>About the Authors xiii</b>
+<b>About the Technical Reviewer xiv</b>
+<b>Acknowledgments xv</b>
+<b>Introduction xvi</b>
+
+<b>Chapter 1: A Brief History of JavaScript
+<b>1</bThe origins of JavaScript \...
+1
+The Document Object Model
+2
+The browser wars
+3
+The D word: DHTML
+3
+Clash of the browsers
+3
+Raising the standard
+4
+Thinking outside the browser
+4
+The end of the browser wars
+4
+A new beginning
+5
+What's next?
+5
+
+**Chapter 2: JavaScript Syntax
+7** What you'll need
+7
+Syntax
+9
+Statements
+9
+Comments
+10
+Variables
+10
+
+# CONTENTS 
+Data types
+12
+Arrays
+14
+Objects
+16
+Operations
+17
+Arithmetic operators
+17
+Conditional statements
+19
+Comparison operators
+20
+Logical operators
+21
+Looping statements
+22
+The while loop
+22
+The for loop
+24 Functions
+24
+Objects
+27
+Native objects
+28
+Host objects
+29
+What's
+next?
+29
+
+**Chapter 3: The Document Object Model
+31**
+D is for document
+31 Objects of desire
+31 Dial M for model
+32
+Nodes
+33
+Element nodes
+34
+Text nodes
+34
+Attribute nodes
+34
+Cascading Style Sheets
+35
+Getting Elements
+37
+Taking
+stock
+41
+Getting and Setting Attributes
+41 getAttribute
+41
+
+CONTENTS
+setAttribute
+43 What's next?
+44
+
+**Chapter 4: A JavaScript Image Gallery
+45**
+The
+markup
+45
+The JavaScript
+47
+A DOM diversion
+48
+Finishing the function
+49
+Applying the JavaScript
+49
+Event
+handlers
+49
+Expanding the function
+51
+Introducing childNodes
+51
+Introducing the nodeType property
+52
+Adding a description in the markup
+53
+Changing the description with JavaScript
+54
+Introducing the nodeValue property
+54
+Introducing firstChild and lastChild
+55
+Using nodeValue to update the description
+55
+What's next?
+58
+
+**Chapter 5: Best Practices
+59**
+Mistakes of the past
+59
+Don't blame the messenger
+59
+The Flash
+mob
+60
+Question everything
+60
+Graceful degradation
+61
+The javascript: pseudo-protocol
+62
+Inline event handlers
+62
+Who cares?
+63
+The lessons of CSS
+63 Separation of structure and style
+63
+
+CONTENTS
+Progressive
+enhancement
+64 Unobtrusive JavaScript
+65
+Backward compatibility
+67
+Object
+detection
+67
+Browser
+sniffing
+68
+Performance considerations
+69
+Minimizing DOM access and markup
+69
+Assembling and placing
+scripts
+70
+Minification
+70
+What's next?
+71
+
+**Chapter 6: The Image Gallery Revisited
+73**
+A quick recap
+73 Does it degrade gracefully?
+74
+Is the JavaScript unobtrusive?
+75
+Adding the event handler
+75
+Share the load
+80 Assuming too much
+82 Fine-tuning
+84
+Keyboard
+access
+86
+Beware of onkeypress
+87 Sharing hooks with CSS
+88 DOM Core and HTML-DOM
+91
+What's next?
+92
+
+**Chapter 7: Creating Markup on the Fly
+95**
+Some old-school methods
+95 document.write
+95 innerHTML
+97
+DOM methods
+100 createElement
+101
+
+CONTENTS
+appendChild
+102 createTextNode
+103
+A more complex combination
+105
+Revisiting the image gallery
+107
+Inserting a new element before an existing one
+Inserting a new element after an existing one
+110
+The finished image gallery
+112
+Ajax
+116
+>
+The XMLHttpRequest object
+116
+Progressive enhancement with Ajax
+121
+Hijax
+121
+What's next?
+122
+
+**Chapter 8: Enhancing Content
+123**
+What not to do
+123
+Making the invisible
+visible
+124
+The content
+124
+The markup: HTML, XHTML, or HTML5
+125
+The CSS
+127
+The JavaScript
+128
+Displaying abbreviations
+128
+Writing the displayAbbreviations function
+129
+Creating the markup
+131
+A browser bomb
+136
+Displaying citations
+139
+Writing the displayCitations function
+140 Displaying access keys
+145 Retrieving and attaching information
+148
+What's next?
+148
+
+CONTENTS
+**Chapter 9: CSS-DOM
+149**
+Three sheets to the Web
+149
+Structure
+149 Presentation
+150 Behavior
+150
+Separation
+151
+The style property
+152
+Getting styles
+153
+Setting styles
+158
+Knowing when to use DOM styling .
+160
+Styling elements in the node tree 
+160 
+Repetitive styling 
+164
+Responding to events
+168 
+className
+170
+Abstracting a function
+173
+What's next?
+174
+
+**Chapter 10: An Animated Slideshow
+175**
 
 Animation basics
-\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....175
+175
+Position
+175 
+Time
+178
+Incremental movement
+178
+Abstraction
+181
+Practical animation
+187
+The situation
+188 
+The solution
+189 
+CSS
+190 
+JavaScript
+192 
+A question of scope
+195 
+Refining the animation
+197 
+Adding a safety check
+200 
 
-> Position
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 175 Time
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 178
->
-> Incremental movement
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 178
->
-> Abstraction
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 181
->
-> Practical animation .
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 187
->
-> The situation
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 188 The solution
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 189 CSS
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 190 JavaScript
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 192
->
-> A question of scope
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 195
->
-> Refining the animation
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 197 Adding a safety check
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 200
->
-> ■ CONTENTS
->
-> Generating markup
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 201
->
-> What's next?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 204
->
-> ■**Chapter 11: HTML5
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 205** What is HTML5?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 205
->
-> A little help from a friend
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 206
->
-> A few examples
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 208
->
-> Canvas
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\.....
-> 208
->
-> Audio/Video
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 213
->
-> Forms
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 221
->
-> Is there anything else?
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 225
->
-> What\'s Next
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 226
->
-> ■**Chapter 12: Putting It All Together
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 227**
->
-> The brief
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 227
->
-> Raw materials
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 227
->
-> Site structure
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 227
->
-> Page structure
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 229 Design
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 229
->
-> CSS
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 230
->
-> Color
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...
-> 232
->
-> Layout
-> \...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\...\....
-> 234
->
-> Typography
-> 236 Markup
-> 238
->
-> JavaScript
-> 238
->
-> Page highlighting
-> 240
->
-> JavaScript slideshow
-> 243
->
-> Internal navigation
-> 248
->
-> JavaScript image gallery
-> 252
->
-> Table enhancements
-> 256
->
-> Form enhancements
-> 261
->
-> ■ CONTENTS
->
-> Minification
-> 276
->
-> What's next?
-> 277
->
-> ■**Appendix: DOM Scripting Libraries
-> 279**
->
-> Choosing a library
-> 280
->
-> A few libraries
-> 281
->
-> Content delivery networks
-> 282 Syntax
-> 283
->
-> Selecting elements
-> 284
->
-> CSS selectors
-> 284
->
-> Library-specific selectors
-> 286
->
-> Filtering with a callback
-> 288
->
-> Manipulating the DOM document
-> 289
->
-> Creating content
-> 289
->
-> Manipulating content
-> 291
->
-> Handling events
-> 291
->
-> Load
-> events
->
-> Other events
-> 292
->
-> Ajax
-> 293
->
-> Ajax with Prototype
-> 293
->
-> Ajax with jQuery
-> 296
->
-> Animation and effects
-> 298
->
-> CSS property-based animations
-...
-> 299
->
-> Packaged animations
-> 300
->
-> Remember accessibility
-> 301
->
-> Summary
-> 301
->
-> ■**Index
-> 303**
+CONTENTS
 
-■ **Jeremy Keith** is a web developer living and working in Brighton,
+Generating markup
+201
+What's next?
+204
+
+**Chapter 11: HTML5
+205** 
+What is HTML5?
+205
+A little help from a friend
+206
+A few examples
+208
+Canvas
+208
+Audio/Video
+213
+Forms
+221
+Is there anything else?
+225
+What&#39;s Next
+226
+
+**Chapter 12: Putting It All Together
+227**
+The brief
+227
+Raw materials
+227
+Site structure
+227
+Page structure
+229 
+Design
+229
+CSS
+230
+Color
+232
+Layout
+234
+Typography
+236 
+Markup
+238
+JavaScript
+238
+Page highlighting
+240
+JavaScript slideshow
+243
+Internal navigation
+248
+JavaScript image gallery
+252
+Table enhancements
+256
+Form enhancements
+261
+
+CONTENTS
+Minification
+276
+What's next?
+277
+**Appendix: DOM Scripting Libraries
+279**
+Choosing a library
+280
+A few libraries
+281
+Content delivery networks
+282 Syntax
+283
+Selecting elements
+284
+CSS selectors
+284
+Library-specific selectors
+286
+Filtering with a callback
+288
+Manipulating the DOM document
+289
+Creating content
+289
+Manipulating content
+291
+Handling events
+291
+Load
+events
+Other events
+292
+
+Ajax
+293
+Ajax with Prototype
+293
+Ajax with jQuery
+296
+Animation and effects
+298
+CSS property-based animations
+299
+Packaged animations
+300
+Remember accessibility
+301
+Summary
+301
+
+
+**Index
+303**
+
+**Jeremy Keith** is a web developer living and working in Brighton,
 England. Working with the web consultancy firm Clearleft
 ([www.clearleft.com), Je](http://www.clearleft.com/)remy enjoys building
 accessible, elegant websites using the troika of web standards: XHTML,
@@ -947,7 +601,7 @@ H](http://www.saltercane.com/)e is also the creator and curator of one
 of the Web's largest online communities dedicated to Irish traditional
 music, The Session ([www.thesession.org).](http://www.thesession.org/)
 
-■ **Jeffrey Sambells** is a Canadian designer of pristine pixel layouts
+**Jeffrey Sambells** is a Canadian designer of pristine pixel layouts
 and a developer of squeaky clean code. Back in the good-old days of the
 Internet, he started a little company called We-Create. Today, he is
 still there as Director of Research and Development / Mobile. The title
@@ -963,8 +617,8 @@ something new and unique---something other people can be excited about,
 too. Along the way, Jeffrey has managed to graduate university, start a
 few businesses, write some books, and raise a wonderful family.
 
-■ **Rob Drimmie** is lucky. He has an amazing wife, two awesome kids,
-and a brand-new keyboard. Rob\'s creative urges tend to manifest in the
+**Rob Drimmie** is lucky. He has an amazing wife, two awesome kids,
+and a brand-new keyboard. Rob&#39;s creative urges tend to manifest in the
 form of web applications, and he prefers they be fueled by pho and
 hamburgers (the creative urges, that is).
 
@@ -1013,55 +667,55 @@ programmers. This is a book for web designers. Specifically, this book
 is intended for standards-aware designers who are comfortable using CSS
 and HTML. If that sounds like you, read on.
 
-> This book is made up of equal parts code and concepts. Don't be
-> frightened by the code. I know it might look intimidating at first,
-> but once you've grasped the concepts behind the code, you'll find
-> yourself reading and writing in a new language.
->
-> Learning a programming language might seem like a scary prospect, but
-> it needn't be. Document Object Model (DOM) scripting might appear to
-> be more verbose than, say, CSS. But once you have the hang of the
-> syntax, you'll find yourself armed with a powerful web development
-> tool. In any case, the code is there simply to illustrate the
-> concepts.
->
-> I'll let you in on a secret: no one memorizes all the syntax and
-> keywords that are part and parcel of any programming language. That's
-> what reference books are for. This isn't a reference book. I'm going
-> to cover the bare minimum of syntax required to get up and running
-> with JavaScript.
->
-> In this book, I focus on the ideas behind DOM scripting. A lot of
-> these ideas might already be familiar to you. Graceful degradation,
-> progressive enhancement, and user-centered design are important
-> concepts in any aspect of front-end web development. These ideas
-> inform all the code examples given in this book.
->
-> You'll find scripts for creating image galleries, animating
-> slideshows, and enhancing the look and feel of page elements. If you
-> want, you can simply cut and paste these examples, but it's more
-> important to understand the hows and whys that lie behind the code.
->
-> If you're already using CSS and HTML to turn your designs into working
-> web pages, then you already know how powerful web standards can be.
-> Remember when you discovered that you could change the design
-> throughout an entire site just by changing one CSS file? The DOM
-> offers an equal level of power. But with great power comes great
-> responsibility. That's why I'm not just going to show you cool DOM
-> scripting effects. I'm also going to show you how to use DOM scripting
-> to enhance your web pages in a usable, accessible way.
->
-> To get all the code examples discussed in the book, pay a visit to
-> [www.friendsofed.com an](http://www.friendsofed.com/)d find this
-> book's page. At the friends of ED site, you can also find out about
-> all the other great books the publisher has to offer on web standards,
-> Flash, Dreamweaver, and much more besides.
->
-> Your exploration of DOM scripting needn't end when you close this
-> book. I've set up a website at [http://domscripting.com/,
-> w](http://domscripting.com/)here I continue the discussion of modern,
-> standards-based JavaScript. I hope you'll pay the site a visit. In the
-> meantime, enjoy the book.
+This book is made up of equal parts code and concepts. Don't be
+frightened by the code. I know it might look intimidating at first,
+but once you've grasped the concepts behind the code, you'll find
+yourself reading and writing in a new language.
+
+Learning a programming language might seem like a scary prospect, but
+it needn't be. Document Object Model (DOM) scripting might appear to
+be more verbose than, say, CSS. But once you have the hang of the
+syntax, you'll find yourself armed with a powerful web development
+tool. In any case, the code is there simply to illustrate the
+concepts.
+
+I'll let you in on a secret: no one memorizes all the syntax and
+keywords that are part and parcel of any programming language. That's
+what reference books are for. This isn't a reference book. I'm going
+to cover the bare minimum of syntax required to get up and running
+with JavaScript.
+
+In this book, I focus on the ideas behind DOM scripting. A lot of
+these ideas might already be familiar to you. Graceful degradation,
+progressive enhancement, and user-centered design are important
+concepts in any aspect of front-end web development. These ideas
+inform all the code examples given in this book.
+
+You'll find scripts for creating image galleries, animating
+slideshows, and enhancing the look and feel of page elements. If you
+want, you can simply cut and paste these examples, but it's more
+important to understand the hows and whys that lie behind the code.
+
+If you're already using CSS and HTML to turn your designs into working
+web pages, then you already know how powerful web standards can be.
+Remember when you discovered that you could change the design
+throughout an entire site just by changing one CSS file? The DOM
+offers an equal level of power. But with great power comes great
+responsibility. That's why I'm not just going to show you cool DOM
+scripting effects. I'm also going to show you how to use DOM scripting
+to enhance your web pages in a usable, accessible way.
+
+To get all the code examples discussed in the book, pay a visit to
+[www.friendsofed.com an](http://www.friendsofed.com/)d find this
+book's page. At the friends of ED site, you can also find out about
+all the other great books the publisher has to offer on web standards,
+Flash, Dreamweaver, and much more besides.
+
+Your exploration of DOM scripting needn't end when you close this
+book. I've set up a website at [http://domscripting.com/,
+w](http://domscripting.com/)here I continue the discussion of modern,
+standards-based JavaScript. I hope you'll pay the site a visit. In the
+meantime, enjoy the book.
 
 What this chapter covers:
 
@@ -1116,7 +770,7 @@ JavaScript, ECMAScript, JScript---whatever you want to call it---was
 gaining ground by 1996. Version 3 browsers from Netscape and Microsoft
 both supported the JavaScript 1.1 language to varying degrees.
 
-> A BRIEF HISTORY OF JAVASCRIPT
+A BRIEF HISTORY OF JAVASCRIPT
 
 ■ **Note** JavaScript has nothing to do with Java, a programming
 language developed by Sun Microsystems. JavaScript was originally going
@@ -1176,7 +830,7 @@ terms *images* and *forms* had been predefined, JavaScript could be used
 to address the third image in the document or the form named details*,*
 as follows:
 
-document.images\[2\] document.forms\[\'details\'\]
+document.images&#91;2&#93; document.forms&#91;&#39;details&#39;&#93;
 
 This first, tentative sort of DOM is often referred to as DOM Level 0.
 In those early, carefree days, the most common usage of DOM Level 0 was
@@ -1184,7 +838,7 @@ for image rollovers and some client-side form validation. But when the
 fourth generation of browsers from Netscape and Microsoft appeared, the
 DOM really hit the fan.
 
-> CHAPTER 1 ■ A BRIEF HISTORY OF JAVASCRIPT
+CHAPTER 1 ■ A BRIEF HISTORY OF JAVASCRIPT
 
 The browser wars
 
@@ -1210,7 +864,7 @@ and JavaScript. The thinking behind DHTML went like this:
 Using DHTML, complex animation effects suddenly became possible. Let's
 say you used HTML to mark up a page element like this:
 
-\<div id=\"myelement\"\>This is my element\</div\>
+&lt;div id=&quot;myelement&quot;&gt;This is my element&lt;/div&gt;
 
 You could then use CSS to apply positioning styles like this:
 
@@ -1231,23 +885,23 @@ The Netscape DOM made use of proprietary elements called *layers*. These
 layers were given unique IDs and then addressed through JavaScript like
 this:
 
-document.layers\[\'myelement\'\]
+document.layers&#91;&#39;myelement&#39;&#93;
 
 Meanwhile, the Microsoft DOM would address the same element like this:
 
-document.all\[\'myelement\'\]
+document.all&#91;&#39;myelement&#39;&#93;
 
 The differences didn't end there. Let's say you wanted to find out the
 left position of myelement and assign it to the variable xpos. In
 Netscape Navigator 4, you would do it like this:
 
-var xpos = document.layers\[\'myelement\'\].left;
+var xpos = document.layers&#91;&#39;myelement&#39;&#93;.left;
 
 Here's how you would do the same thing in Internet Explorer 4:
 
-var xpos = document.all\[\'myelement\'\].leftpos;
+var xpos = document.all&#91;&#39;myelement&#39;&#93;.leftpos;
 
-> A BRIEF HISTORY OF JAVASCRIPT
+A BRIEF HISTORY OF JAVASCRIPT
 
 This was clearly a ridiculous situation. Developers needed to double
 their code to accomplish any sort of DOM scripting. In effect, many
@@ -1269,13 +923,13 @@ vendors were able to set aside their mutual animosity. Netscape,
 Microsoft, and other browser manufacturers worked together with the W3C
 on the new standard, and DOM Level 1 was completed in October 1998.
 
-Consider the example in the previous section. We have a \<div\> with the
+Consider the example in the previous section. We have a &lt;div\with the
 ID myelement, and we're trying to ascertain the value that has been
 applied to its left position so that we can store that value as the
 variable xpos. Here's the syntax we would use with the new standardized
 DOM:
 
-var xpos = document.getElementById(\'myelement\').style.left
+var xpos = document.getElementById(&#39;myelement&#39;).style.left
 
 At first glance, that might not appear to be an improvement over the
 nonstandard, proprietary DOMs. However, the standardized DOM is far more
@@ -1324,7 +978,7 @@ markup had little effect on the final outcome. Internet Explorer was
 destined to win simply by virtue of the fact that it came preinstalled
 on all PCs running the Windows operating system.
 
-> CHAPTER 1 ■ A BRIEF HISTORY OF JAVASCRIPT
+CHAPTER 1 ■ A BRIEF HISTORY OF JAVASCRIPT
 
 The people who were hit hardest by the browser wars were web designers.
 Cross-browser development had become a nightmare. As well as the
@@ -1367,13 +1021,13 @@ Microsoft's Trident (in Internet Explorer) to adopt more progressive web
 standards.
 
 Today, pretty much all browsers have built-in support for the DOM. The
-browser wars of the late 1990s appear to be truly behind us. Now it\'s a
-race to implement the latest specification first. We\'ve already seen an
+browser wars of the late 1990s appear to be truly behind us. Now it&#39;s a
+race to implement the latest specification first. We&#39;ve already seen an
 explosion of DOM scripting with the advent of asynchronous data
 transfers (Ajax), and the advancements in the HTML5 DOM are adding many
 new possibilities. HTML5 gives us vastly improved semantics, control
-over rich media with the \<audio\> and \<video\> elements, the
-capability of drawing with the \<canvas\> element, local browser storage
+over rich media with the &lt;audio\and &lt;video\elements, the
+capability of drawing with the &lt;canvas\element, local browser storage
 for more than just cookies, built-in drag-anddrop support, and a lot
 more.
 
@@ -1394,7 +1048,7 @@ accomplish the same tasks in different ways. This inescapable fact
 dominated not just the writing of JavaScript scripts, but also how books
 about JavaScript were written.
 
-> A BRIEF HISTORY OF JAVASCRIPT
+A BRIEF HISTORY OF JAVASCRIPT
 
 Any JavaScript books aimed at demonstrating how to learn the language by
 example often needed to show the same scripts written in different ways
@@ -1454,121 +1108,121 @@ a plain text editor and a web browser.
 
 Code written in JavaScript must be executed from a document written in
 (X)HTML. There are three ways of doing this. You can place the
-JavaScript between \<script\> tags within the \<head\> of the document:
+JavaScript between &lt;script\tags within the &lt;head\of the document:
 
-\<!DOCTYPE html \> \<html lang=\"en\"\>
+&lt;!DOCTYPE html \&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\"/\>
+&lt;meta charset=&quot;utf-8&quot;/&gt;
 
-\<title\>Example\</title\>
+&lt;title&gt;Example&lt;/title&gt;
 
-\<script\>
+&lt;script&gt;
 
 *JavaScript goes here\...*
 
-\</script\>
+&lt;/script&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
 *Mark-up goes here\...*
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 A much better technique, however, is to place your JavaScript code into
 a separate file. Save this file with the file extension .js.
-Traditionally you would include this in the \<head\> portion of the
-document by using the src attribute in a \<script\> tag to point to this
+Traditionally you would include this in the &lt;head\portion of the
+document by using the src attribute in a &lt;script\tag to point to this
 file:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\"/\>
+&lt;meta charset=&quot;utf-8&quot;/&gt;
 
-\<title\>Example\</title\>
+&lt;title&gt;Example&lt;/title&gt;
 
-\<script **src=\"file.js\"\>**\</script\>
+&lt;script **src=&quot;file.js&quot;&gt;**&lt;/script&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
-
-*Mark-up goes here\...*
-
-\</body\>
-
-\</html\>
-
-However, the best technique is to place the \<script\> tag at the end of
-the document right before the closing \</body\> tag:
-
-\<!DOCTYPE html\>
-
-\<html lang=\"en\"\>
-
-\<head\>
-
-\<meta charset=\"utf-8\"/\>
-
-\<title\>Example\</title\>
-
-\</head\>
-
-\<body\>
+&lt;body&gt;
 
 *Mark-up goes here\...*
 
-\<script **src=\"file.js\"\>\</script\>**
+&lt;/body&gt;
 
-\</body\>
+&lt;/html&gt;
 
-\</html\>
+However, the best technique is to place the &lt;script\tag at the end of
+the document right before the closing &lt;/body\tag:
 
-Placing the \<script\> tag at the end of the document lets the browser
-load the page faster (we\'ll discuss this more in Chapter 5, \"Best
-Practices\").
+&lt;!DOCTYPE html&gt;
 
-> *The \<script\> tags in the preceding examples don\'t contain the
-> traditional type=\"text/javascript\" attribute. This attribute is
-> considered unnecessary as the script is already assumed to be
-> JavaScript.*
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+
+&lt;meta charset=&quot;utf-8&quot;/&gt;
+
+&lt;title&gt;Example&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+*Mark-up goes here\...*
+
+&lt;script **src=&quot;file.js&quot;&gt;&lt;/script&gt;**
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+
+Placing the &lt;script\tag at the end of the document lets the browser
+load the page faster (we&#39;ll discuss this more in Chapter 5, &quot;Best
+Practices&quot;).
+
+*The &lt;script\tags in the preceding examples don&#39;t contain the
+traditional type=&quot;text/javascript&quot; attribute. This attribute is
+considered unnecessary as the script is already assumed to be
+JavaScript.*
 
 If you'd like to follow along and try the examples in this chapter, go
 ahead and create two files in a text editor. First, create a simple
 bare-bones HTML or XHTML file. You can call it something like test.html.
-Make sure that it contains a \<script\> tag that has a src attribute
+Make sure that it contains a &lt;script\tag that has a src attribute
 with a value like example.js.
 
 That's the second file you can create in your text editor.
 
 Your test.html file should look something like this:
 
-\<!DOCTYPE html \> \<html lang=\"en\"\>
+&lt;!DOCTYPE html \&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Just a test\</title\>
+&lt;title&gt;Just a test&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<script src=\"example.js\"\>\</script\>
+&lt;script src=&quot;example.js&quot;&gt;&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 You can copy any of the examples in this chapter and write them into
 example.js. None of the examples are going to be particularly exciting,
@@ -1625,8 +1279,8 @@ consists of a series of instructions. These are called *statements*.
 These statements must be written with the right syntax in order for them
 to be interpreted correctly.
 
-> Statements in JavaScript are like sentences in English. They are the
-> building blocks of any script.
+Statements in JavaScript are like sentences in English. They are the
+building blocks of any script.
 
 Whereas English grammar demands that sentences begin with a capital
 letter and end with a period, the syntax of JavaScript is much more
@@ -1671,7 +1325,7 @@ comment line. This won't work, for instance:
 
 // Note to self: comments are good.
 
-> Instead, you'd need to write
+Instead, you'd need to write
 
 // Note to self:
 
@@ -1681,22 +1335,22 @@ If you want to comment out multiple lines like that, you can place a
 forward slash and an asterisk at the start of the comment block and an
 asterisk and forward slash at the end:
 
-/\* Note to self: comments are good \*/
+/&#42; Note to self: comments are good &#42;/
 
 This is useful when you need to insert a long comment that will be more
 readable when it is spread over many lines.
 
 You can also use HTML-style comments, but only for single lines. In
-other words, JavaScript treats \<!--- the same way that it treats //:
+other words, JavaScript treats &lt;!--- the same way that it treats //:
 
-\<!--- This is a comment in JavaScript.
+&lt;!--- This is a comment in JavaScript.
 
-> In HTML, you would need to close the comment with ---\>:
+In HTML, you would need to close the comment with ---&gt;:
 
-\<!--- This is a comment in HTML ---\>
+&lt;!--- This is a comment in HTML ---&gt;
 
-> JavaScript would simply ignore the closing of the comment, treating it
-> as part of the comment itself.
+JavaScript would simply ignore the closing of the comment, treating it
+as part of the comment itself.
 
 Whereas HTML allows you to split comments like this over multiple lines,
 JavaScript requires the comment identifier to be at the start of each
@@ -1731,7 +1385,7 @@ variable age.
 
 This is how you would assign these variables in JavaScript:
 
-mood = \"happy\"; age = 33;
+mood = &quot;happy&quot;; age = 33;
 
 When a variable has been assigned a value, we say that the variable
 *contains* the value. The variable mood now contains the value "happy."
@@ -1773,41 +1427,41 @@ var mood, age;
 You can even kill two birds with one stone by declaring a variable and
 assigning it a value at the same time:
 
-var mood = \"happy\"; var age = 33;
+var mood = &quot;happy&quot;; var age = 33;
 
 You could even do this:
 
-var mood = \"happy\", age = 33;
+var mood = &quot;happy&quot;, age = 33;
 
 That's the most efficient way to declare and assign variables. It has
 exactly the same meaning as doing this:
 
-var mood, age; mood = \"happy\"; age = 33;
+var mood, age; mood = &quot;happy&quot;; age = 33;
 
 The names of variables, along with just about everything else in
 JavaScript, are case-sensitive. The variable mood is not the same
 variable as Mood, MOOD or mOOd. These statements would assign values to
 two different variables:
 
-var mood = \"happy\"; MOOD = \"sad\";
+var mood = &quot;happy&quot;; MOOD = &quot;sad&quot;;
 
 The syntax of JavaScript does not allow variable names to contain spaces
-or punctuation characters (except for the dollar symbol, \$). The next
+or punctuation characters (except for the dollar symbol, &#36;). The next
 line would produce a syntax error:
 
-var my mood = \"happy\";
+var my mood = &quot;happy&quot;;
 
 Variable names can contain letters, numbers, dollar symbols, and
 underscores. In order to avoid long variables looking all squashed
 together, and to improve readability, you can use underscores in
 variable names:
 
-var my_mood = \"happy\";
+var my_mood = &quot;happy&quot;;
 
 Another stylistic alternative is to use the *camel case* format, where
 the space is removed and each new word begins with a capital letter:
 
-> **var myMood = \"happy\";**
+**var myMood = &quot;happy&quot;;**
 
 Traditionally the camel case format is preferred for function and method
 names as well as object
@@ -1836,12 +1490,12 @@ a variable at any stage.
 The following statements would be illegal in a strongly typed language
 but are perfectly fine in JavaScript:
 
-var age = \"thirty three\"; age = 33;
+var age = &quot;thirty three&quot;; age = 33;
 
 JavaScript doesn't care whether age is a *string* or a *number*.
 
-> Now let's review the most important data types that exist within
-> JavaScript.
+Now let's review the most important data types that exist within
+JavaScript.
 
 Strings
 
@@ -1850,7 +1504,7 @@ numbers, punctuation marks, and spaces. Strings must be enclosed in
 quotes. You can use either single quotes or double quotes. Both of these
 statements have the same result:
 
-var mood = \'happy\'; var mood = \"happy\";
+var mood = &#39;happy&#39;; var mood = &quot;happy&quot;;
 
 Use whichever one you like, but it's worth thinking about what
 characters are going to be contained in your string. If your string
@@ -1858,7 +1512,7 @@ contains the double-quote character, then it makes sense to use single
 quotes to enclose the string. If the single-quote character is part of
 the string, you should probably use double quotes to enclose the string:
 
-var mood = \"don\'t ask\";
+var mood = &quot;don&#39;t ask&quot;;
 
 If you wanted to write that statement with single quotes, you would need
 to ensure that the apostrophe (or single quote) between the n and the t
@@ -1866,22 +1520,22 @@ is treated as part of the string. In this case, the single quote needs
 to be treated the same as any other character, rather than as a signal
 for marking the end of the string. This is called *escaping*. In
 JavaScript, escaping is done using the backslash character: var mood =
-\'don\\\'t ask\';
+&#39;don\\&#39;t ask&#39;;
 
 Similarly, if you enclose a string with double quotes, but that string
 also contains a double-quote character, you can use the backslash to
 escape the double-quote character within the string:
 
-var height = \"about 5\'10\\\" tall\";
+var height = &quot;about 5&#39;10\\&quot; tall&quot;;
 
 These backslashes don't actually form part of the string. You can test
 this for yourself by adding the following to your example.js file and
 reloading test.html:
 
-var height = \"about 5\'10\\\" tall\"; alert(height);
+var height = &quot;about 5&#39;10\\&quot; tall&quot;; alert(height);
 
-> Here's an example of the output of a variable using backslashes to
-> escape characters:
+Here's an example of the output of a variable using backslashes to
+escape characters:
 
 ![](./images/media/image3.png){width="2.58in"
 height="1.2166666666666666in"}
@@ -1891,7 +1545,7 @@ double or single quotes, it's best to be consistent. If you switch
 between using double and single quotes all the time, your code could
 quickly become hard to read.
 
-> JAVASCRIPT SYNTAX
+JAVASCRIPT SYNTAX
 
 Numbers
 
@@ -1939,7 +1593,7 @@ married = true;
 
 In this case, married is a string containing the word "true":
 
-var married = \"true\";
+var married = &quot;true&quot;;
 
 Arrays
 
@@ -1972,13 +1626,13 @@ the element comes in the array. This is the *index* of the element. Each
 element has a corresponding index. The index is contained in square
 brackets:
 
-*array\[index\] = element;*
+*array&#91;index&#93; = element;*
 
 Let's start populating our array of Beatles. We'll go in the traditional
 order of John, Paul, George, and Ringo. Here's the first index and
 element:
 
-beatles\[0\] = \"John\";
+beatles&#91;0&#93; = &quot;John&quot;;
 
 It might seem counterintuitive to start with an index of zero instead of
 one, but that's just the way JavaScript works. It's easy to forget this.
@@ -1987,11 +1641,11 @@ using arrays.
 
 Here's how we'd declare and populate our entire beatles array:
 
-var beatles = Array(4); beatles\[0\] = \"John\"; beatles\[1\] =
-\"Paul\"; beatles\[2\] = \"George\"; beatles\[3\] = \"Ringo\";
+var beatles = Array(4); beatles&#91;0&#93; = &quot;John&quot;; beatles&#91;1&#93; =
+&quot;Paul&quot;; beatles&#91;2&#93; = &quot;George&quot;; beatles&#91;3&#93; = &quot;Ringo&quot;;
 
 You can now retrieve the element "George" in your script by referencing
-the index 2 (beatles\[2\]). It might take a while to get used to the
+the index 2 (beatles&#91;2&#93;). It might take a while to get used to the
 fact that the length of the array is four when the last element has an
 index of three. That's an unfortunate result of arrays beginning with
 the index number zero.
@@ -2001,27 +1655,27 @@ shortcut by populating your array at the same time that you declare it.
 When you are populating an array in a declaration, separate the values
 with commas:
 
-var beatles = Array( \"John\", \"Paul\", \"George\", \"Ringo\" );
+var beatles = Array( &quot;John&quot;, &quot;Paul&quot;, &quot;George&quot;, &quot;Ringo&quot; );
 
 An index will automatically be assigned for each element. The first
 index will be zero, the next will be one, etc. So referencing
-beatles\[2\] will still give us "George."
+beatles&#91;2&#93; will still give us "George."
 
 You don't even have to specify that you are creating an array. Instead,
 you can use square brackets to group the initial values together:
 
-var beatles = \[ \"John\", \"Paul\", \"George\", \"Ringo\" \];
+var beatles = &#91; &quot;John&quot;, &quot;Paul&quot;, &quot;George&quot;, &quot;Ringo&quot; &#93;;
 
 The elements of an array don't have to be strings. You can store Boolean
 values in an array. You can also use an array to store a series of
 numbers:
 
-var years = \[ 1940, 1941, 1942, 1943 \]; You can even use a mixture of
+var years = &#91; 1940, 1941, 1942, 1943 &#93;; You can even use a mixture of
 all three:
 
-var lennon = \[ \"John\", 1940, false \]; An element can be a variable:
+var lennon = &#91; &quot;John&quot;, 1940, false &#93;; An element can be a variable:
 
-var name = \"John\"; beatles\[0\] = name;
+var name = &quot;John&quot;; beatles&#91;0&#93; = name;
 
 This would assign the value "John" to the first element of the beatles
 array.
@@ -2030,19 +1684,19 @@ The value of an element in one array can be an element from another
 array. This will assign the value "Paul" to the second element of the
 beatles array:
 
-var names = \[ \"Ringo\", \"John\", \"George\", \"Paul\" \];
-beatles\[1\] = names\[3\];
+var names = &#91; &quot;Ringo&quot;, &quot;John&quot;, &quot;George&quot;, &quot;Paul&quot; &#93;;
+beatles&#91;1&#93; = names&#91;3&#93;;
 
 In fact, arrays can hold other arrays! Any element of an array can
 contain an array as its value:
 
-var lennon = \[ \"John\", 1940, false \]; var beatles = \[\];
-beatles\[0\] = lennon;
+var lennon = &#91; &quot;John&quot;, 1940, false &#93;; var beatles = &#91;&#93;;
+beatles&#91;0&#93; = lennon;
 
 Now the value of the first element of the beatles array is itself an
 array. To get the values of each element of this array, we need to use
-some more square brackets. The value of beatles\[0\]\[0\] is "John," the
-value of beatles\[0\]\[1\] is 1940 and the value of beatles\[0\]\[2\] is
+some more square brackets. The value of beatles&#91;0&#93;&#91;0&#93; is "John," the
+value of beatles&#91;0&#93;&#91;1&#93; is 1940 and the value of beatles&#91;0&#93;&#91;2&#93; is
 false.
 
 This is a powerful way of storing and retrieving information, but it's
@@ -2067,18 +1721,18 @@ It is possible to override this behavior by specifying the index of each
 element. When you specify the index, you don't have to limit yourself to
 numbers. The index can be a string instead:
 
-var lennon = Array(); lennon\[\"name\"\] = \"John\"; lennon\[\"year\"\]
-= 1940; lennon\[\"living\"\] = false;
+var lennon = Array(); lennon&#91;&quot;name&quot;&#93; = &quot;John&quot;; lennon&#91;&quot;year&quot;&#93;
+= 1940; lennon&#91;&quot;living&quot;&#93; = false;
 
 This is called an *associative array*. It's much more readable than a
 numeric array because you can use strings instead of numbers, but
-they\'re actually considered bad form and we recommend that you don't
+they&#39;re actually considered bad form and we recommend that you don't
 use them. The reason for this is that when you create an associative
-array, you\'re actually creating properties on the Array object. In
+array, you&#39;re actually creating properties on the Array object. In
 JavaScript, all variables are really objects of some type. A boolean is
 a Boolean object. An array is an Array object, and so on. In this
 example you are giving the lennon array new name, year and living
-properties. Ideally you don\'t want to be modifying the properties of
+properties. Ideally you don&#39;t want to be modifying the properties of
 the Array object. Instead, you should be using a generic Object.
 
 Objects
@@ -2088,12 +1742,12 @@ same name. Each one of these values is a *property* of the object. For
 instance, the lennon array in the previous section could be created as
 an object instead:
 
-var lennon = Object(); lennon.name = \"John\"; lennon.year = 1940;
+var lennon = Object(); lennon.name = &quot;John&quot;; lennon.year = 1940;
 lennon.living = false; Again, like the Array, an object is declared by
 using the Object keyword, but instead of using square brackets with an
 index to specify elements, you use dot notation and specify the property
 name the same way you would on any JavaScript object. For more about
-Objects, see the section \"Objects\" at the end of this chapter.
+Objects, see the section &quot;Objects&quot; at the end of this chapter.
 
 Alternatively you can use the more compact curly-brace {} syntax:
 
@@ -2101,7 +1755,7 @@ Alternatively you can use the more compact curly-brace {} syntax:
 
 For example, the lennon object could also be created like this:
 
-var lennon = { name:\"John\", year:1940, living:false };
+var lennon = { name:&quot;John&quot;, year:1940, living:false };
 
 Property names follow the same naming rules as JavaScript variable names
 and the value can be any JavaScript value, including other objects.
@@ -2113,11 +1767,11 @@ scripts.
 Let's create a new array named beatles and populate one of its elements
 with the lennon object that we created previously:
 
-var beatles = Array(); beatles\[0\] = lennon;
+var beatles = Array(); beatles&#91;0&#93; = lennon;
 
 Now we can get at the elements we want without using as many numbers.
-Instead of using beatles\[0\]\[0\], under our new structure now
-beatles\[0\].name is "John"
+Instead of using beatles&#91;0&#93;&#91;0&#93;, under our new structure now
+beatles&#91;0&#93;.name is "John"
 
 That's an improvement, but we can go one further. What if beatles itself
 was an object instead of a numerical array? Then, instead of using
@@ -2144,7 +1798,7 @@ multiplication. Every one of these *arithmetic operations* requires an
 performing operations. You've already seen one operator in action. We've
 been using the equal sign (=) to perform assignment. The operator for
 addition is the plus sign (+), the operator for subtraction is the minus
-sign (-), division uses the backslash (/), and the asterisk (\*) is the
+sign (-), division uses the backslash (/), and the asterisk (&#42;) is the
 symbol for multiplication operations. Here's a simple addition
 operation:
 
@@ -2152,18 +1806,18 @@ operation:
 
 You can also combine operations:
 
-1 + 4 \* 5
+1 + 4 &#42; 5
 
 To avoid ambiguity, it's best to separate operations by enclosing them
 in parentheses:
 
-1 + (4 \* 5)
+1 + (4 &#42; 5)
 
-(1 + 4) \* 5
+(1 + 4) &#42; 5
 
 A variable can contain an operation:
 
-var total = (1 + 4) \* 5;
+var total = (1 + 4) &#42; 5;
 
 Best of all, you can perform operations on variables: var
 temp_fahrenheit = 95;
@@ -2184,14 +1838,14 @@ variable by one.
 The + operator is a bit special. You can use it on strings as well as
 numbers. Joining strings together is a straightforward operation:
 
-var message = \"I am feeling \" + \"happy\";
+var message = &quot;I am feeling &quot; + &quot;happy&quot;;
 
-> Joining strings together like this is called *concatenation*. This
-> also works on variables:
+Joining strings together like this is called *concatenation*. This
+also works on variables:
 
-var mood = \"happy\";
+var mood = &quot;happy&quot;;
 
-var message = \"I am feeling \" + mood;
+var message = &quot;I am feeling &quot; + mood;
 
 You can even concatenate numbers with strings. This is possible because
 JavaScript is weakly typed. The number will automatically be converted
@@ -2199,18 +1853,18 @@ to a string:
 
 var year = 2005;
 
-var message = \"The year is \" + year;
+var message = &quot;The year is &quot; + year;
 
 Remember, if you concatenate a string with a number, the result will be
 a longer string, but if you use the same operator on two numbers, the
 result will be the sum of the two numbers. Compare the results of these
 two alert statements:
 
-alert (\"10\" + 20); alert (10 + 20);
+alert (&quot;10&quot; + 20); alert (10 + 20);
 
-> The first alert returns the string "1020." The second returns the
-> number 30. Here's the result of concatenating the string "10" and the
-> number 20:
+The first alert returns the string "1020." The second returns the
+number 30. Here's the result of concatenating the string "10" and the
+number 20:
 
 ![](./images/media/image4.png){width="2.58in"
 height="1.1933333333333334in"}
@@ -2222,7 +1876,7 @@ The result of adding the number 10 and the number 20 is as follows:
 Another useful shorthand operator is += which performs addition and
 assignment (or concatenation and assignment) at the same time:
 
-var year = 2010; var message = \"The year is \"; message += year;
+var year = 2010; var message = &quot;The year is &quot;; message += year;
 
 The value of message is now "The year is 2010". You can test this
 yourself by using another alert dialog box:
@@ -2252,9 +1906,9 @@ statement or statements contained within the curly braces will only be
 executed if the result of the condition is true. In this example, the
 annoying alert message never appears:
 
-if (1 \> 2) {
+if (1 \2) {
 
-alert(\"The world has gone mad!\");
+alert(&quot;The world has gone mad!&quot;);
 
 }
 
@@ -2270,25 +1924,25 @@ only want to execute a single statement based on the outcome of an if
 statement, you don't have to use curly braces at all. You can just put
 everything on one line:
 
-if (1 \> 2) alert(\"The world has gone mad!\");
+if (1 \2) alert(&quot;The world has gone mad!&quot;);
 
-> However, the curly braces help make scripts more readable, so it's a
-> good idea to use them anyway.
+However, the curly braces help make scripts more readable, so it's a
+good idea to use them anyway.
 
 The if statement can be extended using else. Statements contained in the
 else clause will only be executed when the condition is false:
 
-if (1 \> 2) {
+if (1 \2) {
 
-alert(\"The world has gone mad!\");
+alert(&quot;The world has gone mad!&quot;);
 
 } else {
 
-alert(\"All is well with the world\");
+alert(&quot;All is well with the world&quot;);
 
 }
 
-> The following output appears when 1\>2 is false:
+The following output appears when 1&gt;2 is false:
 
 ![](./images/media/image8.png){width="2.58in" height="1.18in"}
 
@@ -2296,8 +1950,8 @@ Comparison operators
 
 JavaScript provides plenty of operators that are used almost exclusively
 in conditional statements. There are comparison operators like greater
-than (\>), less than (\<), greater than or equal to (\>=), and less than
-or equal to (\<=).
+than (&gt;), less than (&lt;), greater than or equal to (&gt;=), and less than
+or equal to (&lt;=).
 
 If you want to find out if two values are equal, you can use the
 equality operator. It consists of two equal signs (==). Remember, a
@@ -2305,8 +1959,8 @@ single equal sign is used for assignment. If you use a single equal sign
 in a conditional statement, the operation will always be true as long as
 the assignment succeeds. This is the *wrong* way to check for equality:
 
-var my_mood = \"happy\"; var your_mood = \"sad\"; if (my_mood =
-your_mood) { alert(\"We both feel the same.\");
+var my_mood = &quot;happy&quot;; var your_mood = &quot;sad&quot;; if (my_mood =
+your_mood) { alert(&quot;We both feel the same.&quot;);
 
 }
 
@@ -2315,8 +1969,8 @@ my_mood. The assignment operation was carried out successfully, so the
 result of the conditional statement is true. This is what we should have
 done:
 
-var my_mood = \"happy\"; var your_mood = \"sad\"; if (my_mood ==
-your_mood) { alert(\"We both feel the same.\");
+var my_mood = &quot;happy&quot;; var your_mood = &quot;sad&quot;; if (my_mood ==
+your_mood) { alert(&quot;We both feel the same.&quot;);
 
 }
 
@@ -2327,25 +1981,25 @@ point followed by an equal sign (!=).
 
 if (my_mood != your_mood) {
 
-alert(\"We\'re feeling different moods.\");
+alert(&quot;We&#39;re feeling different moods.&quot;);
 
 }
 
-One confusing aspect of the == equality operator is that it\'s not
+One confusing aspect of the == equality operator is that it&#39;s not
 strict. For example, what if we compare two values such as false and an
 empty string?
 
-var a = false; var b = \"\"; if (a == b) { alert(\"a equals b\");
+var a = false; var b = &quot;&quot;; if (a == b) { alert(&quot;a equals b&quot;);
 
 }
 
 The result of this conditional statement evaluates to true, but why? The
 == equality operator compares false to an empty string and considers
-\"an empty string\" to have the same meaning as \"false.\" For a strict
+&quot;an empty string&quot; to have the same meaning as &quot;false.&quot; For a strict
 comparison, you need to add another equal sign (===). This will perform
 a strict comparison of both the value *and* the type of the variable:
 
-var a = false; var b = \"\"; if (a === b) { alert(\"a equals b\"); }
+var a = false; var b = &quot;&quot;; if (a === b) { alert(&quot;a equals b&quot;); }
 
 In this case the conditional statement evaluates to false because even
 though false and an empty string are considered the same, a Boolean and
@@ -2363,9 +2017,9 @@ to find out if the variable is greater than or equal to five, and next
 we need to find out if the variable is less than or equal to ten. These
 operations are called *operands*. This is how we combine operands:
 
-if ( num \>= 5 && num \<= 10 ) {
+if ( num &gt;= 5 && num &lt;= 10 ) {
 
-alert(\"The number is in the right range.\");
+alert(&quot;The number is in the right range.&quot;);
 
 }
 
@@ -2378,14 +2032,14 @@ Logical operators work on Boolean values. Each operand returns a Boolean
 value of either true or false. The AND operation will be true only if
 both operands are true.
 
-The logical operator for OR is two vertical pipe symbols (\|\|). The OR
+The logical operator for OR is two vertical pipe symbols (&#124;&#124;). The OR
 operation will be true if one of its operands is true. It will also be
 true if both of its operands are true. It will be false only if both
 operands are false.
 
-if ( num \> 10 \|\| num \< 5 ) {
+if ( num \10 &#124;&#124; num &lt; 5 ) {
 
-alert(\"The number is not in the right range.\");
+alert(&quot;The number is not in the right range.&quot;);
 
 }
 
@@ -2394,9 +2048,9 @@ exclamation point (!). This is the NOT operator, which works on just a
 single operand. Whatever Boolean value is returned by that operand gets
 reversed. If the operand is true, the NOT operator switches it to false:
 
-if ( !(1 \> 2) ) {
+if ( !(1 \2) ) {
 
-alert(\"All is well with the world\");
+alert(&quot;All is well with the world&quot;);
 
 }
 
@@ -2408,9 +2062,9 @@ You can use the NOT operator on the result of a complete conditional
 statement to reverse its value. The following statement uses another set
 of parentheses so that the NOT operator works on both operands combined:
 
-if ( !(num \> 10 \|\| num \< 5) ) {
+if ( !(num \10 &#124;&#124; num &lt; 5) ) {
 
-alert(\"The number IS in the right range.\"); }
+alert(&quot;The number IS in the right range.&quot;); }
 
 Looping statements
 
@@ -2437,7 +2091,7 @@ The only difference is that the code contained within the curly braces
 will be executed over and over as long as the condition is true. Here's
 an example of a while loop:
 
-var count = 1; while (count \< 11) { alert (count); count++; }
+var count = 1; while (count &lt; 11) { alert (count); count++; }
 
 Let's take a closer look at this code. We began by creating a numeric
 variable, count, containing the value one. Then we created a while loop
@@ -2448,11 +2102,11 @@ times. In your web browser, you will see an annoying alert dialog box
 flash up ten times. After the loop has been executed, the value of count
 will be eleven.
 
-> *It's important that something happens within the while loop that will
-> affect the test condition. In this case, we increase the value of
-> count within the while loop. This results in the condition evaluating
-> to false after ten loops. If we didn't increase the value of the count
-> variable, the while loop would execute forever.*
+*It's important that something happens within the while loop that will
+affect the test condition. In this case, we increase the value of
+count within the while loop. This results in the condition evaluating
+to false after ten loops. If we didn't increase the value of the count
+variable, the while loop would execute forever.*
 
 The do\...while loop
 
@@ -2472,11 +2126,11 @@ subtle difference. Even if the condition evaluates as false on the very
 first loop, the statements contained within the curly braces will still
 be executed once.
 
-> Let's look at our previous example, reformatted as a do\...while loop:
+Let's look at our previous example, reformatted as a do\...while loop:
 
 var count = 1; do { alert (count); count++;
 
-} while (count \< 11);
+} while (count &lt; 11);
 
 The result is exactly the same as the result from our while loop. The
 alert message appears ten times. After the loop is finished, the value
@@ -2484,7 +2138,7 @@ of the variable count is eleven. Now consider this variation:
 
 var count = 1; do { alert (count); count++;
 
-} while (count \< 1);
+} while (count &lt; 1);
 
 In this case, the condition never evaluates as true. The value of count
 is one to begin with so it is never less than one. Yet the do loop is
@@ -2492,7 +2146,7 @@ still executed once because the condition comes after the curly braces.
 You will still see one alert message. After these statements are
 executed, the value of count is two even though the condition is false.
 
-> JAVASCRIPT SYNTAX
+JAVASCRIPT SYNTAX
 
 The for loop
 
@@ -2516,7 +2170,7 @@ to the loop is contained within the parentheses of the for statement.
 
 If we reformulate our while loop example, this is how it looks:
 
-for (var count = 1; count \< 11; count++ ) { alert (count); }
+for (var count = 1; count &lt; 11; count++ ) { alert (count); }
 
 Everything related to the loop is contained within the parentheses. Now
 we can put code between the curly braces, secure in the knowledge that
@@ -2524,15 +2178,15 @@ the code will be executed exactly ten times.
 
 One of the most common uses of the for loop is to act on every element
 of an array. This is achieved using array.length, which provides the
-number of elements. It\'s important to remember that the index of the
+number of elements. It&#39;s important to remember that the index of the
 array begins at 0, not 1. In the following example, the array has four
 elements. The count variable increases from 0 once for every element in
 the array. When count reaches 4, the test condition fails and the loop
 ends, leaving 3 as the last index that was retrieved from the array:
 
-var beatles = Array(\"John\",\"Paul\",\"George\",\"Ringo\"); for (var
-count = 0 ; count \< beatles.length; count++ ) {
-alert(beatles\[count\]);
+var beatles = Array(&quot;John&quot;,&quot;Paul&quot;,&quot;George&quot;,&quot;Ringo&quot;); for (var
+count = 0 ; count &lt; beatles.length; count++ ) {
+alert(beatles&#91;count&#93;);
 
 }
 
@@ -2551,10 +2205,10 @@ simple function might look like this:
 
 function shout() {
 
-var beatles = Array(\"John\",\"Paul\",\"George\",\"Ringo\");
+var beatles = Array(&quot;John&quot;,&quot;Paul&quot;,&quot;George&quot;,&quot;Ringo&quot;);
 
-> for (var count = 0 ; count \< beatles.length; count++ ) {
-> alert(beatles\[count\]);
+for (var count = 0 ; count &lt; beatles.length; count++ ) {
+alert(beatles&#91;count&#93;);
 
 }
 
@@ -2583,7 +2237,7 @@ can be used just like regular variables within the function.
 Here's a function that takes two arguments. If you pass this function
 two numbers, the function will multiply them:
 
-function multiply(num1,num2) { var total = num1 \* num2; alert(total);
+function multiply(num1,num2) { var total = num1 &#42; num2; alert(total);
 
 }
 
@@ -2606,7 +2260,7 @@ functions can also return data.
 You can create a function that returns a number, a string, an array, or
 a Boolean value. Use the return statement to do this:
 
-function multiply(num1,num2) { var total = num1 \* num2; return total; }
+function multiply(num1,num2) { var total = num1 &#42; num2; return total; }
 
 Here's a function that takes one argument (a temperature in degrees
 Fahrenheit) and returns a number (the same temperature in degrees
@@ -2676,13 +2330,13 @@ you don't use var, the variable will be treated as a global variable. If
 there is already a variable with that name, the function will overwrite
 its value. Take a look at this example:
 
-> function square(num) {
+function square(num) {
 >
-> total = num \* num; return total;
+total = num &#42; num; return total;
 >
-> }
+}
 >
-> var total = 50; var number = square(20); alert(total);
+var total = 50; var number = square(20); alert(total);
 
 The value of the variable has been inadvertently changed:
 
@@ -2698,7 +2352,7 @@ total.
 
 This is how we should have written the function:
 
-function square(num) { **var** total = num \* num; return total; }
+function square(num) { **var** total = num &#42; num; return total; }
 
 Now we can safely have a global variable named total, secure in the
 knowledge that it won't be affected whenever the square() function is
@@ -2901,7 +2555,7 @@ methods like window.open and window.blur. These methods, incidentally,
 are responsible for all those annoying pop-up and pop-under windows that
 have plagued the Web. No wonder JavaScript has a bad reputation!
 
-> THE DOCUMENT OBJECT MODEL
+THE DOCUMENT OBJECT MODEL
 
 Fortunately, we won't be dealing with the Browser Object Model very
 much. Instead, we'll focus on what's inside the browser window. The
@@ -2909,8 +2563,8 @@ object that handles the contents of a web page is the document object.
 For the rest of this book, we're going to be dealing almost exclusively
 with the properties and methods of the document object.
 
-> That explains the letter *D* (document) and the letter *O* (object) in
-> DOM. But what about the letter *M*?
+That explains the letter *D* (document) and the letter *O* (object) in
+DOM. But what about the letter *M*?
 
 Dial M for model
 
@@ -2927,8 +2581,8 @@ the same with the DOM. In order to gain information from the model, you
 need to understand what conventions are being used to represent the
 document.
 
-> The most important convention used by the DOM is the representation of
-> a document as a tree.
+The most important convention used by the DOM is the representation of
+a document as a tree.
 
 More specifically, the document is represented as a family tree.
 
@@ -2944,66 +2598,66 @@ The family tree model works just as
 well in representing a document written in (X)HTML. Take a look at this
 very basic web page:
 
-\<!
+&lt;!
 
-DOCTYPE html\>
+DOCTYPE html&gt;
 
-\<
+&lt;
 
-html lang=\"en\"\>
+html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Shopping list\</title\>
+&lt;title&gt;Shopping list&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>What to buy\</h1\>
+&lt;h1&gt;What to buy&lt;/h1&gt;
 
-\<p title=\"a gentle reminder\"\>Don\'t forget to buy this stuff.\</p\>
-\<ul id=\"purchases\"\>
+&lt;p title=&quot;a gentle reminder&quot;&gt;Don&#39;t forget to buy this stuff.&lt;/p&gt;
+&lt;ul id=&quot;purchases&quot;&gt;
 
-\<li\>A tin of beans\</li\>
+&lt;li&gt;A tin of beans&lt;/li&gt;
 
-\<li class=\"sale\"\>Cheese\</li\>
+&lt;li class=&quot;sale&quot;&gt;Cheese&lt;/li&gt;
 
-\<li class=\"sale important\"\>Milk\</li\>
+&lt;li class=&quot;sale important&quot;&gt;Milk&lt;/li&gt;
 
-\</ul\> \</body\> \</html\>
+&lt;/ul\&lt;/body\&lt;/html&gt;
 
 This can be represented by the model shown here.
 
 Let's walk through the web page structure to see what it's made up of,
 and show why it's represented so well by the model shown previously.
 After the DOCTYPE declaration, the document begins by opening an
-\<html\> tag. All the other elements of the web page are contained
+&lt;html\tag. All the other elements of the web page are contained
 within this element, meaning it is a parent. Because all the other
-elements are inside, the \<html\> tag has no parent itself. It also has
-no siblings. If this were a tree, the \<html\> tag would be the root.
+elements are inside, the &lt;html\tag has no parent itself. It also has
+no siblings. If this were a tree, the &lt;html\tag would be the root.
 
 The root element is html. For all intents and purposes, the html element
 *is* the document.
 
-If we move one level deeper, we find two branches: \<head\> and
-\<body\>. They exist side by side, which makes them siblings. They share
-the same parent, \<html\>, but they also contain children, so they are
+If we move one level deeper, we find two branches: &lt;head\and
+&lt;body&gt;. They exist side by side, which makes them siblings. They share
+the same parent, &lt;html&gt;, but they also contain children, so they are
 parents themselves.
 
-The \<head\> element has two children: \<meta\> and \<title\> (siblings
-of one another). The children of the \<body\> element are \<h1\>, \<p\>,
-and \<ul\> (all siblings of one another). If we drill down deeper still,
-we find that \<ul\> is also a parent. It has three children, all of them
-\<li\> elements with a few class attributes.
+The &lt;head\element has two children: &lt;meta\and &lt;title\(siblings
+of one another). The children of the &lt;body\element are &lt;h1&gt;, &lt;p&gt;,
+and &lt;ul\(all siblings of one another). If we drill down deeper still,
+we find that &lt;ul\is also a parent. It has three children, all of them
+&lt;li\elements with a few class attributes.
 
 By using this simple convention of familial relationships, we can access
 a lot of information about the relationship between elements. For
-example, what is the relationship between \<h1\> and \<p\>? The answer
-is that they are siblings. What is the relationship between \<body\> and
-\<ul\>? \<body\> is the parent of \<ul\>. \<ul\> is a child of \<body\>.
+example, what is the relationship between &lt;h1\and &lt;p&gt;? The answer
+is that they are siblings. What is the relationship between &lt;body\and
+&lt;ul&gt;? &lt;body\is the parent of &lt;ul&gt;. &lt;ul\is a child of &lt;body&gt;.
 
 If you can think of the elements of a document in terms of a tree of
 familial relationships, then you're using the same terms as the DOM.
@@ -3020,7 +2674,7 @@ of the real world. But atoms can themselves be broken down into smaller,
 subatomic particles. These subatomic particles are also considered
 nodes.
 
-> THE DOCUMENT OBJECT MODEL
+THE DOCUMENT OBJECT MODEL
 
 It's a similar situation with the DOM. A document is a collection of
 nodes, with nodes as the branches and leaves on the document tree.
@@ -3035,7 +2689,7 @@ Element nodes
 The DOM's equivalent of the atom is the element node**.**
 
 When I described the structure of the shopping list document, I did so
-in terms of elements such as \<body\>, \<p\>, and \<ul\>. Elements are
+in terms of elements such as &lt;body&gt;, &lt;p&gt;, and &lt;ul&gt;. Elements are
 the basic building blocks of documents on the Web, and it's the
 arrangement of these elements in a document that gives the document its
 structure.
@@ -3046,7 +2700,7 @@ li.
 
 Elements can contain other elements. All the list item elements in our
 document are contained within an unordered list element. In fact, the
-only element that isn't contained within another element is the \<html\>
+only element that isn't contained within another element is the &lt;html&gt;
 element. It's the root of our node tree.
 
 Text nodes
@@ -3056,13 +2710,13 @@ empty elements, it would have a structure, but the document itself
 wouldn't contain much content. On the Web, where content is king, most
 content is provided by text.
 
-> In our example, the \<p\> element contains the text "Don't forget to
-> buy this stuff." This is a text node**.**
+In our example, the &lt;p\element contains the text "Don't forget to
+buy this stuff." This is a text node**.**
 
 In XHTML, text nodes are always enclosed within element nodes. But not
 all elements contain text nodes. In our shopping list document, the
-\<ul\> element doesn't contain any text directly. It contains other
-element nodes (the \<li\> elements), and these contain text nodes.
+&lt;ul\element doesn't contain any text directly. It contains other
+element nodes (the &lt;li\elements), and these contain text nodes.
 
 Attribute nodes
 
@@ -3070,16 +2724,16 @@ Attributes are used to give more specific information about an element.
 The title attribute, for example, can be used on just about any element
 to specify exactly what the element contains:
 
-\<p title=\"a gentle reminder\"\>Don\'t forget to buy this stuff.\</p\>
+&lt;p title=&quot;a gentle reminder&quot;&gt;Don&#39;t forget to buy this stuff.&lt;/p&gt;
 
-In the DOM, title=\"a gentle reminder\" is an attribute node, as shown
+In the DOM, title=&quot;a gentle reminder&quot; is an attribute node, as shown
 in the diagram here. Because attributes are always placed within opening
 tags, attribute nodes are always contained within element nodes. Not all
 elements contain attributes, but all attributes are contained by
 elements.
 
-In our example document, the unordered list (\<ul\>) has been marked
-with the id attribute and some of the list elements (\<li\>) have been
+In our example document, the unordered list (&lt;ul&gt;) has been marked
+with the id attribute and some of the list elements (&lt;li&gt;) have been
 marked with the class attribute. You're probably familiar with the id
 and class attributes from using CSS. Just in case you do not have much
 experience with CSS, the next section briefly recaps the basics.
@@ -3090,8 +2744,8 @@ The DOM isn't the only technology that interacts with the structure of
 web pages. CSS is used to instruct a browser how to display the contents
 of a document.
 
-Styles are declared either in the \<head\> of a document (between
-\<style\> tags) or in an external style sheet (you'll be working with
+Styles are declared either in the &lt;head\of a document (between
+&lt;style\tags) or in an external style sheet (you'll be working with
 styles in Chapter 4). The syntax for styling an element with CSS is
 similar to that of JavaScript functions:
 
@@ -3102,7 +2756,7 @@ used by the browser to display elements:
 
 p { color: yellow;
 
-font-family: \"arial\", sans-serif;
+font-family: &quot;arial&quot;, sans-serif;
 
 font-size: 1.2em; }
 
@@ -3121,7 +2775,7 @@ background-color: black;
 }
 
 Those colors will be applied not just to content contained directly by
-the \<body\> tag, but also by elements nested within the body.
+the &lt;body\tag, but also by elements nested within the body.
 
 The image shown here is a basic web page with styles applied.
 
@@ -3137,9 +2791,9 @@ The class attribute
 The class attribute can be applied as often as you like to as many
 different elements as you like:
 
-\<p class=\"special\"\>This paragraph has the special class\</p\>
+&lt;p class=&quot;special&quot;&gt;This paragraph has the special class&lt;/p&gt;
 
-\<h2 class=\"special\"\>So does this headline\</h2\>
+&lt;h2 class=&quot;special&quot;&gt;So does this headline&lt;/h2&gt;
 
 In a style sheet, styles can then be applied to all the elements of this
 class:
@@ -3159,7 +2813,7 @@ text-transform: uppercase; }
 The id attribute
 
 The id attribute can be used once in a web page to uniquely identify an
-element: \<ul id=\"purchases\"\>
+element: &lt;ul id=&quot;purchases&quot;&gt;
 
 In a style sheet, styles can then be applied specifically to this
 element:
@@ -3179,8 +2833,8 @@ element:
 
 Here is an example of styles applied to a list with a unique id:
 
-> The id attribute acts as a kind of "hook" that can be targeted by CSS.
-> The DOM can use the same hook.
+The id attribute acts as a kind of "hook" that can be targeted by CSS.
+The DOM can use the same hook.
 
 Getting Elements
 
@@ -3193,8 +2847,8 @@ specified id. Remember that JavaScript is case-sensitive, so
 getElementById must always be written with case preserved. If you write
 GetElementById or getElementbyid, you won't get the results you expect.
 
-> getElementById is a function associated with the document object.
-> Functions are always followed by
+getElementById is a function associated with the document object.
+Functions are always followed by
 
 parentheses that contain the function's arguments. getElementById takes
 just one argument: the id of the element you want to get to, contained
@@ -3202,56 +2856,56 @@ in either single or double quotes.
 
 document.getElementById(id) Here's an example:
 
-document.getElementById(\"purchases\")
+document.getElementById(&quot;purchases&quot;)
 
 This is referencing the unique element that has been assigned the HTML
-id attribute \"purchases\" in the document object. This element also
+id attribute &quot;purchases&quot; in the document object. This element also
 corresponds to an object. You can test this for yourself by using the
 typeof operator. This will tell you whether something is a string, a
 number, a function, a Boolean value, or an object.
 
 I don't recommend mixing a lot of inline JavaScript into a document, but
-purely for testing purposes, insert this \<script\> with JavaScript into
-the shopping list document. Put it directly before the closing \</body\>
+purely for testing purposes, insert this &lt;script\with JavaScript into
+the shopping list document. Put it directly before the closing &lt;/body&gt;
 tag:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Shopping list\</title\>
+&lt;title&gt;Shopping list&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>What to buy\</h1\>
+&lt;h1&gt;What to buy&lt;/h1&gt;
 
-\<p title=\"a gentle reminder\"\>Don\'t forget to buy this stuff.\</p\>
+&lt;p title=&quot;a gentle reminder&quot;&gt;Don&#39;t forget to buy this stuff.&lt;/p&gt;
 
-\<ul id=\"purchases\"\>
+&lt;ul id=&quot;purchases&quot;&gt;
 
-\<li\>A tin of beans\</li\>
+&lt;li&gt;A tin of beans&lt;/li&gt;
 
-\<li class=\"sale\"\>Cheese\</li\>
+&lt;li class=&quot;sale&quot;&gt;Cheese&lt;/li&gt;
 
-\<li class=\"sale important\"\>Milk\</li\>
+&lt;li class=&quot;sale important&quot;&gt;Milk&lt;/li&gt;
 
-\</ul\> \<script\>
+&lt;/ul\&lt;script&gt;
 
-alert(typeof document.getElementById(\"purchases\"));
+alert(typeof document.getElementById(&quot;purchases&quot;));
 
-\</script\>
+&lt;/script&gt;
 
-\</body\> \</html\>
+&lt;/body\&lt;/html&gt;
 
 When you load the XHTML file in a web browser, you will be greeted with
 an annoying pop-up box stating the nature of
-document.getElementById(\"purchases\"). It is an object.
+document.getElementById(&quot;purchases&quot;). It is an object.
 
 In fact, each element in a document is an object. Using the DOM, you can
 "get" at all of these elements. Obviously you shouldn't give a unique id
@@ -3273,25 +2927,25 @@ can get element*s*---plural. Be careful when you are writing your
 scripts that you don't inadvertently write getElementsById or
 getElementByTagName.
 
-> Here it is in action:
+Here it is in action:
 
-document.getElementsByTagName(\"li\")
+document.getElementsByTagName(&quot;li&quot;)
 
 This is an array populated with all the list items in the document
 object. Just as with any other array, you can use the length property to
 get the total number of elements.
 
-Delete the alert statement you placed between \<script\> tags earlier
+Delete the alert statement you placed between &lt;script\tags earlier
 and replace it with this:
-alert(document.getElementsByTagName(\"li\").length);
+alert(document.getElementsByTagName(&quot;li&quot;).length);
 
 This will tell you the total number of list items in the document, which
 in this case is three. Every value in the array is an object. You can
 test this yourself by looping through the array and using typeof on each
 value. For example, try this with a for loop:
 
-for (var i=0; i \< document.getElementsByTagName(\"li\").length; i++) {
-alert(typeof document.getElementsByTagName(\"li\")\[i\]);
+for (var i=0; i &lt; document.getElementsByTagName(&quot;li&quot;).length; i++) {
+alert(typeof document.getElementsByTagName(&quot;li&quot;)&#91;i&#93;);
 
 }
 
@@ -3300,19 +2954,19 @@ getElementsByTagName still returns an array. The length of the array
 will simply be 1.
 
 Now you will begin to notice that typing out
-document.getElementsByTagName(\"li\") every time is tedious, and that
+document.getElementsByTagName(&quot;li&quot;) every time is tedious, and that
 the code is getting harder to read. You can reduce the amount of
 unnecessary typing and improve readability by assigning a variable to
-contain document.getElementsByTagName(\"li\"). Replace the alert
-statement between the \<script\> tags with these statements:
+contain document.getElementsByTagName(&quot;li&quot;). Replace the alert
+statement between the &lt;script\tags with these statements:
 
-var items = document.getElementsByTagName(\"li\"); for (var i=0; i \<
-items.length; i++) { alert(typeof items\[i\]);
+var items = document.getElementsByTagName(&quot;li&quot;); for (var i=0; i &lt;
+items.length; i++) { alert(typeof items&#91;i&#93;);
 
 }
 
-> Now you'll get three annoying alert boxes, each saying the same thing:
-> **object**.
+Now you'll get three annoying alert boxes, each saying the same thing:
+**object**.
 
 You can also use a wildcard with getElementsByTagName, which means you
 can make an array with every single element. The wildcard symbol (the
@@ -3320,19 +2974,19 @@ asterisk) must be contained in quotes to distinguish it from the
 multiplication operator. The wildcard will give you the total number of
 element nodes in a document:
 
-alert(document.getElementsByTagName(\"\*\").length);
+alert(document.getElementsByTagName(&quot;&#42;&quot;).length);
 
 You can also combine getElementsByTagName with getElementById. So far,
 we've applied getElementsByTagName to only the document object. But if
 you're interested in finding out how many list items are inside the
-element with the id \"purchases\", you could apply getElementsByTagName
+element with the id &quot;purchases&quot;, you could apply getElementsByTagName
 to that specific object:
 
-var shopping = document.getElementById(\"purchases\"); var items =
-shopping.getElementsByTagName(\"\*\");
+var shopping = document.getElementById(&quot;purchases&quot;); var items =
+shopping.getElementsByTagName(&quot;&#42;&quot;);
 
 Now the items array holds just the elements contained by the
-\"purchases\" list. In this case, that happens to be the same as the
+&quot;purchases&quot; list. In this case, that happens to be the same as the
 total number of the list items in the document:
 
 alert (items.length);
@@ -3340,7 +2994,7 @@ alert (items.length);
 And, if any further proof is needed, you can test that each one is an
 object:
 
-for (var i=0; i \< items.length; i++) { alert(typeof items\[i\]);
+for (var i=0; i &lt; items.length; i++) { alert(typeof items&#91;i&#93;);
 
 }
 
@@ -3351,8 +3005,8 @@ A welcome addition to the HTML5 DOM
 getElementsByClassName method. This method adds a way of accessing
 elements by their class names in the class attribute. That said, it is
 still a relatively new addition to the DOM, so you need to be cautious
-when you choose to use it. First, let\'s see what it does, and then
-we\'ll discuss how we can make it work reliably.
+when you choose to use it. First, let&#39;s see what it does, and then
+we&#39;ll discuss how we can make it work reliably.
 
 Like getElementsByTagName, the getElementsByClassName method takes one
 argument. In this case, the argument is the name of a class:
@@ -3360,38 +3014,38 @@ getElementsByClassName(*class*)
 
 It also behaves in the same way as getElementsByTagName by returning an
 array of elements with a common class name. Here's an example that will
-return all the elements that have \"sale\" in their class attribute:
+return all the elements that have &quot;sale&quot; in their class attribute:
 
-document.getElementsByClassName(\"sale\")
+document.getElementsByClassName(&quot;sale&quot;)
 
 You can also include multiple class names to locate elements that have
 more than one class. To include more than one class, simply separate the
 class names with a space. For example, add the following alert statement
-between the \<script\> tags:
+between the &lt;script\tags:
 
-alert(document.getElementsByClassName(\"important sale\").length);
+alert(document.getElementsByClassName(&quot;important sale&quot;).length);
 
-Notice that you\'ll get a **1** in the alert box. Only one element
-matched, because only one has both the \"important\" and \"sale\" class.
+Notice that you&#39;ll get a **1** in the alert box. Only one element
+matched, because only one has both the &quot;important&quot; and &quot;sale&quot; class.
 Also notice that the function still matches, even though the class
-attribute in the document is \"sale important\" not \"important sale\".
+attribute in the document is &quot;sale important&quot; not &quot;important sale&quot;.
 The order of the class names doesn't matter, and it would match if the
 element had additional class names as well.
 
-> As with getElementsByTagName, you can also combine
-> getElementsByClassName with getElementById.
+As with getElementsByTagName, you can also combine
+getElementsByClassName with getElementById.
 
-If you want to find out how many list items have the \"sale\" class
-inside the element with the id \"purchases\", you can apply
+If you want to find out how many list items have the &quot;sale&quot; class
+inside the element with the id &quot;purchases&quot;, you can apply
 getElementsByClassName to that specific object:
 
-var shopping = document.getElementById(\"purchases\");
+var shopping = document.getElementById(&quot;purchases&quot;);
 
-var sales = shopping.getElementsByClassName(\"sale\");
+var sales = shopping.getElementsByClassName(&quot;sale&quot;);
 
-Now the sales array contains just the elements with the \"sale\" class
-that are also contained by the \"purchases\" list. If you try the
-following alert, you\'ll see that happens to be two items:
+Now the sales array contains just the elements with the &quot;sale&quot; class
+that are also contained by the &quot;purchases&quot; list. If you try the
+following alert, you&#39;ll see that happens to be two items:
 
 alert (sales.length);
 
@@ -3411,11 +3065,11 @@ return node.getElementsByClassName(classname);
 
 var results = new Array();
 
-var elems = node.getElementsByTagName(\"\*\"); for (var i=0;
-i\<elems.length; i++) {
+var elems = node.getElementsByTagName(&quot;&#42;&quot;); for (var i=0;
+i&lt;elems.length; i++) {
 
-if (elems\[i\].className.indexOf(classname) != -1) {
-results\[results.length\] = elems\[i\];
+if (elems&#91;i&#93;.className.indexOf(classname) != -1) {
+results&#91;results.length&#93; = elems&#91;i&#93;;
 
 } }
 
@@ -3436,9 +3090,9 @@ appropriate class name. (This example doesn't work as well for multiple
 class names). Using this function to mimic what we did earlier with the
 shopping list, we might do something like this:
 
-var shopping = document.getElementById(\"purchases\");
+var shopping = document.getElementById(&quot;purchases&quot;);
 
-var sales = getElementsByClassName(shopping, \"sale\");
+var sales = getElementsByClassName(shopping, &quot;sale&quot;);
 
 How you choose to search for the matching DOM elements can vary widely,
 however, there are a few excellent examples, such as "The Ultimate
@@ -3493,10 +3147,10 @@ object.getAttribute(attribute)
 Unlike the other methods you've seen in this chapter, you can't use
 getAttribute on the document object. It can be used on only an element
 node object. For example, you can use it in combination with
-getElementsByTagName to get the title attribute of every \<p\> element:
+getElementsByTagName to get the title attribute of every &lt;p\element:
 
-var paras = document.getElementsByTagName(\"p\"); for (var i=0; i \<
-paras.length; i++ ) { alert(paras\[i\].getAttribute(\"title\"));
+var paras = document.getElementsByTagName(&quot;p&quot;); for (var i=0; i &lt;
+paras.length; i++ ) { alert(paras&#91;i&#93;.getAttribute(&quot;title&quot;));
 
 }
 
@@ -3504,14 +3158,14 @@ If you include this code at the end of our shopping list document and
 then load the page in a web browser, you'll be greeted with an alert box
 containing the text **a gentle reminder**.
 
-In our shopping list, there is only one \<p\> element, and it has a
-title attribute. If there were more \<p\> elements and they didn't have
-title attributes, then getAttribute(\"title\") would return the value
+In our shopping list, there is only one &lt;p\element, and it has a
+title attribute. If there were more &lt;p\elements and they didn't have
+title attributes, then getAttribute(&quot;title&quot;) would return the value
 null. In JavaScript, null means that there is no value. You can test
 this for yourself by inserting this paragraph directly after the
 existing paragraph:
 
-\<p\>This is just a test\</p\>
+&lt;p&gt;This is just a test&lt;/p&gt;
 
 Now reload the page. This time, you'll see two alert boxes. The second
 one is either completely empty or simply says **null**, depending on how
@@ -3522,15 +3176,15 @@ attribute exists. We will add an if statement to check that the value
 returned by getAttribute is not null. While we're at it, let's use a few
 more variables to make the script easier to read.
 
-var paras = document.getElementsByTagName(\"p\"); for (var i=0; i\<
+var paras = document.getElementsByTagName(&quot;p&quot;); for (var i=0; i&lt;
 paras.length; i++) { var title_text =
-paras\[i\].getAttribute(\"title\"); if (title_text != null) {
+paras&#91;i&#93;.getAttribute(&quot;title&quot;); if (title_text != null) {
 alert(title_text);
 
 } }
 
-> Now if you reload the page, you will see only the alert box that
-> contains the value **a gentle reminder**.
+Now if you reload the page, you will see only the alert box that
+contains the value <b>a gentle reminder</b>.
 
 We can shorten the code even more. Whenever you want to check that
 something isn't null, you're really checking to see if it exists. A
@@ -3544,13 +3198,13 @@ if (title_text != null). While we're at it, we can put the alert
 statement on the same line as the if statement so that it reads more
 like English:
 
-var paras = document.getElementsByTagName(\"p\");
+var paras = document.getElementsByTagName(&quot;p&quot;);
 
-for (var i=0; i\< paras.length;
+for (var i=0; i&lt; paras.length;
 
 i++) {
 
-var title_text = paras\[i\].getAttribute(\"title\");
+var title_text = paras&#91;i&#93;.getAttribute(&quot;title&quot;);
 
 if (title_text)
 
@@ -3565,60 +3219,60 @@ information. setAttribute is a bit different. It allows you to change
 the value of an attribute node. Like getAttribute, setAttribute works
 only on element nodes.
 
-> setAttribute takes two arguments:
+setAttribute takes two arguments:
 
 object.setAttribute(attribute,value)
 
 In the following example, we're getting the element with the id
-\"purchases\" and giving it a title attribute with the value \"a list of
-goods\".
+&quot;purchases&quot; and giving it a title attribute with the value &quot;a list of
+goods&quot;.
 
-var shopping = document.getElementById(\"purchases\");
+var shopping = document.getElementById(&quot;purchases&quot;);
 
-shopping.setAttribute(\"title\",\"a list of goods\");
+shopping.setAttribute(&quot;title&quot;,&quot;a list of goods&quot;);
 
-> You can use getAttribute to test that the title attribute has been
-> set:
+You can use getAttribute to test that the title attribute has been
+set:
 
-var shopping = document.getElementById(\"purchases\");
-alert(shopping.getAttribute(\"title\"));
+var shopping = document.getElementById(&quot;purchases&quot;);
+alert(shopping.getAttribute(&quot;title&quot;));
 
-shopping.setAttribute(\"title\",\"a list of goods\");
-alert(shopping.getAttribute(\"title\"));
+shopping.setAttribute(&quot;title&quot;,&quot;a list of goods&quot;);
+alert(shopping.getAttribute(&quot;title&quot;));
 
 Loading the page will now give you two alert boxes. The first one, which
-is executed before setAttribute, is empty or displays **null**. The
+is executed before setAttribute, is empty or displays <b>null</b>. The
 second one, which is executed after the title attribute has been set,
-says **a list of goods**.
+says <b>a list of goods</b>.
 
 In our example, we set an attribute where previously none had existed.
 The setAttribute method created the attribute and then set its value. If
 you use setAttribute on an element node that already has the specified
 attribute, the old value will be overwritten.
 
-In our shopping list document, the \<p\> element already has a title
-attribute with the value \"a gentle reminder\". You can use setAttribute
+In our shopping list document, the &lt;p\element already has a title
+attribute with the value &quot;a gentle reminder&quot;. You can use setAttribute
 to change this value:
 
-var paras = document.getElementsByTagName(\"p\"); for (var i=0; i\<
+var paras = document.getElementsByTagName(&quot;p&quot;); for (var i=0; i&lt;
 paras.length; i++) { var title_text =
-paras\[i\].getAttribute(\"title\"); if (title_text) {
+paras&#91;i&#93;.getAttribute(&quot;title&quot;); if (title_text) {
 
-paras\[i\].setAttribute(\"title\",\"brand new title text\");
-alert(paras\[i\].getAttribute(\"title\"));
+paras&#91;i&#93;.setAttribute(&quot;title&quot;,&quot;brand new title text&quot;);
+alert(paras&#91;i&#93;.getAttribute(&quot;title&quot;));
 
 } }
 
-This will apply the value \"brand new title text\" to the title
-attribute of every \<p\> element in the document that already had a
-title attribute. In our shopping list document, the value \"a gentle
-reminder\" has been overwritten.
+This will apply the value &quot;brand new title text&quot; to the title
+attribute of every &lt;p\element in the document that already had a
+title attribute. In our shopping list document, the value &quot;a gentle
+reminder&quot; has been overwritten.
 
 Note that even when a document has been changed by setAttribute, you
 won't see that change reflected when you use the view source option in
 your web browser. This is because the DOM has
 
-> THE DOCUMENT OBJECT MODEL
+THE DOCUMENT OBJECT MODEL
 
 dynamically updated the contents of the page after it has loaded. The
 real power of the DOM is that the contents of a page can be updated
@@ -3628,8 +3282,8 @@ What's next?
 
 This chapter demonstrated five methods provided by the DOM:
 
-> getElementById getElementsByTagName getElementsByClassName
-> getAttribute setAttribute
+getElementById getElementsByTagName getElementsByClassName
+getAttribute setAttribute
 
 These five methods will be the cornerstones for many of the DOM scripts
 you're going to write.
@@ -3684,58 +3338,58 @@ own to follow along with this exercise.
 
 I'll start by creating a list of links that point to the images. I
 haven't arranged the images in any particular order, so I'm going to use
-an unordered list (\<ul\>) to do this. If your images are arranged
-sequentially, then an ordered list (\<ol\>) is probably the best way to
+an unordered list (&lt;ul&gt;) to do this. If your images are arranged
+sequentially, then an ordered list (&lt;ol&gt;) is probably the best way to
 mark them up. Here's my document:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Image Gallery\</title\>
+&lt;title&gt;Image Gallery&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Snapshots\</h1\>
+&lt;h1&gt;Snapshots&lt;/h1&gt;
 
-\<ul\>
+&lt;ul&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" title=\"A fireworks display\"\>
-Fireworks\</a\>
+&lt;a href=&quot;images/fireworks.jpg&quot; title=&quot;A fireworks display&quot;&gt;
+Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/coffee.jpg\" title=\"A cup of black coffee\"\>
-Coffee\</a\>
+&lt;a href=&quot;images/coffee.jpg&quot; title=&quot;A cup of black coffee&quot;&gt;
+Coffee&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/rose.jpg\" title=\"A red, red rose\"\>Rose\</a\>
+&lt;a href=&quot;images/rose.jpg&quot; title=&quot;A red, red rose&quot;&gt;Rose&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" title=\"The famous clock\"\> Big
-Ben\</a\>
+&lt;a href=&quot;images/bigben.jpg&quot; title=&quot;The famous clock&quot;\Big
+Ben&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ul\> \</body\>
+&lt;/ul\&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 I'm going to save that file as gallery.html and place my pictures in a
 directory called images. My images directory is inside the same
@@ -3753,7 +3407,7 @@ These are the things that should happen instead:
 -   When I click a link, I should see the image on the same page that
     has my original list of images.
 
-> This is how I'm going to do that:
+This is how I'm going to do that:
 
 -   Put a placeholder image on the same page as the list.
 
@@ -3764,10 +3418,10 @@ These are the things that should happen instead:
 Let's start with the placeholder image. My example uses a kind of title
 card, but you can just as easily use a blank image.
 
-> Insert this line right after the list:
+Insert this line right after the list:
 
-\<img id=\"placeholder\" src=\"images/placeholder.gif\" alt=\"my image
-gallery\" /\>
+&lt;img id=&quot;placeholder&quot; src=&quot;images/placeholder.gif&quot; alt=&quot;my image
+gallery&quot; /&gt;
 
 This adds an id attribute to this image, which I can use to style the
 image from an external style sheet. For instance, I might want to float
@@ -3775,7 +3429,7 @@ the image so that it appears next to the link list instead of underneath
 it. I can also use this id in my JavaScript. An illustration of the
 placeholder image added to the page is shown next.
 
-> The markup is ready. Now it's time to stir in the JavaScript.
+The markup is ready. Now it's time to stir in the JavaScript.
 
 The JavaScript
 
@@ -3792,28 +3446,28 @@ for the argument that is passed to the function; I'll call it whichpic:
 function showPic(whichpic)
 
 Note that whichpic represents an element node. Specifically, it's an
-\<a\> element that leads to an image. I need to extract the path to the
+&lt;a\element that leads to an image. I need to extract the path to the
 image, which I can do by using the getAttribute method on the whichpic
 element. By passing "href" as the argument, I can find out what the path
 to the image is:
 
-whichpic.getAttribute(\"href\")
+whichpic.getAttribute(&quot;href&quot;)
 
-> I'll store this value in a variable to retrieve later. Let's call the
-> variable source:
+I'll store this value in a variable to retrieve later. Let's call the
+variable source:
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
-> The next thing I need to do is get to the placeholder image. This is
-> easily done using getElementById:
+The next thing I need to do is get to the placeholder image. This is
+easily done using getElementById:
 
-document.getElementById(\"placeholder\")
+document.getElementById(&quot;placeholder&quot;)
 
 I then assign this element to a variable so I don't have to type out
-document.getElementById(\"placeholder\") more than once. I'll call this
+document.getElementById(&quot;placeholder&quot;) more than once. I'll call this
 variable placeholder:
 
-var placeholder = document.getElementById(\"placeholder\");
+var placeholder = document.getElementById(&quot;placeholder&quot;);
 
 Now I've assigned values to two variables, source and placeholder. That
 will help keep the script readable.
@@ -3825,11 +3479,11 @@ case, I want to set the src attribute so that its first argument is
 "src". The second argument, the value I want the src attribute to have,
 has already been stored as source:
 
-placeholder.setAttribute(\"src\",source); That's a lot easier to read
+placeholder.setAttribute(&quot;src&quot;,source); That's a lot easier to read
 than this:
 
-document.getElementById(\"placeholder\").setAttribute(\"src\", ➥
-showpic.getAttribute(\"href\"));
+document.getElementById(&quot;placeholder&quot;).setAttribute(&quot;src&quot;, ➥
+showpic.getAttribute(&quot;href&quot;));
 
 A DOM diversion
 
@@ -3843,11 +3497,11 @@ elements, but it was done differently. You can still change attributes
 in this way, however. For instance, to change the value attribute of an
 input element, you could use the value method:
 
-element.value = \"the new value\"
+element.value = &quot;the new value&quot;
 
-> That would have the same effect as this:
+That would have the same effect as this:
 
-element.setAttribute(\"value\",\"the new value\");
+element.setAttribute(&quot;value&quot;,&quot;the new value&quot;);
 
 Similarly, there's another way to change the source of an image. I could
 write my image gallery script to use this method instead of
@@ -3875,37 +3529,37 @@ Here's what the finished function looks like:
 
 function showPic(whichpic) {
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
-placeholder.setAttribute(\"src\",source);
+var placeholder = document.getElementById(&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,source);
 
 }
 
-> Now it's time to hook up the JavaScript with the markup.
+Now it's time to hook up the JavaScript with the markup.
 
 Applying the JavaScript
 
 I need to make sure that my newly written showPic function is available
 to my image gallery document. Save the function in a text file with the
-extension .js. In this case let\'s call it showPic.js.
+extension .js. In this case let&#39;s call it showPic.js.
 
-> *When you have multiple JavaScript files for a site you should combine
-> them into a single file to reduce the number of requests on your
-> published web site. In many of the examples we\'ll use multiple files
-> so that it\'s easier to explain but in chapter 5 \"Best Practices\"
-> we\'ll discuss this as well as other performance improvements.*
+*When you have multiple JavaScript files for a site you should combine
+them into a single file to reduce the number of requests on your
+published web site. In many of the examples we&#39;ll use multiple files
+so that it&#39;s easier to explain but in chapter 5 &quot;Best Practices&quot;
+we&#39;ll discuss this as well as other performance improvements.*
 
 Just as I've placed all of this example's pictures in a directory called
 images, it's a good idea to keep all your JavaScript files in one place.
 Create a directory called scripts and save the showPic.js file there.
 
 Now I need to point the image gallery document to the JavaScript file.
-Add this line to the HTML document (right before the closing \</body\>
+Add this line to the HTML document (right before the closing &lt;/body&gt;
 tag, for instance):
 
-\<script type=\"text/javascript\"
-src=\"scripts/showPic.js\"\>\</script\>
+&lt;script type=&quot;text/javascript&quot;
+src=&quot;scripts/showPic.js&quot;&gt;&lt;/script&gt;
 
 The showPic function is now available to the image gallery document. As
 it stands, the function will never be invoked. I need to add the
@@ -3928,21 +3582,21 @@ want to send that link to the showPic function as the argument.
 
 Luckily, there's a very short but powerful way of doing just that. The
 keyword this is a shorthand way of saying "this object." In this case,
-I'll use this to mean "this \<a\> element node":
+I'll use this to mean "this &lt;a\element node":
 
 showPic(this)
 
 I can add that using the onclick event handler. Here's the syntax for
 adding JavaScript using an event handler:
 
-event = \"JavaScript statement(s)\"
+event = &quot;JavaScript statement(s)&quot;
 
 Notice that the JavaScript itself is contained within quotes. You can
 put as many JavaScript statements as you like between the quotes, as
 long as they are separated with semicolons. This will invoke the showPic
 function with the onclick event handler:
 
-onclick = \"showPic(this);\"
+onclick = &quot;showPic(this);&quot;
 
 However, if I simply add this event handler to a link in my list, I'll
 be faced with a problem. The function will be invoked, but the default
@@ -3960,10 +3614,10 @@ true, it's getting the message "yes, this link has been clicked." If you
 add some JavaScript to the event handler so that it returns false, then
 the message being sent back is "no, this link has not been clicked."
 
-> You can see this for yourself with this simple test:
+You can see this for yourself with this simple test:
 
-\<a href=\"[http://www.example.com\"](http://www.example.com/)
-onclick=\"return false;\"\>Click me\</a\>
+&lt;a href=&quot;[http://www.example.com&quot;](http://www.example.com/)
+onclick=&quot;return false;&quot;&gt;Click me&lt;/a&gt;
 
 If you click that link, the default behavior will not be triggered,
 because the JavaScript is effectively canceling the default behavior.
@@ -3972,56 +3626,56 @@ By adding a return false statement to the JavaScript contained by the
 onclick event handler, I can stop the user from being taken straight to
 the destination of the link:
 
-onclick = \"showPic(this); return false;\"
+onclick = &quot;showPic(this); return false;&quot;
 
-> This is how it would look in the context of the document:
+This is how it would look in the context of the document:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" **onclick=\"showPic(this);**
+&lt;a href=&quot;images/fireworks.jpg&quot; <b>onclick=&quot;showPic(this);</b>
 
-➥ **return false;\"** title=\"A fireworks display\"\>Fireworks\</a\>
+➥ <b>return false;&quot;</btitle=&quot;A fireworks display&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 Now I'll need to add that event handler to every link in my list. That's
 a tedious task, but in Chapter 6 under "Adding the event handler" you'll
 see a way to avoid it completely. For now, I'll dive into the markup and
 add the event handler by hand:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" **onclick=\"showPic(this);**
+&lt;a href=&quot;images/fireworks.jpg&quot; <b>onclick=&quot;showPic(this);</b>
 
-➥ **return false;\"** title=\"A fireworks display\"\>Fireworks\</a\>
+➥ <b>return false;&quot;</btitle=&quot;A fireworks display&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/coffee.jpg\" **onclick=\"showPic(this);**
+&lt;a href=&quot;images/coffee.jpg&quot; <b>onclick=&quot;showPic(this);</b>
 
-➥ **return false;\"** title=\"A cup of black coffee\"\>Coffee\</a\>
+➥ <b>return false;&quot;</btitle=&quot;A cup of black coffee&quot;&gt;Coffee&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/rose.jpg\" **onclick=\"showPic(this); return
-false;\"**
+&lt;a href=&quot;images/rose.jpg&quot; <b>onclick=&quot;showPic(this); return
+false;&quot;</b>
 
-➥ title=\"A red, red rose\"\>Rose\</a\>
+➥ title=&quot;A red, red rose&quot;&gt;Rose&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" **onclick=\"showPic(this); return
-false;\"**
+&lt;a href=&quot;images/bigben.jpg&quot; <b>onclick=&quot;showPic(this); return
+false;&quot;</b>
 
-➥ title=\"The famous clock\"\>Big Ben\</a\>
+➥ title=&quot;The famous clock&quot;&gt;Big Ben&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 If you load the page in a web browser, you will see a working JavaScript
 image gallery. Click on a link in the list and you will see the image
@@ -4033,8 +3687,8 @@ Swapping out images on a web page isn't really all that impressive. You
 could do it even prior to WC3 DOM JavaScript. It was the basis for all
 those rollover scripts that have proven so popular.
 
-> What would be really great, you're thinking, would be the ability to
-> update the text on a web page.
+What would be really great, you're thinking, would be the ability to
+update the text on a web page.
 
 Using JavaScript and the DOM, you can do just that.
 
@@ -4042,9 +3696,9 @@ Every link in my list has a title attribute. I'd like to take the value
 of that attribute and display it on the page along with the image. I can
 get the value of the title attribute easily enough using getAttribute:
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
-Just retrieving the text isn\'t going to do much; I also need to insert
+Just retrieving the text isn&#39;t going to do much; I also need to insert
 it into the document. To do that, I need to introduce some new DOM
 properties.
 
@@ -4059,17 +3713,17 @@ containing all the children of an element node:
 Let's say you wanted to get all the children of the body element. We can
 use getElementsByTagName to get at the body element. We know that there
 is only one body element, so it will be the first (and only) element of
-the array getElementsByTagName(\"body\"):
+the array getElementsByTagName(&quot;body&quot;):
 
-var body_element = document.getElementsByTagName(\"body\")\[0\];
+var body_element = document.getElementsByTagName(&quot;body&quot;)&#91;0&#93;;
 
 Now the variable body_element refers to the body element in our
 document. To access the children of the body element, you just need to
 use body_element.childNodes
 
-> That's a lot easier than writing this:
+That's a lot easier than writing this:
 
-document.getElementsByTagName(\"body\")\[0\].childNodes
+document.getElementsByTagName(&quot;body&quot;)&#91;0&#93;.childNodes
 
 Now that you can get at all the children of the body element, let's take
 a look at what you can do with that information.
@@ -4080,11 +3734,11 @@ find out how many elements it contains:
 
 body_element.childNodes.length;
 
-> Try adding this little function to the showPic.js file:
+Try adding this little function to the showPic.js file:
 
 function countBodyChildren() {
 
-var body_element = document.getElementsByTagName(\"body\")\[0\]; alert
+var body_element = document.getElementsByTagName(&quot;body&quot;)&#91;0&#93;; alert
 (body_element.childNodes.length);
 
 }
@@ -4098,8 +3752,8 @@ the code:
 
 window.onload = countBodyChildren;
 
-> When the document loads, the countBodyChildren function will be
-> invoked.
+When the document loads, the countBodyChildren function will be
+invoked.
 
 Refresh the gallery.html file in your web browser. You will be greeted
 with an alert dialog containing the total number of children of the body
@@ -4119,7 +3773,7 @@ text nodes as well. In fact, just about everything in a document is some
 kind of node. Even spaces and line breaks are interpreted as nodes and
 are included in the childNodes array.
 
-> That explains why the result produced by countBodyChildren is so high.
+That explains why the result produced by countBodyChildren is so high.
 
 Fortunately, we can use the nodeType property on any node in a document.
 This will tell us exactly what kind of node we're dealing with.
@@ -4128,8 +3782,8 @@ is called with the following syntax:
 
 *node*.nodeType
 
-> However, instead of returning a string like "element" or "attribute,"
-> it returns a number.
+However, instead of returning a string like "element" or "attribute,"
+it returns a number.
 
 Change the alert statement in the countBodyChildren function so that it
 now gives us the nodeType of body_element:
@@ -4164,7 +3818,7 @@ paragraph to gallery.html. I'll place it right after the img tag. I'm
 going to give it a unique id so that I can reference it easily from the
 JavaScript function:
 
-\<p id=\"description\"\>Choose an image.\</p\>
+&lt;p id=&quot;description&quot;&gt;Choose an image.&lt;/p&gt;
 
 I've given the id attribute the value "description", which describes its
 role fairly accurately. For now, it contains the text "Choose an image."
@@ -4175,7 +3829,7 @@ attribute. I want this to happen at the same time as the placeholder
 image is replaced with the image taken from the link's href attribute.
 To achieve this, I need to update the showPic function.
 
-> A JAVASCRIPT IMAGE GALLERY
+A JAVASCRIPT IMAGE GALLERY
 
 Changing the description with JavaScript
 
@@ -4187,10 +3841,10 @@ This is how the showPic function looks right now:
 
 function showPic(whichpic) {
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
-placeholder.setAttribute(\"src\",source);
+var placeholder = document.getElementById(&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,source);
 
 }
 
@@ -4198,27 +3852,27 @@ I'm going to begin my improvements by getting the value of the title
 attribute of whichpic. I'll store this value in a variable called text.
 This is easily done using getAttribute:
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
 Now I want to create a new variable so that I have an easy way of
 referencing the paragraph with the id "description". I'll call this
 variable description also:
 
-var description = document.getElementById(\"description\");
+var description = document.getElementById(&quot;description&quot;);
 
 I have my variables:
 
 function showPic(whichpic) {
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
+var placeholder = document.getElementById(&quot;placeholder&quot;);
 
-placeholder.setAttribute(\"src\",source);
+placeholder.setAttribute(&quot;src&quot;,source);
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
-var description = document.getElementById(\"description\");
+var description = document.getElementById(&quot;description&quot;);
 
 }
 
@@ -4248,7 +3902,7 @@ Therefore, you want to retrieve the nodeValue of this child node.
 
 This alert statement will give you the value you're looking for:
 
-alert(description.childNodes\[0\].nodeValue);
+alert(description.childNodes&#91;0&#93;.nodeValue);
 
 This will return a value of "Choose an image." This means that you're
 accessing the childNodes array and getting the value of the first
@@ -4256,26 +3910,26 @@ element (index number zero).
 
 Introducing firstChild and lastChild
 
-There is a shorthand way of writing childNodes\[0\]. Whenever you want
+There is a shorthand way of writing childNodes&#91;0&#93;. Whenever you want
 to get the value of the first node in the childNodes array, you can use
 firstChild:
 
 *node*.firstChild
 
-This is equivalent to *node*.childNodes\[0\]
+This is equivalent to *node*.childNodes&#91;0&#93;
 
-> This is a handy shortcut and it's also a lot easier to read.
+This is a handy shortcut and it's also a lot easier to read.
 >
-> The DOM also provides a corresponding lastChild property:
+The DOM also provides a corresponding lastChild property:
 
 *nod*e.lastChild
 
 This refers to the last node in the childNodes array. If you wanted to
 access this node without using the lastChild property, you would have to
-write *node*.childNodes\[*node*.childNodes.length-1\]
+write *node*.childNodes&#91;*node*.childNodes.length-1&#93;
 
-> That's clearly very unwieldy. It's a lot easier to simply use
-> lastChild.
+That's clearly very unwieldy. It's a lot easier to simply use
+lastChild.
 
 Using nodeValue to update the description
 
@@ -4303,9 +3957,9 @@ description.firstChild.nodeValue = text;
 
 These are the three new lines that I've added to showPic function:
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
-var description = document.getElementById(\"description\");
+var description = document.getElementById(&quot;description&quot;);
 
 description.firstChild.nodeValue = text; In plain English, I'm saying:
 
@@ -4318,19 +3972,19 @@ description.firstChild.nodeValue = text; In plain English, I'm saying:
 -   Update the value of the first child node of the description object
     with the value of text.
 
-> A JAVASCRIPT IMAGE GALLERY
+A JAVASCRIPT IMAGE GALLERY
 
 This is how the final function looks:
 
 function showPic(whichpic) {
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
-placeholder.setAttribute(\"src\",source); var text =
-whichpic.getAttribute(\"title\");
+var placeholder = document.getElementById(&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,source); var text =
+whichpic.getAttribute(&quot;title&quot;);
 
-var description = document.getElementById(\"description\");
+var description = document.getElementById(&quot;description&quot;);
 description.firstChild.nodeValue = text;
 
 }
@@ -4349,7 +4003,7 @@ add a style sheet like this one:
 
 body {
 
-font-family: \"Helvetica\",\"Arial\",serif; color: #333;
+font-family: &quot;Helvetica&quot;,&quot;Arial&quot;,serif; color: #333;
 background-color: #ccc; margin: 1em 10%;
 
 } h1 { color: #333;
@@ -4366,77 +4020,77 @@ text-decoration: none;
 } img { display:block; clear:both; }
 
 You can save that CSS in a file called layout.css in a directory called
-styles. You can then reference this file from a \<link\> tag in the
-\<head\> of gallery.html:
+styles. You can then reference this file from a &lt;link\tag in the
+&lt;head\of gallery.html:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Image Gallery\</title\>
+&lt;title&gt;Image Gallery&lt;/title&gt;
 
-\<link rel=\"stylesheet\" href=\"styles/layout.css\" media=\"screen\"
-/\>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/layout.css&quot; media=&quot;screen&quot;
+/&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Snapshots\</h1\>
+&lt;h1&gt;Snapshots&lt;/h1&gt;
 
-\<ul\>
+&lt;ul&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" title=\"A fireworks display\"
+&lt;a href=&quot;images/fireworks.jpg&quot; title=&quot;A fireworks display&quot;
 
-➥ onclick=\"showPic(this); return false;\"\>Fireworks\</a\>
+➥ onclick=&quot;showPic(this); return false;&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/coffee.jpg\" title=\"A cup of black coffee\"
+&lt;a href=&quot;images/coffee.jpg&quot; title=&quot;A cup of black coffee&quot;
 
-➥ onclick=\"showPic(this); return false;\"\>Coffee\</a\>
+➥ onclick=&quot;showPic(this); return false;&quot;&gt;Coffee&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/rose.jpg\" title=\"A red, red rose\"
+&lt;a href=&quot;images/rose.jpg&quot; title=&quot;A red, red rose&quot;
 
-➥ onclick=\"showPic(this); return false;\"\>Rose\</a\>
+➥ onclick=&quot;showPic(this); return false;&quot;&gt;Rose&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" title=\"The famous clock\"
+&lt;a href=&quot;images/bigben.jpg&quot; title=&quot;The famous clock&quot;
 
-➥ onclick=\"showPic(this); return false;\"\>Big Ben\</a\> \</li\>
+➥ onclick=&quot;showPic(this); return false;&quot;&gt;Big Ben&lt;/a\&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-\<img id=\"placeholder\" src=\"images/placeholder.gif\" alt=\"my image
-gallery\" /\>
+&lt;img id=&quot;placeholder&quot; src=&quot;images/placeholder.gif&quot; alt=&quot;my image
+gallery&quot; /&gt;
 
-\<p id=\"description\"\>Choose an image.\</p\>
+&lt;p id=&quot;description&quot;&gt;Choose an image.&lt;/p&gt;
 
-\<script src=\"scripts/showPic.js\"\>\</script\>
+&lt;script src=&quot;scripts/showPic.js&quot;&gt;&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
-> Following is an example of the image gallery with a simple style sheet
-> attached.
+Following is an example of the image gallery with a simple style sheet
+attached.
 >
-> A JAVASCRIPT IMAGE GALLERY
+A JAVASCRIPT IMAGE GALLERY
 
 What's next?
 
@@ -4525,7 +4179,7 @@ it will cause an error (as opposed to HTML, which, in most cases, will
 render anyway). Nonetheless, a lot of very bad JavaScript is out there
 on the Web.
 
-> BEST PRACTICES
+BEST PRACTICES
 
 Many web designers wanted to reap the benefits of using JavaScript for
 adding spice to their web pages without spending the time to learn the
@@ -4613,7 +4267,7 @@ frustration. The onus was on the user to close these overlays and
 windows--- something that often turned into an unhappy game of
 whack-a-mole.
 
-> If only someone had asked, "How will this benefit the user?"
+If only someone had asked, "How will this benefit the user?"
 
 Fortunately, this question is being asked more often these days. Any
 approach besides user-centric web design is, in the long term, doomed to
@@ -4645,7 +4299,7 @@ Rather than having the user leave the current screen, a pop-up window
 can display the relevant information without interrupting the shopping
 experience.
 
-■ **Note** Popping up a new window should be used only when it's
+■ <b>Note</bPopping up a new window should be used only when it's
 absolutely required. There are accessibility issues involved, For
 example, some screen-reading software doesn't indicate that a new window
 has been opened. It's a good idea to make it clear in the link text that
@@ -4656,7 +4310,7 @@ browser windows. This method takes three arguments:
 
 window.open(url,name,features)
 
-> All of the arguments are optional:
+All of the arguments are optional:
 
 -   The first argument is the URL for the document you want to open in a
     new window. If this is missing, an empty browser window will be
@@ -4673,29 +4327,29 @@ window.open(url,name,features)
     on). You don't need to list all of the features (and anyway, it's a
     good idea not to disable too many features).
 
-> BEST PRACTICES
+BEST PRACTICES
 
 This method is a good example of using the Browser Object Model. Nothing
 about the functionality affects the contents of the document (that's
 what the DOM is for). The method is purely concerned with the browsing
 environment (in this case, the window object).
 
-> Here's an example of a typical function that uses window.open():
+Here's an example of a typical function that uses window.open():
 
 function popUp(winURL) {
 
-window.open(winURL,\"popup\",\"width=320,height=480\");
+window.open(winURL,&quot;popup&quot;,&quot;width=320,height=480&quot;);
 
 }
 
-This will open up a new window (called \"popup\") that's 320 pixels wide
+This will open up a new window (called &quot;popup&quot;) that's 320 pixels wide
 by 480 pixels tall. Because we're setting the name of the window in the
 function, any time a new URL is passed to the function, the function
 will replace the existing spawned window rather than creating a second
 one.
 
 You can save this function in an external file and link to it from a
-\<script\> tag within the \<head\> of a web page. By itself, this
+&lt;script\tag within the &lt;head\of a web page. By itself, this
 function doesn't have any usability implications. What matters is how
 you use it. One way of calling the popUp function is to use what's known
 as a *pseudo-protocol*.
@@ -4709,8 +4363,8 @@ pseudo-protocol is supposed to be used to invoke JavaScript from within
 a link. Here's how the javascript: pseudo-protocol would be used to call
 the popUp function:
 
-\<a
-href=\"javascript:popUp(\'[http://www.example.](http://www.example.com/)com/\');\"\>Example\</a\>
+&lt;a
+href=&quot;javascript:popUp(&#39;[http://www.example.](http://www.example.com/)com/&#39;);&quot;&gt;Example&lt;/a&gt;
 
 This will work just fine in browsers that understand the javascript:
 pseudo-protocol. Older browsers, however, will attempt to follow the
@@ -4724,7 +4378,7 @@ Inline event handlers
 
 You've already seen event handlers in action with the image gallery
 script in the previous chapter. The image-swapping function was invoked
-from within an \<a\> tag by adding the onclick event handler as an
+from within an &lt;a\tag by adding the onclick event handler as an
 attribute of the same tag.
 
 The same technique will work for the popUp function. If you use an
@@ -4733,16 +4387,16 @@ href attribute might seem irrelevant. After all, the important
 information about where the link leads is now contained in the onclick
 attribute. That's why you'll often see links like this:
 
-\<a href=\"#\"
-onclick=\"popUp(\'[http://www.example.co](http://www.example.com/)m/\');
+&lt;a href=&quot;#&quot;
+onclick=&quot;popUp(&#39;[http://www.example.co](http://www.example.com/)m/&#39;);
 
-➥ return false;\"\>Example\<a\>
+➥ return false;&quot;&gt;Example&lt;a&gt;
 
 The return false has been included so that the link isn't actually
-followed. The \"#\" symbol is used for internal links within documents.
+followed. The &quot;#&quot; symbol is used for internal links within documents.
 (In this case, it's an internal link to nowhere.) In some browsers, this
 will simply lead to the top of the current document. Using a value of
-\"#\" for the href attribute is an attempt to create a blank link. The
+&quot;#&quot; for the href attribute is an attempt to create a blank link. The
 real work is done by the onclick attribute.
 
 This technique is just as bad as using the javascript: pseudo-protocol.
@@ -4770,10 +4424,10 @@ In the case of the popUp function, it's relatively easy to ensure that
 the JavaScript degrades gracefully. As long as there is a real URL in
 the href attribute, the link can be followed.
 
-\<a href=\"<http://www.example.com/>\"
+&lt;a href=&quot;<http://www.example.com/>&quot;
 
-➥ onclick=\"popUp(\'[http://www.example.com\'](http://www.example.com/);
-return false;\"\>Example\</a\>
+➥ onclick=&quot;popUp(&#39;[http://www.example.com&#39;](http://www.example.com/);
+return false;&quot;&gt;Example&lt;/a&gt;
 
 That's quite long-winded bit of code because the URL appears twice.
 Fortunately, there's a shortcut that can be used within the JavaScript.
@@ -4781,22 +4435,22 @@ The word this can be used to refer to the current element. Using a
 combination of this and getAttribute, you can extract the value of the
 href attribute:
 
-\<a href=\"<http://www.example.com/>\"
+&lt;a href=&quot;<http://www.example.com/>&quot;
 
-➥ onclick=\"popUp(this.getAttribute(\'href\'); return
-false;\"\>Example\</a\>
+➥ onclick=&quot;popUp(this.getAttribute(&#39;href&#39;); return
+false;&quot;&gt;Example&lt;/a&gt;
 
 Actually, that doesn't save all that much space. There's an even shorter
 way of referencing the href of the current link by using the
 standardized DOM property, this.href:
 
-\<a href=\"<http://www.example.com/>\"
+&lt;a href=&quot;<http://www.example.com/>&quot;
 
-➥ onclick=\"popUp(this.href; return false;\"\>Example\</a\>
+➥ onclick=&quot;popUp(this.href; return false;&quot;&gt;Example&lt;/a&gt;
 
 In either case, the important point is that the value of the href
 attribute is now a valid one. This is far better than using either
-href=\"javascript:\...\" or href=\"#\".
+href=&quot;javascript:\...&quot; or href=&quot;#&quot;.
 
 So you see, if JavaScript isn't enabled (or if the visitor is a
 searchbot), the link can still be followed if you've used a real URL in
@@ -4827,11 +4481,11 @@ CSS is a wonderful technology. Style sheets allow for great control over
 every aspect of a site's design.
 
 Ostensibly, there's nothing new about this. It has always been possible
-to dictate a design using \<table\>
+to dictate a design using &lt;table&gt;
 
-> BEST PRACTICES
+BEST PRACTICES
 
-and \<font\> tags. The great advantage of CSS is that you can separate
+and &lt;font\tags. The great advantage of CSS is that you can separate
 the structure of a web document (the markup) from the design (the
 styles).
 
@@ -4847,8 +4501,8 @@ from day one.
 
 The separation of structure and style makes life easier for everyone. If
 your job is writing content, you no longer need to worry about messing
-up the design. Instead of swimming through a tag soup of \<table\> and
-\<font\> tags, you can now concentrate on marking up your content
+up the design. Instead of swimming through a tag soup of &lt;table\and
+&lt;font\tags, you can now concentrate on marking up your content
 correctly. If your job is creating the design for a site, you can now
 concentrate on controlling colors, fonts, and positioning using external
 style sheets, without touching the content. At most, you'll need to add
@@ -4860,7 +4514,7 @@ interpreting CSS will display the web pages in all their styled glory.
 Older browsers, or browsers with CSS disabled, will still be able to
 view the content of the pages in a correctly structured way.
 
-> When it comes to applying JavaScript, we can learn a lot from CSS.
+When it comes to applying JavaScript, we can learn a lot from CSS.
 
 Progressive enhancement
 
@@ -4877,7 +4531,7 @@ king."
 When a markup language is used correctly, it describes the content
 semantically. The markup provides information such as "this is an item
 in a list" or "this is a paragraph." They are all pieces of content, but
-tags like \<li\> and \<p\> distinguish them.
+tags like &lt;li\and &lt;p\distinguish them.
 
 Once the content has been marked up, you can dictate how the content
 should look by using CSS. The instructions in the CSS form a
@@ -4899,23 +4553,23 @@ CSS style sheets work best when they are contained in external files,
 separate from the markup. It's entirely possible to use CSS in an
 inefficient manner and mix styles in with the markup, like this:
 
-\<p style=\"font-weight: bold; color: red;\"\> Be careful!
+&lt;p style=&quot;font-weight: bold; color: red;&quot;\Be careful!
 
-\</p\>
+&lt;/p&gt;
 
 It makes more sense to keep the style information in an external file
-that can be called via a \<link\> tag in the head of the document:
+that can be called via a &lt;link\tag in the head of the document:
 
 .warning { font-weight: bold; color: red;
 
 }
 
-> The class attribute can then be used as a hook to tie the style to the
-> markup:
+The class attribute can then be used as a hook to tie the style to the
+markup:
 
-\<p class=\"warning\"\> Be careful!
+&lt;p class=&quot;warning&quot;\Be careful!
 
-\</p\>
+&lt;/p&gt;
 
 This is far more readable. It's also a lot easier to change the styles.
 Imagine you have 100 documents with the warning class peppered
@@ -4945,7 +4599,7 @@ hook, like class or id, to tether the behavior to the markup without
 intermingling it. This is how the markup could indicate that a link
 should have the popUp function performed when it is clicked:
 
-\<a href=\"<http://www.example.com/>\" class=\"popup\"\>Example\</a\>
+&lt;a href=&quot;<http://www.example.com/>&quot; class=&quot;popup&quot;&gt;Example&lt;/a&gt;
 
 Fortunately, this is entirely possible. Events don't need to be handled
 in the markup. You can attach an event to an element in an external
@@ -4963,13 +4617,13 @@ With multiple elements, you can use a combination of
 getElementsByTagName and getAttribute to attach events to elements with
 specific attributes.
 
-> Here's the plan in plain English:
+Here's the plan in plain English:
 
 -   Make an array of all the links in the document.
 
 -   Loop through this array.
 
--   If a link has the class \"popup\", execute this behavior when the
+-   If a link has the class &quot;popup&quot;, execute this behavior when the
     link is clicked:
 
 -   Pass the value of the link's href attribute to the popUp function.
@@ -4979,11 +4633,11 @@ specific attributes.
 
 This is how it looks in JavaScript:
 
-var links = document.getElementsByTagName(\"a\"); for (var i=0;
-i\<links.length; i++) {
+var links = document.getElementsByTagName(&quot;a&quot;); for (var i=0;
+i&lt;links.length; i++) {
 
-if (links\[i\].getAttribute(\"class\") == \"popup\") {
-links\[i\].onclick = function() { popUp(this.getAttribute(\"href\"));
+if (links&#91;i&#93;.getAttribute(&quot;class&quot;) == &quot;popup&quot;) {
+links&#91;i&#93;.onclick = function() { popUp(this.getAttribute(&quot;href&quot;));
 return false;
 
 }
@@ -4997,13 +4651,13 @@ external JavaScript. This is unobtrusive JavaScript.
 There's just one problem. If you put that code in your external
 JavaScript file, it won't work. The first line reads:
 
-var links = document.getElementsByTagName(\"a\");
+var links = document.getElementsByTagName(&quot;a&quot;);
 
 This code will be executed as soon as the JavaScript file loads. If the
-JavaScript file is called from a \<script\> tag in the \<head\> of your
+JavaScript file is called from a &lt;script\tag in the &lt;head\of your
 document, the JavaScript file will load before the document. Likewise,
-if the \<script\> tag is at the bottom of the document before the
-\</body\> there's still no guarantee which files will finish loading
+if the &lt;script\tag is at the bottom of the document before the
+&lt;/body\there's still no guarantee which files will finish loading
 first (the browser may download more than one at a time). Because the
 document may be incomplete when the script loads, the model of the
 document is also incomplete, and methods like getElementsByTagName
@@ -5023,11 +4677,11 @@ you know that the DOM will be ready and working.
 
 window.onload = prepareLinks; function prepareLinks() {
 
-var links = document.getElementsByTagName(\"a\"); for (var i=0;
-i\<links.length; i++) {
+var links = document.getElementsByTagName(&quot;a&quot;); for (var i=0;
+i&lt;links.length; i++) {
 
-if (links\[i\].getAttribute(\"class\") == \"popup\") {
-links\[i\].onclick = function() { popUp(this.getAttribute(\"href\"));
+if (links&#91;i&#93;.getAttribute(&quot;class&quot;) == &quot;popup&quot;) {
+links&#91;i&#93;.onclick = function() { popUp(this.getAttribute(&quot;href&quot;));
 return false;
 
 }
@@ -5038,11 +4692,11 @@ return false;
 
 }
 
-> Don't forget to include the popUp function as well:
+Don't forget to include the popUp function as well:
 
 function popUp(winURL) {
 
-window.open(winURL,\"popup\",\"width=320,height=480\");
+window.open(winURL,&quot;popup&quot;,&quot;width=320,height=480&quot;);
 
 }
 
@@ -5097,8 +4751,8 @@ test for a particular method or property, then you'll end up with the
 most important statements being wrapped in layers and layers of curly
 braces. That won't be much fun to read.
 
-> It would be much more convenient to say, "If you don't understand this
-> method, leave now."
+It would be much more convenient to say, "If you don't understand this
+method, leave now."
 
 To turn "if you do understand" into "if you don't understand," all
 that's needed is the NOT operator, represented by an exclamation point:
@@ -5121,7 +4775,7 @@ If you need to test for the existence of more than one method or
 property, you can join them together using the OR logical operator,
 represented by two vertical pipe symbols:
 
-if (!getElementById \|\| !getElementsByTagName) return false;
+if (!getElementById &#124;&#124; !getElementsByTagName) return false;
 
 If this were a sign in an amusement park, it would read, "If you don't
 understand getElementById or getElementsByTagName, you can't ride."
@@ -5133,11 +4787,11 @@ want to be sure that the browser understands that method.
 window.onload = function() {
 
 if (!document.getElementsByTagName) return false; var lnks =
-document.getElementsByTagName(\"a\"); for (var i=0; i\<lnks.length; i++)
+document.getElementsByTagName(&quot;a&quot;); for (var i=0; i&lt;lnks.length; i++)
 {
 
-if (lnks\[i\].getAttribute(\"class\") == \"popup\") { lnks\[i\].onclick
-= function() { popUp(this.getAttribute(\"href\")); return false;
+if (lnks&#91;i&#93;.getAttribute(&quot;class&quot;) == &quot;popup&quot;) { lnks&#91;i&#93;.onclick
+= function() { popUp(this.getAttribute(&quot;href&quot;)); return false;
 
 }
 
@@ -5194,24 +4848,24 @@ Minimizing DOM access and markup
 The way you choose to manipulate the DOM can have a big impact on the
 overall performance of your script. Consider the following bit of code:
 
-if (document.getElementsByTagName(\"a\").length \> 0) { var links =
-document.getElementsByTagName(\"a\"); for (var i=0; i\<links.length;
+if (document.getElementsByTagName(&quot;a&quot;).length \0) { var links =
+document.getElementsByTagName(&quot;a&quot;); for (var i=0; i&lt;links.length;
 i++) { // do something to each link.
 
 } }
 
 The problem here is quite obvious if you think about what the code is
-doing. First, it retrieves all the \<a\> elements and checks to see if
-there are more than 0: if (document.getElementsByTagName(\"a\").length
-\> 0) {
+doing. First, it retrieves all the &lt;a\elements and checks to see if
+there are more than 0: if (document.getElementsByTagName(&quot;a&quot;).length
+\0) {
 
-Then if there are more than 0, it retrieves all the \<a\> elements
+Then if there are more than 0, it retrieves all the &lt;a\elements
 *again* and loops through them applying some sort of logic:
 
-var links = document.getElementsByTagName(\"a\"); for (var i=0;
-i\<links.length; i++) {
+var links = document.getElementsByTagName(&quot;a&quot;); for (var i=0;
+i&lt;links.length; i++) {
 
-The example works as expected, but it\'s not very well optimized.
+The example works as expected, but it&#39;s not very well optimized.
 Whenever you query the DOM to find elements, the browser must search the
 entire DOM tree for any matching elements. This poorly coded example
 uses the getElementsByTagName method twice to do the same thing,
@@ -5219,10 +4873,10 @@ doubling the work necessary. A better solution would be to assign the
 original result to a variable and reuse the same result in the loop,
 like this:
 
-var links = document.getElementsByTagName(\"a\"); if (links.length \> 0)
+var links = document.getElementsByTagName(&quot;a&quot;); if (links.length \0)
 {
 
-for (var i=0; i\<links.length; i++) { // do something to each link.
+for (var i=0; i&lt;links.length; i++) { // do something to each link.
 
 } }
 
@@ -5246,22 +4900,22 @@ appropriate elements.
 Assembling and placing scripts
 
 Most of the examples in the book use external script files that are
-included in the document using the \<script\> element, similar to this:
+included in the document using the &lt;script\element, similar to this:
 
-**\<script rc=\"script/function.js\"\>\</script\>**
+<b>&lt;script rc=&quot;script/function.js&quot;&gt;&lt;/script&gt;</b>
 
 Using external files is the best solution for including JavaScript
 because it's unobtrusive, it's cleanly separated from the markup, and it
 allows the browser to reuse the same cached script on multiple pages of
 your site. Ideally, however, you *don't* want to do something like this:
 
-\<script src=\"script/functionA.js\"\>\</script\>
+&lt;script src=&quot;script/functionA.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"script/functionB.js\"\>\</script\>
+&lt;script src=&quot;script/functionB.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"script/functionC.js\"\>\</script\>
+&lt;script src=&quot;script/functionC.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"script/functionD.js\"\>\</script\>
+&lt;script src=&quot;script/functionD.js&quot;&gt;&lt;/script&gt;
 
 A much better solution would be to combine functionA.js, functionB.js,
 functionC.js, and functionD.js into a single file. Reducing the number
@@ -5270,8 +4924,8 @@ can do to improve the overall load time of your website.
 
 The placement of your scripts in the markup also plays a big part in
 initial load times. Traditionally, we were told to always place scripts
-in the \<head\> portion of the document, but there\'s a problem with
-that. Scripts in the \<head\> block the browser's ability to download
+in the &lt;head\portion of the document, but there&#39;s a problem with
+that. Scripts in the &lt;head\block the browser's ability to download
 additional files (such as images or other scripts) in parallel. In
 general, the HTTP specification suggests that browsers download no more
 than two items at the same time per hostname. While a script is
@@ -5281,9 +4935,9 @@ has finished.
 
 If you're following the progressive enhancement and unobtrusive
 methodologies discussed earlier in the chapter, then moving your
-\<script\> tags shouldn't be an issue. You can make your pages load
-faster simply by including all your \<script\> tags at the end of the
-document, directly before the \</body\> tag. When the scripts load, your
+&lt;script\tags shouldn't be an issue. You can make your pages load
+faster simply by including all your &lt;script\tags at the end of the
+document, directly before the &lt;/body\tag. When the scripts load, your
 window load events will still apply your changes to the document.
 
 Minification
@@ -5301,28 +4955,28 @@ variable names. This reduces the overall file size.
 For example, suppose you have some code that looks like this:
 
 function showPic(whichpic) { // Grab the pics href attribute. var source
-= whichpic.getAttribute(\"href\");
+= whichpic.getAttribute(&quot;href&quot;);
 
 // Get the placeholder.
 
-var placeholder = document.getElementById(\"placeholder\");
+var placeholder = document.getElementById(&quot;placeholder&quot;);
 
 // Update the placeholder source.
 
-placeholder.setAttribute(\"src\",source);
+placeholder.setAttribute(&quot;src&quot;,source);
 
-// Update the text description using the image\'s title attribute.
+// Update the text description using the image&#39;s title attribute.
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
-var description = document.getElementById(\"description\"); }
+var description = document.getElementById(&quot;description&quot;); }
 
 The minified version would look like this:
 
-function showPic(a){var b=a.getAttribute(\"href\");document.get
-➥ElementById(\"placeholder\").setAttribute(\"src\",b);a.getAttribute
+function showPic(a){var b=a.getAttribute(&quot;href&quot;);document.get
+➥ElementById(&quot;placeholder&quot;).setAttribute(&quot;src&quot;,b);a.getAttribute
 
-➥ (\"title\");document.getElementById(\"description\")};
+➥ (&quot;title&quot;);document.getElementById(&quot;description&quot;)};
 
 Minified code isn't pretty or human-readable, but it can make a big
 difference in file size. In most cases, you'll need to keep two copies:
@@ -5331,7 +4985,7 @@ minified copy, which you serve up on your site. As a standard
 convention, a good idea it to include min in the file name of minified
 files to distinguish them from their nonminified counterparts:
 
-\<script src=\"scripts/scriptName.min.js\"\>\</script\>
+&lt;script src=&quot;scripts/scriptName.min.js&quot;&gt;&lt;/script&gt;
 
 A number of different tools are available to do minification, including
 the following:
@@ -5393,67 +5047,67 @@ In Chapter 4, I put together a script for switching out the src
 attribute of an image, effectively making a single-page image gallery.
 Here's the finished function:
 
-**C H A P T E R 6**
+<b>C H A P T E R 6</b>
 
 ■ ■ ■
 
-**The Image Gallery Revisited**
+<b>The Image Gallery Revisited</b>
 
 function showPic(whichpic) {
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
-placeholder.setAttribute(\"src\",source); var text =
-whichpic.getAttribute(\"title\");
+var placeholder = document.getElementById(&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,source); var text =
+whichpic.getAttribute(&quot;title&quot;);
 
-var description = document.getElementById(\"description\");
+var description = document.getElementById(&quot;description&quot;);
 description.firstChild.nodeValue = text;
 
 }
 
 Here's the relevant part of the HTML file that calls the function:
 
-\<ul\>
+&lt;ul&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" onclick=\"showPic(this);return false;
-\" title=\"A
+&lt;a href=&quot;images/fireworks.jpg&quot; onclick=&quot;showPic(this);return false;
+&quot; title=&quot;A
 
-➥ fireworks display\"\>Fireworks\</a\>
+➥ fireworks display&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/coffee.jpg\" onclick=\"showPic(this); return false;
-\"title=\"A cup of ➥ black coffee\"\>Coffee\</a\>
+&lt;a href=&quot;images/coffee.jpg&quot; onclick=&quot;showPic(this); return false;
+&quot;title=&quot;A cup of ➥ black coffee&quot;&gt;Coffee&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-> THE IMAGE GALLERY REVISITED
+THE IMAGE GALLERY REVISITED
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/rose.jpg\" onclick=\"showPic(this); return false;
-\"title=\"A red, red ➥ rose\"\>Rose\</a\>
+&lt;a href=&quot;images/rose.jpg&quot; onclick=&quot;showPic(this); return false;
+&quot;title=&quot;A red, red ➥ rose&quot;&gt;Rose&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" onclick=\"showPic(this); return false;
-\"title=\"The ➥ famous clock\"\>Big Ben\</a\>
+&lt;a href=&quot;images/bigben.jpg&quot; onclick=&quot;showPic(this); return false;
+&quot;title=&quot;The ➥ famous clock&quot;&gt;Big Ben&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-\<p id=\"description\"\>Choose an image.\</p\>
+&lt;p id=&quot;description&quot;&gt;Choose an image.&lt;/p&gt;
 
-\<img id=\"placeholder\" src=\"images/placeholder.gif\" alt=\"my image
-gallery\" /\>
+&lt;img id=&quot;placeholder&quot; src=&quot;images/placeholder.gif&quot; alt=&quot;my image
+gallery&quot; /&gt;
 
 Now I'm going to take a questioning look at this solution, with a view
 toward improving it.
@@ -5466,12 +5120,12 @@ As it turns out, my image gallery script does degrade gracefully. If
 JavaScript is disabled, the user can still view all the images in the
 gallery. All the links in the list still work, too:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" onclick=\"showPic(this);return
-false;\" title=\"A ➥ fireworks display\"\>Fireworks\</a\>
+&lt;a href=&quot;images/fireworks.jpg&quot; onclick=&quot;showPic(this);return
+false;&quot; title=&quot;A ➥ fireworks display&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 Without any JavaScript intervention, the browser naturally follows each
 link. The user sees the image as a new page instead of simply changing
@@ -5482,27 +5136,27 @@ content is accessible.
 It would be a very different story if I had chosen to use the
 javascript: pseudo-protocol. The links would then be written like this:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"javascript:showPic(\' images/coffee.jpg\'); return
-false;\"title=\"A cup of ➥ black coffee\"\>Coffee\</a\>
+&lt;a href=&quot;javascript:showPic(&#39; images/coffee.jpg&#39;); return
+false;&quot;title=&quot;A cup of ➥ black coffee&quot;&gt;Coffee&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 If I had written the links like that, the link list would be useless to
 anyone without JavaScript.
 
-Similarly, it would have been just as disastrous to use the href=\"#\"
+Similarly, it would have been just as disastrous to use the href=&quot;#&quot;
 convention. Sadly, this technique is often used when scripts are being
 "plugged into" web pages. Like the javascript: pseudo-protocol, it would
 have killed the image gallery for users surfing without JavaScript:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"#\" onclick=\"showPic(\' images/rose.jpg\'); return
-false;\"title=\"A red, red ➥ rose\"\>Rose\</a\>
+&lt;a href=&quot;#&quot; onclick=&quot;showPic(&#39; images/rose.jpg&#39;); return
+false;&quot;title=&quot;A red, red ➥ rose&quot;&gt;Rose&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 By using real values for the href attribute, we allow the image gallery
 to degrade gracefully. Anyone viewing the pictures without the benefit
@@ -5521,33 +5175,33 @@ In this case, the answer is a resounding no.
 
 Event handlers have been inserted directly into the markup:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" onclick=\"showPic(this); return
-false;\"title=\"The famous
+&lt;a href=&quot;images/bigben.jpg&quot; onclick=&quot;showPic(this); return
+false;&quot;title=&quot;The famous
 
-➥ clock\"\>Big Ben\</a\>
+➥ clock&quot;&gt;Big Ben&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 Ideally, I should attach the onclick event in the external JavaScript
 file. That would leave the markup unsullied:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" title=\"The famous clock\"\>Big Ben\</a\>
+&lt;a href=&quot;images/bigben.jpg&quot; title=&quot;The famous clock&quot;&gt;Big Ben&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 The JavaScript is still going to need some sort of "hook," or marker, so
 that it can recognize which links require the new behavior. There are a
 few different ways I could do this. I could add a class attribute to
 each link in the list:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" class=\"gallerypic\" title=\"The famous
-clock\"\>Big Ben\</a\> \</li\>
+&lt;a href=&quot;images/bigben.jpg&quot; class=&quot;gallerypic&quot; title=&quot;The famous
+clock&quot;&gt;Big Ben&lt;/a\&lt;/li&gt;
 
 But that technique is less than ideal. Adding a class to each link is
 almost as cumbersome as adding inline event handlers.
@@ -5555,35 +5209,35 @@ almost as cumbersome as adding inline event handlers.
 All the links have one thing in common. They are contained within a
 list. It's much simpler to give the entire list a unique ID:
 
-\<ul id=\"imagegallery\"\>
+&lt;ul id=&quot;imagegallery&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" title=\"A fireworks
-display\"\>Fireworks\</a\>
+&lt;a href=&quot;images/fireworks.jpg&quot; title=&quot;A fireworks
+display&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/coffee.jpg\" title=\"A cup of black
-coffee\"\>Coffee\</a\>
+&lt;a href=&quot;images/coffee.jpg&quot; title=&quot;A cup of black
+coffee&quot;&gt;Coffee&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/rose.jpg\" title=\"A red, red rose\"\>Rose\</a\>
+&lt;a href=&quot;images/rose.jpg&quot; title=&quot;A red, red rose&quot;&gt;Rose&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" title=\"The famous clock\"\>Big Ben\</a\>
+&lt;a href=&quot;images/bigben.jpg&quot; title=&quot;The famous clock&quot;&gt;Big Ben&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
 As you will soon see, this single hook will be enough for the
 JavaScript.
@@ -5629,13 +5283,13 @@ Browsers that understand that particular DOM method will continue on.
 Now I'm going to do the same thing for getElementById, which will also
 be used by the function: if (!document.getElementById) return false;
 
-> I could combine the two checks into one: "If either method isn't
-> understood, go no further":
+I could combine the two checks into one: "If either method isn't
+understood, go no further":
 
-if (!document.getElementsByTagName \|\| !document.getElementById)return
+if (!document.getElementsByTagName &#124;&#124; !document.getElementById)return
 false;
 
-> or
+or
 
 var supported = document.getElementsByTagName &&
 document.getElementById; if ( !supported ) return;
@@ -5649,8 +5303,8 @@ if (!document.getElementsByTagName) return false;
 
 if (!document.getElementById) return false;
 
-> In that case, I recommend enclosing the return statements within curly
-> braces:
+In that case, I recommend enclosing the return statements within curly
+braces:
 
 if (!document.getElementsByTagName) { return false;
 
@@ -5658,7 +5312,7 @@ if (!document.getElementsByTagName) { return false;
 
 }
 
-> This is perhaps the clearest, most readable solution.
+This is perhaps the clearest, most readable solution.
 
 Whether you do these tests on single or multiple lines is entirely up to
 you. Use whichever one you find easiest to follow.
@@ -5668,13 +5322,13 @@ This function is going to deal with links inside an element identified
 as imagegallery. If this element can't be found, then the script should
 go no further.
 
-> Once again, I'm going to use the NOT operator for this test:
+Once again, I'm going to use the NOT operator for this test:
 
-if (!document.getElementById(\"imagegallery\")) return false;
+if (!document.getElementById(&quot;imagegallery&quot;)) return false;
 
 Or, if your prefer:
 
-If (!document.getElementById(\"imagegallery\")) { return false; }
+If (!document.getElementById(&quot;imagegallery&quot;)) { return false; }
 
 This is a safety check. Right now, I know that there is an
 "imagegallery" list in the document that's calling the JavaScript file.
@@ -5685,41 +5339,41 @@ importance of the separation of content from behavior. If I add behavior
 to a page using JavaScript, that JavaScript shouldn't make assumptions
 about the structure of the page.
 
-> **A SHORT NOTE ABOUT STRUCTURED PROGRAMMING**
+<b>A SHORT NOTE ABOUT STRUCTURED PROGRAMMING</b>
 >
-> There is a school of thought known as structured programming. One of
-> its doctrines states that functions should have a single point of
-> entry and a single exit point.
+There is a school of thought known as structured programming. One of
+its doctrines states that functions should have a single point of
+entry and a single exit point.
 >
-> I am violating this principle by having multiple return false
-> statements at the beginning of my function. These are all exit points.
-> According to a principle of structured programming, there should only
-> ever be one exit point.
+I am violating this principle by having multiple return false
+statements at the beginning of my function. These are all exit points.
+According to a principle of structured programming, there should only
+ever be one exit point.
 >
-> In theory, I agree with this principle. In practice, it could make
-> code very difficult to read. If I rewrote my safety checks to avoid
-> multiple exit points, the main point of my function would be buried
-> quite deep in a sea of curly braces:
+In theory, I agree with this principle. In practice, it could make
+code very difficult to read. If I rewrote my safety checks to avoid
+multiple exit points, the main point of my function would be buried
+quite deep in a sea of curly braces:
 >
-> **function prepareGallery() {**
+<b>function prepareGallery() {</b>
 >
-> **if (document.getElementsByTagName) {**
+<b>if (document.getElementsByTagName) {</b>
 >
-> **if (document.getElementById) {**
+<b>if (document.getElementById) {</b>
 >
-> **if (document.getElementById(\"imagegallery\")) {*statements go
-> here\... ***
+<b>if (document.getElementById(&quot;imagegallery&quot;)) {*statements go
+here\...
 >
-> **}**
+<b>}</b>
 >
-> **}**
+<b>}</b>
 >
-> **}**
+<b>}</b>
 >
-> **}**
+<b>}</b>
 >
-> I think it is acceptable to have multiple exit points as long as they
-> occur early on in the function.
+I think it is acceptable to have multiple exit points as long as they
+occur early on in the function.
 
 For the sake of readability, I'm going to keep the return false
 statements at the start of the prepareGallery function:
@@ -5729,7 +5383,7 @@ function prepareGallery() {
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false;
 
-if (!document.getElementById(\"imagegallery\")) return false;
+if (!document.getElementById(&quot;imagegallery&quot;)) return false;
 
 Now that all the tests and checks have been passed, I'm going to move on
 to the event handler's functionality.
@@ -5737,17 +5391,17 @@ to the event handler's functionality.
 What's in a name?
 
 First of all, I'm going to make things a little easier for myself.
-Instead of writing out document.getElementById(\"imagegallery\") all the
+Instead of writing out document.getElementById(&quot;imagegallery&quot;) all the
 time, it's going to make life a lot simpler if I just use a variable
 name like gallery:
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 
 I could have chosen anything for the variable name, but gallery has some
 meaning. It's a lot easier to read code that uses recognizable words for
 variable names.
 
-■ **Caution** Be careful when you're choosing your variable names. There
+■ <b>Caution</bBe careful when you're choosing your variable names. There
 are some words that are reserved by JavaScript. You can't give a
 variable the same name as a JavaScript function or method. Avoid using
 words like alert, var, and if.
@@ -5756,19 +5410,19 @@ I want to loop through all the links in the imagegallery element. I'll
 be using getElementsByTagName to do this. Because I now have the
 variable gallery at my disposal, I can simply write this:
 
-gallery.getElementsByTagName(\"a\")
+gallery.getElementsByTagName(&quot;a&quot;)
 
 instead of the more long-winded version:
 
-document.getElementById(\"imagegallery\").getElementsByTagName(\"a\")
+document.getElementById(&quot;imagegallery&quot;).getElementsByTagName(&quot;a&quot;)
 
 Once again, I'm going to make life a little easier for myself. I'm going
 to assign this node list to a nice short variable. I'll use the word
 links:
 
-var links = gallery.getElementsByTagName(\"a\");
+var links = gallery.getElementsByTagName(&quot;a&quot;);
 
-> This is what the prepareGallery function looks like so far:
+This is what the prepareGallery function looks like so far:
 
 function prepareGallery() {
 
@@ -5780,16 +5434,16 @@ if (!document.getElementById)
 
 return false;
 
-if (!document.getElementById(\"imagegallery\"))
+if (!document.getElementById(&quot;imagegallery&quot;))
 
 return false;
 
-**var gallery = document.getElementById(\"imagegallery\");**
+<b>var gallery = document.getElementById(&quot;imagegallery&quot;);</b>
 
-**var links = gallery.getElementsByTagName(\"a\");**
+<b>var links = gallery.getElementsByTagName(&quot;a&quot;);</b>
 
-> Everything is set up now. I have put safety checks in place, and I
-> have assigned variables.
+Everything is set up now. I have put safety checks in place, and I
+have assigned variables.
 
 Looping the loop
 
@@ -5806,7 +5460,7 @@ I've chosen the name i purely for traditional reasons. Using the name i
 for incrementing variables is a programming convention in many
 languages. The test condition comes next:
 
-i \< links.length;
+i &lt; links.length;
 
 The loop will be executed as long as the value of i is less than the
 length property of the links array. The length property contains the
@@ -5816,7 +5470,7 @@ Finally, the counter is incremented by one:
 
 i++;
 
-> This is a shorthand way of saying:
+This is a shorthand way of saying:
 
 i = i+1;
 
@@ -5826,7 +5480,7 @@ finish. If links contains four elements, the loop will stop once the
 value of i equals four. The loop will have run four times. Remember that
 i began with a value of zero. Here's how the for loop opens:
 
-for ( var i=0; i \< links.length; i++) {
+for ( var i=0; i &lt; links.length; i++) {
 
 Changing behavior
 
@@ -5835,23 +5489,23 @@ Actually, it would be more correct to refer to links as a *node list*
 rather than an array. It is a set of nodes. Each node in the set has its
 own properties and methods.
 
-> I'm interested in the onclick method. This is how I attach a behavior
-> for that method:
+I'm interested in the onclick method. This is how I attach a behavior
+for that method:
 
-links\[i\].onclick = function() {
+links&#91;i&#93;.onclick = function() {
 
 This is called an *anonymous function*. It is a way of creating a
 function while the code is executing. In this case, the function is
 created when the onclick event handler is triggered. Whatever statements
 I put in next will be executed when the link is clicked.
 
-The value of links\[i\] will change as the value of i increases. It
-begins as links\[0\] and, if there are four elements in the links set,
-it will finish as links\[3\].
+The value of links&#91;i&#93; will change as the value of i increases. It
+begins as links&#91;0&#93; and, if there are four elements in the links set,
+it will finish as links&#91;3&#93;.
 
 The value I'm going to pass to the showPic function is the this keyword.
 It refers to the element that is currently having the onclick method
-attached to it. So this refers to links\[i\], which in turn refers to a
+attached to it. So this refers to links&#91;i&#93;, which in turn refers to a
 specific node in the links node list:
 
 showPic(this);
@@ -5870,7 +5524,7 @@ saying, "Act as if this link wasn't clicked."
 I just need to close up this function-within-a-function by adding a
 closing curly brace. This is how it looks:
 
-links\[i\].onclick = function() {
+links&#91;i&#93;.onclick = function() {
 
 showPic(this);
 
@@ -5884,11 +5538,11 @@ Now I need to finish the for loop by adding the closing curly brace:
 
 for ( var i=0;
 
-i \< links.length;
+i &lt; links.length;
 
 i++) {
 
-links\[i\].onclick = function() {
+links&#91;i&#93;.onclick = function() {
 
 showPic(this);
 
@@ -5896,9 +5550,9 @@ return false;
 
 } }
 
-> All that remains for me to do is to close the function with one more
-> curly brace. This is what the final prepareGallery function looks
-> like:
+All that remains for me to do is to close the function with one more
+curly brace. This is what the final prepareGallery function looks
+like:
 
 function prepareGallery() {
 
@@ -5906,15 +5560,15 @@ if (!document.getElementsByTagName) return false;
 
 if (!document.getElementById) return false;
 
-if (!document.getElementById(\"imagegallery\")) return false;
+if (!document.getElementById(&quot;imagegallery&quot;)) return false;
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 
-var links = gallery.getElementsByTagName(\"a\");
+var links = gallery.getElementsByTagName(&quot;a&quot;);
 
-for ( var i=0; i \< links.length; i++) {
+for ( var i=0; i &lt; links.length; i++) {
 
-links\[i\].onclick = function() { showPic(this);
+links&#91;i&#93;.onclick = function() { showPic(this);
 
 return false;
 
@@ -5925,7 +5579,7 @@ return false;
 When this function is called, the onclick events will be attached to the
 links in the element identified as "imagegallery".
 
-■ **Note** For more on the ins-and-outs of JavaScript you may also want
+■ <b>Note</bFor more on the ins-and-outs of JavaScript you may also want
 to read my AdvancED DOM Scripting:
 
 Dynamic Web Design Techniques, cowritten with Aaron Gustafson (Apress,
@@ -5949,8 +5603,8 @@ function to this event, then everything will go smoothly:
 
 window.onload = prepareGallery;
 
-> That's quite straightforward, but it is also potentially a little
-> shortsighted.
+That's quite straightforward, but it is also potentially a little
+shortsighted.
 
 Suppose I have two functions: firstFunction and secondFunction. What if
 I want to execute both of them when the page loads? If I attach them,
@@ -5974,22 +5628,22 @@ secondFunction();
 
 }
 
-> This works fine, and it's the simplest solution when you have a small
-> number of functions.
+This works fine, and it's the simplest solution when you have a small
+number of functions.
 
 There's another solution that scales very nicely, no matter how many
 functions you want to execute when the page loads. It takes a few more
 lines to set it up initially but, once it's in place, attaching
 functions to window.onload is an easy task.
 
-> This function is called addLoadEvent, and it was written by Simon
-> Willison
+This function is called addLoadEvent, and it was written by Simon
+Willison
 
 ([http://simon.incutio.co](http://simon.incutio.com/)m/). It takes a
 single argument: the name of the function that you want to execute when
 the page loads.
 
-> Here's what addLoadEvent does:
+Here's what addLoadEvent does:
 
 -   It stores the existing window.onload as a variable called oldonload.
 
@@ -6005,7 +5659,7 @@ function addLoadEvent(func) {
 
 var oldonload = window.onload;
 
-if (typeof window.onload != \'function\') { window.onload = func;
+if (typeof window.onload != &#39;function&#39;) { window.onload = func;
 
 } else {
 
@@ -6048,21 +5702,21 @@ checks to see if these elements actually exist:
 
 function showPic(whichpic) {
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
+var placeholder = document.getElementById(&quot;placeholder&quot;);
 
-placeholder.setAttribute(\"src\",source);
+placeholder.setAttribute(&quot;src&quot;,source);
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
-var description = document.getElementById(\"description\");
+var description = document.getElementById(&quot;description&quot;);
 
 description.firstChild.nodeValue = text;
 
 }
 
-> I need to introduce some checks for these elements.
+I need to introduce some checks for these elements.
 
 Two things are happening in this function. The image identified as
 placeholder is having its src attribute changed, and the element
@@ -6075,27 +5729,27 @@ element doesn't, then I still want the image to be swapped out.
 Just as with the prepareGallery function, it's a simple matter to check
 for the existence of an element:
 
-if (!document.getElementById(\"placeholder\")) return false;
+if (!document.getElementById(&quot;placeholder&quot;)) return false;
 
 I can then go on to do the image swapping:
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
+var placeholder = document.getElementById(&quot;placeholder&quot;);
 
-placeholder.setAttribute(\"src\",source);
+placeholder.setAttribute(&quot;src&quot;,source);
 
 The main task has been accomplished. At this point, I can take a
 slightly different approach and check for the existence of the
 "description" element:
 
-if (document.getElementById(\"description\")) {
+if (document.getElementById(&quot;description&quot;)) {
 
 Only then do I go on to change the text:
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
-var description = document.getElementById(\"description\");
+var description = document.getElementById(&quot;description&quot;);
 
 description.firstChild.nodeValue = text;
 
@@ -6105,8 +5759,8 @@ By enclosing the description portion in an if statement, I've made the
 description element optional. If it exists, it will be updated but
 otherwise it will be ignored.
 
-> As the last step in the function, we\'ll return true to report that
-> the function executed successfully:
+As the last step in the function, we&#39;ll return true to report that
+the function executed successfully:
 
 return true;
 
@@ -6114,15 +5768,15 @@ This is how the updated function looks with the checks built in:
 
 function showPic(whichpic) {
 
-if (!document.getElementById(\"placeholder\")) return false; var source
-= whichpic.getAttribute(\"href\");
+if (!document.getElementById(&quot;placeholder&quot;)) return false; var source
+= whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
-placeholder.setAttribute(\"src\",source); if
-(document.getElementById(\"description\")) { var text =
-whichpic.getAttribute(\"title\");
+var placeholder = document.getElementById(&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,source); if
+(document.getElementById(&quot;description&quot;)) { var text =
+whichpic.getAttribute(&quot;title&quot;);
 
-var description = document.getElementById(\"description\");
+var description = document.getElementById(&quot;description&quot;);
 description.firstChild.nodeValue = text;
 
 }
@@ -6145,7 +5799,7 @@ The problem lies with the prepareGallery function. It makes the
 assumption that the showPic function will work fine, and it cancels the
 default action by always returning false:
 
-links\[i\].onclick = function() {
+links&#91;i&#93;.onclick = function() {
 
 showPic(this);
 
@@ -6167,7 +5821,7 @@ returning, preventing the default action. If showPic returns true then
 the placeholder image was updated. In the onclick event handler we can
 use ! to return the inverse of the showPic function:
 
-links\[i\].onclick = function() {
+links&#91;i&#93;.onclick = function() {
 
 return !showPic(this)
 
@@ -6176,12 +5830,12 @@ return !showPic(this)
 Now if showPic is successful and returns true, we return false and the
 link won't be followed by the browser.
 
-> THE IMAGE GALLERY REVISITED
+THE IMAGE GALLERY REVISITED
 
-If showPic returns false then we assume that the image wasn\'t updated
+If showPic returns false then we assume that the image wasn&#39;t updated
 and return true to allow the default action to occur.
 
-> The prepareGallery function now looks like this:
+The prepareGallery function now looks like this:
 
 function prepareGallery() {
 
@@ -6189,15 +5843,15 @@ if (!document.getElementsByTagName) return false;
 
 if (!document.getElementById) return false;
 
-if (!document.getElementById(\"imagegallery\")) return false;
+if (!document.getElementById(&quot;imagegallery&quot;)) return false;
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 
-var links = gallery.getElementsByTagName(\"a\");
+var links = gallery.getElementsByTagName(&quot;a&quot;);
 
-for ( var i=0; i \< links.length; i++) {
+for ( var i=0; i &lt; links.length; i++) {
 
-links\[i\].onclick = function() {
+links&#91;i&#93;.onclick = function() {
 
 return !showPic(this);
 
@@ -6214,50 +5868,50 @@ Fine-tuning
 The functions are looking a lot better now. They may have grown in size,
 but they now assume much less about the markup.
 
-> I can still see some assumptions being made in the showPic function
-> that I may need to tackle. For instance, I am assuming that the link
-> has a title attribute:
+I can still see some assumptions being made in the showPic function
+that I may need to tackle. For instance, I am assuming that the link
+has a title attribute:
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
 To find out if there is a title attribute, I can test to see if it isn't
-equal to null: if (whichpic.getAttribute(\"title\") != null)
+equal to null: if (whichpic.getAttribute(&quot;title&quot;) != null)
 
 This if statement will evaluate to true if there is a title attribute.
 It will return a value of false if there is no title attribute, because
-the value of whichpic.getAttribute(\"title\") will be equal to null. I
+the value of whichpic.getAttribute(&quot;title&quot;) will be equal to null. I
 can save some space by simply writing if
-(whichpic.getAttribue(\"title\"))
+(whichpic.getAttribue(&quot;title&quot;))
 
-> The if statement will still return a value of true as long as there is
-> a title attribute.
+The if statement will still return a value of true as long as there is
+a title attribute.
 >
-> As a simple fallback, I could set the value of text to be empty if
-> there is no title attribute:
+As a simple fallback, I could set the value of text to be empty if
+there is no title attribute:
 
-if (whichpic.getAttribute(\"title\")) {
+if (whichpic.getAttribute(&quot;title&quot;)) {
 
-var text = whichpic.getAttribute(\"title\");
+var text = whichpic.getAttribute(&quot;title&quot;);
 
 } else {
 
-var text = \"\"; }
+var text = &quot;&quot;; }
 
-> Here's another way of doing the same thing:
+Here's another way of doing the same thing:
 
-var text = whichpic.getAttribute(\"title\") ?
-whichpic.getAttribute(\"title\") : \"\";
+var text = whichpic.getAttribute(&quot;title&quot;) ?
+whichpic.getAttribute(&quot;title&quot;) : &quot;&quot;;
 
 The getAttribute test is followed by a question mark. This is called a
 *ternary operator*. Two possible values for the variable text are
 provided after the question mark. The first value will be assigned if
-getAttribute(\"title\") returns a value. The second value will be
-returned if getAttribute(\"title\") returns a value of null:
+getAttribute(&quot;title&quot;) returns a value. The second value will be
+returned if getAttribute(&quot;title&quot;) returns a value of null:
 
 variable = condition ? if true : if false;
 
 If a title attribute exists, the variable text will contain
-whichpic.getAttribute(\"title\"). If there is no title attribute, the
+whichpic.getAttribute(&quot;title&quot;). If there is no title attribute, the
 variable text will be an empty string, "".
 
 A ternary operator is just another way of performing if/else statements.
@@ -6268,14 +5922,14 @@ Try removing the title attribute from one of the links in the
 imagegallery list. If you click on that link, the "description" element
 will be filled with an empty string.
 
-> If I wanted to be really thorough, I could introduce checks for just
-> about everything.
+If I wanted to be really thorough, I could introduce checks for just
+about everything.
 
 For example, I'm checking for the existence of an element called
 placeholder, but I'm just assuming that it is an image. I could run a
 further check, using the nodeName property, to verify this:
 
-if (placeholder.nodeName != \"IMG\") return false;
+if (placeholder.nodeName != &quot;IMG&quot;) return false;
 
 Notice that in HTML documents, nodeName always a returns an uppercase
 value, even if the element is lowercase in the markup.
@@ -6284,8 +5938,8 @@ There are further checks I could introduce. I'm assuming that the
 firstChild of the description element is a text node, but I should
 really check to make sure.
 
-> I can use the nodeType property for this test. If you recall, text
-> nodes have a nodeType value of 3:
+I can use the nodeType property for this test. If you recall, text
+nodes have a nodeType value of 3:
 
 if (description.firstChild.nodeType == 3) {
 description.firstChild.nodeValue = text;
@@ -6296,17 +5950,17 @@ This is how the showPic function would look with these extra tests:
 
 function showPic(whichpic) {
 
-if (!document.getElementById(\"placeholder\")) return false; var source
-= whichpic.getAttribute(\"href\");
+if (!document.getElementById(&quot;placeholder&quot;)) return false; var source
+= whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\"); if
-(placeholder.nodeName != \"IMG\") return false;
-placeholder.setAttribute(\"src\",source); if
-(document.getElementById(\"description\")) {
+var placeholder = document.getElementById(&quot;placeholder&quot;); if
+(placeholder.nodeName != &quot;IMG&quot;) return false;
+placeholder.setAttribute(&quot;src&quot;,source); if
+(document.getElementById(&quot;description&quot;)) {
 
-var text = whichpic.getAttribute(\"title\") ?
-whichpic.getAttribute(\"title\") : \"\"; var description =
-document.getElementById(\"description\"); if
+var text = whichpic.getAttribute(&quot;title&quot;) ?
+whichpic.getAttribute(&quot;title&quot;) : &quot;&quot;; var description =
+document.getElementById(&quot;description&quot;); if
 (description.firstChild.nodeType == 3) {
 description.firstChild.nodeValue = text;
 
@@ -6328,17 +5982,17 @@ Keyboard access
 There is one last piece of fine-tuning that often arises with any
 scripts that are attached to the onclick event handler.
 
-> Take a look at the heart of the prepareGallery function:
+Take a look at the heart of the prepareGallery function:
 
-links\[i\].onclick = function() { if (showPic(this)) { return false; }
+links&#91;i&#93;.onclick = function() { if (showPic(this)) { return false; }
 else { return true;
 
 } }
 
-> First, for brevity in the examples, let\'s change this to use the
-> ternary operator instead:
+First, for brevity in the examples, let&#39;s change this to use the
+ternary operator instead:
 
-links\[i\].onclick = function() { return showPic(this) ? false : true;
+links&#91;i&#93;.onclick = function() { return showPic(this) ? false : true;
 
 }
 
@@ -6360,28 +6014,28 @@ key on the keyboard. It is called onkeypress.
 If I want to execute the same behavior for onkeypress as onclick, I
 could simply duplicate the instructions:
 
-links\[i\].onclick = function() { return showPic(this) ? false : true;
+links&#91;i&#93;.onclick = function() { return showPic(this) ? false : true;
 
-} links\[i\].onkeypress = function() { return showPic(this) ? false :
+} links&#91;i&#93;.onkeypress = function() { return showPic(this) ? false :
 true;
 
 }
 
-> There's an easier way to ensure that onkeypress imitates onclick,
-> however:
+There's an easier way to ensure that onkeypress imitates onclick,
+however:
 
-links\[i\].onkeypress = links\[i\].onclick;
+links&#91;i&#93;.onkeypress = links&#91;i&#93;.onclick;
 
-> This assigns all the functionality from the onclick event to the
-> onkeypress event as well:
+This assigns all the functionality from the onclick event to the
+onkeypress event as well:
 
-links\[i\].onclick = function() { return showPic(this) ? false : true;
+links&#91;i&#93;.onclick = function() { return showPic(this) ? false : true;
 
 }
 
-links\[i\].onkeypress = links\[i\].onclick;
+links&#91;i&#93;.onkeypress = links&#91;i&#93;.onclick;
 
-> That brings us right back to the benefits of unobtrusive JavaScript.
+That brings us right back to the benefits of unobtrusive JavaScript.
 
 By keeping all your functions and event handlers in external files, you
 can change them without tinkering with the markup. You can always
@@ -6393,43 +6047,43 @@ If I were still using inline event handlers, I would have needed to make
 a lot of changes to my markup as the JavaScript functionality changed. I
 used to have inline event handlers like this:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" onclick=\"showPic(this);return
-false;\"title=\"A
+&lt;a href=&quot;images/fireworks.jpg&quot; onclick=&quot;showPic(this);return
+false;&quot;title=&quot;A
 
-➥fireworks display\"\>Fireworks\</a\>
+➥fireworks display&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 When I changed the showPic function to return either true or false, I
 would have needed to update the event handlers accordingly:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" onclick=\"return showPic(this) ? false
-: true;\"
+&lt;a href=&quot;images/fireworks.jpg&quot; onclick=&quot;return showPic(this) ? false
+: true;&quot;
 
-➥ title=\"A fireworks display\"\>Fireworks\</a\>
+➥ title=&quot;A fireworks display&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-> If my image gallery were more than a few links long, this would have
-> been quite tiresome.
+If my image gallery were more than a few links long, this would have
+been quite tiresome.
 
 Suppose I wanted to add the onkeypress event handler. I would have to go
 through all the links and add another inline event handler to each one:
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" onclick=\"return showPic(this) ? false
-: true;\"
+&lt;a href=&quot;images/fireworks.jpg&quot; onclick=&quot;return showPic(this) ? false
+: true;&quot;
 
-➥ onkeypress=\"return showPic(this) ? false : true;\"
+➥ onkeypress=&quot;return showPic(this) ? false : true;&quot;
 
-➥ title=\"A fireworks display\"\>Fireworks\</a\>
+➥ title=&quot;A fireworks display&quot;&gt;Fireworks&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
 That would have been a lot of drudgery. It's so much simpler to tweak
 and adjust a few lines of JavaScript in an external file.
@@ -6444,7 +6098,7 @@ function associated with onkeypress returns false. That's exactly what's
 happening with the image gallery. The showPic function, if it is
 successful, returns false.
 
-> So where does that leave users navigating with a keyboard?
+So where does that leave users navigating with a keyboard?
 
 Fortunately, the onclick event handler turns out to be smarter than it
 sounds. With a name like onclick, it gives the impression of being tied
@@ -6461,19 +6115,19 @@ could cause more harm than good.
 Avoid using onkeypress. The onclick event handler is all that's needed.
 In spite of its name, onclick supports keyboard access perfectly well.
 
-> The finished functions look like this:
+The finished functions look like this:
 
 function prepareGallery() {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false;
 
-if (!document.getElementById(\"imagegallery\")) return false; var
-gallery = document.getElementById(\"imagegallery\"); var links =
-gallery.getElementsByTagName(\"a\"); for ( var i=0; i \< links.length;
+if (!document.getElementById(&quot;imagegallery&quot;)) return false; var
+gallery = document.getElementById(&quot;imagegallery&quot;); var links =
+gallery.getElementsByTagName(&quot;a&quot;); for ( var i=0; i &lt; links.length;
 i++) {
 
-links\[i\].onclick = function() { return showPic(this) ? false : true;
+links&#91;i&#93;.onclick = function() { return showPic(this) ? false : true;
 
 }
 
@@ -6481,17 +6135,17 @@ links\[i\].onclick = function() { return showPic(this) ? false : true;
 
 function showPic(whichpic) {
 
-if (!document.getElementById(\"placeholder\")) return false; var source
-= whichpic.getAttribute(\"href\");
+if (!document.getElementById(&quot;placeholder&quot;)) return false; var source
+= whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\"); if
-(placeholder.nodeName != \"IMG\") return false;
-placeholder.setAttribute(\"src\",source); if
-(document.getElementById(\"description\")) {
+var placeholder = document.getElementById(&quot;placeholder&quot;); if
+(placeholder.nodeName != &quot;IMG&quot;) return false;
+placeholder.setAttribute(&quot;src&quot;,source); if
+(document.getElementById(&quot;description&quot;)) {
 
-var text = whichpic.getAttribute(\"title\") ?
-whichpic.getAttribute(\"title\") : \"\"; var description =
-document.getElementById(\"description\"); if
+var text = whichpic.getAttribute(&quot;title&quot;) ?
+whichpic.getAttribute(&quot;title&quot;) : &quot;&quot;; var description =
+document.getElementById(&quot;description&quot;); if
 (description.firstChild.nodeType == 3) {
 description.firstChild.nodeValue = text;
 
@@ -6499,7 +6153,7 @@ description.firstChild.nodeValue = text;
 
 return true; }
 
-■ **Note** You can download the completed functions from this book's
+■ <b>Note</bYou can download the completed functions from this book's
 page from the friends of ED website,
 [http://www.friendsofed.com](http://www.friendsofed.com/)/.
 
@@ -6509,9 +6163,9 @@ There's another benefit to unobtrusive JavaScript. Since removing the
 inline event handlers from my markup, I've added one hook for my
 JavaScript:
 
-\<ul id=\"imagegallery\"\>
+&lt;ul id=&quot;imagegallery&quot;&gt;
 
-> There's no reason why I can't also use that hook for my CSS.
+There's no reason why I can't also use that hook for my CSS.
 
 For instance, I might not want the list to have bullet points. I can use
 the imagegallery identifier to specify this in the CSS:
@@ -6519,70 +6173,70 @@ the imagegallery identifier to specify this in the CSS:
 #imagegallery { list-style: none; }
 
 I can put this CSS in an external file, say layout.css, and reference it
-from the \<head\> of my gallery.html file:
+from the &lt;head\of my gallery.html file:
 
-\<link rel=\"stylesheet\" href=\"styles/layout.css\" type=\"text/css\"
-media=\"screen\" /\> Using CSS, I can even make the list run
+&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/layout.css&quot; type=&quot;text/css&quot;
+media=&quot;screen&quot; /\Using CSS, I can even make the list run
 horizontally instead of vertically:
 
 #imagegallery li { display: inline; }
 
-> Here's what my page looks like now:
+Here's what my page looks like now:
 >
-> This also works if I decide to use thumbnail images instead of text
-> for my links:
+This also works if I decide to use thumbnail images instead of text
+for my links:
 
-\<ul id=\"imagegallery\"\>
+&lt;ul id=&quot;imagegallery&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" title=\"A fireworks display\"\>
+&lt;a href=&quot;images/fireworks.jpg&quot; title=&quot;A fireworks display&quot;&gt;
 
-\<img src=\"images/thumbnail_fireworks.jpg\" alt=\"Fireworks\" /\>
+&lt;img src=&quot;images/thumbnail_fireworks.jpg&quot; alt=&quot;Fireworks&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/coffee.jpg\" title=\"A cup of black coffee\" \>
+&lt;a href=&quot;images/coffee.jpg&quot; title=&quot;A cup of black coffee&quot; &gt;
 
-\<img src=\"images/thumbnail_coffee.jpg\" alt=\"Coffee\" /\>
+&lt;img src=&quot;images/thumbnail_coffee.jpg&quot; alt=&quot;Coffee&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/rose.jpg\" title=\"A red, red rose\"\>
+&lt;a href=&quot;images/rose.jpg&quot; title=&quot;A red, red rose&quot;&gt;
 
-\<img src=\"images/thumbnail_rose.jpg\" alt=\"Rose\" /\>
+&lt;img src=&quot;images/thumbnail_rose.jpg&quot; alt=&quot;Rose&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" title=\"The famous clock\"\>
+&lt;a href=&quot;images/bigben.jpg&quot; title=&quot;The famous clock&quot;&gt;
 
-\<img src=\"images/thumbnail_bigben.jpg\" alt=\"Big Ben\" /\>
+&lt;img src=&quot;images/thumbnail_bigben.jpg&quot; alt=&quot;Big Ben&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-> Here's my web page with thumbnails rather than text:
+Here's my web page with thumbnails rather than text:
 >
-> The complete layout.css file looks like this:
+The complete layout.css file looks like this:
 
 body {
 
-font-family: \"Helvetica\",\"Arial\",serif; color: #333;
+font-family: &quot;Helvetica&quot;,&quot;Arial&quot;,serif; color: #333;
 background-color: #ccc; margin: 1em 10%; } h1 { color: #333;
 background-color: transparent;
 
@@ -6603,7 +6257,7 @@ text-decoration: none;
 
 }
 
-> Applying that style sheet will give the image gallery a nice sheen:
+Applying that style sheet will give the image gallery a nice sheen:
 
 DOM Core and HTML-DOM
 
@@ -6624,18 +6278,18 @@ support. They aren't just for web pages, either. These methods can be
 used on documents written in any markup language (XML, for instance).
 
 When you are using JavaScript and the DOM with HTML files, you have many
-more properties at your disposal. For example, I\'ve actually used one
+more properties at your disposal. For example, I&#39;ve actually used one
 of these properties, onclick, for event management in the image gallery.
 These properties belong to the *HTML-DOM*, which has been around longer
 than the DOM Core.
 
 For instance, the HTML-DOM provides a forms object. That means that
-instead of writing document.getElementsByTagName(\"form\") you can use
+instead of writing document.getElementsByTagName(&quot;form&quot;) you can use
 document.forms
 
 Similarly, the HTML-DOM provides properties to represent attributes of
 elements. Images, for instance, have a src property. Instead of writing
-*element.*getAttribute(\"src\") you can write
+*element.*getAttribute(&quot;src&quot;) you can write
 
 element.src
 
@@ -6646,13 +6300,13 @@ it's worth remembering that it is specific to web documents, so you'll
 need to bear that in mind if you ever find yourself using the DOM with
 other kinds of documents.
 
-> If I were to use the HTML-DOM, I could shorten a few lines from the
-> showPic function.
+If I were to use the HTML-DOM, I could shorten a few lines from the
+showPic function.
 
 This line uses the DOM Core to retrieve the href attribute of the
 whichpic element and assign its value to the variable source:
 
-var source = whichpic.getAttribute(\"href\");
+var source = whichpic.getAttribute(&quot;href&quot;);
 
 Here's the same thing using HTML-DOM:
 
@@ -6662,7 +6316,7 @@ Here's another example of the DOM Core. This time, the src attribute of
 the placeholder element is being set to the value of the variable
 source:
 
-placeholder.setAttribute(\"src\",source);
+placeholder.setAttribute(&quot;src&quot;,source);
 
 Here it is using HTML-DOM:
 
@@ -6696,11 +6350,11 @@ more likely to degrade gracefully in unforeseen situations.
 -   Perhaps most importantly of all, I've moved the event handling from
     the markup to the JavaScript. This is unobtrusive JavaScript.
 
-> Here's my final product after all of the tweaks I've made through this
-> chapter:
+Here's my final product after all of the tweaks I've made through this
+chapter:
 >
-> And my mantra: the more separation there is between structure and
-> behavior, the better.
+And my mantra: the more separation there is between structure and
+behavior, the better.
 
 Something about the markup of the image gallery is still bothering me. I
 have two elements, placeholder and description, that exist solely for
@@ -6713,7 +6367,7 @@ visitor has a DOM-capable browser. In the next chapter, I'm going to
 show how you can use the DOM to create elements and insert them into
 your markup.
 
-> THE IMAGE GALLERY REVISITED
+THE IMAGE GALLERY REVISITED
 
 What this chapter covers:
 
@@ -6732,9 +6386,9 @@ elements can then be manipulated using methods and properties like
 setAttribute (to change the value of an attribute) or nodeValue (to
 change the text contained by an element node). That's how the image
 gallery works. The showPic function identifies two elements, with the
-IDs \"placeholder\" and \"description\", and then updates their
-contents. The src attribute of the \"placeholder\" element is changed
-using setAttribute. The text within \"description\" is changed using
+IDs &quot;placeholder&quot; and &quot;description&quot;, and then updates their
+contents. The src attribute of the &quot;placeholder&quot; element is changed
+using setAttribute. The text within &quot;description&quot; is changed using
 nodeValue. In both cases, changes are being made to elements that
 already exist.
 
@@ -6759,98 +6413,98 @@ insert a string into a document. Let's see how this works.
 
 Save the following markup as a file. Call it something like test.html.
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Test\</title\>
+&lt;title&gt;Test&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\> \<script\>
+&lt;body\&lt;script&gt;
 
-document.write(\"\<p\>This is inserted.\</p\>\");
+document.write(&quot;&lt;p&gt;This is inserted.&lt;/p&gt;&quot;);
 
-\</script\>
+&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 If you load test.html in a web browser, you will see a paragraph of text
-that reads **This is inserted**.
+that reads <b>This is inserted</b>.
 
 The major drawback to using document.write is that it goes against the
 principle of *unobtrusive JavaScript*. Even if you place the
 document.write statement in an external function, you'll still need to
-insert \<script\> tags into the body of your markup in order to call the
+insert &lt;script\tags into the body of your markup in order to call the
 function in the location where you want the write to occur.
 
 The following is a function that takes a string as its argument. This
-function concatenates an opening \<p\> tag, the string, and a closing
-\</p\> tag. This concatenated string is stored in a variable called str,
+function concatenates an opening &lt;p\tag, the string, and a closing
+&lt;/p\tag. This concatenated string is stored in a variable called str,
 which is then written out.
 
-function insertParagraph(text) { var str = \"\<p\>\"; str += text; str
-+= \"\</p\>\"; document.write(str); }
+function insertParagraph(text) { var str = &quot;&lt;p&gt;&quot;; str += text; str
++= &quot;&lt;/p&gt;&quot;; document.write(str); }
 
 You can store this function in an external file called example.js. In
-order to call this function, you need to insert \<script\> tags into
+order to call this function, you need to insert &lt;script\tags into
 your markup:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Test\</title\>
+&lt;title&gt;Test&lt;/title&gt;
 
-\</script\>
+&lt;/script&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<script src=\"example.js\"\>
+&lt;script src=&quot;example.js&quot;&gt;
 
-\<script\>
+&lt;script&gt;
 
-insertParagraph(\"This is inserted.\");
+insertParagraph(&quot;This is inserted.&quot;);
 
-\</script\>
+&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 Mixing up JavaScript and markup like this is a bad idea. Editing the
 markup becomes trickier, and the benefits of separating behavior from
 structure are lost.
 
 You could also very easily introduce validation errors. For instance, in
-the first example, it appears as though a \<p\> tag has been opened
-after a \<script\> tag, which is invalid. In fact, the \<p\> and \</p\>
+the first example, it appears as though a &lt;p\tag has been opened
+after a &lt;script\tag, which is invalid. In fact, the &lt;p\and &lt;/p&gt;
 form part of the string being inserted into the document.
 
 If you are writing XHTML documents that are being served up with the
 MIME type application/xhtml+xml, then document.write simply won't work.
 
-In some ways, using document.write is a bit like using \<font\> tags to
+In some ways, using document.write is a bit like using &lt;font\tags to
 specify font size and color. Both techniques work fine in HTML
 documents, but neither of them is very elegant.
 
 It's always a good idea to separate structure, behavior, and style. It's
 much better to specify and maintain styling information by using
-external CSS files instead of \<font\> tags. It's also much better to
+external CSS files instead of &lt;font\tags. It's also much better to
 control behavior with external JavaScript files. You should avoid
-cluttering your markup with \<script\> tags in your \<body\>. That rules
+cluttering your markup with &lt;script\tags in your &lt;body&gt;. That rules
 out using document.write.
 
 innerHTML
@@ -6861,23 +6515,23 @@ although it has been included in the current HTML5 specification. It was
 first introduced by Microsoft, in Internet Explorer 4, and has since
 been adopted by other browsers.
 
-> innerHTML can be used to read and write the HTML in an element. To see
-> how this works, insert the
+innerHTML can be used to read and write the HTML in an element. To see
+how this works, insert the
 
-following piece of markup into the \<body\> of test.html:
+following piece of markup into the &lt;body\of test.html:
 
-\<div id=\"testdiv\"\>
+&lt;div id=&quot;testdiv&quot;&gt;
 
-\<p\>This is \<em\>my\</em\> content.\</p\>
+&lt;p&gt;This is &lt;em&gt;my&lt;/em\content.&lt;/p&gt;
 
-\</div\>
+&lt;/div&gt;
 
-> This is how the DOM sees the markup inside \"testdiv\".
+This is how the DOM sees the markup inside &quot;testdiv&quot;.
 
 ![](./images/media/image44.png){width="4.776666666666666in"
 height="3.64in"}
 
-The div element with the id attribute \"testdiv\" contains an element
+The div element with the id attribute &quot;testdiv&quot; contains an element
 node---the p element. This p element, in turn, has a number of child
 nodes. There are two text nodes. These text nodes have the values This
 is and content. There's also an element node, em, which itself contains
@@ -6886,26 +6540,26 @@ a text node with the value my.
 The DOM provides a very detailed picture of the markup. Using DOM
 methods and properties, you can access any of those nodes individually.
 The innerHTML property takes a much simpler view. As shown in the
-following diagram, it sees the markup inside \"testdiv\" as a string of
-HTML with the value \<p\>This
+following diagram, it sees the markup inside &quot;testdiv&quot; as a string of
+HTML with the value &lt;p&gt;This
 
-is \<em\>my\</em\> content.\</p\>
+is &lt;em&gt;my&lt;/em\content.&lt;/p&gt;
 
 .
 
-> You can test this by updating example.js with a new function, as
-> follows:
+You can test this by updating example.js with a new function, as
+follows:
 
 window.onload = function() {
 
-var testdiv = document.getElementById(\"testdiv\");
+var testdiv = document.getElementById(&quot;testdiv&quot;);
 alert(testdiv.innerHTML); }
 
-> Refresh test.html in a web browser. You will see an alert box with the
-> innerHTML value of \"testdiv\".
+Refresh test.html in a web browser. You will see an alert box with the
+innerHTML value of &quot;testdiv&quot;.
 >
-> Clearly, innerHTML doesn't offer the fine detail that you can get from
-> DOM methods and properties.
+Clearly, innerHTML doesn't offer the fine detail that you can get from
+DOM methods and properties.
 
 Using the standardized DOM is like using a scalpel. Using innerHTML is
 like using a sledgehammer.
@@ -6916,26 +6570,26 @@ innerHTML can do that. It is a read/write property, which means you can
 use it not only to *get* the HTML inside an element, but also to *set*
 the HTML inside an element.
 
-> Edit the test.html file so that the element with the id value of
-> \"testdiv\" is empty:
+Edit the test.html file so that the element with the id value of
+&quot;testdiv&quot; is empty:
 
-\<div id=\"testdiv\"\>
+&lt;div id=&quot;testdiv&quot;&gt;
 
-\</div\>
+&lt;/div&gt;
 
-> If you put this JavaScript into example.js, you can insert a chunk of
-> HTML into the \<div\>:
+If you put this JavaScript into example.js, you can insert a chunk of
+HTML into the &lt;div&gt;:
 
 window.onload = function() {
 
-var testdiv = document.getElementById(\"testdiv\");
+var testdiv = document.getElementById(&quot;testdiv&quot;);
 
-testdiv.innerHTML = \"\<p\>I inserted \<em\>this\</em\>
-content.\</p\>\";
+testdiv.innerHTML = &quot;&lt;p&gt;I inserted &lt;em&gt;this&lt;/em&gt;
+content.&lt;/p&gt;&quot;;
 
 }
 
-> To view the result, refresh test.html in a web browser.
+To view the result, refresh test.html in a web browser.
 
 This technique makes no distinction between inserting a chunk of HTML
 and replacing a chunk of HTML. It doesn't matter whether or not the
@@ -6943,13 +6597,13 @@ testdiv element has HTML inside it. Once you use innerHTML, its entire
 contents will be replaced.
 
 In the test.html file, change the contents of the element identified as
-\"testdiv\" back to the original version:
+&quot;testdiv&quot; back to the original version:
 
-\<div id=\"testdiv\"\>
+&lt;div id=&quot;testdiv&quot;&gt;
 
-\<p\>This is \<em\>my\</em\> content.\</p\>
+&lt;p&gt;This is &lt;em&gt;my&lt;/em\content.&lt;/p&gt;
 
-\</div\>
+&lt;/div&gt;
 
 Leave the example.js file as it is. If you refresh test.html in a web
 browser, the result will be the same as before. The HTML contained
@@ -6962,10 +6616,10 @@ innerHTML doesn't return any references to the content you insert. If
 you want to manipulate the inserted content, you'll need the precision
 offered by DOM methods.
 
-> innerHTML compares favorably to document.write. Using innerHTML, you
-> can keep your JavaScript
+innerHTML compares favorably to document.write. Using innerHTML, you
+can keep your JavaScript
 
-separate from your markup. There's no need to insert \<script\> tags
+separate from your markup. There's no need to insert &lt;script\tags
 throughout your markup.
 
 Like document.write, innerHTML is HTML-specific. You won't be able to
@@ -7009,34 +6663,34 @@ a document, you need to insert element nodes.
 
 createElement
 
-The test.html file should contain an empty \<div\> with the id value of
-\"testdiv\":
+The test.html file should contain an empty &lt;div\with the id value of
+&quot;testdiv&quot;:
 
-\<div id=\"testdiv\"\> \</div\>
+&lt;div id=&quot;testdiv&quot;\&lt;/div&gt;
 
-Now suppose you want to insert a paragraph into \"testdiv\". To use the
+Now suppose you want to insert a paragraph into &quot;testdiv&quot;. To use the
 language of the DOM, you want to add a p element node as a child node of
 the div element node (which already has one child node: an id attribute
-node with the value \"testdiv\"). This is a two-step process:
+node with the value &quot;testdiv&quot;). This is a two-step process:
 
 -   Create the new element.
 
 -   Insert the element into the node tree.
 
-> You can achieve the first step by using a DOM method called
-> createElement. This is the syntax:
+You can achieve the first step by using a DOM method called
+createElement. This is the syntax:
 
-document.createElement(***nodeName***)
+document.createElement(<b><i>nodeName</i></b>)
 
-> This statement will create a paragraph element:
+This statement will create a paragraph element:
 
-document.createElement(\"p\");
+document.createElement(&quot;p&quot;);
 
 By itself, the createElement method won't prove very useful. You'll want
 to insert the newly created element node into the document. To do this,
 you'll need to be able to refer to the newly created node. Whenever you
 use createElement, it's a good idea to assign the newly created element
-to a variable: var para = document.createElement(\"p\");
+to a variable: var para = document.createElement(&quot;p&quot;);
 
 The variable para now contains a reference to the p element you've just
 created. Right now, this newly created paragraph element is floating in
@@ -7049,14 +6703,14 @@ value. You can test this for yourself by putting this into example.js:
 
 window.onload = function() {
 
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
-var info = \"nodeName: \"; info+= para.nodeName; info+= \" nodeType: \";
+var info = &quot;nodeName: &quot;; info+= para.nodeName; info+= &quot; nodeType: &quot;;
 info+= para.nodeType; alert(info);
 
 }
 
-The node exists. It has the nodeName property with the value \"P\". It
+The node exists. It has the nodeName property with the value &quot;P&quot;. It
 also has a nodeType property with the value 1, which means it's an
 element node. But this node is not connected to the node tree of the
 document, test.html.
@@ -7067,47 +6721,47 @@ The simplest way to insert a newly created node into the node tree of a
 document is to make it a child of an existing node in that document.
 
 In test.html, a new paragraph should be inserted into the element node
-identified as \"testdiv\". In other words, the paragraph element should
-be a child node of the \"testdiv\" element. You can do this with a
+identified as &quot;testdiv&quot;. In other words, the paragraph element should
+be a child node of the &quot;testdiv&quot; element. You can do this with a
 method called appendChild. This is the syntax for appendChild:
 
-parent.appendChild(***child***)
+parent.appendChild(<b><i>child</i></b>)
 
 In the case of test.html, the child is the paragraph you just created
-with createElement. The parent is the \"testdiv\" element node. You'll
+with createElement. The parent is the &quot;testdiv&quot; element node. You'll
 need to reference this node using a DOM method. The simplest way to
 reference the node in this case is to use getElementById.
 
 As usual, you can make life simpler for yourself, and make your code
 easier to read, by assigning the element to a variable:
 
-var testdiv = document.getElementById(\"testdiv\");
+var testdiv = document.getElementById(&quot;testdiv&quot;);
 
 The variable testdiv contains a reference to the element with the id
-\"testdiv\".
+&quot;testdiv&quot;.
 
 You already have a variable, para, which contains a reference to the
 newly created paragraph node:
 
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
 You can insert para into testdiv using appendChild:
 
 testdiv.appendChild(para);
 
-The newly created paragraph element is now a child of the \"testdiv\"
+The newly created paragraph element is now a child of the &quot;testdiv&quot;
 element. It has been moved from JavaScript limbo and inserted into the
 node tree of test.html.
 
 You don't need to use variables when you use appendChild. You could just
-write the following: document.getElementById(\"testdiv\").appendChild(
-document.createElement(\"p\"));
+write the following: document.getElementById(&quot;testdiv&quot;).appendChild(
+document.createElement(&quot;p&quot;));
 
 As you can see, that's quite confusing to read. It's worth the extra few
 lines to write this:
 
-var para = document.createElement(\"p\"); var testdiv =
-document.getElementById(\"testdiv\"); testdiv.appendChild(para);
+var para = document.createElement(&quot;p&quot;); var testdiv =
+document.getElementById(&quot;testdiv&quot;); testdiv.appendChild(para);
 
 createTextNode
 
@@ -7117,26 +6771,26 @@ element. If you want to put some text into that paragraph, you can't use
 createElement. That works only for creating element nodes. You need to
 create a text node.
 
-■ **Note** Don't let the names of the methods confuse you. It would be
+■ <b>Note</bDon't let the names of the methods confuse you. It would be
 clearer if the methods were called createElementNode and createTextNode,
 or simply createElement and createText. But instead, the names are
 createElement and createTextNode.
 
-> You can do this using a method called createTextNode.
+You can do this using a method called createTextNode.
 >
-> The syntax for createTextNode is very similar to the syntax for
-> createElement:
+The syntax for createTextNode is very similar to the syntax for
+createElement:
 
-document.createTextNode(***text***)
+document.createTextNode(<b><i>text</i></b>)
 
-> This is how you would create the text "Hello world":
+This is how you would create the text "Hello world":
 
-document.createTextNode(\"Hello world\");
+document.createTextNode(&quot;Hello world&quot;);
 
-> Again, it's a good idea to assign a variable to contain the newly
-> created node:
+Again, it's a good idea to assign a variable to contain the newly
+created node:
 
-var txt = document.createTextNode(\"Hello world\");
+var txt = document.createTextNode(&quot;Hello world&quot;);
 
 The variable txt contains a reference to the newly created text node.
 This node is floating free in JavaScript. It hasn't been tethered to the
@@ -7149,29 +6803,29 @@ variable txt is a reference to the newly created text node:
 
 para.appendChild(txt);
 
-The text node with the value \"Hello world\" is now a child node of the
+The text node with the value &quot;Hello world&quot; is now a child node of the
 paragraph element. Try writing this into the example.js file:
 
 window.onload = function() {
 
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
-var testdiv = document.getElementById(\"testdiv\");
+var testdiv = document.getElementById(&quot;testdiv&quot;);
 
 testdiv.appendChild(para);
 
-var txt = document.createTextNode(\"Hello world\");
+var txt = document.createTextNode(&quot;Hello world&quot;);
 
 para.appendChild(txt);
 
 }
 
-> If you reload test.html, you will see the text **Hello world** in the
-> browser window.
+If you reload test.html, you will see the text <b>Hello world</bin the
+browser window.
 >
-> CREATING MARKUP ON THE FLY
+CREATING MARKUP ON THE FLY
 >
-> In this example, nodes were created and appended in this order:
+In this example, nodes were created and appended in this order:
 
 1.  Create a paragraph element node.
 
@@ -7196,13 +6850,13 @@ This is how the reorganized function would look:
 
 window.onload = function() {
 
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
-var txt = document.createTextNode(\"Hello world\");
+var txt = document.createTextNode(&quot;Hello world&quot;);
 
 para.appendChild(txt);
 
-var testdiv = document.getElementById(\"testdiv\");
+var testdiv = document.getElementById(&quot;testdiv&quot;);
 
 testdiv.appendChild(para);
 
@@ -7210,37 +6864,37 @@ testdiv.appendChild(para);
 
 The end result is the same. Write this version in the example.js file
 and reload the test.html document in a web browser. You will see the
-text **Hello world**, just as before.
+text <b>Hello world</b>, just as before.
 
 A more complex combination
 
 In the demonstration of innerHTML, we used the following piece of
 markup:
 
-\<p\>This is \<em\>my\</em\> content.\</p\>
+&lt;p&gt;This is &lt;em&gt;my&lt;/em\content.&lt;/p&gt;
 
 This is a bit more complex than simply creating a paragraph containing
 some text. To insert this markup into test.html using DOM methods,
 you'll need to first break it down into nodes.
 
-> An element node \"p\" contains the following:
+An element node &quot;p&quot; contains the following:
 
--   A text node, \"This is \"
+-   A text node, &quot;This is &quot;
 
--   An element node, \"em\" containing a text node, \"my\"
+-   An element node, &quot;em&quot; containing a text node, &quot;my&quot;
 
--   A text node, \" content\"
+-   A text node, &quot; content&quot;
 
-> Once you know the nodes you need to create, you can draw up a plan of
-> action:
+Once you know the nodes you need to create, you can draw up a plan of
+action:
 
-1.  Create an element node \"p\" assigned to the variable para.
+1.  Create an element node &quot;p&quot; assigned to the variable para.
 
 2.  Create a text node assigned to the variable txt1.
 
 3.  Append txt1 to para.
 
-4.  Create an element node \"em\" assigned to the variable emphasis.
+4.  Create an element node &quot;em&quot; assigned to the variable emphasis.
 
 5.  Create a text node assigned to the variable txt2.
 
@@ -7252,47 +6906,47 @@ you'll need to first break it down into nodes.
 
 9.  Append txt3 to para.
 
-10. Append para to the element \"testdiv\" in the document.
+10. Append para to the element &quot;testdiv&quot; in the document.
 
-> You can then translate the plan into JavaScript:
+You can then translate the plan into JavaScript:
 
 window.onload = function() {
 
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
-var txt1 = document.createTextNode(\"This is \");
+var txt1 = document.createTextNode(&quot;This is &quot;);
 
 para.appendChild(txt1);
 
-var emphasis = document.createElement(\"em\");
+var emphasis = document.createElement(&quot;em&quot;);
 
-var txt2 = document.createTextNode(\"my\");
+var txt2 = document.createTextNode(&quot;my&quot;);
 
 emphasis.appendChild(txt2);
 
 para.appendChild(emphasis);
 
-var txt3 = document.createTextNode(\" content.\");
+var txt3 = document.createTextNode(&quot; content.&quot;);
 
 para.appendChild(txt3);
 
-var testdiv = document.getElementById(\"testdiv\");
+var testdiv = document.getElementById(&quot;testdiv&quot;);
 
 testdiv.appendChild(para);
 
 }
 
-> Write that code into example.js and reload test.html in a browser.
+Write that code into example.js and reload test.html in a browser.
 
 You can use a different approach if you like. You could do all the
 creating first, and then do all the appending. In that case, your plan
 of action would look this:
 
-1.  Create an element node \"p\" assigned to the variable para.
+1.  Create an element node &quot;p&quot; assigned to the variable para.
 
 2.  Create a text node assigned to the variable txt1.
 
-3.  Create an element node \"em\" assigned to the variable emphasis.
+3.  Create an element node &quot;em&quot; assigned to the variable emphasis.
 
 4.  Create a text node assigned to the variable txt2.
 
@@ -7306,21 +6960,21 @@ of action would look this:
 
 9.  Append txt3 to para.
 
-10. Append para to the element \"testdiv\" in the document.
+10. Append para to the element &quot;testdiv&quot; in the document.
 
 That plan translates into this JavaScript code:
 
 window.onload = function() {
 
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
-var txt1 = document.createTextNode(\"This is \");
+var txt1 = document.createTextNode(&quot;This is &quot;);
 
-var emphasis = document.createElement(\"em\");
+var emphasis = document.createElement(&quot;em&quot;);
 
-var txt2 = document.createTextNode(\"my\");
+var txt2 = document.createTextNode(&quot;my&quot;);
 
-var txt3 = document.createTextNode(\" content.\");
+var txt3 = document.createTextNode(&quot; content.&quot;);
 
 para.appendChild(txt1);
 
@@ -7330,7 +6984,7 @@ para.appendChild(emphasis);
 
 para.appendChild(txt3);
 
-var testdiv = document.getElementById(\"testdiv\");
+var testdiv = document.getElementById(&quot;testdiv&quot;);
 testdiv.appendChild(para); }
 
 If you write that code into the example.js file and then refresh
@@ -7349,82 +7003,82 @@ script. The JavaScript is unobtrusive and degrades gracefully.
 
 We also made some accessibility enhancements.
 
-> There's still something that bothers me though. Take a look at the
-> markup in gallery.html:
+There's still something that bothers me though. Take a look at the
+markup in gallery.html:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Image Gallery\</title\>
+&lt;title&gt;Image Gallery&lt;/title&gt;
 
-\<link rel=\"stylesheet\" href=\"styles/layout.css\" media=\"screen\"
-/\>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/layout.css&quot; media=&quot;screen&quot;
+/&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Snapshots\</h1\>
+&lt;h1&gt;Snapshots&lt;/h1&gt;
 
-\<ul id=\"imagegallery\"\>
+&lt;ul id=&quot;imagegallery&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" title=\"A fireworks display\"\>
+&lt;a href=&quot;images/fireworks.jpg&quot; title=&quot;A fireworks display&quot;&gt;
 
-\<img src=\"images/thumbnail_fireworks.jpg\" alt=\"Fireworks\" /\>
+&lt;img src=&quot;images/thumbnail_fireworks.jpg&quot; alt=&quot;Fireworks&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/coffee.jpg\" title=\"A cup of black coffee\" \>
+&lt;a href=&quot;images/coffee.jpg&quot; title=&quot;A cup of black coffee&quot; &gt;
 
-\<img src=\"images/thumbnail_coffee.jpg\" alt=\"Coffee\" /\>
+&lt;img src=&quot;images/thumbnail_coffee.jpg&quot; alt=&quot;Coffee&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/rose.jpg\" title=\"A red, red rose\"\>
+&lt;a href=&quot;images/rose.jpg&quot; title=&quot;A red, red rose&quot;&gt;
 
-\<img src=\"images/thumbnail_rose.jpg\" alt=\"Rose\" /\>
+&lt;img src=&quot;images/thumbnail_rose.jpg&quot; alt=&quot;Rose&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" title=\"The famous clock\"\>
+&lt;a href=&quot;images/bigben.jpg&quot; title=&quot;The famous clock&quot;&gt;
 
-\<img src=\"images/thumbnail_bigben.jpg\" alt=\"Big Ben\" /\>
+&lt;img src=&quot;images/thumbnail_bigben.jpg&quot; alt=&quot;Big Ben&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-\<img id=\"placeholder\" src=\"images/placeholder.gif\" alt=\"my image
-gallery\" /\>
+&lt;img id=&quot;placeholder&quot; src=&quot;images/placeholder.gif&quot; alt=&quot;my image
+gallery&quot; /&gt;
 
-\<p id=\"description\"\>Choose an image.\</p\>
+&lt;p id=&quot;description&quot;&gt;Choose an image.&lt;/p&gt;
 
-\<script src=\"scripts/showPic.js\"\>\</script\>
+&lt;script src=&quot;scripts/showPic.js&quot;&gt;&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 The XHTML file contains an image and a paragraph solely for the use of
 the showPic script. It's preferable to separate the structure and the
@@ -7461,18 +7115,18 @@ Creating the elements and giving them attributes is relatively
 straightforward. We can use a combination of createElement,
 createTextNode, and setAttribute:
 
-var placeholder = document.createElement(\"img\");
-placeholder.setAttribute(\"id\",\"placeholder\");
-placeholder.setAttribute(\"src\",\"images/placeholder.gif\");
-placeholder.setAttribute(\"alt\",\"my image gallery\");
+var placeholder = document.createElement(&quot;img&quot;);
+placeholder.setAttribute(&quot;id&quot;,&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,&quot;images/placeholder.gif&quot;);
+placeholder.setAttribute(&quot;alt&quot;,&quot;my image gallery&quot;);
 
-var description = document.createElement(\"p\");
-description.setAttribute(\"id\",\"description\");
+var description = document.createElement(&quot;p&quot;);
+description.setAttribute(&quot;id&quot;,&quot;description&quot;);
 
-var desctext = document.createTextNode(\"Choose an image\");
+var desctext = document.createTextNode(&quot;Choose an image&quot;);
 
-> We can then put the text node inside the paragraph node using
-> appendChild:
+We can then put the text node inside the paragraph node using
+appendChild:
 
 description.appendChild(desctext);
 
@@ -7481,10 +7135,10 @@ document. As it happens, the gallery list is currently the last content
 element in the document. If we append the placeholder and description
 elements to the body element, they will then appear after the gallery
 list. We can reference the body tag as the first (and only) element with
-the tag name \"body\":
+the tag name &quot;body&quot;:
 
-document.getElementsByTagName(\"body\")\[0\].appendChild(placeholder);
-document.getElementsByTagName(\"body\")\[0\].appendChild(description);
+document.getElementsByTagName(&quot;body&quot;)&#91;0&#93;.appendChild(placeholder);
+document.getElementsByTagName(&quot;body&quot;)&#91;0&#93;.appendChild(description);
 
 Alternatively, we could use the HTML-DOM shortcut body:
 
@@ -7493,7 +7147,7 @@ document.body.appendChild(placeholder);
 document.body.appendChild(description);
 
 In either case, the placeholder and description elements will be
-inserted before the closing \</body\> tag.
+inserted before the closing &lt;/body\tag.
 
 This works, but only because the image gallery list is the last content
 element in the body. What if there was some more content after the image
@@ -7512,7 +7166,7 @@ new element before an existing element. You must specify three things:
 
 -   The parent of both elements Here's the syntax:
 
-parentElement.insertBefore(***newElement***,***targetElement***)
+parentElement.insertBefore(<b><i>newElement</i></b>,<b><i>targetElement</i></b>)
 
 You might not know what the parent element is. That's okay. You can
 always use the parentNode property of the target element. The parent of
@@ -7521,9 +7175,9 @@ any element node must be another element node.
 (Attribute nodes and text nodes can't have element nodes as children.)
 
 For instance, this is how you could insert the placeholder element
-before the image gallery list, which has the id \"imagegallery\":
+before the image gallery list, which has the id &quot;imagegallery&quot;:
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 
 gallery.parentNode.insertBefore(placeholder,gallery);
 
@@ -7540,7 +7194,7 @@ image gallery list.
 That's all well and good, but we want to add the newly created elements
 *after* the image gallery, not before it.
 
-> 3
+3
 
 Inserting a new element after an existing one
 
@@ -7567,7 +7221,7 @@ parent.insertBefore(newElement,targetElement.nextSibling);
 
 }
 
-> This function is using quite a few DOM methods and properties:
+This function is using quite a few DOM methods and properties:
 
 -   parentNode property
 
@@ -7618,15 +7272,15 @@ straightforward. Don't worry if isn't completely clear to you right now.
 As you become more familiar with the DOM methods and properties that
 insertAfter uses, it will make more sense.
 
-> Like addLoadEvent from Chapter 6, insertAfter is a handy function to
-> include in your scripts.
+Like addLoadEvent from Chapter 6, insertAfter is a handy function to
+include in your scripts.
 
 Using the insertAfter function
 
 We can use the insertAfter function in the preparePlaceholder function.
 First, we need a reference to the image gallery list:
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 
 Now we can insert placeholder, which refers to the newly created image,
 right after gallery: insertAfter(placeholder,gallery);
@@ -7643,16 +7297,16 @@ looks:
 
 function preparePlaceholder() {
 
-var placeholder = document.createElement(\"img\");
-placeholder.setAttribute(\"id\",\"placeholder\");
-placeholder.setAttribute(\"src\",\"images/placeholder.gif\");
-placeholder.setAttribute(\"alt\",\"my image gallery\"); var description
-= document.createElement(\"p\");
-description.setAttribute(\"id\",\"description\"); var desctext =
-document.createTextNode(\"Choose an image\");
+var placeholder = document.createElement(&quot;img&quot;);
+placeholder.setAttribute(&quot;id&quot;,&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,&quot;images/placeholder.gif&quot;);
+placeholder.setAttribute(&quot;alt&quot;,&quot;my image gallery&quot;); var description
+= document.createElement(&quot;p&quot;);
+description.setAttribute(&quot;id&quot;,&quot;description&quot;); var desctext =
+document.createTextNode(&quot;Choose an image&quot;);
 description.appendChild(desctext);
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 insertAfter(placeholder,gallery); insertAfter(description,placeholder);
 
 }
@@ -7665,17 +7319,17 @@ function preparePlaceholder() { if (!document.createElement) return
 false; if (!document.createTextNode) return false; if
 (!document.getElementById) return false;
 
-if (!document.getElementById(\"imagegallery\")) return false; var
-placeholder = document.createElement(\"img\");
-placeholder.setAttribute(\"id\",\"placeholder\");
-placeholder.setAttribute(\"src\",\"images/placeholder.gif\");
-placeholder.setAttribute(\"alt\",\"my image gallery\"); var description
-= document.createElement(\"p\");
-description.setAttribute(\"id\",\"description\"); var desctext =
-document.createTextNode(\"Choose an image\");
+if (!document.getElementById(&quot;imagegallery&quot;)) return false; var
+placeholder = document.createElement(&quot;img&quot;);
+placeholder.setAttribute(&quot;id&quot;,&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,&quot;images/placeholder.gif&quot;);
+placeholder.setAttribute(&quot;alt&quot;,&quot;my image gallery&quot;); var description
+= document.createElement(&quot;p&quot;);
+description.setAttribute(&quot;id&quot;,&quot;description&quot;); var desctext =
+document.createTextNode(&quot;Choose an image&quot;);
 description.appendChild(desctext);
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 insertAfter(placeholder,gallery); insertAfter(description,placeholder);
 }
 
@@ -7702,18 +7356,18 @@ The prepareGallery function handles events. The function loops through
 all the links in the image gallery list. When one of these links is
 activated, the showPic function is called.
 
-> The showPic swaps out the placeholder image for one of the images
-> linked from the gallery list.
+The showPic swaps out the placeholder image for one of the images
+linked from the gallery list.
 
 To initiate the functionality, the two functions preparePlaceholder and
 prepareGallery are called using the addLoadEvent function:
 
 addLoadEvent(preparePlaceholder); addLoadEvent(prepareGallery);
 
-> This is how the finished showPic.js file looks:
+This is how the finished showPic.js file looks:
 
 function addLoadEvent(func) { var oldonload = window.onload; if (typeof
-window.onload != \'function\') { window.onload = func;
+window.onload != &#39;function&#39;) { window.onload = func;
 
 } else {
 
@@ -7740,17 +7394,17 @@ parent.insertBefore(newElement,targetElement.nextSibling);
 function preparePlaceholder() { if (!document.createElement) return
 false; if (!document.createTextNode) return false; if
 (!document.getElementById) return false; if
-(!document.getElementById(\"imagegallery\")) return false; var
-placeholder = document.createElement(\"img\");
-placeholder.setAttribute(\"id\",\"placeholder\");
-placeholder.setAttribute(\"src\",\"images/placeholder.gif\");
-placeholder.setAttribute(\"alt\",\"my image gallery\"); var description
-= document.createElement(\"p\");
-description.setAttribute(\"id\",\"description\"); var desctext =
-document.createTextNode(\"Choose an image\");
+(!document.getElementById(&quot;imagegallery&quot;)) return false; var
+placeholder = document.createElement(&quot;img&quot;);
+placeholder.setAttribute(&quot;id&quot;,&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,&quot;images/placeholder.gif&quot;);
+placeholder.setAttribute(&quot;alt&quot;,&quot;my image gallery&quot;); var description
+= document.createElement(&quot;p&quot;);
+description.setAttribute(&quot;id&quot;,&quot;description&quot;); var desctext =
+document.createTextNode(&quot;Choose an image&quot;);
 description.appendChild(desctext);
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 insertAfter(placeholder,gallery); insertAfter(description,placeholder);
 
 }
@@ -7759,14 +7413,14 @@ function prepareGallery() {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false; if
-(!document.getElementById(\"imagegallery\")) return false; var gallery =
-document.getElementById(\"imagegallery\"); var links =
-gallery.getElementsByTagName(\"a\"); for ( var i=0; i \< links.length;
-i++) { links\[i\].onclick = function() { return showPic(this);
+(!document.getElementById(&quot;imagegallery&quot;)) return false; var gallery =
+document.getElementById(&quot;imagegallery&quot;); var links =
+gallery.getElementsByTagName(&quot;a&quot;); for ( var i=0; i &lt; links.length;
+i++) { links&#91;i&#93;.onclick = function() { return showPic(this);
 
 }
 
-links\[i\].onkeypress = links\[i\].onclick;
+links&#91;i&#93;.onkeypress = links&#91;i&#93;.onclick;
 
 }
 
@@ -7774,19 +7428,19 @@ links\[i\].onkeypress = links\[i\].onclick;
 
 function showPic(whichpic) {
 
-if (!document.getElementById(\"placeholder\")) return true; var source =
-whichpic.getAttribute(\"href\"); var placeholder =
-document.getElementById(\"placeholder\");
-placeholder.setAttribute(\"src\",source); if
-(!document.getElementById(\"description\")) return false; if
-(whichpic.getAttribute(\"title\")) { var text =
-whichpic.getAttribute(\"title\");
+if (!document.getElementById(&quot;placeholder&quot;)) return true; var source =
+whichpic.getAttribute(&quot;href&quot;); var placeholder =
+document.getElementById(&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,source); if
+(!document.getElementById(&quot;description&quot;)) return false; if
+(whichpic.getAttribute(&quot;title&quot;)) { var text =
+whichpic.getAttribute(&quot;title&quot;);
 
-} else { var text = \"\";
+} else { var text = &quot;&quot;;
 
 }
 
-var description = document.getElementById(\"description\"); if
+var description = document.getElementById(&quot;description&quot;); if
 (description.firstChild.nodeType == 3) {
 description.firstChild.nodeValue = text;
 
@@ -7794,7 +7448,7 @@ description.firstChild.nodeValue = text;
 
 }
 
-> CREATING MARKUP ON THE FLY
+CREATING MARKUP ON THE FLY
 
 addLoadEvent(preparePlaceholder); addLoadEvent(prepareGallery);
 
@@ -7803,75 +7457,75 @@ diminished. The gallery.html file now contains just a single hook, which
 is being used by the JavaScript and the CSS. This hook is the id
 attribute of the image gallery list:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html\>
+&lt;html&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\"
-/\>
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;
+/&gt;
 
-\<title\>Image Gallery\</title\>
+&lt;title&gt;Image Gallery&lt;/title&gt;
 
-\<link rel=\"stylesheet\" href=\"styles/layout.css\" media=\"screen\"
-/\>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/layout.css&quot; media=&quot;screen&quot;
+/&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Snapshots\</h1\>
+&lt;h1&gt;Snapshots&lt;/h1&gt;
 
-\<ul id=\"imagegallery\"\>
+&lt;ul id=&quot;imagegallery&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/fireworks.jpg\" title=\"A fireworks display\"\>
+&lt;a href=&quot;images/fireworks.jpg&quot; title=&quot;A fireworks display&quot;&gt;
 
-\<img src=\"images/thumbnail_fireworks.jpg\" alt=\"Fireworks\" /\>
+&lt;img src=&quot;images/thumbnail_fireworks.jpg&quot; alt=&quot;Fireworks&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/coffee.jpg\" title=\"A cup of black coffee\" \>
+&lt;a href=&quot;images/coffee.jpg&quot; title=&quot;A cup of black coffee&quot; &gt;
 
-\<img src=\"images/thumbnail_coffee.jpg\" alt=\"Coffee\" /\>
+&lt;img src=&quot;images/thumbnail_coffee.jpg&quot; alt=&quot;Coffee&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/rose.jpg\" title=\"A red, red rose\"\>
+&lt;a href=&quot;images/rose.jpg&quot; title=&quot;A red, red rose&quot;&gt;
 
-\<img src=\"images/thumbnail_rose.jpg\" alt=\"Rose\" /\>
+&lt;img src=&quot;images/thumbnail_rose.jpg&quot; alt=&quot;Rose&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/bigben.jpg\" title=\"The famous clock\"\>
+&lt;a href=&quot;images/bigben.jpg&quot; title=&quot;The famous clock&quot;&gt;
 
-\<img src=\"images/thumbnail_bigben.jpg\" alt=\"Big Ben\" /\>
+&lt;img src=&quot;images/thumbnail_bigben.jpg&quot; alt=&quot;Big Ben&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-\<script src=\"scripts/showPic.js\"\>\</script\>
+&lt;script src=&quot;scripts/showPic.js&quot;&gt;&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 The structure, style, and behavior are now separated.
 
@@ -7884,7 +7538,7 @@ document. The JavaScript has also prepared all the links in the image
 gallery list. Click any of the thumbnails to see the image gallery in
 action.
 
-So far, the new content we\'ve been creating has not really been all
+So far, the new content we&#39;ve been creating has not really been all
 that new to the page. The title attributes already existed in our markup
 when the page loaded. The new paragraphs we added with createElement
 were based on markup embedded in our scripts. Everything that we created
@@ -7939,29 +7593,29 @@ code.
 To work with an example, start by creating the following HTML file and
 call it ajax.html:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Ajax\</title\>
+&lt;title&gt;Ajax&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<div id=\"new\"\>\</div\>
+&lt;div id=&quot;new&quot;&gt;&lt;/div&gt;
 
-\<script src=\"scripts/addLoadEvent.js\"\>\</script\>
+&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"scripts/getHTTPObject.js\"\>\</script\>
+&lt;script src=&quot;scripts/getHTTPObject.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"scripts/getNewContent.js\"\>\</script\> \</body\>
+&lt;script src=&quot;scripts/getNewContent.js&quot;&gt;&lt;/script\&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 This HTML file includes a scripts folder with the addLoadEvent.js, as
 well as two new scripts: getHTTPObject.js and getNewContent.js.
@@ -7973,14 +7627,14 @@ This was loaded asynchronously!
 
 This file will act as our server-side script. In most cases, you'll
 probably have some script that does something fancy with the request,
-but this will do for the example. Now let\'s fill the getHTTPObject.js
+but this will do for the example. Now let&#39;s fill the getHTTPObject.js
 and getNewContent.js scripts.
 
 Microsoft first implemented something called XMLHTTP as one of its
 proprietary ActiveX objects in Internet Explorer 5. Here's how you would
 create a new instance of the object in Internet Explorer:
 
-var request = new ActiveXObject(\"Msxml2.XMLHTTP.3.0\");
+var request = new ActiveXObject(&quot;Msxml2.XMLHTTP.3.0&quot;);
 
 Other browsers achieve the same result by using XMLHttpRequest:
 
@@ -7993,14 +7647,14 @@ getHTTPObject.js file:
 
 function getHTTPObject() {
 
-if (typeof XMLHttpRequest == \"undefined\") XMLHttpRequest = function ()
+if (typeof XMLHttpRequest == &quot;undefined&quot;) XMLHttpRequest = function ()
 {
 
-try { return new ActiveXObject(\"Msxml2.XMLHTTP.6.0\"); } catch (e) {}
+try { return new ActiveXObject(&quot;Msxml2.XMLHTTP.6.0&quot;); } catch (e) {}
 
-try { return new ActiveXObject(\"Msxml2.XMLHTTP.3.0\"); } catch (e) {}
+try { return new ActiveXObject(&quot;Msxml2.XMLHTTP.3.0&quot;); } catch (e) {}
 
-try { return new ActiveXObject(\"Msxml2.XMLHTTP\"); } catch (e) {}
+try { return new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;); } catch (e) {}
 return false;
 
 }
@@ -8028,14 +7682,14 @@ Add the following to your getNewContent.js file:
 
 function getNewContent() { var request = getHTTPObject(); if (request) {
 
-request.open( \"GET\", \"example.txt\", true );
+request.open( &quot;GET&quot;, &quot;example.txt&quot;, true );
 request.onreadystatechange = function() { if (request.readyState == 4) {
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
 var txt = document.createTextNode(request.responseText);
 para.appendChild(txt);
 
-document.getElementById(\'new\').appendChild(para);
+document.getElementById(&#39;new&#39;).appendChild(para);
 
 } };
 
@@ -8043,7 +7697,7 @@ request.send(null);
 
 } else {
 
-alert(\'Sorry, your browser doesn\\\'t support XMLHttpRequest\');
+alert(&#39;Sorry, your browser doesn\\&#39;t support XMLHttpRequest&#39;);
 
 } }
 
@@ -8052,7 +7706,7 @@ addLoadEvent(getNewContent);
 When the page loads, this will initiate a GET request to a file called
 example.txt in the same directory as the ajax.html file:
 
-request.open( \"GET\", \"example.txt\", true );
+request.open( &quot;GET&quot;, &quot;example.txt&quot;, true );
 
 The onreadystatechange property is the event handler that is triggered
 when the server sends a response back to the XMLHttpRequest object. You
@@ -8070,9 +7724,9 @@ Alternatively, you can reference a function. The following code will
 cause a function called doSomething to be executed when
 onreadystatechange is triggered:
 
-■ **Note** When assigning to the onreadystatechange property, remember
+■ <b>Note</bWhen assigning to the onreadystatechange property, remember
 not to include the parentheses on the end of the function. You want to
-assign a reference to the function itself, not to the function\'s
+assign a reference to the function itself, not to the function&#39;s
 result.
 
 request.onreadystatechange = doSomething;
@@ -8107,7 +7761,7 @@ data sent by the server.
 
 You can access this data as a string of text provided by the
 responseText property. If the data is sent back with a Content-Type
-header of \"text/xml\", you can also access the responseXML property,
+header of &quot;text/xml&quot;, you can also access the responseXML property,
 which is effectively a DocumentFragment. You can use all the usual DOM
 methods to manipulate this DocumentFragment. This is where the XML part
 of XMLHttpRequest comes from.
@@ -8120,26 +7774,26 @@ request.onreadystatechange = function() {
 
 if (request.readyState == 4) {
 
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
 var txt = document.createTextNode(request.responseText);
 para.appendChild(txt);
 
-document.getElementById(\'new\').appendChild(para);
+document.getElementById(&#39;new&#39;).appendChild(para);
 
 } }
 
-> The text in the example.txt file then appears in the div with the id
-> attribute of new.
+The text in the example.txt file then appears in the div with the id
+attribute of new.
 
-■ **Caution** One important thing to remember is the same origin
+■ <b>Caution</bOne important thing to remember is the same origin
 security policy. Requests using the
 
 XMLHttpRequest object are limited to the same domain where the HTML file
-resides. You can\'t make a request from one domain to another. Also,
+resides. You can&#39;t make a request from one domain to another. Also,
 some browsers restrict requests by protocol. In Chrome, the example
 produces an error "Cross origin requests are only supported for HTTP" if
-you\'re trying to load example.txt from your hard drive using the
+you&#39;re trying to load example.txt from your hard drive using the
 [file:// protocol.](file://protocol/)
 
 An easy thing to forget is the asynchronous aspect of the request. Once
@@ -8154,19 +7808,19 @@ var request = getHTTPObject();
 
 if (request) {
 
-request.open( \"GET\", \"example.txt\", true );
+request.open( &quot;GET&quot;, &quot;example.txt&quot;, true );
 request.onreadystatechange = function() {
 
 if (request.readyState == 4) {
 
-alert(\"Response Received\");
+alert(&quot;Response Received&quot;);
 
-var para = document.createElement(\"p\");
+var para = document.createElement(&quot;p&quot;);
 
 var txt = document.createTextNode(request.responseText);
 para.appendChild(txt);
 
-document.getElementById(\'new\').appendChild(para);
+document.getElementById(&#39;new&#39;).appendChild(para);
 
 } };
 
@@ -8174,19 +7828,19 @@ request.send(null);
 
 } else {
 
-alert(\'Sorry, your browser doesn\\\'t support XMLHttpRequest\');
+alert(&#39;Sorry, your browser doesn\\&#39;t support XMLHttpRequest&#39;);
 
 }
 
-alert(\"Function Done\");
+alert(&quot;Function Done&quot;);
 
 }
 
 addLoadEvent(getNewContent);
 
-If you try to load your page now, the \"Function Done\" alert will most
-likely occur *before* the \"Request Done\" alert, because the script
-won\'t wait for send to complete. I say "most likely," because it
+If you try to load your page now, the &quot;Function Done&quot; alert will most
+likely occur *before* the &quot;Request Done&quot; alert, because the script
+won&#39;t wait for send to complete. I say "most likely," because it
 depends on how fast the server responds. If you're loading the file
 locally off your hard drive, it will be almost instantaneous. If you're
 loading it in a mobile browser, you're going to see a long delay before
@@ -8194,33 +7848,33 @@ the response is received.
 
 When the remainder of your script depends on the response, be sure to
 execute that portion of the script from within the function assigned to
-the onreadystatechange property, as we\'ve done in the example when
+the onreadystatechange property, as we&#39;ve done in the example when
 appending the DOM elements.
 
 The XMLHttpRequest object is really a simple and unimpressive object,
 but with a little imagination, it can be put to astounding use.
 
-> **AJAX CHALLENGES**
+<b>AJAX CHALLENGES</b>
 >
-> On the whole, I think that the Ajax methodology brings a lot of
-> benefits. It can improve the usability of websites by providing very
-> fast responses to user actions without refreshing the whole page. At
-> the same time, this new approach also presents a number of challenges.
+On the whole, I think that the Ajax methodology brings a lot of
+benefits. It can improve the usability of websites by providing very
+fast responses to user actions without refreshing the whole page. At
+the same time, this new approach also presents a number of challenges.
 >
-> One of the features of Ajax applications is a reduced number of
-> individual page loads. The downside to this state-saving technology is
-> that it interferes with browsing conventions such as using the back
-> button or being able to bookmark individual pages.
+One of the features of Ajax applications is a reduced number of
+individual page loads. The downside to this state-saving technology is
+that it interferes with browsing conventions such as using the back
+button or being able to bookmark individual pages.
 >
-> The ability to update just part of a page also alters user
-> expectations. Ideally, every action taken by the user should have a
-> clear and obvious result. Web designers must rise to the challenge of
-> providing meaningful feedback when the user initiates a request to the
-> server and when the server provides a response.
+The ability to update just part of a page also alters user
+expectations. Ideally, every action taken by the user should have a
+clear and obvious result. Web designers must rise to the challenge of
+providing meaningful feedback when the user initiates a request to the
+server and when the server provides a response.
 >
-> The key to building a successful Ajax application is to treat it like
-> adding any other JavaScript enhancement. Apply progressive enhancement
-> in order to provide graceful degradation.
+The key to building a successful Ajax application is to treat it like
+adding any other JavaScript enhancement. Apply progressive enhancement
+in order to provide graceful degradation.
 
 Progressive enhancement with Ajax
 
@@ -8288,8 +7942,8 @@ handler, the default action--- submitting the whole page---can be
 canceled and replaced with a new action: sending the data to the server
 via XMLHttpRequest.
 
-> Once the login form has been Hijaxed, the login process becomes more
-> convenient for the user.
+Once the login form has been Hijaxed, the login process becomes more
+convenient for the user.
 
 Response times are increased, and lengthy page refreshes are eliminated.
 Crucially, however, if
@@ -8306,8 +7960,8 @@ slow when they rely on page refreshes, rather than Ajax, every time the
 user initiates an action. But a slower degraded experience is still
 better than no experience at all.
 
-> In Chapter 12, we\'ll look at Hijax in practice when we implement a
-> small website from start to finish.
+In Chapter 12, we&#39;ll look at Hijax in practice when we implement a
+small website from start to finish.
 
 What's next?
 
@@ -8341,7 +7995,7 @@ You'll be able to use this function in many situations where you need to
 add markup to a document.
 
 You also got a quick introduction to Ajax and asynchronous requests,
-which you\'ll see more of in Chapter 12.
+which you&#39;ll see more of in Chapter 12.
 
 The next chapter presents some more examples of adding markup to
 documents. You'll see how to create little nuggets of useful information
@@ -8378,7 +8032,7 @@ you are using the DOM inappropriately.
 As discussed in Chapter 5, you should always consider two issues
 associated with JavaScript:
 
--   **Progressive enhancement**: The principle of progressive
+-   <b>Progressive enhancement</b>: The principle of progressive
     enhancement is based on the idea that you should begin with your
     core content. The content is structured using markup. The marked-up
     content is then enhanced. The enhancement might be stylistic, using
@@ -8386,7 +8040,7 @@ associated with JavaScript:
     adding core content with the DOM, you are adding it too late. The
     content should be part of the initial document.
 
--   **Graceful degradation**: The corollary to progressive enhancement
+-   <b>Graceful degradation</b>: The corollary to progressive enhancement
     is graceful degradation. If you have progressively enhanced your
     content, then it follows that your stylistic and behavioral
     enhancements will degrade gracefully. Visitors to your website who
@@ -8396,7 +8050,7 @@ associated with JavaScript:
     content. This may seem like a restriction, but it isn't. There are
     plenty of other uses for generating content with the DOM.
 
-> ENHANCING CONTENT
+ENHANCING CONTENT
 
 Making the invisible visible
 
@@ -8407,7 +8061,7 @@ changing the fonts and colors used to display content. Using CSS, you
 can make block-level elements display as if they were inline. That was
 demonstrated with the list containing the thumbnail images in the markup
 for the JavaScript image gallery in Chapter 6. The list items, contained
-within \<li\> tags, would normally be displayed on separate lines. By
+within &lt;li\tags, would normally be displayed on separate lines. By
 specifying a value of inline for the display property of each list item,
 the list items appear horizontally instead of vertically.
 
@@ -8434,8 +8088,8 @@ When it comes to displaying attributes, you're at the mercy of the
 browser right now. With a little bit of DOM scripting, you can wrest
 control back into your own hands.
 
-> Let's look at a few variations on the concept of creating "widgets"
-> for web pages using the DOM:
+Let's look at a few variations on the concept of creating "widgets"
+for web pages using the DOM:
 
 -   Retrieve information that is hidden in attributes.
 
@@ -8465,54 +8119,54 @@ It is an API that can be used to navigate HTML and XML documents.
 
 This is how you might mark it up:
 
-\<h1\>What is the Document Object Model?\</h1\>
+&lt;h1&gt;What is the Document Object Model?&lt;/h1&gt;
 
-\<p\>
+&lt;p&gt;
 
-The \<abbr title=\"World Wide Web Consortium\"\>W3C\</abbr\> defines
-➥the \<abbr title=\"Document Object Model\"\>DOM\</abbr\> as:
+The &lt;abbr title=&quot;World Wide Web Consortium&quot;&gt;W3C&lt;/abbr\defines
+➥the &lt;abbr title=&quot;Document Object Model&quot;&gt;DOM&lt;/abbr\as:
 
-\</p\>
+&lt;/p&gt;
 
-\<blockquote cite=\"<http://www.w3.org/DOM>/\"\>
+&lt;blockquote cite=&quot;<http://www.w3.org/DOM>/&quot;&gt;
 
-\<p\>
+&lt;p&gt;
 
 A platform- and language-neutral interface that will allow programs ➥and
 scripts to dynamically access and update the ➥content, structure and
 style of documents.
 
-\</p\>
+&lt;/p&gt;
 
-\</blockquote\>
+&lt;/blockquote&gt;
 
-\<p\>
+&lt;p&gt;
 
-It is an \<abbr title=\"Application Programming
-Interface\"\>API\</abbr\>
+It is an &lt;abbr title=&quot;Application Programming
+Interface&quot;&gt;API&lt;/abbr&gt;
 
-➥that can be used to navigate \<abbr title=\"HyperText Markup
-Language\"\> ➥HTML\</abbr\> and \<abbr title=\"eXtensible Markup
-Language\"\>XML ➥\</abbr\> documents.
+➥that can be used to navigate &lt;abbr title=&quot;HyperText Markup
+Language&quot;\➥HTML&lt;/abbr\and &lt;abbr title=&quot;eXtensible Markup
+Language&quot;&gt;XML ➥&lt;/abbr\documents.
 
-\</p\>
+&lt;/p&gt;
 
 There are quite a few abbreviations in there. They are marked up using
-the \<abbr\> tag.
+the &lt;abbr\tag.
 
-■ **Note** There's a lot of confusion surrounding the difference between
-the \<abbr\> tag and the \<acronym\> tag. An abbreviation is any
+■ <b>Note</bThere's a lot of confusion surrounding the difference between
+the &lt;abbr\tag and the &lt;acronym\tag. An abbreviation is any
 shortened version of a word or phrase. An acronym is an abbreviation
 that is spoken as a single word. DOM is an acronym if you are saying it
 as a word, "dom", rather than saying each letter, "D.O.M." All acronyms
 are abbreviations, but not all abbreviations are acronyms. As a result,
-the \<acronym\> tag has become obsolete in HTML5, and \<abbr\> should be
+the &lt;acronym\tag has become obsolete in HTML5, and &lt;abbr\should be
 used instead.
 
 Now that you have your content structured in a fragment of markup, you
-can put it into context. This fragment goes inside a \<body\> tag. This
+can put it into context. This fragment goes inside a &lt;body\tag. This
 body element, along with a corresponding head element, goes inside the
-\<html\> tag.
+&lt;html\tag.
 
 The markup: HTML, XHTML, or HTML5
 
@@ -8526,62 +8180,62 @@ stricter about the markup it allows, so it encourages me to write
 cleaner markup. For instance, with HTML you can write tags and
 attributes in uppercase or lowercase:
 
-\<p\> or \<P\>; XHTML insists on lowercase for all tags and attributes.
+&lt;p\or &lt;P&gt;; XHTML insists on lowercase for all tags and attributes.
 
 HTML also allows you to sometimes leave off the closing tags. You can
-omit closing \</p\> and \</li\> tags. This may seem to offer
+omit closing &lt;/p\and &lt;/li\tags. This may seem to offer
 flexibility, but it actually makes it harder to track down problems when
 browsers render your documents in unexpected ways. With XHTML, all tags
-must be closed. That includes stand-alone elements like \<img\> and
-\<br\>, which must be written with a closing slash: \<img /\> and \<br
-/\>. For backward compatibility with very old browsers, you should put a
+must be closed. That includes stand-alone elements like &lt;img\and
+&lt;br&gt;, which must be written with a closing slash: &lt;img /\and &lt;br
+/&gt;. For backward compatibility with very old browsers, you should put a
 space before the closing slash. By using a stricter DOCTYPE, validation
 tools can become more useful in tracking down errors.
 
 To use the XHTML DOCTYPE, you include this at the beginning of your
 document:
 
-\<!DOCTYPE html
+&lt;!DOCTYPE html
 
-PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
 
-\"[http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"](http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd)\>
+&quot;[http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;](http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd)&gt;
 
 Another option that you may like even better is to use the HTML5
 DOCTYPE. The HTML5 DOCTYPE is simple:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
 It's just 15 characters. Besides being short enough to remember and type
 by hand, it also supports both the HTML and XHTML markup methodologies.
 For more on HTML5, see Chapter 11.
 
-■ **Note** In some browsers the DOCTYPE is used to determine if the
+■ <b>Note</bIn some browsers the DOCTYPE is used to determine if the
 browser should use standards mode or quirks mode when it renders the
-page. Quirks mode tells the browser to emulate some \"quirky\" behaviors
+page. Quirks mode tells the browser to emulate some &quot;quirky&quot; behaviors
 introduced by legacy browsers and allows poorly written pages to still
 function properly in newer browsers. As a general rule, you should stick
 to standards mode and avoid quirks mode. Thankfully, the HTML5 DOCTYPE
 defaults to standards mode.
 
-> **XHTML5**
+<b>XHTML5</b>
 >
-> If you want to be really strict about things, you can go the XHTML5
-> route and serve your pages with the application/xhtml+xml MIME type,
-> but be forewarned.
+If you want to be really strict about things, you can go the XHTML5
+route and serve your pages with the application/xhtml+xml MIME type,
+but be forewarned.
 >
-> XHTML5 is basically HTML5 written using strict XML rules. Technically,
-> web browsers should treat any XHTML5 documents as XML rather than
-> HTML. In practice, you need to send the correct MIME type,
-> application/xhtml+xml, in the headers of your document. Some browsers
-> don't understand this MIME type, so it is usually sent only after some
-> server-side browser sniffing. or in the worst case, the page won\'t
-> render at all. As a result, most XHTML pages are still served as HTML
-> anyway.
+XHTML5 is basically HTML5 written using strict XML rules. Technically,
+web browsers should treat any XHTML5 documents as XML rather than
+HTML. In practice, you need to send the correct MIME type,
+application/xhtml+xml, in the headers of your document. Some browsers
+don't understand this MIME type, so it is usually sent only after some
+server-side browser sniffing. or in the worst case, the page won&#39;t
+render at all. As a result, most XHTML pages are still served as HTML
+anyway.
 >
-> If you are using XHTML5 with the correct MIME type, remember that
-> besides not working in some browsers, some HTML-DOM methods and
-> properties, like document.write, will no longer work. The core
+If you are using XHTML5 with the correct MIME type, remember that
+besides not working in some browsers, some HTML-DOM methods and
+properties, like document.write, will no longer work. The core
 
 DOM methods will continue to work just fine. They will work on any valid
 XML document, not just XHTML5.
@@ -8589,32 +8243,32 @@ XML document, not just XHTML5.
 This is how the content looks when it is marked up as a complete HTML5
 document:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Explaining the Document Object Model\</title\>
+&lt;title&gt;Explaining the Document Object Model&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>What is the Document Object Model?\</h1\> \<p\>
+&lt;h1&gt;What is the Document Object Model?&lt;/h1\&lt;p&gt;
 
-The \<abbr title=\"World Wide Web Consortium\"\>W3C\</abbr\> defines the
-\<abbr title=\"Document
+The &lt;abbr title=&quot;World Wide Web Consortium&quot;&gt;W3C&lt;/abbr\defines the
+&lt;abbr title=&quot;Document
 
-Object Model\"\>DOM\</abbr\> as:
+Object Model&quot;&gt;DOM&lt;/abbr\as:
 
-\</p\>
+&lt;/p&gt;
 
-\<blockquote cite=\"[http://www.w3.org/DOM/\"\>](http://www.w3.org/DOM)
+&lt;blockquote cite=&quot;[http://www.w3.org/DOM/&quot;&gt;](http://www.w3.org/DOM)
 
-\<p\>
+&lt;p&gt;
 
 A platform- and language-neutral interface that will allow programs
 
@@ -8622,24 +8276,24 @@ A platform- and language-neutral interface that will allow programs
 
 ➥content, structure and style of documents.
 
-\</p\>
+&lt;/p&gt;
 
-\</blockquote\>
+&lt;/blockquote&gt;
 
-\<p\>
+&lt;p&gt;
 
-It is an \<abbr title=\"Application Programming
-Interface\"\>API\</abbr\>
+It is an &lt;abbr title=&quot;Application Programming
+Interface&quot;&gt;API&lt;/abbr&gt;
 
-➥that can be used to navigate \<abbr title=\"HyperText Markup
-Language\"\> ➥HTML\</abbr\> and \<abbr title=\"eXtensible Markup
-Language\"\>XML ➥\</abbr\> documents.
+➥that can be used to navigate &lt;abbr title=&quot;HyperText Markup
+Language&quot;\➥HTML&lt;/abbr\and &lt;abbr title=&quot;eXtensible Markup
+Language&quot;&gt;XML ➥&lt;/abbr\documents.
 
-\</p\>
+&lt;/p&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 Save this page as explanation.html.
 
@@ -8652,12 +8306,12 @@ The CSS
 Even though there is no style sheet attached to this document, styles
 are still being applied. Every browser applies its own default styling.
 
-> You can override the browser's default styles by applying your own
-> style sheet. Here's an example:
+You can override the browser's default styles by applying your own
+style sheet. Here's an example:
 
 body {
 
-font-family: \"Helvetica\",\"Arial\",sans-serif; font-size: 10pt;
+font-family: &quot;Helvetica&quot;,&quot;Arial&quot;,sans-serif; font-size: 10pt;
 
 } abbr {
 
@@ -8666,10 +8320,10 @@ text-decoration: none; border: 0; font-style: normal;
 }
 
 Save this as typography.css and put it in a folder called styles. Now
-add this line to the \<head\> of explanation.html:
+add this line to the &lt;head\of explanation.html:
 
-\<link rel=\"stylesheet\" media=\"screen\"
-href=\"styles/typography.css\" /\>
+&lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot;
+href=&quot;styles/typography.css&quot; /&gt;
 
 If you load explanation.html in a web browser, you should see a
 difference. The text is now displayed with a different font, and
@@ -8687,34 +8341,34 @@ can override the default behavior with the DOM.
 
 Displaying abbreviations
 
-It would be nice to gather all the title values from the \<abbr\> tags
+It would be nice to gather all the title values from the &lt;abbr\tags
 and display them on the page. A *definition list* would be the perfect
-way to display the titles and the values contained in the \<abbr\> tags.
+way to display the titles and the values contained in the &lt;abbr\tags.
 This is how the definition list would be written:
 
-\<dl\>
+&lt;dl&gt;
 
-\<dt\>W3C\</dt\>
+&lt;dt&gt;W3C&lt;/dt&gt;
 
-\<dd\>World Wide Web Consortium\</dd\>
+&lt;dd&gt;World Wide Web Consortium&lt;/dd&gt;
 
-\<dt\>DOM\</dt\>
+&lt;dt&gt;DOM&lt;/dt&gt;
 
-\<dd\>Document Object Model\</dd\>
+&lt;dd&gt;Document Object Model&lt;/dd&gt;
 
-\<dt\>API\</dt\>
+&lt;dt&gt;API&lt;/dt&gt;
 
-\<dd\>Application Programming Interface\</dd\>
+&lt;dd&gt;Application Programming Interface&lt;/dd&gt;
 
-\<dt\>HTML\</dt\>
+&lt;dt&gt;HTML&lt;/dt&gt;
 
-\<dd\>HyperText Markup Language\</dd\>
+&lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
 
-\<dt\>XML\</dt\>
+&lt;dt&gt;XML&lt;/dt&gt;
 
-\<dd\>eXtensible Markup Language\</dd\>
+&lt;dd&gt;eXtensible Markup Language&lt;/dd&gt;
 
-\</dl\>
+&lt;/dl&gt;
 
 You can create this list using the DOM. This is how:
 
@@ -8756,12 +8410,12 @@ function displayAbbreviations() {
 
 Before we can begin looping through all the abbreviations in the
 document, we must first find them. This is easily done with
-getElementsByTagName. Pass this method the value \" abbr\". The method
+getElementsByTagName. Pass this method the value &quot; abbr&quot;. The method
 will return a node set containing all the abbr element nodes in the
 document. (As mentioned in previous chapters, a *node set* is an array
 of nodes.) Store this array in a variable called abbreviations:
 
-var abbreviations = document.getElementsByTagName(\"abbr\");
+var abbreviations = document.getElementsByTagName(&quot;abbr&quot;);
 
 Now we can start looping through the abbreviations array. But before we
 do that, let's run a little test. We know that there are abbreviations
@@ -8775,13 +8429,13 @@ the length property of the abbreviations array. If abbreviations.length
 is less than one, there are no abbr elements in the document. If that is
 the case, the function should return a Boolean value:
 
-if (abbreviations.length \< 1) return false;
+if (abbreviations.length &lt; 1) return false;
 
 If there are no abbr elements in the document, the function will finish
 at this point.
 
 The next step is to store information from each abbr element. We'll need
-to store the text within the \<abbr\> tags as well as the value of each
+to store the text within the &lt;abbr\tags as well as the value of each
 title attribute. When you want to store a series of values like this, an
 array is the ideal storage medium. Define a new array called defs:
 
@@ -8789,12 +8443,12 @@ var defs = new Array();
 
 Now loop through the abbreviations array:
 
-for (var i=0; i\<abbreviations.length; i++) {
+for (var i=0; i&lt;abbreviations.length; i++) {
 
 To get the definition provided by the current abbreviation, use the
 getAttribute method on the title attribute. Store the value in a
 variable called definition: var definition =
-abbreviations\[i\].getAttribute(\"title\");
+abbreviations&#91;i&#93;.getAttribute(&quot;title&quot;);
 
 To get the abbreviation within the abbr tag, use the nodeValue property.
 We want the value of the text node within the abbr element. In all the
@@ -8802,58 +8456,58 @@ occurrences of the abbr element in explanation.html, the text node is
 the first (and only) node within the element; in other words, the text
 node is the first child of the abbr element node:
 
-abbreviations\[i\].firstChild
+abbreviations&#91;i&#93;.firstChild
 
 However, it's possible that the text node could be nested within other
 elements. Consider this piece of markup:
 
-\<abbr title=\"Document Object Model\"\>\<em\>DOM\</em\>\</abbr\>
+&lt;abbr title=&quot;Document Object Model&quot;&gt;&lt;em&gt;DOM&lt;/em&gt;&lt;/abbr&gt;
 
 In this case, the first child of the abbr element node is the em element
 node. The text node is the second (and last) node within the abbr
 element. Instead of using the firstChild property, it's safer to use the
 lastChild property:
 
-abbreviations\[i\].lastChild
+abbreviations&#91;i&#93;.lastChild
 
 Get the nodeValue property of this text node and assign it to the
 variable key:
 
-var key = abbreviations\[i\].lastChild.nodeValue;
+var key = abbreviations&#91;i&#93;.lastChild.nodeValue;
 
 Now we have two variables: definition and key. These are the values that
 we want to store in the defs array. We can store both values by setting
 one of them as the key and the other as the value:
 
-defs\[key\] = definition;
+defs&#91;key&#93; = definition;
 
-The first element of the defs array has the key \" W3C\" and the value
-\"World Wide Web Consortium\", the second element of the defs array has
-the key \"DOM\" and the value \"Document Object Model\", and so on.
+The first element of the defs array has the key &quot; W3C&quot; and the value
+&quot;World Wide Web Consortium&quot;, the second element of the defs array has
+the key &quot;DOM&quot; and the value &quot;Document Object Model&quot;, and so on.
 
 This is the finished loop:
 
-for (var i=0; i\<abbreviations.length; i++) {
+for (var i=0; i&lt;abbreviations.length; i++) {
 
-var definition = abbreviations\[i\].getAttribute(\"title\");
+var definition = abbreviations&#91;i&#93;.getAttribute(&quot;title&quot;);
 
-var key = abbreviations\[i\].lastChild.nodeValue;
+var key = abbreviations&#91;i&#93;.lastChild.nodeValue;
 
-defs\[key\] = definition; }
+defs&#91;key&#93; = definition; }
 
 To improve the readability of the loop, you could assign the value of
-abbreviations\[i\], the current iteration of the abbreviations array, to
+abbreviations&#91;i&#93;, the current iteration of the abbreviations array, to
 a variable called current_abbr:
 
-for (var i=0; i\<abbreviations.length; i++) {
+for (var i=0; i&lt;abbreviations.length; i++) {
 
-var current_abbr = abbreviations\[i\];
+var current_abbr = abbreviations&#91;i&#93;;
 
-var definition = current_abbr.getAttribute(\"title\");
+var definition = current_abbr.getAttribute(&quot;title&quot;);
 
 var key = current_abbr.lastChild.nodeValue;
 
-defs\[key\] = definition;
+defs&#91;key&#93; = definition;
 
 }
 
@@ -8864,10 +8518,10 @@ price to pay.
 In theory, you could write the entire loop in one line, but that would
 be very hard to read:
 
-for (var i=0; i\<abbreviations.length; i++) {
+for (var i=0; i&lt;abbreviations.length; i++) {
 
-defs\[abbreviations\[i\].lastChild.nodeValue\] =
-abbreviations\[i\].getAttribute(\"title\"); }
+defs&#91;abbreviations&#91;i&#93;.lastChild.nodeValue&#93; =
+abbreviations&#91;i&#93;.getAttribute(&quot;title&quot;); }
 
 Again, there's always more than one way of doing things in JavaScript.
 You've just seen three different ways of writing the same loop. Choose
@@ -8881,32 +8535,32 @@ the markup in which to display them.
 Creating the markup
 
 A definition list is the ideal way to structure a list of abbreviations
-and their meanings. A definition list (\<dl\>) contains a series of
-definition titles (\<dt\>) and definition descriptions (\<dd\>):
+and their meanings. A definition list (&lt;dl&gt;) contains a series of
+definition titles (&lt;dt&gt;) and definition descriptions (&lt;dd&gt;):
 
-\<dl\>
+&lt;dl&gt;
 
-\<dt\>Title 1\</dt\>
+&lt;dt&gt;Title 1&lt;/dt&gt;
 
-\<dd\>Description 1\</dd\>
+&lt;dd&gt;Description 1&lt;/dd&gt;
 
-\<dt\>Title 2\</dt\>
+&lt;dt&gt;Title 2&lt;/dt&gt;
 
-\<dd\>Description 2\</dd\>
+&lt;dd&gt;Description 2&lt;/dd&gt;
 
-\</dl\>
+&lt;/dl&gt;
 
 Create the definition list using the createElement method. Assign the
 newly created element to a variable called dlist:
 
-var dlist = document.createElement(\"dl\");
+var dlist = document.createElement(&quot;dl&quot;);
 
 The new dl element is a DocumentFragment floating in JavaScript limbo
 for now. Later, we'll be able to insert it into the document by
 referencing the dlist variable.
 
-> It's time for another loop. This time, we'll be looping through the
-> defs array that we created earlier.
+It's time for another loop. This time, we'll be looping through the
+defs array that we created earlier.
 
 Once again, we'll be using a for loop, but this time it will be slightly
 different.
@@ -8929,19 +8583,19 @@ to the variable key." We can then use the variable key in the subsequent
 block of code. Because we have the key for the current iteration of the
 defs array, we can retrieve the corresponding value:
 
-var definition = defs\[key\];
+var definition = defs&#91;key&#93;;
 
 On the first iteration of the for/in loop, the variable key has the
-value \"W3C\" and the variable definition has the value \"World Wide Web
-Consortium\". The next time around, key has the value \"DOM\" and
-definition has the value \"Document Object Model\".
+value &quot;W3C&quot; and the variable definition has the value &quot;World Wide Web
+Consortium&quot;. The next time around, key has the value &quot;DOM&quot; and
+definition has the value &quot;Document Object Model&quot;.
 
 On each iteration of the loop, we'll need to create a dt element and a
 dd element. We'll also need to create text nodes to put inside them.
 
-> Start by creating the dt element:
+Start by creating the dt element:
 
-var dtitle = document.createElement(\"dt\");
+var dtitle = document.createElement(&quot;dt&quot;);
 
 Create a text node with the value of key:
 
@@ -8955,7 +8609,7 @@ dtitle.appendChild(dtitle_text);
 
 Repeat the process for the dd element:
 
-var ddesc = document.createElement(\"dd\");
+var ddesc = document.createElement(&quot;dd&quot;);
 
 This time, create a text node with the value of the variable definition:
 
@@ -8973,19 +8627,19 @@ to the variable dlist:
 
 dlist.appendChild(dtitle); dlist.appendChild(ddesc);
 
-> Here is the finished for/in loop:
+Here is the finished for/in loop:
 
 for (key in defs) {
 
-var definition = defs\[key\];
+var definition = defs&#91;key&#93;;
 
-var dtitle = document.createElement(\"dt\");
+var dtitle = document.createElement(&quot;dt&quot;);
 
 var dtitle_text = document.createTextNode(key);
 
 dtitle.appendChild(dtitle_text);
 
-var ddesc = document.createElement(\"dd\");
+var ddesc = document.createElement(&quot;dd&quot;);
 
 var ddesc_text = document.createTextNode(definition);
 
@@ -9008,11 +8662,11 @@ a good idea to place them under a descriptive heading.
 
 Create an h2 element node:
 
-var header = document.createElement(\"h2\");
+var header = document.createElement(&quot;h2&quot;);
 
-Create a text node with the value \"Abbreviations\":
+Create a text node with the value &quot;Abbreviations&quot;:
 
-var header_text = document.createTextNode(\"Abbreviations\");
+var header_text = document.createTextNode(&quot;Abbreviations&quot;);
 
 Place the text node inside the element node:
 
@@ -9027,7 +8681,7 @@ are two ways you could reference the body tag:
 -   Using the DOM Core, you can reference the first (and only) body tag
     in the document:
 
-document.getElementsByTagName(\"body\")\[0\]
+document.getElementsByTagName(&quot;body&quot;)&#91;0&#93;
 
 -   Using HTML-DOM, you can simply reference the body property of the
     document:
@@ -9046,37 +8700,37 @@ The displayAbbreviations function is complete:
 
 function displayAbbreviations() {
 
-var abbreviations = document.getElementsByTagName(\"abbr\"); if
-(abbreviations.length \< 1) return false; var defs = new Array();
+var abbreviations = document.getElementsByTagName(&quot;abbr&quot;); if
+(abbreviations.length &lt; 1) return false; var defs = new Array();
 
-for (var i=0; i\<abbreviations.length; i++) { var current_abbr =
-abbreviations\[i\];
+for (var i=0; i&lt;abbreviations.length; i++) { var current_abbr =
+abbreviations&#91;i&#93;;
 
-var definition = current_abbr.getAttribute(\"title\"); var key =
-current_abbr.lastChild.nodeValue; defs\[key\] = definition;
+var definition = current_abbr.getAttribute(&quot;title&quot;); var key =
+current_abbr.lastChild.nodeValue; defs&#91;key&#93; = definition;
 
 }
 
-var dlist = document.createElement(\"dl\"); for (key in defs) { var
-definition = defs\[key\];
+var dlist = document.createElement(&quot;dl&quot;); for (key in defs) { var
+definition = defs&#91;key&#93;;
 
-var dtitle = document.createElement(\"dt\"); var dtitle_text =
+var dtitle = document.createElement(&quot;dt&quot;); var dtitle_text =
 document.createTextNode(key); dtitle.appendChild(dtitle_text); var ddesc
-= document.createElement(\"dd\"); var ddesc_text =
+= document.createElement(&quot;dd&quot;); var ddesc_text =
 document.createTextNode(definition); ddesc.appendChild(ddesc_text);
 dlist.appendChild(dtitle); dlist.appendChild(ddesc);
 
 }
 
-var header = document.createElement(\"h2\");
+var header = document.createElement(&quot;h2&quot;);
 
-var header_text = document.createTextNode(\"Abbreviations\");
+var header_text = document.createTextNode(&quot;Abbreviations&quot;);
 header.appendChild(header_text); document.body.appendChild(header);
 document.body.appendChild(dlist); }
 
 As usual, there's some room for improvement.
 
-> ENHANCING CONTENT
+ENHANCING CONTENT
 
 Checking for compatibility
 
@@ -9093,7 +8747,7 @@ if (!document.createTextNode) return false;
 
 Alternatively, you could combine the tests into one statement:
 
-if (!document.getElementsByTagName \|\| !document.createElement ➥\|\|
+if (!document.getElementsByTagName &#124;&#124; !document.createElement ➥&#124;&#124;
 !document.createTextNode) return false;
 
 Choose whichever one makes most sense to you.
@@ -9103,32 +8757,32 @@ idea to insert some comments along the way.
 
 function displayAbbreviations() {
 
-if (!document.getElementsByTagName \|\| !document.createElement
+if (!document.getElementsByTagName &#124;&#124; !document.createElement
 
-å\|\| !document.createTextNode) return false;
+å&#124;&#124; !document.createTextNode) return false;
 
 // get all the abbreviations
 
-var abbreviations = document.getElementsByTagName(\"abbr\"); if
-(abbreviations.length \< 1) return false; var defs = new Array(); //
-loop through the abbreviations for (var i=0; i\<abbreviations.length;
-i++) { var current_abbr = abbreviations\[i\];
+var abbreviations = document.getElementsByTagName(&quot;abbr&quot;); if
+(abbreviations.length &lt; 1) return false; var defs = new Array(); //
+loop through the abbreviations for (var i=0; i&lt;abbreviations.length;
+i++) { var current_abbr = abbreviations&#91;i&#93;;
 
-var definition = current_abbr.getAttribute(\"title\"); var key =
-current_abbr.lastChild.nodeValue; defs\[key\] = definition;
+var definition = current_abbr.getAttribute(&quot;title&quot;); var key =
+current_abbr.lastChild.nodeValue; defs&#91;key&#93; = definition;
 
 }
 
 // create the definition list
 
-var dlist = document.createElement(\"dl\");
+var dlist = document.createElement(&quot;dl&quot;);
 
 // loop through the definitions for (key in defs) { var definition =
-defs\[key\]; // create the definition title
+defs&#91;key&#93;; // create the definition title
 
-var dtitle = document.createElement(\"dt\"); var dtitle_text =
+var dtitle = document.createElement(&quot;dt&quot;); var dtitle_text =
 document.createTextNode(key); dtitle.appendChild(dtitle_text); // create
-the definition description var ddesc = document.createElement(\"dd\");
+the definition description var ddesc = document.createElement(&quot;dd&quot;);
 var ddesc_text = document.createTextNode(definition);
 ddesc.appendChild(ddesc_text); // add them to the definition list
 dlist.appendChild(dtitle); dlist.appendChild(ddesc);
@@ -9137,17 +8791,17 @@ dlist.appendChild(dtitle); dlist.appendChild(ddesc);
 
 // create a headline
 
-var header = document.createElement(\"h2\");
+var header = document.createElement(&quot;h2&quot;);
 
-var header_text = document.createTextNode(\"Abbreviations\");
+var header_text = document.createTextNode(&quot;Abbreviations&quot;);
 header.appendChild(header_text); // add the headline to the body
 document.body.appendChild(header); // add the definition list to the
 body document.body.appendChild(dlist);
 
 }
 
-> The function should be called when the page loads. You can use the
-> window.onload event to do this:
+The function should be called when the page loads. You can use the
+window.onload event to do this:
 
 window.onload = displayAbbreviations;
 
@@ -9160,7 +8814,7 @@ function addLoadEvent(func) {
 
 var oldonload = window.onload;
 
-if (typeof window.onload != \'function\') {
+if (typeof window.onload != &#39;function&#39;) {
 
 window.onload = func;
 
@@ -9183,80 +8837,80 @@ In the displayAbbreviations.js file, add this line:
 addLoadEvent(displayAbbreviations);
 
 The JavaScript files are ready. We'll need to reference both files from
-\<script\> tags at the end of the document before the \</body\> of
+&lt;script\tags at the end of the document before the &lt;/body\of
 explanation.html:
 
-\<script src=\"scripts/addLoadEvent.js\"\>\</script\>
+&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"scripts/displayAbbreviations.js\"\>\</script\>
+&lt;script src=&quot;scripts/displayAbbreviations.js&quot;&gt;&lt;/script&gt;
 
-■ **Note** Here, be sure to include addLoadEvent.js first, as
-displayAbbreviations.js depends on it. In a real project, you\'ll also
+■ <b>Note</bHere, be sure to include addLoadEvent.js first, as
+displayAbbreviations.js depends on it. In a real project, you&#39;ll also
 want to minify your scripts and combine them into one file (minification
-is discussed in Chapter 5). For our example, we\'ll keep things verbose
-and separate so it\'s easier to experiment.
+is discussed in Chapter 5). For our example, we&#39;ll keep things verbose
+and separate so it&#39;s easier to experiment.
 
 The final markup
 
 This is the markup for explanation.html:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Explaining the Document Object Model\</title\>
+&lt;title&gt;Explaining the Document Object Model&lt;/title&gt;
 
-\<link rel=\"stylesheet\" media=\"screen\"
+&lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot;
 
-➥href=\"styles/typography.css\" /\>
+➥href=&quot;styles/typography.css&quot; /&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>What is the Document Object Model?\</h1\>
+&lt;h1&gt;What is the Document Object Model?&lt;/h1&gt;
 
-\<p\>
+&lt;p&gt;
 
-The \<abbr title=\"World Wide Web Consortium\"\>W3C\</abbr\> defines
-➥the \<abbr title=\"Document Object Model\"\>DOM\</abbr\> as:
+The &lt;abbr title=&quot;World Wide Web Consortium&quot;&gt;W3C&lt;/abbr\defines
+➥the &lt;abbr title=&quot;Document Object Model&quot;&gt;DOM&lt;/abbr\as:
 
-\</p\>
+&lt;/p&gt;
 
-\<blockquote cite=\"<http://www.w3.org/DOM>/\"\>
+&lt;blockquote cite=&quot;<http://www.w3.org/DOM>/&quot;&gt;
 
-\<p\>
+&lt;p&gt;
 
 A platform- and language-neutral interface that will allow programs ➥and
 scripts to dynamically access and update the ➥content, structure and
 style of documents.
 
-\</p\>
+&lt;/p&gt;
 
-\</blockquote\>
+&lt;/blockquote&gt;
 
-\<p\>
+&lt;p&gt;
 
-It is an \<abbr title=\"Application Programming
-Interface\"\>API\</abbr\>
+It is an &lt;abbr title=&quot;Application Programming
+Interface&quot;&gt;API&lt;/abbr&gt;
 
-➥that can be used to navigate \<abbr title=\"HyperText Markup
-Language\"\> ➥HTML\</abbr\> and \<abbr title=\"eXtensible Markup
-Language\"\>XML \</abbr\> documents.
+➥that can be used to navigate &lt;abbr title=&quot;HyperText Markup
+Language&quot;\➥HTML&lt;/abbr\and &lt;abbr title=&quot;eXtensible Markup
+Language&quot;&gt;XML &lt;/abbr\documents.
 
-\</p\>
+&lt;/p&gt;
 
-**\<script src=\"scripts/addLoadEvent.js\"\>\</script\>**
+<b>&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;</b>
 
-**\<script src=\"scripts/displayAbbreviations.js\"\>\</script\>**
+<b>&lt;script src=&quot;scripts/displayAbbreviations.js&quot;&gt;&lt;/script&gt;</b>
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 Load explanation.html in a web browser to see the effects of the
 displayAbbreviations function.
@@ -9290,17 +8944,17 @@ earlier versions because it attempts to extract attribute and text nodes
 from abbr element nodes, and Internet Explorer refuses to accord these
 abbr nodes the status of being elements.
 
-> We seem to have unwittingly stepped on an unexploded bomb left over
-> from a long-finished battle. There are three possible solutions:
+We seem to have unwittingly stepped on an unexploded bomb left over
+from a long-finished battle. There are three possible solutions:
 
 -   Use acronym elements instead of abbr elements. This option doesn't
     appeal to me, because it means sacrificing semantically correct
     markup just to satisfy a stubborn browser.
 
 -   Use an html namespace on the element
-    (\<html:abbr\>abbr\</html:abbr\>), which would allow Internet
+    (&lt;html:abbr&gt;abbr&lt;/html:abbr&gt;), which would allow Internet
     Explorer to recognize the element. This involves modifying the
-    markup and really doesn\'t solve the problem if the
+    markup and really doesn&#39;t solve the problem if the
     displayAbbreviations function is used in a different document.
 
 -   Ensure that displayAbbreviations degrades gracefully in Internet
@@ -9314,10 +8968,10 @@ So, let's go with the third option.
 First, add a single line to the loop that gathers the title attributes
 and text values from the abbr elements:
 
-for (var i=0; i\<abbreviations.length; i++) { var current_abbr =
-abbreviations\[i\]; **if (current_abbr.childNodes.length \< 1)
-continue;** var definition = current_abbr.getAttribute(\"title\"); var
-key = current_abbr.lastChild.nodeValue; defs\[key\] = definition; }
+for (var i=0; i&lt;abbreviations.length; i++) { var current_abbr =
+abbreviations&#91;i&#93;; <b>if (current_abbr.childNodes.length &lt; 1)
+continue;</bvar definition = current_abbr.getAttribute(&quot;title&quot;); var
+key = current_abbr.lastChild.nodeValue; defs&#91;key&#93; = definition; }
 
 This is effectively saying, "If the current element has no child nodes,
 carry on to the next iteration of the loop." Internet Explorer will
@@ -9332,23 +8986,23 @@ the definition list has no child nodes, exit the function:
 
 // create the definition list
 
-var dlist = document.createElement(\"dl\");
+var dlist = document.createElement(&quot;dl&quot;);
 
 // loop through the definitions for (key in defs) { var definition =
-defs\[key\]; // create the definition title
+defs&#91;key&#93;; // create the definition title
 
-var dtitle = document.createElement(\"dt\"); var dtitle_text =
+var dtitle = document.createElement(&quot;dt&quot;); var dtitle_text =
 document.createTextNode(key); dtitle.appendChild(dtitle_text);
 
 // create the definition description var ddesc =
-document.createElement(\"dd\"); var ddesc_text =
+document.createElement(&quot;dd&quot;); var ddesc_text =
 document.createTextNode(definition); ddesc.appendChild(ddesc_text); //
 add them to the definition list dlist.appendChild(dtitle);
 dlist.appendChild(ddesc);
 
 }
 
-if (dlist.childNodes.length \< 1) return false;
+if (dlist.childNodes.length &lt; 1) return false;
 
 Again, this runs counter to the principles of structured programming
 because there is now an additional exit point in the middle of the
@@ -9358,43 +9012,43 @@ The finished function looks like this:
 
 function displayAbbreviations() {
 
-if (!document.getElementsByTagName \|\| !document.createElement
+if (!document.getElementsByTagName &#124;&#124; !document.createElement
 
-➥\|\| !document.createTextNode) return false;
+➥&#124;&#124; !document.createTextNode) return false;
 
 // get all the abbreviations
 
-var abbreviations = document.getElementsByTagName(\"abbr\"); if
-(abbreviations.length \< 1) return false; var defs = new Array(); //
-loop through the abbreviations for (var i=0; i\<abbreviations.length;
-i++) { var current_abbr = abbreviations\[i\]; **if
-(current_abbr.childNodes.length \< 1) continue;** var definition =
-current_abbr.getAttribute(\"title\"); var key =
-current_abbr.lastChild.nodeValue; defs\[key\] = definition;
+var abbreviations = document.getElementsByTagName(&quot;abbr&quot;); if
+(abbreviations.length &lt; 1) return false; var defs = new Array(); //
+loop through the abbreviations for (var i=0; i&lt;abbreviations.length;
+i++) { var current_abbr = abbreviations&#91;i&#93;; <b>if
+(current_abbr.childNodes.length &lt; 1) continue;</bvar definition =
+current_abbr.getAttribute(&quot;title&quot;); var key =
+current_abbr.lastChild.nodeValue; defs&#91;key&#93; = definition;
 
 }
 
 // create the definition list
 
-var dlist = document.createElement(\"dl\");
+var dlist = document.createElement(&quot;dl&quot;);
 
 // loop through the definitions for (key in defs) { var definition =
-defs\[key\]; // create the definition title
+defs&#91;key&#93;; // create the definition title
 
-var dtitle = document.createElement(\"dt\"); var dtitle_text =
+var dtitle = document.createElement(&quot;dt&quot;); var dtitle_text =
 document.createTextNode(key); dtitle.appendChild(dtitle_text); // create
-the definition description var ddesc = document.createElement(\"dd\");
+the definition description var ddesc = document.createElement(&quot;dd&quot;);
 var ddesc_text = document.createTextNode(definition);
 ddesc.appendChild(ddesc_text); // add them to the definition list
 dlist.appendChild(dtitle); dlist.appendChild(ddesc);
 
-} **if (dlist.childNodes.length \< 1) return false**;
+} <b>if (dlist.childNodes.length &lt; 1) return false</b>;
 
 // create a headline
 
-var header = document.createElement(\"h2\");
+var header = document.createElement(&quot;h2&quot;);
 
-var header_text = document.createTextNode(\"Abbreviations\");
+var header_text = document.createTextNode(&quot;Abbreviations&quot;);
 header.appendChild(header_text); // add the headline to the body
 document.body.appendChild(header);
 
@@ -9408,7 +9062,7 @@ abbr element isn't understood.
 They act as safety checks, much like the object detection at the start
 of the script.
 
-■ **Note** Notice that even though the problem was caused by a specific
+■ <b>Note</bNotice that even though the problem was caused by a specific
 browser, there's still no need to use browser-sniffing code. Sniffing
 for a specific browser name and number is bound to cause problems and
 result in very convoluted code.
@@ -9432,17 +9086,17 @@ attributes of the abbr tags appears directly in the browser. Now, let's
 work through another example of content enhancement. Take a look at this
 piece of markup in explanation.html:
 
-\<blockquote **cite=\"<http://www.w3.org/DOM>/\"**\>
+&lt;blockquote <b>cite=&quot;<http://www.w3.org/DOM>/&quot;</b>&gt;
 
-\<p\>
+&lt;p&gt;
 
 A platform- and language-neutral interface that will allow programs ➥and
 scripts to dynamically access and update the ➥content, structure and
 style of documents.
 
-\</p\>
+&lt;/p&gt;
 
-\</blockquote\>
+&lt;/blockquote&gt;
 
 The blockquote element contains an attribute called cite. This is an
 optional attribute you can use to specify a URL where the contents of
@@ -9459,14 +9113,14 @@ links:
 
 2.  Get the value of the cite attribute from the blockquote.
 
-3.  Create a link with the text \"source\".
+3.  Create a link with the text &quot;source&quot;.
 
 4.  Give this link the value of the cite attribute from the blockquote.
 
 5.  Insert this link at the end of the quoted text.
 
-> As with the display of abbreviations, we'll put this plan into action
-> in a JavaScript function.
+As with the display of abbreviations, we'll put this plan into action
+in a JavaScript function.
 
 Writing the displayCitations function
 
@@ -9482,37 +9136,37 @@ The first step is to gather all the blockquote elements in the document.
 Use getElementsByTagName and store the resultant node set as the
 variable quotes:
 
-var quotes = document.getElementsByTagName(\"blockquote\");
+var quotes = document.getElementsByTagName(&quot;blockquote&quot;);
 
 Now start looping through this set:
 
-for (var i=0; i\<quotes.length; i ++) {
+for (var i=0; i&lt;quotes.length; i ++) {
 
 Inside the loop, we're interested in only quotes that have a cite
 attribute. We can perform a simple test to see if the current quote in
 the loop has this attribute.
 
 Run the test on the current element of the quotes node set, which is
-quotes\[i\]. Use getAttribute to perform the test on this node. If the
-result of getAttribute(\"cite\") is true, there is a cite attribute. If
-the result of !getAttribute(\"cite\") is true, there is no cite
+quotes&#91;i&#93;. Use getAttribute to perform the test on this node. If the
+result of getAttribute(&quot;cite&quot;) is true, there is a cite attribute. If
+the result of !getAttribute(&quot;cite&quot;) is true, there is no cite
 attribute. If that's the case, the keyword continue will cause the loop
 to jump forward to the next iteration. All the subsequent statements
 inside the loop will be ignored during the current iteration:
 
-if (!quotes\[i\].getAttribute(\"cite\")) { continue; }
+if (!quotes&#91;i&#93;.getAttribute(&quot;cite&quot;)) { continue; }
 
 You could also write it like this:
 
-if (!quotes\[i\].getAttribute(\"cite\")) continue;
+if (!quotes&#91;i&#93;.getAttribute(&quot;cite&quot;)) continue;
 
 The following statements will be performed on only blockquote element
 nodes that have cite attribute nodes.
 
-> First, get the value of the cite attribute of the current blockquote
-> and store it in a variable called url:
+First, get the value of the cite attribute of the current blockquote
+and store it in a variable called url:
 
-var url = quotes\[i\].getAttribute(\"cite\");
+var url = quotes&#91;i&#93;.getAttribute(&quot;cite&quot;);
 
 The next step involves figuring out where to put the link. At first,
 this might seem very straightforward.
@@ -9525,14 +9179,14 @@ the end of the last child element node contained by the blockquote
 element. The obvious thing to do is find the lastChild property of the
 current blockquote element:
 
-quotes\[i\].lastChild
+quotes&#91;i&#93;.lastChild
 
 But if we do this, we could potentially run into a problem. Take a look
 at the markup again:
 
-\<blockquote cite=\"<http://www.w3.org/DOM>/\"\>
+&lt;blockquote cite=&quot;<http://www.w3.org/DOM>/&quot;&gt;
 
-\<p\>
+&lt;p&gt;
 
 A platform- and language-neutral interface that will allow programs
 
@@ -9540,9 +9194,9 @@ A platform- and language-neutral interface that will allow programs
 
 ➥content, structure and style of documents.
 
-\</p\>
+&lt;/p&gt;
 
-\</blockquote\>
+&lt;/blockquote&gt;
 
 At first glance, it appears as though the last child of the blockquote
 element is the p element. You might expect the lastChild property to
@@ -9556,7 +9210,7 @@ treat this line break as a text node. That means that the lastChild
 property of the blockquote element node isn't the p element node, it's a
 text node.
 
-■ **Caution** A common mistake in DOM scripting is assuming that a node
+■ <b>Caution</bA common mistake in DOM scripting is assuming that a node
 is an element node. When in doubt, always check the nodeType value.
 There are certain methods that can be performed only on element nodes.
 If you try to perform them on text nodes, you could get an error.
@@ -9567,13 +9221,13 @@ However, using existing DOM methods, you can write some statements to
 perform the required task.
 
 You can find all the element nodes within the current blockquote. If you
-use getElementsByTagName with the wildcard character (\*), it will
+use getElementsByTagName with the wildcard character (&#42;), it will
 return every element regardless of its tag name:
 
-var quoteElements = quotes\[i\].getElementsByTagName(\"\*\");
+var quoteElements = quotes&#91;i&#93;.getElementsByTagName(&quot;&#42;&quot;);
 
 The variable quoteElements is an array containing all the element nodes
-contained by the current blockquote element, quotes\[i\].
+contained by the current blockquote element, quotes&#91;i&#93;.
 
 To find the last element node contained by the blockquote, retrieve the
 last element in the quoteElements array. The last element of the array
@@ -9581,34 +9235,34 @@ has an index that is one less than the length of the array. Remember
 that arrays begin counting from zero. That's why the index of the last
 element isn't equal to the length of the array; it is equal to the
 length of the array minus one: var elem =
-quoteElements\[quoteElements.length - 1\];
+quoteElements&#91;quoteElements.length - 1&#93;;
 
-> The variable elem refers to the last element node within the
-> blockquote.
+The variable elem refers to the last element node within the
+blockquote.
 >
-> Getting back to our loop in the displayCitations function, this is
-> what we have so far:
+Getting back to our loop in the displayCitations function, this is
+what we have so far:
 
-for (var i=0; i\<quotes.length; i++) { if
-(!quotes\[i\].getAttribute(\"cite\")) continue; var url =
-quotes\[i\].getAttribute(\"cite\");
+for (var i=0; i&lt;quotes.length; i++) { if
+(!quotes&#91;i&#93;.getAttribute(&quot;cite&quot;)) continue; var url =
+quotes&#91;i&#93;.getAttribute(&quot;cite&quot;);
 
-**var quoteChildren = quotes\[i\].getElementsByTagName(\'\*\');** var
-elem = quoteChildren\[quoteChildren.length - 1\];
+<b>var quoteChildren = quotes&#91;i&#93;.getElementsByTagName(&#39;&#42;&#39;);</bvar
+elem = quoteChildren&#91;quoteChildren.length - 1&#93;;
 
 Rather than assuming that quoteChildren will return an array of element
 nodes, run a little check to see if its length is less than one. If
 that's the case, use the continue keyword again to break out of the
 current loop:
 
-for (var i=0; i\<quotes.length; i++) { if
-(!quotes\[i\].getAttribute(\"cite\")) continue; var url =
-quotes\[i\].getAttribute(\"cite\");
+for (var i=0; i&lt;quotes.length; i++) { if
+(!quotes&#91;i&#93;.getAttribute(&quot;cite&quot;)) continue; var url =
+quotes&#91;i&#93;.getAttribute(&quot;cite&quot;);
 
-var quoteChildren = quotes\[i\].getElementsByTagName(\'\*\'); **if
-(quoteChildren.length \< 1) continue;**
+var quoteChildren = quotes&#91;i&#93;.getElementsByTagName(&#39;&#42;&#39;); <b>if
+(quoteChildren.length &lt; 1) continue;</b>
 
-var elem = quoteChildren\[quoteChildren.length - 1\];
+var elem = quoteChildren&#91;quoteChildren.length - 1&#93;;
 
 We have all the values we need to create a link. The variable url
 contains the information required for the href value of the link we will
@@ -9619,12 +9273,12 @@ Creating the link
 
 Create the link by using createElement to make an a element:
 
-var link = document.createElement(\"a\");
+var link = document.createElement(&quot;a&quot;);
 
 Now create the text that will go within the link. Use the createTextNode
-method to create some text with the value \"source\":
+method to create some text with the value &quot;source&quot;:
 
-var link_text = document.createTextNode(\"source\");
+var link_text = document.createTextNode(&quot;source&quot;);
 
 The newly created a element has been assigned to the variable link. The
 newly created text node has been assigned to the variable link_text.
@@ -9636,7 +9290,7 @@ link.appendChild(link_text);
 Add the href attribute to the link. Set it to the value of the variable
 url using setAttribute:
 
-link.setAttribute(\"href\",url);
+link.setAttribute(&quot;href&quot;,url);
 
 The link is ready to insert into the document.
 
@@ -9645,9 +9299,9 @@ Inserting the link
 You could insert it into the document as is. You could also wrap it in
 another element like sup so that the link appears as superscript.
 
-> Create a sup element node, giving it the variable superscript:
+Create a sup element node, giving it the variable superscript:
 
-var superscript = document.createElement(\"sup\");
+var superscript = document.createElement(&quot;sup&quot;);
 
 Place the link inside this element:
 
@@ -9656,7 +9310,7 @@ superscript.appendChild(link);
 You now have a DocumentFragment created in JavaScript that isn't
 connected to the document:
 
-\<sup\>\<a href=\"<http://www.w3.org/DOM>/\"\>source\</a\>\</sup\>
+&lt;sup&gt;&lt;a href=&quot;<http://www.w3.org/DOM>/&quot;&gt;source&lt;/a&gt;&lt;/sup&gt;
 
 Insert this markup into the document by making it the last child of
 elem. The variable elem refers to the last element node contained by the
@@ -9671,20 +9325,20 @@ function:
 
 function displayCitations() {
 
-var quotes = document.getElementsByTagName(\"blockquote\"); for (var
-i=0; i\<quotes.length; i++) { if (!quotes\[i\].getAttribute(\"cite\"))
+var quotes = document.getElementsByTagName(&quot;blockquote&quot;); for (var
+i=0; i&lt;quotes.length; i++) { if (!quotes&#91;i&#93;.getAttribute(&quot;cite&quot;))
 continue;
 
-var url = quotes\[i\].getAttribute(\"cite\");
+var url = quotes&#91;i&#93;.getAttribute(&quot;cite&quot;);
 
-var quoteChildren = quotes\[i\].getElementsByTagName(\'\*\'); if
-(quoteChildren.length \< 1) continue; var elem =
-quoteChildren\[quoteChildren.length - 1\]; var link =
-document.createElement(\"a\"); var link_text =
-document.createTextNode(\"source\"); link.appendChild(link_text);
-link.setAttribute(\"href\",url);
+var quoteChildren = quotes&#91;i&#93;.getElementsByTagName(&#39;&#42;&#39;); if
+(quoteChildren.length &lt; 1) continue; var elem =
+quoteChildren&#91;quoteChildren.length - 1&#93;; var link =
+document.createElement(&quot;a&quot;); var link_text =
+document.createTextNode(&quot;source&quot;); link.appendChild(link_text);
+link.setAttribute(&quot;href&quot;,url);
 
-var superscript = document.createElement(\"sup\");
+var superscript = document.createElement(&quot;sup&quot;);
 superscript.appendChild(link); elem.appendChild(superscript);
 
 }
@@ -9700,36 +9354,36 @@ clearer.
 
 function displayCitations() {
 
-if (!document.getElementsByTagName \|\| !document.createElement å\|\|
+if (!document.getElementsByTagName &#124;&#124; !document.createElement å&#124;&#124;
 !document.createTextNode) return false;
 
 // get all the blockquotes
 
-var quotes = document.getElementsByTagName(\"blockquote\");
+var quotes = document.getElementsByTagName(&quot;blockquote&quot;);
 
-// loop through all the blockquotes for (var i=0; i\<quotes.length; i++)
+// loop through all the blockquotes for (var i=0; i&lt;quotes.length; i++)
 {
 
 // if there is no cite attribute, continue the loop if
-(!quotes\[i\].getAttribute(\"cite\")) continue;
+(!quotes&#91;i&#93;.getAttribute(&quot;cite&quot;)) continue;
 
 // store the cite attribute
 
-var url = quotes\[i\].getAttribute(\"cite\"); // get all the element
+var url = quotes&#91;i&#93;.getAttribute(&quot;cite&quot;); // get all the element
 nodes in the blockquote
 
-var quoteChildren = quotes\[i\].getElementsByTagName(\'\*\'); // if
+var quoteChildren = quotes&#91;i&#93;.getElementsByTagName(&#39;&#42;&#39;); // if
 there are no element nodes, continue the loop if (quoteChildren.length
-\< 1) continue; // get the last element node in the blockquote var elem
-= quoteChildren\[quoteChildren.length - 1\];
+&lt; 1) continue; // get the last element node in the blockquote var elem
+= quoteChildren&#91;quoteChildren.length - 1&#93;;
 
 // create the markup
 
-var link = document.createElement(\"a\"); var link_text =
-document.createTextNode(\"source\"); link.appendChild(link_text);
-link.setAttribute(\"href\",url);
+var link = document.createElement(&quot;a&quot;); var link_text =
+document.createTextNode(&quot;source&quot;); link.appendChild(link_text);
+link.setAttribute(&quot;href&quot;,url);
 
-var superscript = document.createElement(\"sup\");
+var superscript = document.createElement(&quot;sup&quot;);
 superscript.appendChild(link);
 
 // add the markup to the last element node in the blockquote
@@ -9739,76 +9393,76 @@ elem.appendChild(superscript);
 
 }
 
-> Call the displayCitations function using the addLoadEvent function:
+Call the displayCitations function using the addLoadEvent function:
 
 addLoadEvent(displayCitations);
 
-> ENHANCING CONTENT
+ENHANCING CONTENT
 
 The final markup
 
 Call the displayCitations.js file from explanation.html by adding a new
-set of \<script\> tags to the end of the document:
+set of &lt;script\tags to the end of the document:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Explaining the Document Object Model\</title\>
+&lt;title&gt;Explaining the Document Object Model&lt;/title&gt;
 
-\<link rel=\"stylesheet\" media=\"screen\"
+&lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot;
 
-➥href=\"styles/typography.css\" /\>
+➥href=&quot;styles/typography.css&quot; /&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>What is the Document Object Model?\</h1\>
+&lt;h1&gt;What is the Document Object Model?&lt;/h1&gt;
 
-\<p\>
+&lt;p&gt;
 
-The \<abbr title=\"World Wide Web Consortium\"\>W3C\</abbr\> defines
-➥the \<abbr title=\"Document Object Model\"\>DOM\</abbr\> as:
+The &lt;abbr title=&quot;World Wide Web Consortium&quot;&gt;W3C&lt;/abbr\defines
+➥the &lt;abbr title=&quot;Document Object Model&quot;&gt;DOM&lt;/abbr\as:
 
-\</p\>
+&lt;/p&gt;
 
-\<blockquote cite=\"<http://www.w3.org/DOM>/\"\>
+&lt;blockquote cite=&quot;<http://www.w3.org/DOM>/&quot;&gt;
 
-\<p\>
+&lt;p&gt;
 
 A platform- and language-neutral interface that will allow programs ➥and
 scripts to dynamically access and update the ➥content, structure and
 style of documents.
 
-\</p\>
+&lt;/p&gt;
 
-\</blockquote\>
+&lt;/blockquote&gt;
 
-\<p\>
+&lt;p&gt;
 
-It is an \<abbr title=\"Application Programming
-Interface\"\>API\</abbr\>
+It is an &lt;abbr title=&quot;Application Programming
+Interface&quot;&gt;API&lt;/abbr&gt;
 
-➥that can be used to navigate \<abbr title=\"HyperText Markup
-Language\"\> ➥HTML\</abbr\> and \<abbr title=\"eXtensible Markup
-Language\"\>XML ➥\</abbr\> documents.
+➥that can be used to navigate &lt;abbr title=&quot;HyperText Markup
+Language&quot;\➥HTML&lt;/abbr\and &lt;abbr title=&quot;eXtensible Markup
+Language&quot;&gt;XML ➥&lt;/abbr\documents.
 
-\</p\>
+&lt;/p&gt;
 
-\<script src=\"scripts/addLoadEvent.js\"\>\</script\>
+&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"scripts/displayAbbreviations.js\"\>\</script\>
+&lt;script src=&quot;scripts/displayAbbreviations.js&quot;&gt;&lt;/script&gt;
 
-**\<script src=\"scripts/displayCitations.js\"\>\</script\>**
+<b>&lt;script src=&quot;scripts/displayCitations.js&quot;&gt;&lt;/script&gt;</b>
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 Load explanation.html in a web browser to see the result.
 
@@ -9833,9 +9487,9 @@ browsers, you can press Ctrl+*access key*.
 
 Here's an example of an accesskey attribute:
 
-\<a href=\"index.html\" **accesskey=\"1\"**\>Home\</a\>
+&lt;a href=&quot;index.html&quot; <b>accesskey=&quot;1&quot;</b>&gt;Home&lt;/a&gt;
 
-■ **Caution** It's usually not a good idea to use too many access keys.
+■ <b>Caution</bIt's usually not a good idea to use too many access keys.
 There is a danger that they could clash with the keyboard shortcuts
 built into the browser.
 
@@ -9859,21 +9513,21 @@ A loose convention has arisen for some basic access key settings (see
 -   An accesskey value of 0 is used for a link to an accessibility
     statement.
 
-> ENHANCING CONTENT
+ENHANCING CONTENT
 
 Here's an example of a site navigation list that uses access keys:
 
-\<ul id=\"navigation\"\>
+&lt;ul id=&quot;navigation&quot;&gt;
 
-\<li\>\<a href=\"index.html\" accesskey=\"1\"\>Home\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;index.html&quot; accesskey=&quot;1&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"search.html\" accesskey=\"4\"\>Search\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;search.html&quot; accesskey=&quot;4&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"contact.html\" accesskey=\"9\"\>Contact\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;contact.html&quot; accesskey=&quot;9&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-Add that markup right after the opening of the \<body\> tag in
+Add that markup right after the opening of the &lt;body\tag in
 explanation.html.
 
 If you load explanation.html in a web browser, you will see the links in
@@ -9915,41 +9569,41 @@ stage:
 
 function displayAccesskeys() {
 
-if (!document.getElementsByTagName \|\| !document.createElement \|\|
+if (!document.getElementsByTagName &#124;&#124; !document.createElement &#124;&#124;
 
 ➥!document.createTextNode) return false; // get all the links in the
 document
 
-var links = document.getElementsByTagName(\"a\"); // create an array to
+var links = document.getElementsByTagName(&quot;a&quot;); // create an array to
 store the access keys var akeys = new Array(); // loop through the links
-for (var i=0; i\<links.length; i++) { var current_link = links\[i\];
+for (var i=0; i&lt;links.length; i++) { var current_link = links&#91;i&#93;;
 
 // if there is no accesskey attribute, continue the loop if
-(!current_link.getAttribute(\"accesskey\")) continue;
+(!current_link.getAttribute(&quot;accesskey&quot;)) continue;
 
 // get the value of the accesskey
 
-var key = current_link.getAttribute(\"accesskey\");
+var key = current_link.getAttribute(&quot;accesskey&quot;);
 
 // get the value of the link text
 
 var text = current_link.lastChild.nodeValue;
 
-// add them to the array akeys\[key\] = text;
+// add them to the array akeys&#91;key&#93; = text;
 
 }
 
 // create the list
 
-var list = document.createElement(\"ul\");
+var list = document.createElement(&quot;ul&quot;);
 
 // loop through the access keys for (key in akeys) { var text =
-akeys\[key\];
+akeys&#91;key&#93;;
 
-// create the string to put in the list item var str = key + \":
-\"+text; // create the list item
+// create the string to put in the list item var str = key + &quot;:
+&quot;+text; // create the list item
 
-var item = document.createElement(\"li\"); var item_text =
+var item = document.createElement(&quot;li&quot;); var item_text =
 document.createTextNode(str); item.appendChild(item_text); // add the
 list item to the list list.appendChild(item);
 
@@ -9957,8 +9611,8 @@ list item to the list list.appendChild(item);
 
 // create a headline
 
-var header = document.createElement(\"h3\"); var header_text =
-document.createTextNode(\"Accesskeys\");
+var header = document.createElement(&quot;h3&quot;); var header_text =
+document.createTextNode(&quot;Accesskeys&quot;);
 header.appendChild(header_text); // add the headline to the body
 document.body.appendChild(header); // add the list to the body
 document.body.appendChild(list);
@@ -9967,15 +9621,15 @@ document.body.appendChild(list);
 
 addLoadEvent(displayAccesskeys);
 
-> Reference the displayAccesskeys.js file with a new set of \<script\>
-> tags in explanation.html:
+Reference the displayAccesskeys.js file with a new set of &lt;script&gt;
+tags in explanation.html:
 
-\<script src=\"scripts/displayAccesskeys.js\"\>\</script\>
+&lt;script src=&quot;scripts/displayAccesskeys.js&quot;&gt;&lt;/script&gt;
 
 Load explanation.html in a web browser to see the newly created list of
 access keys.
 
-> ENHANCING CONTENT
+ENHANCING CONTENT
 
 Retrieving and attaching information
 
@@ -10071,13 +9725,13 @@ Structure
 First and foremost, the *structural layer* is created with a markup
 language, such as HTML or XHTML. The *tags*, or words contained in angle
 brackets, describe the semantic meaning of content. For example, the
-\<p\> tag conveys the information, "This content is a paragraph." But
+&lt;p\tag conveys the information, "This content is a paragraph." But
 the tag doesn't include any information about how the content should be
 displayed:
 
-\<p\>An example of a paragraph\</p\>
+&lt;p&gt;An example of a paragraph&lt;/p&gt;
 
-> CSS-DOM
+CSS-DOM
 
 Presentation
 
@@ -10086,10 +9740,8 @@ describes how the content should be displayed. You can use CSS to
 declare, "Paragraphs should be colored grey and use Arial or some other
 sans-serif font":
 
-p { color: grey; font-family: \"Arial\", sans-serif;
-
+p { color: grey; font-family: &quot;Arial&quot;, sans-serif;
 }
-
 }
 
 Behavior
@@ -10099,12 +9751,10 @@ events. This is where JavaScript and the DOM rule the roost. Using the
 DOM, you can specify, "When the user clicks on a paragraph, display an
 alert dialog":
 
-var paras = document**.getElementsByTagName(\"p\");** for (var i=0;
-i\<paras.length; i++) { paras\[i\].onclick = function() { alert(\"You
-clicked on a paragraph.\");
-
+var paras = document<b>.getElementsByTagName(&quot;p&quot;);</bfor (var i=0;
+i&lt;paras.length; i++) { paras&#91;i&#93;.onclick = function() { alert(&quot;You
+clicked on a paragraph.&quot;);
 }
-
 }
 
 Presentation and behavior are always present, even if you don't give any
@@ -10141,7 +9791,7 @@ It's true that CSS is stepping on the DOM's toes with pseudo-classes.
 But the Document Object Model can step right back. You can use the DOM
 to attach presentational information to elements.
 
-> CSS-DOM
+CSS-DOM
 
 The style property
 
@@ -10152,8 +9802,8 @@ like parentNode, nextSibling, previousSibling, childNodes, firstChild,
 and lastChild all supply information about related nodes in the
 document.
 
-> Other properties, like nodeType and nodeName, contain information
-> about the element itself.
+Other properties, like nodeType and nodeName, contain information
+about the element itself.
 
 Querying the nodeName property of an element will return a string like
 "p".
@@ -10166,21 +9816,20 @@ style object:
 
 element.style.property
 
-> Here's an example of a paragraph with some inline styling attached:
+Here's an example of a paragraph with some inline styling attached:
 
-\<p id=\"example\" style=\"color: grey; font-family:
-\'Arial\',sans-serif;\"\> An example of a paragraph
+&lt;p id=&quot;example&quot; style=&quot;color: grey; font-family:
+&#39;Arial&#39;,sans-serif;&quot;\An example of a paragraph
+&lt;/p&gt;
 
-\</p\>
-
-> Using the style property, you can retrieve this stylistic information.
+Using the style property, you can retrieve this stylistic information.
 
 First of all, you need to be able to reference the element. I've given
 the paragraph a unique id value of "example". Pass this id to the
 getElementById method. Assign a variable, para, so that you have a
 handle on the element that's easy to reference:
 
-var para = document.getElementById(\"example\");
+var para = document.getElementById(&quot;example&quot;);
 
 Before we retrieve any information about the presentation of this
 element, I want to show you that the style property is in fact an
@@ -10188,47 +9837,35 @@ object. You can use the typeof keyword to retrieve this information.
 Compare the results of applying typeof to a property like nodeName and
 applying typeof to the style property.
 
-> Write out this HTML and save the file as example.html. Then load it in
-> a web browser:
+Write out this HTML and save the file as example.html. Then load it in
+a web browser:
 
-\<!DOCTYPE html\>
-
-\<html\>
-
-\<head\>
-
-\<meta charset=\"utf-8\" /\>
-
-\<title\>Example\</title\>
-
-\<script\>
-
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Example&lt;/title&gt;
+&lt;script&gt;
 window.onload = function() {
-
-var para = document.getElementById(\"example\"); **alert(typeof
-para.nodeName); alert(typeof para.style);**
-
+var para = document.getElementById(&quot;example&quot;); <b>alert(typeof
+para.nodeName); alert(typeof para.style);</b>
 }
 
-\</script\>
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-\</head\>
-
-\<body\>
-
-\<p id=\"example\" style=\"color: grey; font-family:
-\'Arial\',sans-serif;\"\>
+&lt;p id=&quot;example&quot; style=&quot;color: grey; font-family:
+&#39;Arial&#39;,sans-serif;&quot;&gt;
 
 An example of a paragraph
 
-\</p\>
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-\</body\>
-
-\</html\>
-
-> The first alert statement displays "string," because the nodeName
-> property is a string.
+The first alert statement displays "string," because the nodeName
+property is a string.
 
 On the other hand, the second alert statement displays "object," because
 the style property is an object.
@@ -10247,11 +9884,11 @@ element.style.color
 Here's an alert statement that will show the color property of the style
 object, which is a property of the para element:
 
-alert(\"The color is \" + **para.style.color**);
+alert(&quot;The color is &quot; + <b>para.style.color</b>);
 
 The color property of this element's style property is grey.
 
-> CSS-DOM
+CSS-DOM
 
 The other property that has been set with CSS is font-family. This is
 retrieved in a slightly different way than color. You can't simply query
@@ -10281,41 +9918,28 @@ element.style.fontFamily
 Write an alert statement in example.html to retrieve the fontFamily
 property of the style property of the para element:
 
-\<!DOCTYPE html\>
-
-\<html lang=\"en\"\>
-
-\<head\>
-
-\<meta charset=\"utf-8\" /\>
-
-\<title\>Example\</title\>
-
-\<script\>
-
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Example&lt;/title&gt;
+&lt;script&gt;
 window.onload = function() {
-
-var para = document.getElementById(\"example\"); **alert(\"The font
-family is \" + para.style.fontFamily);**
-
+var para = document.getElementById(&quot;example&quot;); <b>alert(&quot;The font
+family is &quot; + para.style.fontFamily);</b>
 }
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-\</script\>
-
-\</head\>
-
-\<body\>
-
-\<p id=\"example\" style=\"color: grey; font-family:
-\'Arial\',sans-serif;\"\>
+&lt;p id=&quot;example&quot; style=&quot;color: grey; font-family:
+&#39;Arial&#39;,sans-serif;&quot;&gt;
 
 An example of a paragraph
 
-\</p\>
-
-\</body\>
-
-\</html\>
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 Reload example.html in a web browser and you'll see the result.
 
@@ -10324,7 +9948,7 @@ font-family property. In
 
 this case, it's
 
-\'Arial\',sans-serif
+&#39;Arial&#39;,sans-serif
 
 The camel-casing convention applies to just about any CSS property that
 contains one or more dashes. The CSS property background-color becomes
@@ -10340,13 +9964,13 @@ word "grey". The DOM color property returns a value of "grey". Edit the
 paragraph so that the CSS color property is set with the hexadecimal
 value #999999:
 
-\<p id=\"example\" style=\"**color: #999999;** font-family:
-\'Arial\',sans-serif\"\>
+&lt;p id=&quot;example&quot; style=&quot;<b>color: #999999;</bfont-family:
+&#39;Arial&#39;,sans-serif&quot;&gt;
 
 Now edit the JavaScript so that the DOM color property is output in an
 alert statement:
 
-alert(\"The color is \" + **para.style.color**);
+alert(&quot;The color is &quot; + <b>para.style.color</b>);
 
 In some browsers, the color property will be returned in RGB (Red Green
 Blue): 153,153,153.
@@ -10356,44 +9980,31 @@ same units with which they are set. If you set the CSS font-size
 property in ems, the corresponding DOM fontSize property will also be in
 ems:
 
-\<!DOCTYPE html\>
-
-\<html lang=\"en\"\>
-
-\<head\>
-
-\<meta charset=\"utf-8\" /\>
-
-\<title\>Example\</title\>
-
-\<script\>
-
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Example&lt;/title&gt;
+&lt;script&gt;
 window.onload = function() {
-
-var para = document.getElementById(\"example\");
-
-alert(\"The font size is \" + para.**style.fontSize**);
-
+var para = document.getElementById(&quot;example&quot;);
+alert(&quot;The font size is &quot; + para.<b>style.fontSize</b>);
 }
 
-\</script\>
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-\</head\>
+&lt;p id=&quot;example&quot; style=&quot;color: grey; font-family:
+&#39;Arial&#39;,sans-serif;
 
-\<body\>
-
-\<p id=\"example\" style=\"color: grey; font-family:
-\'Arial\',sans-serif;
-
-➥ **font-size: 1em;**\"\>
+➥ <b>font-size: 1em;</b>&quot;&gt;
 
 An example of a paragraph
 
-\</p\>
-
-\</body\>
-
-\</html\>
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 Here, the fontSize property has been set using the em unit:
 
@@ -10406,13 +10017,13 @@ one declaration. If you declare font: 12px 'Arial',sans-serif, the CSS
 font-size property is set to 12px and the CSS fontfamily will have a
 value of 'Arial',sans-serif":
 
-\<p id=\"example\" style=\"color: grey; **font: 12px
-\'Arial\',sans-serif;**\"\>
+&lt;p id=&quot;example&quot; style=&quot;color: grey; <b>font: 12px
+&#39;Arial&#39;,sans-serif;</b>&quot;&gt;
 
 The DOM is able to parse shorthand properties like font. If you query
 the fontSize property, you will get a value of "12px":
 
-alert(\"The font size is \" + para.**style.fontSize**);
+alert(&quot;The font size is &quot; + para.<b>style.fontSize</b>);
 
 Here, the fontSize property has been set using pixels.
 
@@ -10425,54 +10036,49 @@ The style property only returns inline style information. If you apply
 styling information by inserting style attributes into your markup, you
 can query that information using the DOM style property:
 
-\<p id=\"example\" style=\"color: grey; font: 12px
-\'Arial\',sans-serif;\"\>
+&lt;p id=&quot;example&quot; style=&quot;color: grey; font: 12px
+&#39;Arial&#39;,sans-serif;&quot;&gt;
 
 This is not a very good way of applying styles. Presentational
 information is mixed in with structure. It's much better to apply styles
 in an external style sheet:
 
 p#example { color: grey;
-
-font: 12px \'Arial\', sans-serif;
-
+font: 12px &#39;Arial&#39;, sans-serif;
 }
 
 Save that CSS in a file called styles.css in the styles folder. Now
 update example.html, removing the inline styling to leave the following
 instead:
 
-\<p id=\"example\"\>
+&lt;p id=&quot;example&quot;&gt;
 
 An example of a paragraph
 
-\</p\>
+&lt;/p&gt;
 
 Add a link element to the head of example.html, pointing to the
 styles.css file:
 
-\<link rel=\"stylesheet\" media=\"screen\" href=\"styles/styles.css\"
-/\>
+&lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;styles/styles.css&quot;
+/&gt;
 
 The style information is applied to the markup, just as before. But the
 linked styles, unlike those assigned in a style attribute, won't be
 picked up by the DOM style property:
 
-alert(\"The font size is \" + para.style.fontSize);
+alert(&quot;The font size is &quot; + para.style.fontSize);
 
 The DOM style property doesn't retrieve styles declared externally, as
 you can see here.
 
 You'll see the same result (or lack thereof) if you add style
-information between \<style\> tags in the head of example.html:
+information between &lt;style\tags in the head of example.html:
 
-\<style\> p#example { color: grey;
-
-font: 12px \'Arial\', sans-serif;
-
+&lt;style\p#example { color: grey;
+font: 12px &#39;Arial&#39;, sans-serif;
 }
-
-\</style\>
+&lt;/style&gt;
 
 The DOM style property won't pick up that information.
 
@@ -10511,48 +10117,34 @@ The value of a style property is always a string. Update the
 example.html file with some JavaScript that overrides the inline CSS.
 Set the color property of para to the string "black":
 
-\<!DOCTYPE html\>
-
-\<html lang=\"en\"\>
-
-\<head\>
-
-\<meta charset=\"utf-8\" /\>
-
-\<title\>Example\</title\>
-
-\<script\>
-
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Example&lt;/title&gt;
+&lt;script&gt;
 window.onload = function() {
-
-var para = document.getElementById(\"example\"); **para.style.color =
-\"black\";**
-
+var para = document.getElementById(&quot;example&quot;); <b>para.style.color =
+&quot;black&quot;;</b>
 }
-
-\</script\>
-
-\</head\>
-
-\<body\>
-
-\<p id=\"example\" style=\"color: grey; font-family:
-\'Arial\',sans-serif;\"\>
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p id=&quot;example&quot; style=&quot;color: grey; font-family:
+&#39;Arial&#39;,sans-serif;&quot;&gt;
 
 An example of a paragraph
 
-\</p\>
-
-\</body\>
-
-\</html\>
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 The color property has been changed to "black," as shown here.
 
 The value must be placed within quotes. You can use either double quotes
 or single quotes, whichever you prefer:
 
-para.style.color = \'black\';
+para.style.color = &#39;black&#39;;
 
 If you don't use quotes, JavaScript will assume that the value is a
 variable: para.style.color = black;
@@ -10562,10 +10154,10 @@ If you haven't defined a variable called black, the code won't work.
 You can set any style property using the assignment operator. You can
 even use shorthand properties like font:
 
-para.style.font = \"2em \'Times\',serif\";
+para.style.font = &quot;2em &#39;Times&#39;,serif&quot;;
 
-> This will set the fontSize property to 2em and the fontFamily property
-> to 'Times',serif:
+This will set the fontSize property to 2em and the fontFamily property
+to 'Times',serif:
 
 Setting styles is quite straightforward. I've shown you how. But perhaps
 the more important question is, "Why?"
@@ -10587,42 +10179,37 @@ CSS can be used in several different ways to apply styles. You can apply
 styles to all occurrences of a particular element, such as paragraphs:
 
 p {
-
 font-size: 1em;
-
 }
 
 You can apply styles to all elements that have a particular class
 attribute:
 
 .fineprint { font-size: .8em;
-
 }
 
 You can apply styles to an element with a unique id attribute:
 
 #intro {
-
 font-size: 1.2em;
-
 }
 
 You can apply styles to elements with similar attributes:
 
-input\[type\*=\"text\"\] { font-size:1.2em; }
+input&#91;type&#42;=&quot;text&quot;&#93; { font-size:1.2em; }
 
-> In modern browsers, you can even apply styles to an element based on
-> some aspects of its position:
+In modern browsers, you can even apply styles to an element based on
+some aspects of its position:
 
 p:first-of-type { font-size:2em; font-weight:bold; }
 
 CSS2 introduced a number of position-based selectors such as
 :first-child and :last-child, while CSS3 includes position selectors
-such as :nth-child() and :nth-of-type(), but it\'s still sometimes
+such as :nth-child() and :nth-of-type(), but it&#39;s still sometimes
 difficult to apply styles to an element based on its position in the
 document's node tree. For instance, with CSS3 you could say, "Apply the
 following styles to the next sibling of all h1 elements" by using the h1
-\~ \* selector. The problem, however, is that many browsers don\'t
+&#126; &#42; selector. The problem, however, is that many browsers don&#39;t
 support all the nice CSS3 position selectors.
 
 The DOM, on the other hand, makes it quite easy to target elements based
@@ -10633,44 +10220,37 @@ follows each h1 and apply styles specifically to those elements.
 
 First of all, get all the h1 elements using getElementsByTagName:
 
-var headers = document.getElementsByTagName(\"h1\");
+var headers = document.getElementsByTagName(&quot;h1&quot;);
 
 Loop through all the elements in the node set:
 
-for (var i=0; i\<headers.length; i++) {
+for (var i=0; i&lt;headers.length; i++) {
 
 You can find the next node in the document using nextSibling:
 
-headers\[i\].nextSibling
+headers&#91;i&#93;.nextSibling
 
 But in this case you actually want to find not just the next node, but
 specifically the next element node. This is easily done using a function
 called getNextElement:
 
 function getNextElement(node) {
-
 if(node.nodeType == 1) {
-
 return node;
-
 }
-
 if (node.nextSibling) {
-
 return getNextElement(node.nextSibling);
-
 }
-
 return null; }
 
 Pass this function the nextSibling node of an h1 element as the
 argument. Assign the result to a variable called elem:
 
-var elem = getNextElement(headers\[i\].nextSibling);
+var elem = getNextElement(headers&#91;i&#93;.nextSibling);
 
 Now you can style this element any way you want:
 
-elem.style.fontWeight = \"bold\"; elem.style.fontSize = \"1.2em\";
+elem.style.fontWeight = &quot;bold&quot;; elem.style.fontSize = &quot;1.2em&quot;;
 
 Wrap the whole thing up in a function called styleHeaderSiblings. Be
 sure to throw in a test to make sure that the browser understands the
@@ -10679,25 +10259,18 @@ DOM methods being used:
 function styleHeaderSiblings() {
 
 if (!document.getElementsByTagName) return false; var headers =
-document.getElementsByTagName(\"h1\"); var elem;
+document.getElementsByTagName(&quot;h1&quot;); var elem;
 
-for (var i=0; i\<headers.length; i++) { elem =
-getNextElement(headers\[i\].nextSibling); elem.style.fontWeight =
-\"bold\"; elem.style.fontSize = \"1.2em\";
-
+for (var i=0; i&lt;headers.length; i++) { elem =
+getNextElement(headers&#91;i&#93;.nextSibling); elem.style.fontWeight =
+&quot;bold&quot;; elem.style.fontSize = &quot;1.2em&quot;;
 } } function getNextElement(node) { if(node.nodeType == 1) { return
 node;
-
 }
-
 if (node.nextSibling) {
-
 return getNextElement(node.nextSibling);
-
 }
-
 return null;
-
 }
 
 You can call the function using the window.onload event:
@@ -10713,50 +10286,31 @@ Here's the addLoadEvent function, which you can store in an external
 file:
 
 function addLoadEvent(func) { var oldonload = window.onload; if (typeof
-window.onload != \'function\') { window.onload = func;
-
+window.onload != &#39;function&#39;) { window.onload = func;
 } else {
-
 window.onload = function() { oldonload(); func();
-
 }
-
 } }
 
-> To see the styleHeaderSiblings function in action, write a document
-> that uses level one headings:
+To see the styleHeaderSiblings function in action, write a document
+that uses level one headings:
 
-\<!DOCTYPE html\>
-
-\<html lang=\"en\"\>
-
-\<head\>
-
-\<meta charset=\"utf-8\" /\>
-
-\<title\>Man bites dog\</title\>
-
-\</head\>
-
-\<body\>
-
-\<h1\>Hold the front page\</h1\>
-
-\<p\>This first paragraph leads you in.\</p\>
-
-\<p\>Now you get the nitty-gritty of the story.\</p\>
-
-\<p\>The most important information is delivered first.\</p\>
-
-\<h1\>Extra! Extra!\</h1\>
-
-\<p\>Further developments are unfolding.\</p\>
-
-\<p\>You can read all about it here.\</p\>
-
-\</body\>
-
-\</html\>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Man bites dog&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Hold the front page&lt;/h1&gt;
+&lt;p&gt;This first paragraph leads you in.&lt;/p&gt;
+&lt;p&gt;Now you get the nitty-gritty of the story.&lt;/p&gt;
+&lt;p&gt;The most important information is delivered first.&lt;/p&gt;
+&lt;h1&gt;Extra! Extra!&lt;/h1&gt;
+&lt;p&gt;Further developments are unfolding.&lt;/p&gt;
+&lt;p&gt;You can read all about it here.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 Save this document as story.html; here's what it looks like in a
 browser.
@@ -10766,12 +10320,11 @@ Then, write a file for the addLoadEvent function and place it in this
 folder. Call it addLoadEvent.js. Write the styleHeaderSiblings function
 to a file called styleHeaderSiblings.js and place it in the same folder.
 
-Insert \<script\> tags before the closing \</body\> tag of story.html to
+Insert &lt;script\tags before the closing &lt;/body\tag of story.html to
 reference your JavaScript files:
 
-\<script src=\"scripts/addLoadEvent.js\"\>\</script\>
-
-\<script src=\"scripts/styleHeaderSiblings.js\"\>\</script\>
+&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;scripts/styleHeaderSiblings.js&quot;&gt;&lt;/script&gt;
 
 Load story.html in a web browser to see the results of the DOM-generated
 styles. The element immediately following every h1 has been styled.
@@ -10783,7 +10336,7 @@ element following a level one heading. In a situation where you are
 regularly editing and updating your content, that can quickly become
 tiresome. If you are using a Content Management System (CMS) to
 
-> CSS-DOM
+CSS-DOM
 
 handle your content, it may not be possible to add classes or other
 style information to individual parts of the content.
@@ -10793,9 +10346,9 @@ Repetitive styling
 Let's say you have a list of dates and places. It could be a list of
 concert dates or an itinerary for a road trip. In any case, there is a
 direct relationship between each date and place. This is tabular data.
-The ideal tag for marking up this data is the \<table\> tag.
+The ideal tag for marking up this data is the &lt;table\tag.
 
-■ **Note** If you're using CSS to lay out your web pages, don't fall
+<b>Note</bIf you're using CSS to lay out your web pages, don't fall
 into the trap of thinking that all tables are bad.
 
 Using tables for layout isn't a good idea. But you should definitely use
@@ -10803,68 +10356,38 @@ tables to display tabular data.
 
 Here's how your markup might look:
 
-\<!DOCTYPE html\>
-
-\<html lang=\"en\"\>
-
-\<head\>
-
-\<meta charset=\"utf-8\" /\>
-
-\<title\>Cities\</title\>
-
-\</head\>
-
-\<body\>
-
-\<table\>
-
-\<caption\>Itinerary\</caption\>
-
-\<thead\>
-
-\<tr\>
-
-\<th\>When\</th\>
-
-\<th\>Where\</th\>
-
-\</tr\>
-
-\</thead\>
-
-\<tbody\>
-
-\<tr\>
-
-\<td\>June 9th\</td\>
-
-\<td\>Portland, \<abbr title=\"Oregon\"\>OR\</abbr\>\</td\>
-
-\</tr\>
-
-\<tr\>
-
-\<td\>June 10th\</td\>
-
-\<td\>Seattle, \<abbr title=\"Washington\"\>WA\</abbr\>\</td\>
-
-\</tr\>
-
-\<tr\>
-
-\<td\>June 12th\</td\>
-
-\<td\>Sacramento, \<abbr title=\"California\"\>CA\</abbr\>\</td\>
-\</tr\>
-
-\</tbody\>
-
-\</table\>
-
-\</body\>
-
-\</html\>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Cities&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table&gt;
+&lt;caption&gt;Itinerary&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;When&lt;/th&gt;
+&lt;th&gt;Where&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;June 9th&lt;/td&gt;
+&lt;td&gt;Portland, &lt;abbr title=&quot;Oregon&quot;&gt;OR&lt;/abbr&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;June 10th&lt;/td&gt;
+&lt;td&gt;Seattle, &lt;abbr title=&quot;Washington&quot;&gt;WA&lt;/abbr&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;June 12th&lt;/td&gt;
+&lt;td&gt;Sacramento, &lt;abbr title=&quot;California&quot;&gt;CA&lt;/abbr&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 Save this as itinerary.html. If you load this file in a web browser, you
 will see a perfectly functional, but somewhat dull, table of
@@ -10874,40 +10397,33 @@ Write a style sheet so that the data is presented in a more readable
 format:
 
 body {
-
-font-family: \"Helvetica\",\"Arial\",sans-serif; background-color: #fff;
+font-family: &quot;Helvetica&quot;,&quot;Arial&quot;,sans-serif; background-color: #fff;
 color: #000;
-
 } table { margin: auto;
-
 border: 1px solid #699;
-
 } caption { margin: auto; padding: .2em; font-size: 1.2em; font-weight:
 bold;
-
 } th { font-weight: normal; font-style: italic; text-align: left;
 border: 1px dotted #699; background-color: #9cc; color: #000;
-
 } th,td { width: 10em; padding: .5em; }
 
 Save this file as format.css and place it in a folder called styles. Add
 a link in the head of itinerary.html pointing to this file:
 
-\<link rel=\"stylesheet\" media=\"screen\" href=\"styles/format.css\"
-/\>
+&lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;styles/format.css&quot;
+/&gt;
 
 Refresh itinerary.html in a web browser to see the effects of the CSS:
 
 A common technique for making table rows more readable is to alternate
 the background colors. The resulting striped effect helps to separate
 individual rows. This can be done by applying styles to every second
-row. If the browser supports CSS3, it\'s as easy as this:
+row. If the browser supports CSS3, it&#39;s as easy as this:
 
 tr:nth-child(odd) { background-color:# ffc; } tr:nth-child(even)
-
 { background-color:#fff; }
 
-To get this same effect when :nth-child() isn\'t available, you\'ll need
+To get this same effect when :nth-child() isn&#39;t available, you&#39;ll need
 a different technique. In the case of itinerary.html, this could be
 easily done by assigning a class attribute to each odd or even row.
 However, this isn't very convenient, especially for larger tables---if a
@@ -10917,8 +10433,8 @@ to painstakingly update the class attributes by hand.
 JavaScript is very good at handling repetitive tasks. You can easily
 loop through a long list using a while or for loop.
 
-> You can write a function to stripe your tables by applying styles to
-> every second row:
+You can write a function to stripe your tables by applying styles to
+every second row:
 
 1.  Get all the table elements in the document.
 
@@ -10936,22 +10452,15 @@ Don't forget to start your function by testing the DOM compliance of the
 browser:
 
 function stripeTables() {
-
 if (!document.getElementsByTagName) return false; var tables =
-document.getElementsByTagName(\"table\"); var odd, rows;
-
-for (var i=0; i\<tables.length; i++) { odd = false;
-
-rows = tables\[i\].getElementsByTagName(\"tr\"); for (var j=0;
-j\<rows.length; j++) { if (odd == true) {
-rows\[j\].style.backgroundColor = \"#ffc\";
-
+document.getElementsByTagName(&quot;table&quot;); var odd, rows;
+for (var i=0; i&lt;tables.length; i++) { odd = false;
+rows = tables&#91;i&#93;.getElementsByTagName(&quot;tr&quot;); for (var j=0;
+j&lt;rows.length; j++) { if (odd == true) {
+rows&#91;j&#93;.style.backgroundColor = &quot;#ffc&quot;;
 odd = false; } else { odd = true;
-
 }
-
 }
-
 } }
 
 Run the function when the page loads. The best way to do this is using
@@ -10962,12 +10471,12 @@ addLoadEvent(stripeTables);
 Save the JavaScript to a file called stripeTables.js in a folder called
 scripts, together with the addLoadEvent.js file.
 
-Add \<script\> tags to include both the following JavaScript files right
-before the closing \</body\> tag in itinerary.html:
+Add &lt;script\tags to include both the following JavaScript files right
+before the closing &lt;/body\tag in itinerary.html:
 
-\<script src=\"scripts/addLoadEvent.js\"\>\</script\>
+&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"scripts/stripeTables.js\"\>\</script\>
+&lt;script src=&quot;scripts/stripeTables.js&quot;&gt;&lt;/script&gt;
 
 Load itinerary.html in a web browser. You'll see that every second row
 in the table has been styled with a background color.
@@ -10976,7 +10485,7 @@ Incidentally, you could also use the displayAbbreviations function from
 the previous chapter for this document. Drop the displayAbbreviations.js
 file into the scripts folder and add one more set of
 
-\<script\> tags to itinerary.html. Refresh the page in a web browser to
+&lt;script\tags to itinerary.html. Refresh the page in a web browser to
 see the generated definition list.
 
 Responding to events
@@ -11025,12 +10534,12 @@ whenever a table row is moused over:
 function highlightRows() {
 
 if(!document.getElementsByTagName) return false; var rows =
-document.getElementsByTagName(\"tr\"); for (var i=0; i\<rows.length;
-i++) { rows\[i\].onmouseover = function() { this.style.fontWeight =
-\"bold\";
+document.getElementsByTagName(&quot;tr&quot;); for (var i=0; i&lt;rows.length;
+i++) { rows&#91;i&#93;.onmouseover = function() { this.style.fontWeight =
+&quot;bold&quot;;
 
-} rows\[i\].onmouseout = function() { this.style.fontWeight =
-\"normal\";
+} rows&#91;i&#93;.onmouseout = function() { this.style.fontWeight =
+&quot;normal&quot;;
 
 }
 
@@ -11039,10 +10548,10 @@ i++) { rows\[i\].onmouseover = function() { this.style.fontWeight =
 addLoadEvent(highlightRows);
 
 Save it to a file called highlightRows.js in the scripts folder. Add
-another set of \<script\> tags before the closing \</body\> tag of
+another set of &lt;script\tags before the closing &lt;/body\tag of
 itinerary.html:
 
-\<script src=\"scripts/highlightRows.js\"\>\</script\>
+&lt;script src=&quot;scripts/highlightRows.js&quot;&gt;&lt;/script&gt;
 
 Refresh itinerary.html in a web browser. Now hover over one of the rows
 in the table. The text will turn bold:
@@ -11088,11 +10597,11 @@ information:
 function styleHeaderSiblings() {
 
 if (!document.getElementsByTagName) return false; var headers =
-document.getElementsByTagName(\"h1\"); var elem;
+document.getElementsByTagName(&quot;h1&quot;); var elem;
 
-for (var i=0; i\<headers.length; i++) { elem =
-getNextElement(headers\[i\].nextSibling); **elem.style.fontWeight =
-\"bold\"; elem.style.fontSize = \"1.2em\";**
+for (var i=0; i&lt;headers.length; i++) { elem =
+getNextElement(headers&#91;i&#93;.nextSibling); <b>elem.style.fontWeight =
+&quot;bold&quot;; elem.style.fontSize = &quot;1.2em&quot;;</b>
 
 } }
 
@@ -11110,7 +10619,7 @@ this class to the element immediately following a level one heading.
 
 You can do this using the setAttribute method.
 
-elem.setAttribute(\"class\",\"intro\");
+elem.setAttribute(&quot;class&quot;,&quot;intro&quot;);
 
 An easier solution is to update a property called className. This is a
 read/write property of any element node.
@@ -11129,11 +10638,11 @@ className instead of setting styles directly with the style property:
 function styleHeaderSiblings() {
 
 if (!document.getElementsByTagName) return false; var headers =
-document.getElementsByTagName(\"h1\"); var elem;
+document.getElementsByTagName(&quot;h1&quot;); var elem;
 
-for (var i=0; i\<headers.length; i++) { elem =
-getNextElement(headers\[i\].nextSibling); **elem.className =
-\"intro\";**
+for (var i=0; i&lt;headers.length; i++) { elem =
+getNextElement(headers&#91;i&#93;.nextSibling); <b>elem.className =
+&quot;intro&quot;;</b>
 
 } }
 
@@ -11141,15 +10650,14 @@ Now, whenever you want to update the presentation of elements that
 follow level-one headings, you can do so by updating the style
 declarations for the intro class:
 
-.intro { font-weight: bold; font-size: **1.4em**; }
+.intro { font-weight: bold; font-size: <b>1.4em</b>; }
 
 There's just one drawback to this technique. If you assign a class using
 the className property, you will overwrite any classes that are already
 attached to that element:
 
-\<h1\>Man bites dog\</h1\>
-
-\<p **class=\"disclaimer\"**\>This is not a true story\</p\>
+&lt;h1&gt;Man bites dog&lt;/h1&gt;
+&lt;p <b>class=&quot;disclaimer&quot;</b>&gt;This is not a true story&lt;/p&gt;
 
 If you run the styleHeaderSiblings function on a document containing
 that piece of markup, the class attribute of the paragraph will be
@@ -11160,7 +10668,7 @@ styles for the disclaimer and intro classes will both be applied.
 You can do this by concatenating a space and the name of the new class
 to the className property:
 
-elem.className += \" intro\";
+elem.className += &quot; intro&quot;;
 
 But you really only want to do this when there are existing classes. If
 there are no existing classes, you can just use the assignment operator
@@ -11183,14 +10691,10 @@ call these arguments element and value:
 
 function addClass(element,value) { if (!element.className) {
 element.className = value;
-
 } else {
-
-newClassName = element.className; newClassName+= \" \"; newClassName+=
+newClassName = element.className; newClassName+= &quot; &quot;; newClassName+=
 value; element.className = newClassName;
-
 }
-
 }
 
 Call the addClass function from the styleHeaderSiblings function:
@@ -11198,11 +10702,10 @@ Call the addClass function from the styleHeaderSiblings function:
 function styleHeaderSiblings() {
 
 if (!document.getElementsByTagName) return false; var headers =
-document.getElementsByTagName(\"h1\"); var elem;
+document.getElementsByTagName(&quot;h1&quot;); var elem;
 
-for (var i=0; i\<headers.length; i++) { elem =
-getNextElement(headers\[i\].nextSibling); **addClass(elem,\"intro\");**
-
+for (var i=0; i&lt;headers.length; i++) { elem =
+getNextElement(headers&#91;i&#93;.nextSibling); <b>addClass(elem,&quot;intro&quot;);</b>
 } }
 
 You could also update the stripeTables function. Right now, the
@@ -11212,51 +10715,40 @@ directly with JavaScript:
 function stripeTables() {
 
 if (!document.getElementsByTagName) return false; var tables =
-document.getElementsByTagName(\"table\"); var odd, rows;
+document.getElementsByTagName(&quot;table&quot;); var odd, rows;
 
-for (var i=0; i\<tables.length; i++) { odd = false;
+for (var i=0; i&lt;tables.length; i++) { odd = false;
 
-rows = tables\[i\].getElementsByTagName(\"tr\"); for (var j=0;
-j\<rows.length; j++) { if (odd == true) {
+rows = tables&#91;i&#93;.getElementsByTagName(&quot;tr&quot;); for (var j=0;
+j&lt;rows.length; j++) { if (odd == true) {
 
-**rows\[j\].style.backgroundColor = \"#ffc\";** odd = false; } else {
+<b>rows&#91;j&#93;.style.backgroundColor = &quot;#ffc&quot;;</bodd = false; } else {
 odd = true;
-
 }
-
 }
-
 }
-
 }
 
 Update format.css with a new class named odd:
 
 .odd {
-
 background-color: #ffc;
-
 }
 
 Now use the addClass function from within stripeTables:
 
 function stripeTables() {
-
 if (!document.getElementsByTagName) return false; var tables =
-document.getElementsByTagName(\"table\"); var odd, rows;
+document.getElementsByTagName(&quot;table&quot;); var odd, rows;
 
-for (var i=0; i\<tables.length; i++) { odd = false;
+for (var i=0; i&lt;tables.length; i++) { odd = false;
 
-rows = tables\[i\].getElementsByTagName(\"tr\"); for (var j=0;
-j\<rows.length; j++) { if (odd == true) {
-**addClass(rows\[j\],\"odd\");** odd = false;
-
+rows = tables&#91;i&#93;.getElementsByTagName(&quot;tr&quot;); for (var j=0;
+j&lt;rows.length; j++) { if (odd == true) {
+<b>addClass(rows&#91;j&#93;,&quot;odd&quot;);</bodd = false;
 } else { odd = true;
-
 }
-
 }
-
 } }
 
 The final result will be exactly the same as before. The difference is
@@ -11278,13 +10770,10 @@ very specific to h1 elements. The className value of intro is also
 hard-coded into the function:
 
 function styleHeaderSiblings() {
-
 if (!document.getElementsByTagName) return false; var headers =
-document.getElementsByTagName(\"**h1**\"); var elem;
-
-for (var i=0; i\<headers.length; i++) { elem =
-getNextElement(headers\[i\].nextSibling); addClass(elem,\"**intro**\");
-
+document.getElementsByTagName(&quot;<b>h1</b>&quot;); var elem;
+for (var i=0; i&lt;headers.length; i++) { elem =
+getNextElement(headers&#91;i&#93;.nextSibling); addClass(elem,&quot;<b>intro</b>&quot;);
 } }
 
 If you wanted to turn this into a more generic function, you could make
@@ -11298,29 +10787,21 @@ intro with the argument theclass. You might also want to change the name
 of the variable headers to something more descriptive, like elems:
 
 function styleElementSiblings(tag,theclass) {
-
 if (!document.getElementsByTagName) return false;
-
 var elems = document.getElementsByTagName(**tag**);
-
 var elem;
-
-for (var i=0; i\<elems.length; i++) {
-
-elem = getNextElement(elems\[i\].nextSibling);
-
+for (var i=0; i&lt;elems.length; i++) {
+elem = getNextElement(elems&#91;i&#93;.nextSibling);
 addClass(elem,**theclass**);
-
 } }
 
 You can achieve the same effect as before by passing this function the
 values h1 and intro:
 
 addloadEvent(function(){
+styleElementSiblings(&quot;h1&quot;,&quot;intro&quot;); });
 
-styleElementSiblings(\"h1\",\"intro\"); });
-
-> CSS-DOM
+CSS-DOM
 
 Whenever you spot a chance to abstract a function like this, it's
 usually a good idea to do so. You may find yourself needing to
@@ -11345,11 +10826,11 @@ use CSS. Wherever possible, it's best to update the className property
 rather than updating properties of the style object directly. You've
 seen a few short examples of CSS-DOM in action:
 
-> Styling an element based on its position in the node tree
-> (styleHeaderSiblings)
->
-> Styling elements by looping through a node set (stripeTables) Styling
-> an element in response to an event (highlightRows)
+Styling an element based on its position in the node tree
+(styleHeaderSiblings)
+
+Styling elements by looping through a node set (stripeTables) Styling
+an element in response to an event (highlightRows)
 
 These are situations where JavaScript takes over from CSS, either
 because CSS can't target elements in the same way, or because CSS
@@ -11405,21 +10886,21 @@ That will position the element 100 pixels from the left of the browser
 window and 50 pixels from the top. Here's the DOM equivalent of the same
 information:
 
-*element*.style.position = \"absolute\"; *element*.style.left =
-\"100px\"; *element*.style.top = \"50px\";
+*element*.style.position = &quot;absolute&quot;; *element*.style.left =
+&quot;100px&quot;; *element*.style.top = &quot;50px&quot;;
 
-Valid values for the position property are \"static\", \"fixed\",
-\"relative\", and \"absolute\". Elements have a position value of
-\"static\" by default, which simply means that they appear one after the
-other in the same sequence as they occur in the markup. The \"relative\"
+Valid values for the position property are &quot;static&quot;, &quot;fixed&quot;,
+&quot;relative&quot;, and &quot;absolute&quot;. Elements have a position value of
+&quot;static&quot; by default, which simply means that they appear one after the
+other in the same sequence as they occur in the markup. The &quot;relative&quot;
 value is similar. The difference is that relatively positioned elements
 can be taken out of the regular flow of the document by applying the
 float property.
 
-By applying a value of \"absolute\" to an element's position, you can
+By applying a value of &quot;absolute&quot; to an element's position, you can
 place the element wherever you want in relation to its container. The
 container is either the document itself or a parent element with a
-position of \"fixed\" or \"absolute\". It doesn't matter where the
+position of &quot;fixed&quot; or &quot;absolute&quot;. It doesn't matter where the
 element appears in the original markup, because its position will be
 determined by properties like top, left, right, and bottom. You can set
 any of those properties using pixels or percentages.
@@ -11436,17 +10917,17 @@ Likewise with left and right.
 Positioning an element in the document is relatively straightforward.
 Say you had an element like this:
 
-\<p id=\"message\"\>Whee!\</p\>
+&lt;p id=&quot;message&quot;&gt;Whee!&lt;/p&gt;
 
-> You could set the message element's position in JavaScript with a
-> function like this:
+You could set the message element's position in JavaScript with a
+function like this:
 
 function positionMessage() {
 
 if (!document.getElementById) return false; if
-(!document.getElementById(\"message\")) return false; var elem =
-document.getElementById(\"message\"); elem.style.position =
-\"absolute\"; elem.style.left = \"50px\"; elem.style.top = \"100px\"; }
+(!document.getElementById(&quot;message&quot;)) return false; var elem =
+document.getElementById(&quot;message&quot;); elem.style.position =
+&quot;absolute&quot;; elem.style.left = &quot;50px&quot;; elem.style.top = &quot;100px&quot;; }
 
 Calling the positionMessage function when the page loads will position
 the paragraph 50 pixels from the left and 100 pixels from the top of the
@@ -11457,16 +10938,11 @@ window.onload = positionMessage;
 Better yet, use the addLoadEvent function:
 
 function addLoadEvent(func) { var oldonload = window.onload; if (typeof
-window.onload != \'function\') { window.onload = func;
-
+window.onload != &#39;function&#39;) { window.onload = func;
 } else {
-
 window.onload = function() { oldonload(); func();
-
 }
-
 } }
-
 addLoadEvent(positionMessage);
 
 Here, the element has been positioned absolutely.
@@ -11475,11 +10951,9 @@ Updating an element's position is also quite easy. You just need to run
 a function that updates a style property like top or left:
 
 function moveMessage() {
-
 if (!document.getElementById) return false; if
-(!document.getElementById(\"message\")) return false; var elem =
-document.getElementById(\"message\"); elem.style.left = \"200px\";
-
+(!document.getElementById(&quot;message&quot;)) return false; var elem =
+document.getElementById(&quot;message&quot;); elem.style.left = &quot;200px&quot;;
 }
 
 But how do you activate that function? If you execute moveMessage when
@@ -11507,12 +10981,12 @@ The first argument is a string containing the function you want to
 execute. The second argument is the number of milliseconds that will
 elapse before the first argument is executed.
 
-setTimeout(\"function\",interval)
+setTimeout(&quot;function&quot;,interval)
 
 It's a good idea to always assign the result of this function to a
 variable:
 
-variable = setTimeout(\"function\",interval)
+variable = setTimeout(&quot;function&quot;,interval)
 
 You'll need to do this if you want to cancel the action that has been
 queued up. You can cancel a pending action using a function called
@@ -11527,10 +11001,10 @@ after 5 seconds (5,000 milliseconds):
 function positionMessage() {
 
 if (!document.getElementById) return false; if
-(!document.getElementById(\"message\")) return false; var elem =
-document.getElementById(\"message\"); elem.style.position =
-\"absolute\"; elem.style.left = \"50px\"; elem.style.top = \"100px\";
-**movement = setTimeout(\"moveMessage()\",5000);**
+(!document.getElementById(&quot;message&quot;)) return false; var elem =
+document.getElementById(&quot;message&quot;); elem.style.position =
+&quot;absolute&quot;; elem.style.left = &quot;50px&quot;; elem.style.top = &quot;100px&quot;;
+**movement = setTimeout(&quot;moveMessage()&quot;,5000);**
 
 }
 
@@ -11578,8 +11052,8 @@ ypos, respectively:
 var xpos = elem.style.left; var ypos = elem.style.top;
 
 When the moveMessage function is called after the positionMessage
-function, xpos will have a value of \"50px\". The ypos variable will
-have a value of \"100px\". These values are strings, which presents a
+function, xpos will have a value of &quot;50px&quot;. The ypos variable will
+have a value of &quot;100px&quot;. These values are strings, which presents a
 bit of a problem. The next step in the function involves arithmetical
 comparison operators. We need to work with numbers, not strings.
 
@@ -11591,7 +11065,7 @@ parseInt(*string*)
 
 Here's an example:
 
-parseInt(\"39 steps\");
+parseInt(&quot;39 steps&quot;);
 
 That will return the number 39.
 
@@ -11608,16 +11082,16 @@ var xpos = parseInt(elem.style.left);
 
 var ypos = parseInt(elem.style.top);
 
-The parseInt function converts the string \"50px\" to the number 50. The
-string \"100px\" becomes the number 100. Now the xpos and ypos variables
+The parseInt function converts the string &quot;50px&quot; to the number 50. The
+string &quot;100px&quot; becomes the number 100. Now the xpos and ypos variables
 contain those numbers.
 
-■ **Note** The use of the parseInt function shown here works only when
+**Note** The use of the parseInt function shown here works only when
 the elements have been assigned a position using a DOM script or the
 style property.
 
-> The next few steps in the moveMessage function require the use of a
-> lot of comparison operators.
+The next few steps in the moveMessage function require the use of a
+lot of comparison operators.
 
 The first comparison is a test for equality. We want to find out if xpos
 is equal to the final left position and if ypos is equal to the final
@@ -11635,64 +11109,54 @@ to the final position. We want to bring them both closer to the final
 coordinates. If the value of xpos is less than the final left position,
 increase it by one:
 
-if (xpos \< 200) { xpos++;
-
+if (xpos &lt; 200) { xpos++;
 }
 
 If it's greater than the final left position, decrease it:
 
-if (xpos \> 200) { xpos\--; }
+if (xpos \200) { xpos\--; }
 
 The same applies for the relationship between the ypos variable and the
 final top position:
 
-if (ypos \< 100) { ypos++; }
-
-if (ypos \> 100) { ypos\--; }
+if (ypos &lt; 100) { ypos++; }
+if (ypos \100) { ypos\--; }
 
 You can see why we need xpos and ypos to be numbers rather than strings.
 We're using the less-than and greater-than operators to compare
 numerical values and update the variables accordingly.
 
 Now we want to apply the xpos and ypos variables to the style property
-of the element. We do this by adding the string \"px\" to their values
+of the element. We do this by adding the string &quot;px&quot; to their values
 and applying them to the left and top properties:
 
-elem.style.left = xpos + \"px\"; elem.style.top = ypos + \"px\";
+elem.style.left = xpos + &quot;px&quot;; elem.style.top = ypos + &quot;px&quot;;
 
 Finally, we want to repeat the whole function afresh after a slight
 pause. We'll make the pause one hundredth of a second, which is ten
 milliseconds:
 
-movement = setTimeout(\"moveMessage()\",10);
+movement = setTimeout(&quot;moveMessage()&quot;,10);
 
 The finished moveMessage function looks like this:
 
 function moveMessage() {
-
 if (!document.getElementById) return false; if
-(!document.getElementById(\"message\")) return false; var elem =
-document.getElementById(\"message\"); var xpos =
+(!document.getElementById(&quot;message&quot;)) return false; var elem =
+document.getElementById(&quot;message&quot;); var xpos =
 parseInt(elem.style.left); var ypos = parseInt(elem.style.top); if (xpos
 == 200 && ypos == 100) { return true;
-
-} if (xpos \< 200) { xpos++; }
-
-if (xpos \> 200) { xpos\--;
-
+} if (xpos &lt; 200) { xpos++; }
+if (xpos \200) { xpos\--;
 }
-
-if (ypos \< 100) { ypos++; }
-
-if (ypos \> 100) { ypos\--; } elem.style.left = xpos + \"px\";
-elem.style.top = ypos + \"px\";
-
-movement = setTimeout(\"moveMessage()\",10);
-
+if (ypos &lt; 100) { ypos++; }
+if (ypos \100) { ypos\--; } elem.style.left = xpos + &quot;px&quot;;
+elem.style.top = ypos + &quot;px&quot;;
+movement = setTimeout(&quot;moveMessage()&quot;,10);
 }
 
 The message moves across the screen, one pixel at a time. Once the top
-property is \"100px\" and the left property is \"200px\", the function
+property is &quot;100px&quot; and the left property is &quot;200px&quot;, the function
 stops. That's animation. It's pretty pointless, but it's animation
 nonetheless. We will be applying the same principles to something much
 more useful later in this chapter.
@@ -11705,27 +11169,19 @@ specific amount of time between movements. All of that information is
 hard-coded into the function:
 
 function moveMessage() {
-
 if (!document.getElementById) return false; if
-(!**document.getElementById(\"message\")**) return false;
-
-var elem = **document.getElementById(\"message\")**; var xpos =
+(!**document.getElementById(&quot;message&quot;)**) return false;
+var elem = **document.getElementById(&quot;message&quot;)**; var xpos =
 parseInt(elem.style.left); var ypos = parseInt(elem.style.top); if (xpos
 == **200** && ypos == 100) { return true;
-
 }
 
-if (xpos \< **200**) { xpos++; }
-
-if (xpos \> **200**) { xpos\--; }
-
-if (ypos \< **100**) { ypos++; }
-
-if (ypos \> **100**) { ypos\--; } elem.style.left = xpos + \"px\";
-elem.style.top = ypos + \"px\";
-
-movement = setTimeout(\"moveMessage()\",**10**);
-
+if (xpos &lt; **200**) { xpos++; }
+if (xpos &#42;*200**) { xpos\--; }
+if (ypos &lt; **100**) { ypos++; }
+if (ypos &#42;*100**) { ypos\--; } elem.style.left = xpos + &quot;px&quot;;
+elem.style.top = ypos + &quot;px&quot;;
+movement = setTimeout(&quot;moveMessage()&quot;,**10**);
 }
 
 If all of those things were variables, the function would be a lot more
@@ -11746,7 +11202,7 @@ each time you call the function:
 
 4.  How long to wait between each movement
 
-> These arguments should all have descriptive names:
+These arguments should all have descriptive names:
 
 1.  elementID
 
@@ -11756,7 +11212,7 @@ each time you call the function:
 
 4.  interval
 
-> Begin the moveElement function with these arguments:
+Begin the moveElement function with these arguments:
 
 function moveElement(elementID,final_x,final_y,interval) {
 
@@ -11764,10 +11220,10 @@ Substitute these for the values that were previously hard-coded into
 moveMessage. The moveMessage function began with these lines:
 
 if (!document.getElementById) return false; if
-(!document.getElementById(\"message\")) return false; var elem =
-document.getElementById(\"message\");
+(!document.getElementById(&quot;message&quot;)) return false; var elem =
+document.getElementById(&quot;message&quot;);
 
-Replace all the instances of getElementById(\"message\") with
+Replace all the instances of getElementById(&quot;message&quot;) with
 getElementById(elementID):
 
 if (!document.getElementById) return false; if
@@ -11779,7 +11235,6 @@ The variable elem now refers to whichever element you want to move.
 The next step of the function remains the same. The left and top
 properties of the element are converted to numbers and assigned to the
 variables xpos and ypos, respectively:
-
 var xpos = parseInt(elem.style.left); var ypos =
 parseInt(elem.style.top);
 
@@ -11793,7 +11248,6 @@ In moveElement, these coordinates are provided by the arguments final_x
 and final_y:
 
 if (xpos == **final_x** && ypos == **final_y**) { return true;
-
 }
 
 Update the values of the xpos and ypos variables. If xpos is less than
@@ -11801,50 +11255,49 @@ the final left position, increase its value by one.
 
 The final left position used to be hard-coded as 200:
 
-if (xpos \< **200**) { xpos++;
-
+if (xpos &lt; **200**) { xpos++;
 }
 
 Now the final left position is contained in the final_x argument:
 
-if (xpos \< **final_x**) { xpos++; }
+if (xpos &lt; **final_x**) { xpos++; }
 
 Likewise, if the value of xpos is greater than the final left position,
 decrease the value of xpos by one:
 
-if (xpos \> **final_x**) { xpos\--; }
+if (xpos &#42;*final_x**) { xpos\--; }
 
 Do the same for ypos. If its value is less than final_y, increase it by
 one. If it is greater than final_y, decrease it by one:
 
-if (ypos \< **final_y**) { ypos++; } if (ypos \> **final_y**) { ypos\--;
+if (ypos &lt; **final_y**) { ypos++; } if (ypos &#42;*final_y**) { ypos\--;
 }
 
 The next step remains the same. Update the left and top style properties
 of the element elem. Assign the values of xpos and ypos with the string
-\"px\" attached:
+&quot;px&quot; attached:
 
-elem.style.left = xpos + \"px\"; elem.style.top = ypos + \"px\";
+elem.style.left = xpos + &quot;px&quot;; elem.style.top = ypos + &quot;px&quot;;
 
 Finally, we want to call the function again after a suitable interval.
 In moveMessage, this was quite straightforward. The moveMessage function
 is called after ten milliseconds:
 
-movement = setTimeout(\"moveMessage()\",10);
+movement = setTimeout(&quot;moveMessage()&quot;,10);
 
 In moveElement, it gets a little trickier. As well as calling the
 function again, we need to pass it the same arguments: elementID,
 final_x, final_y, and interval. The whole thing needs to be contained as
 a string:
 
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\"
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;
 
 That's a lot of concatenating! Rather than inserting that long string
 directly into the setTimeout function, assign the string to a variable
 called repeat:
 
 var repeat =
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\";
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 
 Now we can simply insert repeat as the first argument of the setTimeout
 function. The second argument is the length of the pause before the
@@ -11856,7 +11309,7 @@ movement = setTimeout(repeat,interval);
 
 Close the function with a curly brace:
 
-> AN ANIMATED SLIDESHOW
+AN ANIMATED SLIDESHOW
 
 }
 
@@ -11871,23 +11324,20 @@ parseInt(elem.style.left); var ypos = parseInt(elem.style.top); if (xpos
 
 }
 
-if (xpos \< final_x) { xpos++; }
-
-if (xpos \> final_x) { xpos\--; }
-
-if (ypos \< final_y) { ypos++; }
-
-if (ypos \> final_y) { ypos\--; } elem.style.left = xpos + \"px\";
-elem.style.top = ypos + \"px\";
+if (xpos &lt; final_x) { xpos++; }
+if (xpos \final_x) { xpos\--; }
+if (ypos &lt; final_y) { ypos++; }
+if (ypos \final_y) { ypos\--; } elem.style.left = xpos + &quot;px&quot;;
+elem.style.top = ypos + &quot;px&quot;;
 
 var repeat =
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\";
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 movement = setTimeout(repeat,interval);
 
 }
 
-Save the moveElement function to a file called moveElement.js. Place
-this file in a folder called scripts, along with that old workhorse,
+Save the moveElement function to a file called moveElement.js. 
+Place this file in a folder called scripts, along with that old workhorse,
 addLoadEvent.js.
 
 Using the moveElement function
@@ -11895,27 +11345,18 @@ Using the moveElement function
 Let's take this function for a test drive.
 
 Start by re-creating the previous example. Create a document called
-message.html, which contains a paragraph identified as \"message\":
+message.html, which contains a paragraph identified as &quot;message&quot;:
 
-\<!DOCTYPE html\>
-
-\<html lang=\"en\"\>
-
-\<head\>
-
-\<meta charset=\"utf-8\" /\>
-
-\<title\>Message\</title\>
-
-\</head\>
-
-\<body\>
-
-\<p id=\"message\"\>Whee!\</p\>
-
-\</body\>
-
-\</html\>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Message&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p id=&quot;message&quot;&gt;Whee!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 Before we can animate the message, we need to position it. Write another
 JavaScript file called positionMessage.js. At the end of the
@@ -11924,48 +11365,39 @@ positionMessage function, call the moveElement function:
 function positionMessage() {
 
 if (!document.getElementById) return false; if
-(!document.getElementById(\"message\")) return false; var elem =
-document.getElementById(\"message\"); elem.style.position =
-\"absolute\"; elem.style.left = \"50px\"; elem.style.top = \"100px\";
-**moveElement(\"message\",200,100,10);**
-
+(!document.getElementById(&quot;message&quot;)) return false; var elem =
+document.getElementById(&quot;message&quot;); elem.style.position =
+&quot;absolute&quot;; elem.style.left = &quot;50px&quot;; elem.style.top = &quot;100px&quot;;
+**moveElement(&quot;message&quot;,200,100,10);**
 }
-
 addLoadEvent(positionMessage);
 
-We are passing the string \"message\" as the value of the elementID
+We are passing the string &quot;message&quot; as the value of the elementID
 argument. The final_x argument is 200. The final_y argument is 100. The
 value of interval is 10.
 
 Now you have three files in your scripts folder: addLoadEvent.js,
 positionMessage.js, and moveElement.js. Reference those files from
-message.html using \<script\> tags:
+message.html using &lt;script\tags:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Message&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p id=&quot;message&quot;&gt;Whee!&lt;/p&gt;
 
-\<html lang=\"en\"\>
+**&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;**
 
-\<head\>
+**&lt;script src=&quot;scripts/positionMessage.js&quot;&gt;&lt;/script&gt;**
 
-\<meta charset=\"utf-8\" /\>
+**&lt;script src=&quot;scripts/moveElement.js&quot;&gt;&lt;/script&gt;**
 
-\<title\>Message\</title\>
+&lt;/body&gt;
 
-\</head\>
-
-\<body\>
-
-\<p id=\"message\"\>Whee!\</p\>
-
-**\<script src=\"scripts/addLoadEvent.js\"\>\</script\>**
-
-**\<script src=\"scripts/positionMessage.js\"\>\</script\>**
-
-**\<script src=\"scripts/moveElement.js\"\>\</script\>**
-
-\</body\>
-
-\</html\>
+&lt;/html&gt;
 
 Load message.html in a web browser to see the animation in action. The
 element moves horizontally across the screen.
@@ -11981,15 +11413,15 @@ function moveElement(elementID,**final_x,final_y,interval**)
 Update the last line of the positionMessage function in
 positionMessage.js so that these three values are changed:
 
-> 7
+7
 
 function positionMessage() {
 
 if (!document.getElementById) return false; if
-(!document.getElementById(\"message\")) return false; var elem =
-document.getElementById(\"message\"); elem.style.position =
-\"absolute\"; elem.style.left = \"50px\"; elem.style.top = \"100px\";
-**moveElement(\"message\",125,25,20);**
+(!document.getElementById(&quot;message&quot;)) return false; var elem =
+document.getElementById(&quot;message&quot;); elem.style.position =
+&quot;absolute&quot;; elem.style.left = &quot;50px&quot;; elem.style.top = &quot;100px&quot;;
+**moveElement(&quot;message&quot;,125,25,20);**
 
 }
 
@@ -12004,50 +11436,50 @@ elementID:
 function moveElement(**elementID**,final_x,final_y,interval)
 
 Add a new element to message.html. Give it an id attribute of
-\"message2\":
+&quot;message2&quot;:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Message\</title\>
+&lt;title&gt;Message&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<p id=\"message\"\>Whee!\</p\>
+&lt;p id=&quot;message&quot;&gt;Whee!&lt;/p&gt;
 
-**\<p id=\"message2\"\>Whoa!\</p\>**
+**&lt;p id=&quot;message2&quot;&gt;Whoa!&lt;/p&gt;**
 
-\<script src=\"scripts/addLoadEvent.js\"\>\</script\>
+&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"scripts/positionMessage.js\"\>\</script\>
+&lt;script src=&quot;scripts/positionMessage.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"scripts/moveElement.js\"\>\</script\> \</body\>
+&lt;script src=&quot;scripts/moveElement.js&quot;&gt;&lt;/script\&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
-Now update positionMessage.js. Set the initial position of \"message2\"
+Now update positionMessage.js. Set the initial position of &quot;message2&quot;
 and call the moveElement function again, this time passing it
-\"message2\" as the first argument:
+&quot;message2&quot; as the first argument:
 
 function positionMessage() {
 
 if (!document.getElementById) return false; if
-(!document.getElementById(\"message\")) return false; var elem =
-document.getElementById(\"message\"); elem.style.position =
-\"absolute\"; elem.style.left = \"50px\"; elem.style.top = \"100px\";
-moveElement(\"message\",125,25,20);
+(!document.getElementById(&quot;message&quot;)) return false; var elem =
+document.getElementById(&quot;message&quot;); elem.style.position =
+&quot;absolute&quot;; elem.style.left = &quot;50px&quot;; elem.style.top = &quot;100px&quot;;
+moveElement(&quot;message&quot;,125,25,20);
 
-**if (!document.getElementById(\"message2\")) return false; var elem =
-document.getElementById(\"message2\"); elem.style.position =
-\"absolute\"; elem.style.left = \"50px\"; elem.style.top = \"50px\";
-moveElement(\"message2\",125,125,20);**
+**if (!document.getElementById(&quot;message2&quot;)) return false; var elem =
+document.getElementById(&quot;message2&quot;); elem.style.position =
+&quot;absolute&quot;; elem.style.left = &quot;50px&quot;; elem.style.top = &quot;50px&quot;;
+moveElement(&quot;message2&quot;,125,125,20);**
 
 }
 
@@ -12073,7 +11505,7 @@ your visitors. It's also frowned upon from an accessibility point of
 view. Checkpoint 7.2 of the W3C's Web Content
 
 Accessibility Guidelines states, "Until user agents allow users to
-freeze moving content, avoid movement in pages. \[Priority 2\] When a
+freeze moving content, avoid movement in pages. &#91;Priority 2&#93; When a
 page includes moving content, provide a mechanism within a script or
 applet to allow users to freeze motion or updates."
 
@@ -12088,47 +11520,47 @@ over one of these links, we want to provide some kind of sneak preview
 of where the link will lead---we would like to show an image. The
 document is called list.html. Here's the markup:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Web Design\</title\>
+&lt;title&gt;Web Design&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Web Design\</h1\>
+&lt;h1&gt;Web Design&lt;/h1&gt;
 
-\<p\>These are the things you should know.\</p\>
+&lt;p&gt;These are the things you should know.&lt;/p&gt;
 
-\<ol id=\"linklist\"\>
+&lt;ol id=&quot;linklist&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"structure.html\"\>Structure\</a\>
+&lt;a href=&quot;structure.html&quot;&gt;Structure&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"presentation.html\"\>Presentation\</a\>
+&lt;a href=&quot;presentation.html&quot;&gt;Presentation&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"behavior.html\"\>Behavior\</a\>
+&lt;a href=&quot;behavior.html&quot;&gt;Behavior&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ol\> \</body\>
+&lt;/ol\&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 Each link leads to a page covering a particular aspect of web design.
 The text within each link succinctly describes the content of the linked
@@ -12172,50 +11604,50 @@ The image is called topics.gif. It is 400 pixels wide and 100 pixels
 tall.
 
 We'll insert the topics.gif image into list.html, giving it an id of
-\"preview\":
+&quot;preview&quot;:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Web Design\</title\>
+&lt;title&gt;Web Design&lt;/title&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Web Design\</h1\>
+&lt;h1&gt;Web Design&lt;/h1&gt;
 
-\<p\>These are the things you should know.\</p\>
+&lt;p&gt;These are the things you should know.&lt;/p&gt;
 
-\<ol id=\"linklist\"\>
+&lt;ol id=&quot;linklist&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"structure.html\"\>Structure\</a\>
+&lt;a href=&quot;structure.html&quot;&gt;Structure&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"presentation.html\"\>Presentation\</a\> \</li\>
+&lt;a href=&quot;presentation.html&quot;&gt;Presentation&lt;/a\&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"behavior.html\"\>Behavior\</a\> \</li\>
+&lt;a href=&quot;behavior.html&quot;&gt;Behavior&lt;/a\&lt;/li&gt;
 
-\</ol\>
+&lt;/ol&gt;
 
-**\<img src=\"images/topics.gif\" alt=\"building blocks of web design\"
-id=\"preview\" /\>**
+**&lt;img src=&quot;images/topics.gif&quot; alt=&quot;building blocks of web design&quot;
+id=&quot;preview&quot; /&gt;**
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 The web page now contains the list of links and the composite image.
 
@@ -12235,36 +11667,36 @@ the content.
 
 There are four possible values for the overflow property:
 
--   \"visible\": If the overflow of an element is set to \"visible\",
+-   &quot;visible&quot;: If the overflow of an element is set to &quot;visible&quot;,
     then no clipping occurs. The content overflows and is rendered
     outside the element.
 
--   \"hidden\": A value of \"hidden\" will cause the excess content to
+-   &quot;hidden&quot;: A value of &quot;hidden&quot; will cause the excess content to
     be clipped. Only a portion of the content will be visible.
 
--   \"scroll\": The \"scroll\" value is similar to \"hidden\". The
+-   &quot;scroll&quot;: The &quot;scroll&quot; value is similar to &quot;hidden&quot;. The
     content will be clipped, but the web browser will display scrollbars
     so that the rest of the content can be viewed.
 
--   \"auto\": A value of "auto\" is just like \"scroll\", except that
+-   &quot;auto&quot;: A value of "auto&quot; is just like &quot;scroll&quot;, except that
     the scrollbars will be displayed only if the content overflows its
     container element. If there is no overflow, no scrollbars appear.
 
-Of these four values, \"hidden\" sounds like the most promising for our
+Of these four values, &quot;hidden&quot; sounds like the most promising for our
 purposes. We want to display just a 100-by-100 pixel portion of an image
 that is 400-by-100 pixels in size.
 
 First, let's wrap the image in a container element. We'll put it in a
-div element with an id of \"slideshow\":
+div element with an id of &quot;slideshow&quot;:
 
-\<div id=\"slideshow\"\>
+&lt;div id=&quot;slideshow&quot;&gt;
 
-\<img src=\"images/topics.gif\" alt=\"building blocks of web design\"
-id=\"preview\" /\> \</div\>
+&lt;img src=&quot;images/topics.gif&quot; alt=&quot;building blocks of web design&quot;
+id=&quot;preview&quot; /&gt;&lt;/div&gt;
 
 Now, we'll create a style sheet called layout.css. Put this file in a
 folder called styles. In layout.css, we can set the size of the
-\"slideshow\" div:
+&quot;slideshow&quot; div:
 
 #slideshow { width: 100px; height: 100px; position: relative; }
 
@@ -12273,73 +11705,73 @@ absolute position for the child image. By using relative, the 0,0
 position for children elements will be the upper-left corner of the
 slideshow div.
 
-By applying an overflow value of \"hidden\", we can ensure that the
+By applying an overflow value of &quot;hidden&quot;, we can ensure that the
 content within the div will be clipped:
 
 #slideshow { width: 100px; height: 100px; position: relative;
 **overflow: hidden;** }
 
-> We're attaching the layout.css style sheet to list.html using a
-> \<link\> in the head of the document:
+We're attaching the layout.css style sheet to list.html using a
+&lt;link&gt; in the head of the document:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Web Design\</title\>
+&lt;title&gt;Web Design&lt;/title&gt;
 
-**\<link rel=\"stylesheet\" href=\"styles/layout.css\" media=\"screen\"
-/\>**
+**&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/layout.css&quot; media=&quot;screen&quot;
+/&gt;**
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Web Design\</h1\>
+&lt;h1&gt;Web Design&lt;/h1&gt;
 
-\<p\>These are the things you should know.\</p\>
+&lt;p&gt;These are the things you should know.&lt;/p&gt;
 
-\<ol id=\"linklist\"\>
+&lt;ol id=&quot;linklist&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"structure.html\"\>Structure\</a\>
+&lt;a href=&quot;structure.html&quot;&gt;Structure&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"presentation.html\"\>Presentation\</a\> \</li\>
+&lt;a href=&quot;presentation.html&quot;&gt;Presentation&lt;/a&gt;&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"behavior.html\"\>Behavior\</a\>
+&lt;a href=&quot;behavior.html&quot;&gt;Behavior&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ol\>
+&lt;/ol&gt;
 
-**\<div id=\"slideshow\"\>**
+**&lt;div id=&quot;slideshow&quot;&gt;**
 
-\<img src=\"images/topics.gif\" alt=\"building blocks of web design\"
-id=\"preview\" /\>
+&lt;img src=&quot;images/topics.gif&quot; alt=&quot;building blocks of web design&quot;
+id=&quot;preview&quot; /&gt;
 
-**\</div\>**
+**&lt;/div&gt;**
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 Load list.html in a web browser to see the difference. The image has
 been clipped. Now only a portion of topics.gif---only the first 100
 pixels---is visible.
 
 The next part of the plan revolves around the actions of the user. We
-want to display a different portion of topics.gif in the \"slideshow\"
+want to display a different portion of topics.gif in the &quot;slideshow&quot;
 div depending on which link the user hovers the mouse over. This is a
 behavioral change and definitely a job for JavaScript and the DOM.
 
@@ -12362,28 +11794,28 @@ function prepareSlideshow() {
 
 // Make sure the elements exist
 
-if (!document.getElementById(\"linklist\")) return false; if
-(!document.getElementById(\"preview\")) return false;
+if (!document.getElementById(&quot;linklist&quot;)) return false; if
+(!document.getElementById(&quot;preview&quot;)) return false;
 
 // Apply styles to the preview image
 
-var preview = document.getElementById(\"preview\");
-preview.style.position = \"absolute\"; preview.style.left = \"0px\";
-preview.style.top = \"0px\"; // Get all the links in the list
+var preview = document.getElementById(&quot;preview&quot;);
+preview.style.position = &quot;absolute&quot;; preview.style.left = &quot;0px&quot;;
+preview.style.top = &quot;0px&quot;; // Get all the links in the list
 
-var list = document.getElementById(\"linklist\");
+var list = document.getElementById(&quot;linklist&quot;);
 
-var links = list.getElementsByTagName(\"a\");
+var links = list.getElementsByTagName(&quot;a&quot;);
 
 // Attach the animation behavior to the mouseover event
-links\[0\].onmouseover = function() {
-moveElement(\"preview\",-100,0,10);
+links&#91;0&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-100,0,10);
 
-} links\[1\].onmouseover = function() {
-moveElement(\"preview\",-200,0,10);
+} links&#91;1&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-200,0,10);
 
-} links\[2\].onmouseover = function() {
-moveElement(\"preview\",-300,0,10);
+} links&#91;2&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-300,0,10);
 
 } }
 
@@ -12393,60 +11825,60 @@ with the DOM methods that will be used:
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false;
 
-Next, there's a check to make sure that the \"linklist\" and \"preview\"
-elements exist. Remember that \"preview\" is the id value of the
+Next, there's a check to make sure that the &quot;linklist&quot; and &quot;preview&quot;
+elements exist. Remember that &quot;preview&quot; is the id value of the
 topics.gif image.
 
-if (!document.getElementById(\"linklist\")) return false; if
-(!document.getElementById(\"preview\")) return false;
+if (!document.getElementById(&quot;linklist&quot;)) return false; if
+(!document.getElementById(&quot;preview&quot;)) return false;
 
-After that, a default position is given to the \"preview\" image. We're
-setting the left property to \"0px\" and the top property to \"0px\":
+After that, a default position is given to the &quot;preview&quot; image. We're
+setting the left property to &quot;0px&quot; and the top property to &quot;0px&quot;:
 
-var preview = document.getElementById(\"preview\");
-preview.style.position = \"absolute\"; preview.style.left = \"0px\";
-preview.style.top = \"0px\";
+var preview = document.getElementById(&quot;preview&quot;);
+preview.style.position = &quot;absolute&quot;; preview.style.left = &quot;0px&quot;;
+preview.style.top = &quot;0px&quot;;
 
 This doesn't mean that the topics.gif image will appear in the top-left
 corner of the screen. Instead, it will appear in the top-left corner of
-its container element, the \"slideshow\" div. That's because the CSS
-position value of the div is \"relative\". Any absolutely positioned
+its container element, the &quot;slideshow&quot; div. That's because the CSS
+position value of the div is &quot;relative&quot;. Any absolutely positioned
 elements contained by a relatively positioned element will be placed in
-relation to that container element. In other words, the \"preview\"
+relation to that container element. In other words, the &quot;preview&quot;
 image will appear zero pixels to the left and zero pixels from the top
-of the \"slideshow\" element.
+of the &quot;slideshow&quot; element.
 
 Finally, we're attaching the onmouseover behaviors to the links in the
 list. The variable links contains a node set of all the a elements
-contained within the \"linklist\" element. The first link is links\[0\],
-the second link is links\[1\], and the third link is links\[2\].
+contained within the &quot;linklist&quot; element. The first link is links&#91;0&#93;,
+the second link is links&#91;1&#93;, and the third link is links&#91;2&#93;.
 
-var list = document.getElementById(\"linklist\"); var links =
-list.getElementsByTagName(\"a\");
+var list = document.getElementById(&quot;linklist&quot;); var links =
+list.getElementsByTagName(&quot;a&quot;);
 
 When the user hovers over the first link, the moveElement function is
-called. The elementID argument has a value of \"preview\". The final_x
+called. The elementID argument has a value of &quot;preview&quot;. The final_x
 argument has a value of -100. The final_y argument has a value of 0. The
 interval argument is ten milliseconds.
 
-links\[0\].onmouseover = function() {
-moveElement(\"preview\",-100,0,10);
+links&#91;0&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-100,0,10);
 
 }
 
-> The same behavior applies for the second link, except that the final_x
-> argument is -200:
+The same behavior applies for the second link, except that the final_x
+argument is -200:
 
-links\[1\].onmouseover = function() {
-moveElement(\"preview\",-200,0,10); }
+links&#91;1&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-200,0,10); }
 
-> AN ANIMATED SLIDESHOW
+AN ANIMATED SLIDESHOW
 >
-> The third link will move the \"preview\" element -300 pixels to the
-> left:
+The third link will move the &quot;preview&quot; element -300 pixels to the
+left:
 
-links\[2\].onmouseover = function() {
-moveElement(\"preview\",-300,0,10);
+links&#91;2&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-300,0,10);
 
 }
 
@@ -12459,69 +11891,69 @@ Save the prepareSlideshow function to a file called prepareSlideshow.js
 in a folder called scripts. Place the moveElement.js and addLoadEvent.js
 files in the same folder.
 
-We can reference all three scripts from list.html by adding \<script\>
-tags immediately before the closing \</body\> tag:
+We can reference all three scripts from list.html by adding &lt;script&gt;
+tags immediately before the closing &lt;/body&gt; tag:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Web Design\</title\>
+&lt;title&gt;Web Design&lt;/title&gt;
 
-**\<link rel=\"stylesheet\" href=\"styles/layout.css\" media=\"screen\"
-/\>**
+**&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/layout.css&quot; media=&quot;screen&quot;
+/&gt;**
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Web Design\</h1\>
+&lt;h1&gt;Web Design&lt;/h1&gt;
 
-\<p\>These are the things you should know.\</p\>
+&lt;p&gt;These are the things you should know.&lt;/p&gt;
 
-\<ol id=\"linklist\"\>
+&lt;ol id=&quot;linklist&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"structure.html\"\>Structure\</a\>
+&lt;a href=&quot;structure.html&quot;&gt;Structure&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"presentation.html\"\>Presentation\</a\>
+&lt;a href=&quot;presentation.html&quot;&gt;Presentation&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"behavior.html\"\>Behavior\</a\>
+&lt;a href=&quot;behavior.html&quot;&gt;Behavior&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ol\>
+&lt;/ol&gt;
 
-\<div id=\"slideshow\"\>
+&lt;div id=&quot;slideshow&quot;&gt;
 
-\<img src=\"images/topics.gif\" alt=\"building blocks of web design\"
-id=\"preview\" /\> \</div\>
+&lt;img src=&quot;images/topics.gif&quot; alt=&quot;building blocks of web design&quot;
+id=&quot;preview&quot; /\&lt;/div&gt;
 
-**\<script src=\"scripts/addLoadEvent.js\"\>\</script\>**
+**&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;**
 
-**\<script src=\"scripts/moveElement.js\"\>\</script\>**
+**&lt;script src=&quot;scripts/moveElement.js&quot;&gt;&lt;/script&gt;**
 
-**\<script src=\"scripts/prepareSlideshow.js\"\>\</script\>**
+**&lt;script src=&quot;scripts/prepareSlideshow.js&quot;&gt;&lt;/script&gt;**
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
-> Load list.html in a web browser. Hover over one of the links in the
-> list to see the slideshow in action.
+Load list.html in a web browser. Hover over one of the links in the
+list to see the slideshow in action.
 
 Depending on which link in the list you hover over, a different portion
 of the topics.gif image will slide into view.
@@ -12546,15 +11978,15 @@ parseInt(elem.style.left); var ypos = parseInt(elem.style.top); if (xpos
 
 }
 
-if (xpos \< final_x) { xpos++; }
+if (xpos &lt; final_x) { xpos++; }
 
-if (xpos \> final_x) { xpos\--; } if (ypos \< final_y) { ypos++; }
+if (xpos &gt; final_x) { xpos\--; } if (ypos &lt; final_y) { ypos++; }
 
-if (ypos \> final_y) { ypos\--; }
+if (ypos &gt; final_y) { ypos\--; }
 
-elem.style.left = xpos + \"px\"; elem.style.top = ypos + \"px\"; var
+elem.style.left = xpos + &quot;px&quot;; elem.style.top = ypos + &quot;px&quot;; var
 repeat =
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\";
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 **movement = setTimeout(repeat,interval);**
 
 }
@@ -12573,13 +12005,13 @@ backlog by using clearTimeout:
 
 clearTimeout(movement);
 
-> But if this statement is executed before movement has been set, we'll
-> get an error. We can't use a local variable:
+But if this statement is executed before movement has been set, we'll
+get an error. We can't use a local variable:
 
 **var** movement = setTimeout(repeat,interval);
 
-> If we do that, the clearTimeout statement won't work; the movement
-> variable will no longer exist.
+If we do that, the clearTimeout statement won't work; the movement
+variable will no longer exist.
 
 We can't use a global variable. We can't use a local variable. We need
 something in between. We need a variable that applies just to the
@@ -12594,13 +12026,13 @@ your own properties:
 
 *element.property = value*
 
-> If you wanted, you could create a property called foo with a value of
-> \"bar\":
+If you wanted, you could create a property called foo with a value of
+&quot;bar&quot;:
 
-*element*.foo = \"bar\";
+*element*.foo = &quot;bar&quot;;
 
-> It's just like creating a variable. The difference is that the
-> variable belongs just to that element.
+It's just like creating a variable. The difference is that the
+variable belongs just to that element.
 
 Let's change movement from being a global variable to a property of the
 element being moved, elem. That way, we can test for its existence and,
@@ -12622,19 +12054,19 @@ if (xpos == final_x && ypos == final_y) { return true;
 
 }
 
-if (xpos \< final_x) { xpos++; }
+if (xpos &lt; final_x) { xpos++; }
 
-if (xpos \> final_x) { xpos\--; }
+if (xpos &gt; final_x) { xpos\--; }
 
-if (ypos \< final_y) {
+if (ypos &lt; final_y) {
 
 ypos++; }
 
-if (ypos \> final_y) { ypos\--; } elem.style.left = xpos + \"px\";
-elem.style.top = ypos + \"px\";
+if (ypos &gt; final_y) { ypos\--; } elem.style.left = xpos + &quot;px&quot;;
+elem.style.top = ypos + &quot;px&quot;;
 
 var repeat =
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\";
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 **elem.movement = setTimeout(repeat,interval);**
 
 }
@@ -12657,9 +12089,9 @@ reaches the coordinates specified by the final_x and final_y arguments.
 The movement is smooth, but it's also kind of boring. Let's spice up the
 animation a bit.
 
-> Take a look at this simple bit of code in moveElement.js:
+Take a look at this simple bit of code in moveElement.js:
 
-if (xpos \< final_x) { xpos++; }
+if (xpos &lt; final_x) { xpos++; }
 
 The variable xpos is the element's current left position. The variable
 final_x is the element's final left position. This piece of code states,
@@ -12716,9 +12148,9 @@ round, the element might never reach its final destination.
 
 dist = Match.ceil((final_x - xpos)/10); xpos = xpos + dist;
 
-> This covers the situation when xpos is less than final_x:
+This covers the situation when xpos is less than final_x:
 
-if (xpos \< final_x) {
+if (xpos &lt; final_x) {
 
 dist = Math.ceil((final_x - xpos)/10); xpos = xpos + dist; }
 
@@ -12728,77 +12160,79 @@ ten and rounded up to the nearest whole number to give the variable
 dist. This is then subtracted from xpos to bring the element closer to
 its final destination.
 
-if (xpos \> final_x) {
+if (xpos &gt; final_x) {
+  dist = Math.ceil((xpos - final_x)/10); 
+  xpos = xpos - dist; }
 
-dist = Math.ceil((xpos - final_x)/10); xpos = xpos - dist; }
+The same logic applies for ypos and final_y: 
 
-The same logic applies for ypos and final_y: if (ypos \< final_y) {
-
-dist = Math.ceil((final_y - ypos)/10); ypos = ypos + dist;
-
+if (ypos &lt; final_y) {
+  dist = Math.ceil((final_y - ypos)/10); 
+  ypos = ypos + dist;
 }
 
-if (ypos \> final_y) {
-
-dist = Math.ceil((ypos - final_y)/10); ypos = ypos - dist;
-
+if (ypos &gt; final_y) {
+  dist = Math.ceil((ypos - final_y)/10); 
+  ypos = ypos - dist;
 }
 
-> For good measure, don't forget to declare the dist variable alongside
-> xpos and ypos:
+For good measure, don't forget to declare the dist variable alongside
+xpos and ypos:
 
-var xpos = parseInt(elem.style.left); var ypos =
-parseInt(elem.style.top); var dist = 0;
+var xpos = parseInt(elem.style.left); 
+var ypos = parseInt(elem.style.top); 
+var dist = 0;
 
-> The updated moveElement function looks like this:
+The updated moveElement function looks like this:
 
-function moveElement(elementID,final_x,final_y,interval) { if
-(!document.getElementById) return false; if
-(!document.getElementById(elementID)) return false; var elem =
-document.getElementById(elementID); if (elem.movement) {
-clearTimeout(elem.movement);
-
-} var xpos = parseInt(elem.style.left); var ypos =
-parseInt(elem.style.top); var dist = 0;
-
-if (xpos == final_x && ypos == final_y) { return true;
-
+function moveElement(elementID,final_x,final_y,interval) { 
+  if (!document.getElementById) return false; 
+  if (!document.getElementById(elementID)) return false; 
+  var elem = document.getElementById(elementID); 
+  if (elem.movement) {
+    clearTimeout(elem.movement);
+  } 
+  var xpos = parseInt(elem.style.left); 
+  var ypos = parseInt(elem.style.top); 
+  var dist = 0;
+if (xpos == final_x && ypos == final_y) { 
+  return true;
 }
 
-**if (xpos \< final_x) {**
+**if (xpos &lt; final_x) {**
 
 **dist = Math.ceil((final_x - xpos)/10); xpos = xpos + dist;**
 
 **}**
 
-**if (xpos \> final_x) {**
+**if (xpos \final_x) {**
 
 **dist = Math.ceil((xpos - final_x)/10); xpos = xpos - dist;**
 
 **}**
 
-**if (ypos \< final_y) {**
+**if (ypos &lt; final_y) {**
 
 **dist = Math.ceil((final_y - ypos)/10); ypos = ypos + dist;**
 
 **}**
 
-**if (ypos \> final_y) {**
+**if (ypos \final_y) {**
 
 **dist = Math.ceil((ypos - final_y)/10); ypos = ypos - dist;**
 
 **}**
 
-elem.style.left = xpos + \"px\"; elem.style.top = ypos + \"px\";
+elem.style.left = xpos + &quot;px&quot;; elem.style.top = ypos + &quot;px&quot;;
 
 var repeat =
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\";
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 elem.movement = setTimeout(repeat,interval);
 
 }
 
-> Save these changes to moveElement.js. Reload list.html to see the
-> difference.
+Save these changes to moveElement.js. Reload list.html to see the
+difference.
 
 The animation now feels much smoother and snappier. When you first hover
 over a link, the image jumps quite a distance. As the image approaches
@@ -12824,20 +12258,20 @@ case.
 If the left or top properties haven't been set, we have a couple of
 options. We could simply exit the function there and then:
 
-if (!elem.style.left \|\| !elem.style.top) { return false; }
+if (!elem.style.left &#124;&#124; !elem.style.top) { return false; }
 
 If JavaScript can't read those properties, then the function stops
 without throwing up an error message.
 
 Another solution is to apply default left and top properties in the
 moveElement function. If either property hasn't been set, we can give
-them a default value of \"0px\":
+them a default value of &quot;0px&quot;:
 
-if (!elem.style.left) { elem.style.left = \"0px\";
+if (!elem.style.left) { elem.style.left = &quot;0px&quot;;
 
-} if (!elem.style.top) { elem.style.top = \"0px\"; }
+} if (!elem.style.top) { elem.style.top = &quot;0px&quot;; }
 
-> The moveElement function now looks like this:
+The moveElement function now looks like this:
 
 function moveElement(elementID,final_x,final_y,interval) { if
 (!document.getElementById) return false; if
@@ -12848,9 +12282,9 @@ clearTimeout(elem.movement);
 
 }
 
-**if (!elem.style.left) { elem.style.left = \"0px\";**
+**if (!elem.style.left) { elem.style.left = &quot;0px&quot;;**
 
-**} if (!elem.style.top) { elem.style.top = \"0px\";**
+**} if (!elem.style.top) { elem.style.top = &quot;0px&quot;;**
 
 **}**
 
@@ -12861,7 +12295,7 @@ if (xpos == final_x && ypos == final_y) { return true;
 
 }
 
-if (xpos \< final_x) {
+if (xpos &lt; final_x) {
 
 dist = Math.ceil((final_x - xpos)/10);
 
@@ -12869,47 +12303,47 @@ xpos = xpos + dist;
 
 }
 
-if (xpos \> final_x) {
+if (xpos \final_x) {
 
 dist = Math.ceil((xpos - final_x)/10); xpos = xpos - dist;
 
 }
 
-if (ypos \< final_y) {
+if (ypos &lt; final_y) {
 
 dist = Math.ceil((final_y - ypos)/10); ypos = ypos + dist;
 
 }
 
-if (ypos \> final_y) {
+if (ypos \final_y) {
 
 dist = Math.ceil((ypos - final_y)/10); ypos = ypos - dist;
 
-} elem.style.left = xpos + \"px\"; elem.style.top = ypos + \"px\";
+} elem.style.left = xpos + &quot;px&quot;; elem.style.top = ypos + &quot;px&quot;;
 
 var repeat =
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\";
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 elem.movement = setTimeout(repeat,interval);
 
 }
 
 With that safety check in place, we no longer need to explicitly set the
-position of the \"preview\" element. Right now, we're doing that in the
+position of the &quot;preview&quot; element. Right now, we're doing that in the
 prepareSlideshow function. Remove these lines:
 
-preview.style.left = \"0px\"; preview.style.top = \"0px\";
+preview.style.left = &quot;0px&quot;; preview.style.top = &quot;0px&quot;;
 
-> While we're at it, let's overhaul the prepareSlideshow function.
+While we're at it, let's overhaul the prepareSlideshow function.
 
 Generating markup
 
 The list.html document contains some markup that exists just for the
 JavaScript slideshow:
 
-\<div id=\"slideshow\"\>
+&lt;div id=&quot;slideshow&quot;&gt;
 
-\<img src=\"images/topics.gif\" alt=\"building blocks of web design\"
-id=\"preview\" /\> \</div\>
+&lt;img src=&quot;images/topics.gif&quot; alt=&quot;building blocks of web design&quot;
+id=&quot;preview&quot; /\&lt;/div&gt;
 
 If the user doesn't have JavaScript enabled, this content is somewhat
 superfluous. The div and the img element are there purely for the
@@ -12917,14 +12351,14 @@ slideshow effect. Instead of hard-coding these elements into the
 document, it makes sense to use JavaScript to generate them. Let's do
 that in prepareSlideshow.js. First, create the div element:
 
-var slideshow = document.createElement(\"div\");
-slideshow.setAttribute(\"id\",\"slideshow\"); Next, create the img
+var slideshow = document.createElement(&quot;div&quot;);
+slideshow.setAttribute(&quot;id&quot;,&quot;slideshow&quot;); Next, create the img
 element:
 
-var preview = document.createElement(\"img\");
-preview.setAttribute(\"src\",\"images/topics.gif\");
-preview.setAttribute(\"alt\",\"building blocks of web design\");
-preview.setAttribute(\"id\",\"preview\"); Place the img inside the div:
+var preview = document.createElement(&quot;img&quot;);
+preview.setAttribute(&quot;src&quot;,&quot;images/topics.gif&quot;);
+preview.setAttribute(&quot;alt&quot;,&quot;building blocks of web design&quot;);
+preview.setAttribute(&quot;id&quot;,&quot;preview&quot;); Place the img inside the div:
 
 slideshow.appendChild(preview);
 
@@ -12932,10 +12366,10 @@ Finally, we want these newly created elements to appear directly after
 the list of links. For this, we'll use the insertAfter function from
 Chapter 7:
 
-var list = document.getElementById(\"linklist\");
+var list = document.getElementById(&quot;linklist&quot;);
 insertAfter(slideshow,list);
 
-> The finished prepareSlideshow function looks like this:
+The finished prepareSlideshow function looks like this:
 
 function prepareSlideshow() {
 
@@ -12945,98 +12379,98 @@ function prepareSlideshow() {
 
 // Make sure the elements exist
 
-if (!document.getElementById(\"linklist\")) return false; **var
-slideshow = document.createElement(\"div\");
-slideshow.setAttribute(\"id\",\"slideshow\"); var preview =
-document.createElement(\"img\");
-preview.setAttribute(\"src\",\"images/topics.gif\");
-preview.setAttribute(\"alt\",\"building blocks of web design\");
-preview.setAttribute(\"id\",\"preview\");
+if (!document.getElementById(&quot;linklist&quot;)) return false; **var
+slideshow = document.createElement(&quot;div&quot;);
+slideshow.setAttribute(&quot;id&quot;,&quot;slideshow&quot;); var preview =
+document.createElement(&quot;img&quot;);
+preview.setAttribute(&quot;src&quot;,&quot;images/topics.gif&quot;);
+preview.setAttribute(&quot;alt&quot;,&quot;building blocks of web design&quot;);
+preview.setAttribute(&quot;id&quot;,&quot;preview&quot;);
 slideshow.appendChild(preview);**
 
-**var list = document.getElementById(\"linklist\");
+**var list = document.getElementById(&quot;linklist&quot;);
 insertAfter(slideshow,list);**
 
 // Get all the links in the list
 
-var links = list.getElementsByTagName(\"a\");
+var links = list.getElementsByTagName(&quot;a&quot;);
 
 // Attach the animation behavior to the mouseover event
-links\[0\].onmouseover = function() {
-moveElement(\"preview\",-100,0,10);
+links&#91;0&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-100,0,10);
 
-} links\[1\].onmouseover = function() {
-moveElement(\"preview\",-200,0,10);
+} links&#91;1&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-200,0,10);
 
-} links\[2\].onmouseover = function() {
-moveElement(\"preview\",-300,0,10);
+} links&#91;2&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-300,0,10);
 
 } }
 
 addLoadEvent(prepareSlideshow);
 
 Now we need to make some changes to list.html. We can remove the markup
-with the \"slideshow\" div and the \"preview\" image. We also need to
-include one more set of \<script\> tags to reference the insertAfter.js
+with the &quot;slideshow&quot; div and the &quot;preview&quot; image. We also need to
+include one more set of &lt;script\ tags to reference the insertAfter.js
 file.
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Web Design\</title\>
+&lt;title&gt;Web Design&lt;/title&gt;
 
-**\<link rel=\"stylesheet\" href=\"styles/layout.css\" media=\"screen\"
-/\>**
+**&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/layout.css&quot; media=&quot;screen&quot;
+/&gt;**
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<h1\>Web Design\</h1\>
+&lt;h1&gt;Web Design&lt;/h1&gt;
 
-\<p\>These are the things you should know.\</p\>
+&lt;p&gt;These are the things you should know.&lt;/p&gt;
 
-\<ol id=\"linklist\"\>
+&lt;ol id=&quot;linklist&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"structure.html\"\>Structure\</a\>
+&lt;a href=&quot;structure.html&quot;&gt;Structure&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"presentation.html\"\>Presentation\</a\>
+&lt;a href=&quot;presentation.html&quot;&gt;Presentation&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"behavior.html\"\>Behavior\</a\>
+&lt;a href=&quot;behavior.html&quot;&gt;Behavior&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ol\>
+&lt;/ol&gt;
 
-\<script src=\"scripts/addLoadEvent.js\"\>\</script\>
+&lt;script src=&quot;scripts/addLoadEvent.js&quot;&gt;&lt;/script&gt;
 
-**\<script src=\"scripts/insertAfter.js\"\>\</script\>**
+**&lt;script src=&quot;scripts/insertAfter.js&quot;&gt;&lt;/script&gt;**
 
-\<script src=\"scripts/moveElement.js\"\>\</script\>
+&lt;script src=&quot;scripts/moveElement.js&quot;&gt;&lt;/script&gt;
 
-\<script src=\"scripts/prepareSlideshow.js\"\>\</script\>
+&lt;script src=&quot;scripts/prepareSlideshow.js&quot;&gt;&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
-> Write the insertAfter function to a file called insertAfter.js and
-> place it in the scripts folder:
+Write the insertAfter function to a file called insertAfter.js and
+place it in the scripts folder:
 
 function insertAfter(newElement,targetElement) { var parent =
 targetElement.parentNode; if (parent.lastChild == targetElement) {
@@ -13051,9 +12485,9 @@ parent.insertBefore(newElement,targetElement.nextSibling);
 The other file we need to update is the style sheet, layout.css. Remove
 this line from prepareSlideshow.js:
 
-preview.style.position = \"absolute\";
+preview.style.position = &quot;absolute&quot;;
 
-> Now place that declaration in the style sheet, where it belongs:
+Now place that declaration in the style sheet, where it belongs:
 
 #slideshow { width: 100px; height: 100px; position: relative; overflow:
 hidden;
@@ -13078,7 +12512,7 @@ the slideshow, you could do that by editing layout.css. You could float
 the two elements side by side. You could also place a border around the
 slideshow if you wanted it to stand out more.
 
-> AN ANIMATED SLIDESHOW
+AN ANIMATED SLIDESHOW
 
 What's next?
 
@@ -13110,7 +12544,7 @@ What this chapter covers:
 I began this book with an over-the-shoulder look at the history of
 JavaScript and the emergence of a standardized Document Object Model.
 Today, the emergence of HTML5 is blurring the lines between the DOM,
-style, and behavior, so let\'s take a look at what\'s new and where
+style, and behavior, so let&#39;s take a look at what&#39;s new and where
 things are headed in the future.
 
 What is HTML5?
@@ -13118,9 +12552,9 @@ What is HTML5?
 HTML5 is the now and the future of the HTML language. From
 specifications in HTML4 to XHTML to Web Apps 1.0 and back to HTML5, its
 path to inception has faced many hurdles and battles. The fighting and
-political struggles behind HTML5\'s creation---some of which are still
+political struggles behind HTML5&#39;s creation---some of which are still
 going on---play out like an afternoon soap opera, but the end result is
-something good. Finally, we can all be excited as we\'re on the verge of
+something good. Finally, we can all be excited as we&#39;re on the verge of
 a unification of multiple technologies to create the next evolution in
 the Web.
 
@@ -13148,40 +12582,40 @@ technologies are
 
 3.  JavaScript and the Document Object Model
 
-Arguably you could add a fourth layer, which covers the browser\'s
+Arguably you could add a fourth layer, which covers the browser&#39;s
 JavaScript APIs and includes things like cookies or window properties.
 
 With the evolution of HTML5, structure, style, and behavior (together
 with additional JavaScript APIs) have been bundled into a nice little
-collection, but it\'s just that---a collection. HTML5 gives you a
+collection, but it&#39;s just that---a collection. HTML5 gives you a
 balanced set of technologies you can pick and choose from and call upon
 as needed.
 
 For example, in the structure layer, HTML5 adds new markup elements such
-as \<section\>,
+as &lt;section&gt;,
 
-\<article\>, \<header\>, and \<footer\>. I won\'t be discussing all the
+&lt;article&gt;, &lt;header&gt;, and &lt;footer&gt;. I won&#39;t be discussing all the
 new tags here, so I suggest you check out the specification for the
 complete list
 ([http://www.w3.org/TR/html](http://www.w3.org/TR/html5)5/). HTML5 also
-includes more interactive and media elements such as \<canvas\>,
-\<audio\>, and \<video\>. Forms have also been enhanced to include color
+includes more interactive and media elements such as &lt;canvas&gt;,
+&lt;audio&gt;, and &lt;video&gt;. Forms have also been enhanced to include color
 pickers, date pickers, sliders, and progress bars. With all these
-additions, you\'ll notice that many of these elements such as \<video\>
+additions, you&#39;ll notice that many of these elements such as &lt;video&gt;
 also come with their own JavaScript and DOM APIs.
 
 In the behavior layer, HTML5 defines how each new element will interact
 in the DOM and what additional APIs will be available. Video elements
 allow you to customize the controls and influence playback methods. Form
 elements allow you to control progress. You can draw freeform graphics,
-images, and other objects into a \<canvas\> element.
+images, and other objects into a &lt;canvas\ element.
 
 Along with the markup and behavior, the presentation layer has also been
 improved. The CSS 3 modules include everything from advanced selectors
 to transitions, transformations, and animation. These modules begin to
 shift many traditional DOM scripting tasks, such as animation and
 locating elements, into their proper location in the presentation, where
-they should be in most cases. You\'ll still see a lot of DOM scripting
+they should be in most cases. You&#39;ll still see a lot of DOM scripting
 used to influence advanced animations, but many simple interactions will
 no longer require timers or JavaScript.
 
@@ -13190,15 +12624,15 @@ everything from geolocation, storage, and drag-and-drop to sockets,
 multithreading, and in-browser SQL.
 
 Regardless of which new features of HTML5 you intend to incorporate,
-remember that all the existing (X)HTML4 code you\'ve worked so hard on
-is still perfectly fine. There\'s little that you\'ll need to change to
-conform to HTML5. \"Upgrading\" most of your documents is as simple as
-changing the doctype to \<!DOCTYPE html\>. That\'s it.
+remember that all the existing (X)HTML4 code you&#39;ve worked so hard on
+is still perfectly fine. There&#39;s little that you&#39;ll need to change to
+conform to HTML5. &quot;Upgrading&quot; most of your documents is as simple as
+changing the doctype to &lt;!DOCTYPE html&gt;. That&#39;s it.
 
-Of course if you want your pages to validate properly, you\'ll have to
-replace obsolete elements like \<acronym\> with \<abbr\>, but remember
+Of course if you want your pages to validate properly, you&#39;ll have to
+replace obsolete elements like &lt;acronym&gt; with &lt;abbr&gt;, but remember
 that validation is a tool to help you be a better programmer, not a
-religion. Also, newer elements like \<section\> or \<article\> won\'t
+religion. Also, newer elements like &lt;section&gt; or &lt;article&gt; won&#39;t
 always play nice with older browsers, but more on that later.
 
 As you saw in Chapter 8, HTML, including HTML5, can be lax in its markup
@@ -13206,44 +12640,44 @@ requirements compared to XHTML. HTML5 aims to be backward-compatible
 with both existing HTML and XHTML documents, so how you decide to mark
 up your document, and which rules you want to adhere to, are completely
 up to you. If you want to close all tags and have perfect form in your
-markup, that\'s great. If you\'re lazy and don\'t feel like closing all
-your tags, that\'s fine, too. In fact---hold onto your hats---this HTML5
+markup, that&#39;s great. If you&#39;re lazy and don&#39;t feel like closing all
+your tags, that&#39;s fine, too. In fact---hold onto your hats---this HTML5
 document will validate perfectly well, despite some obvious missing
 pieces:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<meta charset=utf-8 /\>
+&lt;meta charset=utf-8 /&gt;
 
-\<title\>This is a valid HTML5 document\</title\>
+&lt;title&gt;This is a valid HTML5 document&lt;/title&gt;
 
-\<p\>Try me at
-[http://validator.w3.org/check\</p\>](http://validator.w3.org/check%3C/p)
+&lt;p&gt;Try me at
+[http://validator.w3.org/check&lt;/p&gt;](http://validator.w3.org/check%3C/p)
 
-Despite a successful validation, if you\'re going to be professional
+Despite a successful validation, if you&#39;re going to be professional
 about your work I suggest you include basic structural elements such as
-\<html\>, \<head\>, and \<body\> even though a browser may add them for
+&lt;html&gt;, &lt;head&gt;, and &lt;body&gt; even though a browser may add them for
 you.
 
 So where does that leave us? Can we use these fancy new features today?
 The answer is yes, and I encourage you to do so as long as you keep a
-few things in mind. Detecting HTML5 support as a whole isn\'t
-possible---it\'s a collection, not a whole---but you can rely on trusty
+few things in mind. Detecting HTML5 support as a whole isn&#39;t
+possible---it&#39;s a collection, not a whole---but you can rely on trusty
 old feature detection and progressive enhancement just as you have
 throughout the book.
 
 A little help from a friend
 
 If you want to start using HTML5 today, then by all means go for it!
-When you take the plunge there\'s a tool that will help you out along
+When you take the plunge there&#39;s a tool that will help you out along
 the way: Modernizr.
 
 Modernizr ([http://www.modernizr.com/) is](http://www.modernizr.com/) an
 open source JavaScript library that uses rich feature detection to give
-you better control of your HTML5 documents. Modernizr doesn\'t add
+you better control of your HTML5 documents. Modernizr doesn&#39;t add
 missing
 
-functionality; you\'re not going to be able to use local storage in
+functionality; you&#39;re not going to be able to use local storage in
 Internet Explorer 6, for example. What Modernizr does is help fill in
 the gaps by providing a number of different CSS hooks and
 featuredetection properties. It is an essential tool for using HTML5
@@ -13252,14 +12686,14 @@ today and will help in more ways than one.
 When you embed Modernizr in your document it will perform a number of
 small miracles as the page loads.
 
-First, it alters the class attribute of the \<html\> element by creating
+First, it alters the class attribute of the &lt;html&gt; element by creating
 additional classes based on what HTML5 features are available. To begin
-your Modernizr document, you typically add a no-js class to the \<html\>
+your Modernizr document, you typically add a no-js class to the &lt;html&gt;
 element:
 
-\<html class=\"no-js\"\>
+&lt;html class=&quot;no-js&quot;&gt;
 
-You can use this to apply CSS styles in cases where JavaScript isn\'t
+You can use this to apply CSS styles in cases where JavaScript isn&#39;t
 supported:
 
 .nojs *selector* { *style properties* }
@@ -13268,39 +12702,39 @@ Modernizr then detects the various features that are supported by the
 browser and alters the class accordingly. If a feature is supported, it
 will indicate so by adding classes similar to these:
 
-\<html class=\"js canvas canvastext geolocation crosswindowmessaging
+&lt;html class=&quot;js canvas canvastext geolocation crosswindowmessaging
 websqldatabase indexeddb hashchange historymanagement draganddrop
 websockets rgba hsla multiplebgs backgroundsize borderimage borderradius
 boxshadow opacity cssanimations csscolumns cssgradients cssreflections
 csstransforms csstransforms3d csstransitions video audio localstorage
 sessionstorage webworkers applicationcache svg smil svgclippaths
-fontface\"\>
+fontface&quot;&gt;
 
 If a feature is not supported, Modernizr will append a no- prefix to the
 same set of classes:
 
-\<html class=\"js no-canvas no-canvastext no-geolocation
+&lt;html class=&quot;js no-canvas no-canvastext no-geolocation
 no-crosswindowmessaging nowebsqldatabase no-indexeddb no-hashchange
 no-historymanagement no-draganddrop no-websockets no-rgba no-hsla
 no-multiplebgs no-backgroundsize no-borderimage no-borderradius
 no-boxshadow no-opacity no-cssanimations no-csscolumns no-cssgradients
 no-cssreflections no-csstransforms no-csstransforms3d no-csstransitions
 no-video no-audio no-localstorage no-sessionstorage nowebworkers
-no-applicationcache no-svg no-smil no-svgclippaths no-fontface\"\>
+no-applicationcache no-svg no-smil no-svgclippaths no-fontface&quot;&gt;
 
-Depending on the browser\'s support of features, you\'ll get a
+Depending on the browser&#39;s support of features, you&#39;ll get a
 mix-and-match list of the *feature* and *no-feature* classes.
 
 You can now reliably use these classes in your CSS to detect support for
 each feature and progressively upgrade the user experience:
 
-.multiplebgs article p { /\* properties for browsers that support
-multiple backgrounds \*/
+.multiplebgs article p { /&#42; properties for browsers that support
+multiple backgrounds &#42;/
 
 }
 
-.no-multiplebgs article p { /\* optional fallback properties for
-browsers that don\'t \*/
+.no-multiplebgs article p { /&#42; optional fallback properties for
+browsers that don&#39;t &#42;/
 
 }
 
@@ -13309,14 +12743,14 @@ that you can incorporate directly into your DOM scripts as well:
 
 if ( !Modernizr.inputtypes.date ) {
 
-/\* No native date support, use a custom date picker script \*/
-createDatepicker(document.getElementById(\'birthday\')); }
+/&#42; No native date support, use a custom date picker script &#42;/
+createDatepicker(document.getElementById(&#39;birthday&#39;)); }
 
 Modernizr will also help legacy browsers handle the new elements such as
-\<section\> and \<article\>. If you hadn\'t noticed in the past, in most
-browsers you could create your own elements like \<foo\> and apply
-whatever styles you like as long as you didn\'t care about validation.
-To an older browser, the new HTML5 elements such as \<section\> are no
+&lt;section&gt; and &lt;article&gt;. If you hadn&#39;t noticed in the past, in most
+browsers you could create your own elements like &lt;foo&gt; and apply
+whatever styles you like as long as you didn&#39;t care about validation.
+To an older browser, the new HTML5 elements such as &lt;section&gt; are no
 different. To use them, all you need to do is include some base styles
 so the browser can render the block elements properly:
 
@@ -13326,20 +12760,20 @@ The only special case is Internet Explorer. To add new unknown elements
 in IE, you need to first create the element with the following
 JavaScript:
 
-document.createElement(\'article\');
+document.createElement(&#39;article&#39;);
 
-Modernizr handles all this for us, but remember, that doesn\'t mean you
-can suddenly start embedding movies with the \<video\> element. It
-doesn\'t add the underlying JavaScript and DOM APIs or other
+Modernizr handles all this for us, but remember, that doesn&#39;t mean you
+can suddenly start embedding movies with the &lt;video&gt; element. It
+doesn&#39;t add the underlying JavaScript and DOM APIs or other
 technologies required for all the elements.
 
 Embedding Modernizr is easy. Just download the library from
-<http://www.modernizr.com/> and add a script to the \<head\> of your
+<http://www.modernizr.com/and add a script to the &lt;head&gt; of your
 document:
 
-\<script src=\"modernizr-1.5.min.js\"\>\</script\>
+&lt;script src=&quot;modernizr-1.5.min.js&quot;&gt;&lt;/script&gt;
 
-Be sure this script goes into the \<head\> of the document. Although
+Be sure this script goes into the &lt;head&gt; of the document. Although
 that goes against what was suggested in Chapter 5, "Best Practices,"
 this is a special case for a good reason. You want Modernizr to load
 *before* the remainder of the markup, so that the new HTML5 elements can
@@ -13350,9 +12784,9 @@ chance to apply its magic.
 
 A few examples
 
-To whet your appetite a little, let\'s look at canvas, video/audio, and
+To whet your appetite a little, let&#39;s look at canvas, video/audio, and
 forms as a few quick examples of what the new APIs offer in HTML5. To
-try these out you\'ll need one of the following browsers:
+try these out you&#39;ll need one of the following browsers:
 
 -   Apple Safari 5+
 
@@ -13368,38 +12802,38 @@ Canvas
 
 Every browser has the ability to display a static image. You can make
 the image animate with GIFs, and you can change a few styles with CSS or
-JavaScript, but that\'s about it. There\'s little or no possible
-interaction with these static images. The \<canvas\> element changes all
+JavaScript, but that&#39;s about it. There&#39;s little or no possible
+interaction with these static images. The &lt;canvas&gt; element changes all
 that by allowing you to manipulate and create images and graphics on the
 fly. Adding a canvas to your document is a breeze:
 
-\<canvas id=\"draw-in-me\" width=\"120\" height=\"40\"\>
+&lt;canvas id=&quot;draw-in-me&quot; width=&quot;120&quot; height=&quot;40&quot;&gt;
 
-\<p\>Powered By HTML5 canvas\</p\>
+&lt;p&gt;Powered By HTML5 canvas&lt;/p&gt;
 
-\</canvas\>
+&lt;/canvas&gt;
 
-Drawing on the canvas is another story. You can check out the \<canvas\>
+Drawing on the canvas is another story. You can check out the &lt;canvas&gt;
 element specification
 ([http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html)](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html)
-for all the details, but in essence \<canvas\> uses math and position
+for all the details, but in essence &lt;canvas&gt; uses math and position
 concepts similar to those in any vector-based drawing application such
 as Adobe Illustrator or in vector-based coding languages.
 
 ■ **Note** If you use Illustrator, you can try to export your work
-directly to \<canvas\> using the Ai-\>Canvas plug-in
+directly to &lt;canvas&gt; using the Ai-&gt;Canvas plug-in
 
 ([http://visitmix.com/labs/ai2canvas/),](http://visitmix.com/labs/ai2canvas)
 although as with any WYSIWYG editor you should check over the output and
 manually edit it for best results.
 
-Using \<canvas\>, here\'s how you might draw a black box with rounded
+Using &lt;canvas&gt;, here&#39;s how you might draw a black box with rounded
 corners and a 2-pixel white stroke:
 
 function draw() {
 
-var canvas = document.getElementById(\'draw-in-me\'); if
-(canvas.getContext) { var ctx = canvas.getContext(\'2d\');
+var canvas = document.getElementById(&#39;draw-in-me&#39;); if
+(canvas.getContext) { var ctx = canvas.getContext(&#39;2d&#39;);
 ctx.beginPath(); ctx.moveTo(120.0, 32.0);
 
 ctx.bezierCurveTo(120.0, 36.4, 116.4, 40.0, 112.0, 40.0);
@@ -13413,7 +12847,7 @@ ctx.bezierCurveTo(0.0, 3.6, 3.6, 0.0, 8.0, 0.0); ctx.lineTo(112.0, 0.0);
 ctx.bezierCurveTo(116.4, 0.0, 120.0, 3.6, 120.0, 8.0); ctx.lineTo(120.0,
 32.0); ctx.closePath(); ctx.fill(); ctx.lineWidth = 2.0;
 
-ctx.strokeStyle = \"rgb(255, 255, 255)\"; ctx.stroke();
+ctx.strokeStyle = &quot;rgb(255, 255, 255)&quot;; ctx.stroke();
 
 } }
 
@@ -13421,7 +12855,7 @@ window.onload = draw;
 
 In this example, the ctx variable refers to the *context* of the canvas.
 The context is a flat twodimensional drawing surface whose origin (0,0)
-is at the top-left corner of the \<canvas\> element, with the coordinate
+is at the top-left corner of the &lt;canvas&gt; element, with the coordinate
 space having x values increasing when going right, and y values
 increasing when going down. You can then create various two-dimensional
 shapes or lines by specifying points in the context. You can also paint
@@ -13431,49 +12865,49 @@ here in Chrome:
 ![](./images/media/image130.jpg){width="5.8933333333333335in"
 height="4.163333333333333in"}
 
-That\'s a very crude example. The \<canvas\> element uses an API similar
+That&#39;s a very crude example. The &lt;canvas&gt; element uses an API similar
 to other 2D drawing libraries. You can create and paint paths from one
 point to another using several points and curves like the example just
-shown, but the canvas isn\'t limited to vector paths. You can display
+shown, but the canvas isn&#39;t limited to vector paths. You can display
 and manipulate bitmap images as well.
 
-For example, let\'s use a \<canvas\> object to take a color image and
+For example, let&#39;s use a &lt;canvas&gt; object to take a color image and
 automatically create a grayscale version in the browser. Then we can
 have the image switch from the grayscale canvas image to the original
 color image as the cursor hovers over it.
 
 Create a simple HTML file called grayscale.html that links to an image
-on the same domain as the script. We\'ll include Modernizr as well for
+on the same domain as the script. We&#39;ll include Modernizr as well for
 good measure:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Grayscale Canvas Example\</title\>
+&lt;title&gt;Grayscale Canvas Example&lt;/title&gt;
 
-\<script src=\"scripts/modernizr-1.6.min.js\"\>\</script\> \</head\>
+&lt;script src=&quot;scripts/modernizr-1.6.min.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<img src=\"images/avatar.png\" id=\"avatar\" title=\"Jeffrey Sambells\"
-alt=\"My Avatar\"/\>
+&lt;img src=&quot;images/avatar.png&quot; id=&quot;avatar&quot; title=&quot;Jeffrey Sambells&quot;
+alt=&quot;My Avatar&quot;/&gt;
 
-\<script src=\"scripts/grayscale.js\"\>\</script\>
+&lt;script src=&quot;scripts/grayscale.js&quot;&gt;&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
-> Next create the grayscale.js file and add the following script:
+Next create the grayscale.js file and add the following script:
 
 function convertToGS(img) {
 
-// For good measure return if canvas isn\'t supported. if
+// For good measure return if canvas isn&#39;t supported. if
 (!Modernizr.canvas) return;
 
 // Store the original color version. img.color = img.src;
@@ -13493,19 +12927,19 @@ img.onmouseout();
 
 function createGSCanvas(img) {
 
-var canvas=document.createElement(\"canvas\"); canvas.width= img.width;
+var canvas=document.createElement(&quot;canvas&quot;); canvas.width= img.width;
 canvas.height=img.height;
 
-var ctx=canvas.getContext(\"2d\"); ctx.drawImage(img,0,0);
+var ctx=canvas.getContext(&quot;2d&quot;); ctx.drawImage(img,0,0);
 
 // Note: getImageData will only work for images
 
 // on the same domain as the script. var c = ctx.getImageData(0, 0,
-img.width, img.height); for (i=0; i\<c.height; i++) { for (j=0;
-j\<c.width; j++) { var x = (i\*4) \* c.width + (j\*4); var r =
-c.data\[x\]; var g = c.data\[x+1\]; var b = c.data\[x+2\];
+img.width, img.height); for (i=0; i&lt;c.height; i++) { for (j=0;
+j&lt;c.width; j++) { var x = (i&#42;4) &#42; c.width + (j&#42;4); var r =
+c.data&#91;x&#93;; var g = c.data&#91;x+1&#93;; var b = c.data&#91;x+2&#93;;
 
-c.data\[x\] = c.data\[x+1\] = c.data\[x+2\] = (r+g+b)/3;
+c.data&#91;x&#93; = c.data&#91;x+1&#93; = c.data&#91;x+2&#93; = (r+g+b)/3;
 
 }
 
@@ -13522,14 +12956,14 @@ return canvas.toDataURL();
 // use addLoadEvent function if alongside other scripts. window.onload =
 function() {
 
-convertToGS(document.getElementById(\'avatar\')); }
+convertToGS(document.getElementById(&#39;avatar&#39;)); }
 
 ■ **Note** A word of caution: Different browsers have different security
 considerations when reading data from files such as images. For this
 example to work properly, you need to serve the image and document from
-the same web site. Also, it may not work if you\'re trying to load the
+the same web site. Also, it may not work if you&#39;re trying to load the
 page from your local hard drive using the file protocol. You could alter
-your browser\'s security settings; however, I recommend just uploading
+your browser&#39;s security settings; however, I recommend just uploading
 this example to a web server instead.
 
 This script alters the avatar image when the page loads by applying
@@ -13552,29 +12986,29 @@ To convert the color image to grayscale in the createGSCanvas function,
 we create a new canvas element, and then draw the color image into its
 context:
 
-var canvas=document.createElement(\"canvas\"); canvas.width= img.width;
+var canvas=document.createElement(&quot;canvas&quot;); canvas.width= img.width;
 canvas.height=img.height;
 
-var ctx=canvas.getContext(\"2d\"); ctx.drawImage(img,0,0);
+var ctx=canvas.getContext(&quot;2d&quot;); ctx.drawImage(img,0,0);
 
 Now we can retrieve the raw image data and loop though every pixel to
 convert the color value to its grayscale equivalent by averaging the
 red, green, and blue color components:
 
 var c = ctx.getImageData(0, 0, img.width, img.height); for (i=0;
-i\<c.height; i++) { for (j=0; j\<c.width; j++) { var x = (i\*4) \*
-c.width + (j\*4); var r = c.data\[x\];
+i&lt;c.height; i++) { for (j=0; j&lt;c.width; j++) { var x = (i&#42;4) &#42;
+c.width + (j&#42;4); var r = c.data&#91;x&#93;;
 
-var g = c.data\[x+1\]; var b = c.data\[x+2\];
+var g = c.data&#91;x+1&#93;; var b = c.data&#91;x+2&#93;;
 
-c.data\[x\] = c.data\[x+1\] = c.data\[x+2\] = (r+g+b)/3;
-
-}
+c.data&#91;x&#93; = c.data&#91;x+1&#93; = c.data&#91;x+2&#93; = (r+g+b)/3;
 
 }
 
-Now all that\'s left to do is put the grayscale data back into the
-canvas\'s context and return the raw image data for the source of the
+}
+
+Now all that&#39;s left to do is put the grayscale data back into the
+canvas&#39;s context and return the raw image data for the source of the
 new grayscale image.
 
 ctx.putImageData(c, 0, 0, 0, 0, c.width, c.height); return
@@ -13584,15 +13018,15 @@ Now the image can switch between the color image and a grayscale version
 of the original color image even though we only supplied the color
 source.
 
-So why use \<canvas\> instead of images? The power of the canvas comes
-when you modify it based on the users\' actions. Previously, the only
+So why use &lt;canvas&gt; instead of images? The power of the canvas comes
+when you modify it based on the users&#39; actions. Previously, the only
 way to provide a high level of rich interactivity was to rely on browser
-plug-ins such as Flash or Silverlight. Now with \<canvas\> you can draw
+plug-ins such as Flash or Silverlight. Now with &lt;canvas&gt; you can draw
 whatever objects and pixels you like on the screen. You can use it to
 manipulate images or create visually rich user interface elements. But,
 like Flash, it shouldn't be used for the wrong purposes. Just because
 you could create an entire website completely contained in a canvas
-doesn\'t mean you should.
+doesn&#39;t mean you should.
 
 Also note that for screen readers and other assistive technologies, the
 canvas is just as inaccessible as Flash and comes with many of the same
@@ -13601,86 +13035,86 @@ progressively enhance as necessary.
 
 Audio/Video
 
-Perhaps the most discussed element in HTML5 is \<video\>, along with its
-sibling the \<audio\> element. These two elements finally bring native
+Perhaps the most discussed element in HTML5 is &lt;video&gt;, along with its
+sibling the &lt;audio&gt; element. These two elements finally bring native
 video and audio support to HTML, but they come with a few headaches.
 
 Before HTML5, embedding video in a web page involved a tag soup of
-different repetitive \<object\> and \<embed\> elements, some of which
+different repetitive &lt;object&gt; and &lt;embed&gt; elements, some of which
 were not even valid elements in HTML4. The object markup referenced the
 various movie player plug-ins such as QuickTime, RealPlayer, or Flash
 and used those plug-ins to present the movie in the browser. For
-example, to embed a Flash movie you\'ve probably seen something like
+example, to embed a Flash movie you&#39;ve probably seen something like
 this:
 
-\<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8- 444553540000\"
-width=\"100\" height=\"100\"
+&lt;object classid=&quot;clsid:d27cdb6e-ae6d-11cf-96b8- 444553540000&quot;
+width=&quot;100&quot; height=&quot;100&quot;
 
-codebase=\"[http://fpdownload.adobe.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0\"](http://fpdownload.adobe.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0)\>
+codebase=&quot;[http://fpdownload.adobe.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0&quot;](http://fpdownload.adobe.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0)&gt;
 
-\<param name=\"movie\" value=\"moviename.swf\"\>
+&lt;param name=&quot;movie&quot; value=&quot;moviename.swf&quot;&gt;
 
-\<param name=\"play\" value=\"true\"\>
+&lt;param name=&quot;play&quot; value=&quot;true&quot;&gt;
 
-\<param name=\"loop\" value=\"true\"\>
+&lt;param name=&quot;loop&quot; value=&quot;true&quot;&gt;
 
-\<param name=\"quality\" value=\"high\"\>
+&lt;param name=&quot;quality&quot; value=&quot;high&quot;&gt;
 
-\<embed src=\"moviename.swf\" width=\"100\" height=\"100\" play=\"true\"
-loop=\"true\" quality=\"high\"
+&lt;embed src=&quot;moviename.swf&quot; width=&quot;100&quot; height=&quot;100&quot; play=&quot;true&quot;
+loop=&quot;true&quot; quality=&quot;high&quot;
 
-pluginspage=\"
-[http://get.adobe.com/flashplayer\"](http://get.adobe.com/flashplayer)
-/\>
+pluginspage=&quot;
+[http://get.adobe.com/flashplayer&quot;](http://get.adobe.com/flashplayer)
+/&gt;
 
-\</object\>
+&lt;/object&gt;
 
 Besides the object code, third-party plug-ins come with their own issues
 and limitations. For the embedded code to work, the plug-in has to be
 available, and it has to be the right version. Plug-ins also run in a
 sealed container, limiting how you can alter and interact with the video
-content through your scripts. Unless the plug-in provides an API, it\'s
+content through your scripts. Unless the plug-in provides an API, it&#39;s
 basically a little walled garden in the middle of your document.
 
-The new HTML5 \<video\> element finally defines a standard way to
+The new HTML5 &lt;video&gt;element finally defines a standard way to
 interact with and embed a movie into an HTML document. It also
 simplifies it down to one simple tag:
 
-\<video src=\"movie.mp4\"\>
+&lt;video src=&quot;movie.mp4&quot;&gt;
 
-\<!\-- Alternative content when video is not supported \--\>
+&lt;!&gt;-- Alternative content when video is not supported &gt;--&gt;
 
-\<a href=\"movie.mp4\"\>Download movie.mp4\</a\> \</video\>
+&lt;a href=&quot;movie.mp4&quot;&gt;Download movie.mp4&lt;/a&gt;&lt;/video&gt;
 
-> HTML5
+HTML5
 
-Here I\'m including a video using the mp4 file type and providing an
-alternate download link if the browser doesn\'t support the \<video\>
-element. Likewise, \<audio\> works the same way:
+Here I&#39;m including a video using the mp4 file type and providing an
+alternate download link if the browser doesn&#39;t support the &lt;video&gt;
+element. Likewise, &lt;audio&gt;works the same way:
 
-\<audio src=\"sound.ogg\"\>
+&lt;audio src=&quot;sound.ogg&quot;&gt;
 
-\<!\-- Alternative content when audio is not supported \--\>
+&lt;!&gt;-- Alternative content when audio is not supported \--&gt;
 
-\<a href=\"sound.ogg\"\>Download sound.ogg\</a\>
+&lt;a href=&quot;sound.ogg&quot;&gt;Download sound.ogg&lt;/a&gt;
 
-\</audio\>
+&lt;/audio&gt;
 
 Simple, elegant, and sexy---if only it were that easy...
 
 The Return of Tag Soup
 
-Unfortunately, there\'s still a bit of an issue with the HTML5 \<video\>
-and \<audio\> elements. The markup is simplified and has additional
-attributes to display controls or alter playback; however, it doesn\'t
+Unfortunately, there&#39;s still a bit of an issue with the HTML5 &lt;video&gt;
+and &lt;audio&gt; elements. The markup is simplified and has additional
+attributes to display controls or alter playback; however, it doesn&#39;t
 specify what video formats are supported.
 
-> To understand the implications of the video format you need to think
-> about what a video actually is.
+To understand the implications of the video format you need to think
+about what a video actually is.
 
 A video such as movie.mp4 is actually a container of several things. The
 mp4 extension indicates that this video is packaged using MPEG 4, based
-on Apple\'s QuickTime technologies. The container specifies where the
+on Apple&#39;s QuickTime technologies. The container specifies where the
 various audio and video tracks are located in the file as well as other
 attributes required for playback. Other containers include m4v (another
 MPEG 4 extension), avi (Audio Video Interleave), flv (Flash Video), and
@@ -13691,16 +13125,16 @@ various codecs. The codec specifies how the browser should decode the
 audio and video in order to play it back to you. The codec is really an
 algorithm that is used to compress and store the video to decrease the
 overall file size, with or without losing quality. There are many
-different video codecs, but the primary three that you\'ll see on the
+different video codecs, but the primary three that you&#39;ll see on the
 web are H.264, Theora, and VP8. Likewise, audio has its own set of
-codecs, and the common ones you\'ll see are mp3 (MPEG-1 Audio Layer 3),
+codecs, and the common ones you&#39;ll see are mp3 (MPEG-1 Audio Layer 3),
 aac (Advanced Audio Coding), and ogg (Ogg Vorbis).
 
 ■ **Note** One non-technical issue with the H.264 codec is licensing.
 H.264 has an underlying licensing fee associated with its use in
-decoders and encoders. What you don\'t need to pay for is distribution
+decoders and encoders. What you don&#39;t need to pay for is distribution
 of H.264 content that has already been licensed to encode and will need
-a license to decode. In other words, you won\'t have to pay a fee to
+a license to decode. In other words, you won&#39;t have to pay a fee to
 show an H.264 movie on your website, but browser manufacturers who
 decode the movie and the software manufacturers who created the program
 to encode the movie are subject to the license. In an attempt to remove
@@ -13711,7 +13145,7 @@ offer a license-free solution in WebM/VP8/Vorbis that all browser
 manufacturers could implement, giving everyone a common format.
 
 So where do all these different container formats and codecs leave us?
-Well, not every browser supports every container and codec, so you\'re
+Well, not every browser supports every container and codec, so you&#39;re
 back to offering multiple formats. Some versions of
 
 Firefox, Chrome, and Opera support Theora/Vorbis/Ogg. IE9, Safari,
@@ -13720,28 +13154,28 @@ Firefox, Chrome, and Opera also support WebM (another container format
 for VP8 and Vorbis).
 
 The result of this mess is that no one combination of formats is
-supported across all browsers. Let\'s hope that this situation will
+supported across all browsers. Let&#39;s hope that this situation will
 change in the future; otherwise, this whole HTML5 video endeavor seems a
 little less amazing. For now, to ensure that everyone has the
 opportunity to view your videos, you need to encode each video in
 multiple formats and include several sources in the video element:
 
-\<video id=\"movie\" preload controls\>
+&lt;video id=&quot;movie&quot; preload controls&gt;
 
-\<source src=\"movie.mp4\" /\> \<source src=\" movie.webm\"
+&lt;source src=&quot;movie.mp4&quot; /&lt;source src=&quot; movie.webm&quot;
 
-type=\'video/webm; codecs=\"vp8, vorbis\"\' /\>
+type=&#39;video/webm; codecs=&quot;vp8, vorbis&quot;&#39; /&gt;
 
-\<source src=\"movie.ogv\"
+&lt;source src=&quot;movie.ogv&quot;
 
-type=\'video/ogg; codecs=\"theora, vorbis\"\' /\>
+type=&#39;video/ogg; codecs=&quot;theora, vorbis&quot;&#39; /&gt;
 
-\<p\>Download movie as
+&lt;p&gt;Download movie as
 
-\<a href=\"movie.mp4\"\>MP4\</a\>, \<a href=\"movie.webm\"\>WebM\</a\>,
-or \<a href=\"movie.ogv\"\>Ogg\</a\>.\</p\>
+&lt;a href=&quot;movie.mp4&quot;&gt;MP4&lt;/a&gt;, &lt;a href=&quot;movie.webm&quot;&gt;WebM&lt;/a&gt;,
+or &lt;a href=&quot;movie.ogv&quot;&gt;Ogg&lt;/a&gt;.&lt;/p&gt;
 
-\</video\>
+&lt;/video&gt;
 
 For maximum HTML5 compatibility, you need to include three versions:
 
@@ -13753,21 +13187,21 @@ For maximum HTML5 compatibility, you need to include three versions:
 
 Not shown in the example is an alternate plug-in version. For ultimate
 backward compatibility with non-HTML5 browsers, you may also include
-alternate plug-in video players such as Flash or QuickTime. I\'ve opted
+alternate plug-in video players such as Flash or QuickTime. I&#39;ve opted
 to show a direct download link to one of the available formats to subtly
 encourage users to use a more advanced browser.
 
-■ **Note** There\'s an important gotcha is the order of the video
+■ **Note** There&#39;s an important gotcha is the order of the video
 formats. The MP4 is placed as the first source to allow iOS-based
 devices like the iPad, iPhone, and iPod Touch to read the video sources
 properly. Mobile Safari in pre-iOS 4 devices only recognizes one source
-in the \<video\> element, so the iOS-compatible format is listed first.
+in the &lt;video&gt; element, so the iOS-compatible format is listed first.
 
 All in all, this ends up a lot messier and not so sexy anymore.
 Considering the time it takes to reencode into the various formats and
 the storage requirements of three or more files, you may wonder why not
-stick with one Flash version, since you\'re going to include it anyway.
-Offering the newer \<video\> element as an option is more forward
+stick with one Flash version, since you&#39;re going to include it anyway.
+Offering the newer &lt;video&gt; element as an option is more forward
 thinking and offers you greater control of the content from within your
 documents and scripts when HTML5 is available.
 
@@ -13775,17 +13209,17 @@ With HTML5 video you can (or will be able to) apply CSS properties to
 alter the video's appearance, size and shape, add subtext such as
 captions and lyrics, or overlay content by combining video and canvas.
 You can even go as far as processing the video to detect movement by
-injecting the video into a \<canvas\> object and then analyzing the
+injecting the video into a &lt;canvas&gt; object and then analyzing the
 image, as you saw earlier with the grayscale image.
 
-To give you a simple example of the \<video\> element's API, let\'s see
+To give you a simple example of the &lt;video&gt; element's API, let&#39;s see
 how we can customize video controls and create our own simple Play
 button.
 
 Customizing Controls
 
-When a \<video\> element is displayed in the browser it includes some
-standard browser styled playback controls. To customize a control\'s
+When a &lt;video&gt; element is displayed in the browser it includes some
+standard browser styled playback controls. To customize a control&#39;s
 appearance or to add new controls you have a number of DOM properties to
 work with. These include the following, among others:
 
@@ -13811,14 +13245,14 @@ trigger your own scripts. These include the following, among others:
     of its duration.
 
 Using these and other properties and events you can easily create your
-own video controls to do pretty much whatever you\'d like the video to
+own video controls to do pretty much whatever you&#39;d like the video to
 do. Everything from Pause and Play buttons to scrubber bars (progress
 indicators) is possible.
 
 Whatever controls you decide to create, always remember to include the
 control property on the video element itself:
 
-\<video src=\"movie.ogv\" **control**\>
+&lt;video src=&quot;movie.ogv&quot; **control**&gt;
 
 This presents a common video control interface as shown here in Chrome,
 and can be removed by your custom control DOM script as necessary.
@@ -13826,7 +13260,7 @@ and can be removed by your custom control DOM script as necessary.
 ![](./images/media/image131.jpg){width="3.0033333333333334in"
 height="1.6933333333333334in"}
 
-Now, let\'s put our DOM scripting skills to work and create our own
+Now, let&#39;s put our DOM scripting skills to work and create our own
 simple video control.
 
 ■ **Note** If you need sample files to work with, you can download them
@@ -13834,61 +13268,61 @@ along with the source code for this book from
 [http://www.friendsofed.com.](http://www.friendsofed.com/)
 
 Start by creating a simple HTML page called movie.html that includes a
-\<video\> element with a movie in the appropriate formats we saw
+&lt;video\element with a movie in the appropriate formats we saw
 earlier. Also include a player.css stylesheet and a player.js script:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>My Video\</title\>
+&lt;title&gt;My Video&lt;/title&gt;
 
-\<link rel=\"stylesheet\" href=\"styles/player.css\" /\>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;styles/player.css&quot; /&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<div class=\"video-wrapper\"\>
+&lt;div class=&quot;video-wrapper&quot;&gt;
 
-\<video id=\"movie\" controls\>
+&lt;video id=&quot;movie&quot; controls&gt;
 
-\<source src=\"movie.mp4\" /\> \<source src=\" movie.webm\"
+&lt;source src=&quot;movie.mp4&quot; /\&lt;source src=&quot; movie.webm&quot;
 
-type=\'video/webm; codecs=\"vp8, vorbis\"\' /\>
+type=&#39;video/webm; codecs=&quot;vp8, vorbis&quot;&#39; /&gt;
 
-\<source src=\"movie.ogv\"
+&lt;source src=&quot;movie.ogv&quot;
 
-type=\'video/ogg; codecs=\"theora, vorbis\"\' /\>
+type=&#39;video/ogg; codecs=&quot;theora, vorbis&quot;&#39; /&gt;
 
-\<p\>Download movie as
+&lt;p&gt;Download movie as
 
-\<a href=\"movie.mp4\"\>MP4\</a\>, \<a href=\"movie.webm\"\>WebM\</a\>,
-or \<a href=\"movie.ogv\"\>Ogg\</a\>.\</p\>
+&lt;a href=&quot;movie.mp4&quot;&gt;MP4&lt;/a&gt;, &lt;a href=&quot;movie.webm&quot;&gt;WebM&lt;/a&gt;,
+or &lt;a href=&quot;movie.ogv&quot;&gt;Ogg&lt;/a&gt;.&lt;/p&gt;
 
-\</video\>
+&lt;/video&gt;
 
-\</div\>
+&lt;/div&gt;
 
-\<script src=\"scripts/player.js\"\>\</script\>
+&lt;script src=&quot;scripts/player.js&quot;&gt;&lt;/script&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
-> In the player.js file we\'re going to alter any \<video\> elements on
-> the page by removing the built-in controls and then adding our own
-> Play button. Add the following complete functions to the player.js
-> file:
+In the player.js file we&#39;re going to alter any &lt;video\elements on
+the page by removing the built-in controls and then adding our own
+Play button. Add the following complete functions to the player.js
+file:
 
 function createVideoControls() {
 
-var vids = document.getElementsByTagName(\'video\'); for (var i = 0 ; i
-\< vids.length ; i++) { addControls( vids\[i\] );
+var vids = document.getElementsByTagName(&#39;video&#39;); for (var i = 0 ; i
+&lt; vids.length ; i++) { addControls( vids&#91;i&#93; );
 
 }
 
@@ -13896,19 +13330,19 @@ var vids = document.getElementsByTagName(\'video\'); for (var i = 0 ; i
 
 function addControls( vid ) {
 
-vid.removeAttribute(\'controls\');
+vid.removeAttribute(&#39;controls&#39;);
 
 vid.height = vid.videoHeight; vid.width = vid.videoWidth;
 
-vid.parentNode.style.height = vid.videoHeight + \'px\';
+vid.parentNode.style.height = vid.videoHeight + &#39;px&#39;;
 
-vid.parentNode.style.width = vid.videoWidth + \'px\';
+vid.parentNode.style.width = vid.videoWidth + &#39;px&#39;;
 
-var controls = document.createElement(\'div\');
-controls.setAttribute(\'class\',\'controls\');
+var controls = document.createElement(&#39;div&#39;);
+controls.setAttribute(&#39;class&#39;,&#39;controls&#39;);
 
-var play = document.createElement(\'button\');
-play.setAttribute(\'title\',\'Play\'); play.innerHTML = \'&#x25BA;\';
+var play = document.createElement(&#39;button&#39;);
+play.setAttribute(&#39;title&#39;,&#39;Play&#39;); play.innerHTML = &#39;&#x25BA;&#39;;
 
 controls.appendChild(play);
 
@@ -13922,17 +13356,17 @@ if (vid.paused) { vid.play(); } else { vid.pause();
 
 }
 
-}; vid.addEventListener(\'play\', function () { play.innerHTML =
-\'&#x2590;&#x2590;\'; play.setAttribute(\'paused\', true);
+}; vid.addEventListener(&#39;play&#39;, function () { play.innerHTML =
+&#39;&#x2590;&#x2590;&#39;; play.setAttribute(&#39;paused&#39;, true);
 
 }, false);
 
-vid.addEventListener(\'pause\', function () {
-play.removeAttribute(\'paused\'); play.innerHTML = \'&#x25BA;\';
+vid.addEventListener(&#39;pause&#39;, function () {
+play.removeAttribute(&#39;paused&#39;); play.innerHTML = &#39;&#x25BA;&#39;;
 
 }, false);
 
-vid.addEventListener(\'ended\', function () { vid.pause();
+vid.addEventListener(&#39;ended&#39;, function () { vid.pause();
 
 }, false);
 
@@ -13944,32 +13378,32 @@ function:
 
 function createVideoControls() {
 
-var videos = document.getElementsByTagName(\'video\'); for (var i = 0 ;
-i \< videos.length ; i++) { addControls( videos\[i\] );
+var videos = document.getElementsByTagName(&#39;video&#39;); for (var i = 0 ;
+i &lt; videos.length ; i++) { addControls( videos&#91;i&#93; );
 
 }
 
 }
 
 In the addControls function we remove the existing controls property so
-that the built-in controls don\'t appear, and then we create a few DOM
+that the built-in controls don&#39;t appear, and then we create a few DOM
 objects to act as the Play/Pause control by appending them as siblings
 to the video elements:
 
 function addControls( vid ) {
 
-vid.removeAttribute(\'controls\');
+vid.removeAttribute(&#39;controls&#39;);
 
 vid.height = vid.videoHeight; vid.width = vid.videoWidth;
 
-vid.parentNode.style.height = vid.videoHeight + \'px\';
-vid.parentNode.style.width = vid.videoWidth + \'px\';
+vid.parentNode.style.height = vid.videoHeight + &#39;px&#39;;
+vid.parentNode.style.width = vid.videoWidth + &#39;px&#39;;
 
-var controls = document.createElement(\'div\');
-controls.setAttribute(\'class\',\'controls\');
+var controls = document.createElement(&#39;div&#39;);
+controls.setAttribute(&#39;class&#39;,&#39;controls&#39;);
 
-var play = document.createElement(\'button\');
-play.setAttribute(\'title\',\'Play\'); play.innerHTML = \'&#x25BA;\';
+var play = document.createElement(&#39;button&#39;);
+play.setAttribute(&#39;title&#39;,&#39;Play&#39;); play.innerHTML = &#39;&#x25BA;&#39;;
 
 controls.appendChild(play);
 
@@ -13987,31 +13421,31 @@ play.onclick = function () { if (vid.ended) { vid.currentTime = 0;
 };
 
 Finally, using the play, pause, and ended events, we alter the Play
-button\'s state to show a Pause button if the movie is not already
+button&#39;s state to show a Pause button if the movie is not already
 paused:
 
-vid.addEventListener(\'play\', function () { play.innerHTML =
-\'&#x2590;&#x2590;\'; play.setAttribute(\'paused\', true);
+vid.addEventListener(&#39;play&#39;, function () { play.innerHTML =
+&#39;&#x2590;&#x2590;&#39;; play.setAttribute(&#39;paused&#39;, true);
 
 }, false);
 
-vid.addEventListener(\'pause\', function () {
-play.removeAttribute(\'paused\'); play.innerHTML = \'&#x25BA;\';
+vid.addEventListener(&#39;pause&#39;, function () {
+play.removeAttribute(&#39;paused&#39;); play.innerHTML = &#39;&#x25BA;&#39;;
 
 }, false);
 
-vid.addEventListener(\'ended\', function () { vid.pause(); }, false);
+vid.addEventListener(&#39;ended&#39;, function () { vid.pause(); }, false);
 
-■ **Note** You\'ll notice that I used the addEventListener method to
+■ **Note** You&#39;ll notice that I used the addEventListener method to
 attach the events to the video.
 
 addEventListener is the proper DOM method to use for attaching event
 handlers to objects. In earlier chapter we avoided addEventListener and
 used the HTML-DOM on prefixed properties such as onclick because
 Internet Explorer (up to version 8) used an alternate attachEvent
-method. Internet Explorer 9, which supports \<video\> and is required
+method. Internet Explorer 9, which supports &lt;video\and is required
 for this chapter, also supports the proper addEventListener method so
-it\'s safe to use in this example.
+it&#39;s safe to use in this example.
 
 To style the controls, add the following to the player.css file. You can
 alter the appearance however you like using CSS:
@@ -14034,7 +13468,7 @@ background: transparent;
 
 }
 
-.video-wrapper button\[paused\] { font-size: 12px; }
+.video-wrapper button&#91;paused&#93; { font-size: 12px; }
 
 When the page finishes loading, the window.load event runs the
 createVideoControls function, and the result is a very crude video
@@ -14044,9 +13478,9 @@ control interface that allows you to play and pause the video.
 height="2.9766666666666666in"}
 
 Obviously this simple example is a very minimal set of video controls.
-You\'ll probably want to add a scrubbing bar with a play position
+You&#39;ll probably want to add a scrubbing bar with a play position
 indicator, various time stamps, or other special controls using the
-video\'s other properties and events. The choice of controls to create
+video&#39;s other properties and events. The choice of controls to create
 is now up to you. I suggest you look at the rest of the video-related
 properties available in the HTML5 video specification
 
@@ -14054,12 +13488,12 @@ properties available in the HTML5 video specification
 and a working example at
 [http://www.w3.org/2010/05/video/mediaevents.html.](http://www.w3.org/2010/05/video/mediaevents.html)
 Also check out *The Definitive Guide to HTML5 Video,* by Silvia Pfeiffer
-(Apress, 2011) to learn more about the \<video\> element and see what
+(Apress, 2011) to learn more about the &lt;video\element and see what
 else you can do with it.
 
 Forms
 
-The last of the HTML5 elements we\'ll experiment with is the form. Forms
+The last of the HTML5 elements we&#39;ll experiment with is the form. Forms
 are a staple of every web page, but until the advent of HTML5, the
 selection of input types was a little sparse. Text, radio controls, and
 checkboxes were great for simple forms, but more often than not DOM
@@ -14067,7 +13501,7 @@ scripting had to fill a void when more interaction was necessary. If you
 wanted something like a date input, it was up to you to create the
 necessary JavaScript and the appropriate interface. Thankfully, HTML5
 introduces a number of new elements, input types, and attributes to fill
-these holes but, as usual, your DOM scripting talents aren\'t going to
+these holes but, as usual, your DOM scripting talents aren&#39;t going to
 go to waste anytime soon.
 
 The new input types are
@@ -14088,8 +13522,8 @@ The new input types are
 
 -   color for color pickers
 
-They offer a number of advantages over the stuffy old type=\"text\".
-Because you're explicitly telling the browser the type of data you\'re
+They offer a number of advantages over the stuffy old type=&quot;text&quot;.
+Because you're explicitly telling the browser the type of data you&#39;re
 expecting, the browser can offer better input control, such as altering
 the keyboard input on a mobile device. Here, we see that mobile Safari
 on the iPhone shows one keyboard for text and a modified keyboard
@@ -14105,7 +13539,7 @@ Likewise, new attributes include these:
 -   autofocus to automatically focus an element of the form
 
 -   form to allow you to group form elements placed outside of the
-    \<form\> tags
+    &lt;form\tags
 
 -   min, max, and step for ranges and numbers
 
@@ -14119,16 +13553,16 @@ Likewise, new attributes include these:
 These attributes let the browser take over control of many tasks that
 were formerly the responsibility of DOM scripts, such as presenting
 autocomplete suggestions and form validation. In all cases, however, we
-need to account for situations where some browsers don\'t understand
+need to account for situations where some browsers don&#39;t understand
 newer types and attributes.
 
-You can jump right in today with new input types because they\'re
+You can jump right in today with new input types because they&#39;re
 backward-compatible---sort of. For an HTML5 input such as email:
 
-\<input type=\"email\" /\> an older browser will default the type back
-to text and present the standard text input we\'re all
+&lt;input type=&quot;email&quot; /\an older browser will default the type back
+to text and present the standard text input we&#39;re all
 
-familiar with. That\'s great for email or maybe search types but not so
+familiar with. That&#39;s great for email or maybe search types but not so
 great for a range slider. In this case the user interface would be a
 text box instead of the slider you want, as shown here with Safari and
 Internet Explorer.
@@ -14154,28 +13588,28 @@ if ( !Modernizr.input.placeholder ){ // Apply a placeholder hint script
 
 }
 
-If you\'re not using Modernizr, you can use the following
+If you&#39;re not using Modernizr, you can use the following
 inputSupportsType function to check if a browser supports a specific
 input type:
 
 function inputSupportsType(type) { if (!document.createElement) return
-false; var input = document.createElement(\'input\');
-input.setAttribute(\'type\',type); if (input.type == \'text\' && type !=
-\'text\') { return false; } else { return true;
+false; var input = document.createElement(&#39;input&#39;);
+input.setAttribute(&#39;type&#39;,type); if (input.type == &#39;text&#39; && type !=
+&#39;text&#39;) { return false; } else { return true;
 
 } }
 
 To use the inputSupportsType function, apply the same logic as the
 Modernizr example:
 
-If ( !inputSupportsType(\'date\') ) {
+If ( !inputSupportsType(&#39;date&#39;) ) {
 
 // Apply a date picker script }
 
-> HTML5
+HTML5
 >
-> To check for specific attributes, you can use the following
-> elementSupportsAttribute function:
+To check for specific attributes, you can use the following
+elementSupportsAttribute function:
 
 function elementSupportsAttribute(elementName, attribute) { if
 (!document.createElement) return false; var temp =
@@ -14186,7 +13620,7 @@ document.createElement(elementName); return ( attribute in test );
 Again, apply similar logic to the elementSupportsAttribute function,
 giving it both the element name and the attribute that you want to test:
 
-if ( !elementSupportsAttribute( \'input\', \'placeholder\' ) ){
+if ( !elementSupportsAttribute( &#39;input&#39;, &#39;placeholder&#39; ) ){
 
 // Apply a placeholder hint script
 
@@ -14196,41 +13630,41 @@ With feature detection in hand, you can safely start experimenting with
 the new HTML5 form elements knowing that your trusty DOM scripts are
 there if no native alternative is available.
 
-For example, let\'s say you want a placeholder message in a text input
+For example, let&#39;s say you want a placeholder message in a text input
 field. In HTML5 you can easily use the placeholder attribute, as shown
 here:
 
-\<input type=\"text\" id=\"first-name\" placeholder=\"Your First Name\"
-/\>
+&lt;input type=&quot;text&quot; id=&quot;first-name&quot; placeholder=&quot;Your First Name&quot;
+/&gt;
 
 The placeholder temporarily displays in the text input field when there
 is no value in a browser like Safari or Chrome:
 
-> ![](./images/media/image135.jpg){width="2.1266666666666665in"
-> height="0.6266666666666667in"}
+![](./images/media/image135.jpg){width="2.1266666666666665in"
+height="0.6266666666666667in"}
 
-To achieve the same result in a browser that doesn\'t understand the
+To achieve the same result in a browser that doesn&#39;t understand the
 placeholder attribute, you can use a simple DOM script to replicate the
 same functionality:
 
 if ( !Modernizr.input.placeholder ) {
 
-var input = document.getElementById(\'first-name\') input.onfocus =
+var input = document.getElementById(&#39;first-name&#39;) input.onfocus =
 function () {
 
-var text = this.placeholder \|\| this.getAttribute(\'placeholder\'); if
+var text = this.placeholder &#124;&#124; this.getAttribute(&#39;placeholder&#39;); if
 ( this.value == text ) {
 
 // Reset the value to hide the temporary
 
 // placeholder value.
 
-this.value = \'\';
+this.value = &#39;&#39;;
 
-} } input.onblur = function () { if ( this.value == \'\' ) {
+} } input.onblur = function () { if ( this.value == &#39;&#39; ) {
 
 // Set the input value to the placeholder value. this.value =
-this.placeholder \|\| this.getAttribute(\'placeholder\');
+this.placeholder &#124;&#124; this.getAttribute(&#39;placeholder&#39;);
 
 }
 
@@ -14246,7 +13680,7 @@ input.onblur();
 
 Of course, the only disadvantage with this alternate solution is that it
 requires JavaScript to achieve the functionality, so be sure to choose
-your inputs wisely for situations where JavaScript isn\'t available.
+your inputs wisely for situations where JavaScript isn&#39;t available.
 
 Replicating more advanced functionality, such as autocomplete and
 sliders, is going to require a lot more work. Your best bet is to use an
@@ -14256,25 +13690,25 @@ experiment with.
 
 Is there anything else?
 
-Yes! There\'s a lot more to HTML5 than just a few new tags and
+Yes! There&#39;s a lot more to HTML5 than just a few new tags and
 properties, but keep in mind that HTML5 is an evolving specification and
-things could still change before all the dust settles. It\'s a little
+things could still change before all the dust settles. It&#39;s a little
 early to use some of the new features, especially where there is very
-limited browser support, but that doesn't mean that we can\'t have some
-fun. The HTML JavaScript APIs include a number of new modules we\'ve
-always wanted. For example, soon you\'ll have these capabilities:
+limited browser support, but that doesn't mean that we can&#39;t have some
+fun. The HTML JavaScript APIs include a number of new modules we&#39;ve
+always wanted. For example, soon you&#39;ll have these capabilities:
 
 -   Much better client-side storage for large and complicated datasets,
     with the localStorage and sessionStorage features
 
-> (<http://dev.w3.org/html5/webstorage>/)
+(<http://dev.w3.org/html5/webstorage>/)
 
 -   Open two-way communication with server-side scripts, with web
     sockets (<http://dev.w3.org/html5/websockets>/)
 
 -   Background processing in JavaScript, with web workers
 
-> (<http://www.whatwg.org/specs/web-workers/current-work>/)
+(<http://www.whatwg.org/specs/web-workers/current-work>/)
 
 -   [Standardized drag-and-drop
     (http://www.whatwg.org/specs/web-apps/currentwork/multipage/dnd.html#dnd)](http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd)
@@ -14282,8 +13716,8 @@ always wanted. For example, soon you\'ll have these capabilities:
 -   In-browser geolocation services
     ([http://www.w3.org/TR/geolocation-API/)](http://www.w3.org/TR/geolocation-API)
 
-These features aren\'t all DOM-related, but they\'re technologies that
-you\'re going to be seeing and using daily in the very near future, so
+These features aren&#39;t all DOM-related, but they&#39;re technologies that
+you&#39;re going to be seeing and using daily in the very near future, so
 it would be good to pay attention now.
 
 For more reading and examples, here are some more resources to get you
@@ -14295,7 +13729,7 @@ started:
 -   The WHATWG HTML5 (including next-generation additions still in
     development):
 
-> [http://www.whatwg.org/specs/web-apps/current-work/](http://www.whatwg.org/specs/web-apps/current-work)
+[http://www.whatwg.org/specs/web-apps/current-work/](http://www.whatwg.org/specs/web-apps/current-work)
 
 -   HTML5 interactive demos: <http://html5demos.com/>
 
@@ -14304,19 +13738,19 @@ started:
 
 -   Dive into HTML5, by Mark Pilgrim: <http://diveintohtml5.org/>
 
-> HTML5
+HTML5
 
-What\'s Next
+What&#39;s Next
 
 In this chapter, you were introduced to HTML5 and the importance of
 feature detection using tools such as Modernizr. You saw how feature
 detection could be used to offer fallback for newer HTML5 features such
 as these:
 
--   The \<canvas\> element, which allows you to draw vector and bitmap
+-   The &lt;canvas\element, which allows you to draw vector and bitmap
     images into your documents
 
--   The \<audio\> and \<video\> elements, which allow you to embed video
+-   The &lt;audio\and &lt;video\elements, which allow you to embed video
     content directly into your web pages---without plug-ins
 
 -   New form types and attributes that give you a wider range of
@@ -14346,9 +13780,9 @@ You are one lucky web designer. You have been chosen to design the
 website for what is quite possibly the coolest band on the planet: Jay
 Skript and the Domsters!
 
-> All right, so there's no such band. But play along with me here. For
-> the purposes of this chapter, pretend not only that the band exists,
-> but that you have indeed been asked to design the band's website.
+All right, so there's no such band. But play along with me here. For
+the purposes of this chapter, pretend not only that the band exists,
+but that you have indeed been asked to design the band's website.
 
 The website, like the band, needs to look cool. If you can add some
 nifty interactive features, that will go down well. However, the site
@@ -14430,68 +13864,68 @@ Page structure
 Each page of the site will be divided into a number of sections.
 
 -   The header will contain the branding for the site. This is where the
-    logo will go. You will use \<header\> for the header.
+    logo will go. You will use &lt;header\for the header.
 
 -   The navigation will have a list of links to all the pages. You will
-    use \<nav\> for the navigation.
+    use &lt;nav\for the navigation.
 
 -   The content will contain the meat and bones of each page. You will
-    use \<article\> for the content.
+    use &lt;article\for the content.
 
 Since you're using HTML5 elements, you'll also include the Modernizr
-library (introduced in Chapter 11) in the \<head\> of these documents.
+library (introduced in Chapter 11) in the &lt;head\of these documents.
 You can download the latest version (Modernizr 1.6 at the time of
 writing) from [http://modernizr.com an](http://modernizr.com/)d place it
 in the scripts folder. You can create a template like this in fairly
 short order:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Jay Skript and the Domsters\</title\>
+&lt;title&gt;Jay Skript and the Domsters&lt;/title&gt;
 
-\<script src=\"scripts/modernizr-1.6.min.js\"\>\</script\>
+&lt;script src=&quot;scripts/modernizr-1.6.min.js&quot;&gt;&lt;/script&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<header\>
+&lt;header&gt;
 
-\<nav\>
+&lt;nav&gt;
 
-\<ul\>
+&lt;ul&gt;
 
-\<li\>\<a href=\"index.html\"\>Home\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"about.html\"\>About\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"photos.html\"\>Photos\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;photos.html&quot;&gt;Photos&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"live.html\"\>Live\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;live.html&quot;&gt;Live&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"contact.html\"\>Contact\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-\</nav\>
+&lt;/nav&gt;
 
-\</header\>
+&lt;/header&gt;
 
-\<article\>
+&lt;article&gt;
 
-\</article\>
+&lt;/article&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
-> Save this as template.html.
+Save this as template.html.
 
 Now that you have a structure in place, you can begin to insert the
 content on a page-by-page basis. But before doing that, let's take a
@@ -14512,7 +13946,7 @@ background.gif. The band name becomes logo.gif. A portion of the tiling
 gradient in the navigation bar becomes navbar.gif. Save the silhouetted
 figure as guitarist.gif. Put all these files in the images folder.
 
-■ **Note** If you\'re not a design wizard, you can download the image
+■ **Note** If you&#39;re not a design wizard, you can download the image
 files I used in this chapter from the book's page on the friends of ED
 website ([http://www.friendsofed.com](http://www.friendsofed.com/)).
 
@@ -14548,58 +13982,58 @@ Save this three-line file as basic.css in the styles folder. If you ever
 need to add a new style sheet or remove an existing one, you need to
 edit only basic.css.
 
-You can call this basic style sheet from your template with a \<link\>
-tag in the head of the document. While you're at it, add an \<img\> tag
+You can call this basic style sheet from your template with a &lt;link&gt;
+tag in the head of the document. While you're at it, add an &lt;img\tag
 inside the header, pointing to the logo. You can also add some dummy
-"lorem ipsum" text to the \<article\>:
+"lorem ipsum" text to the &lt;article&gt;:
 
-\<!DOCTYPE html\>
+&lt;!DOCTYPE html&gt;
 
-\<html lang=\"en\"\>
+&lt;html lang=&quot;en&quot;&gt;
 
-\<head\>
+&lt;head&gt;
 
-\<meta charset=\"utf-8\" /\>
+&lt;meta charset=&quot;utf-8&quot; /&gt;
 
-\<title\>Jay Skript and the Domsters\</title\>
+&lt;title&gt;Jay Skript and the Domsters&lt;/title&gt;
 
-\<script src=\"scripts/modernizr-1.6.min.js\"\>\</script\>
+&lt;script src=&quot;scripts/modernizr-1.6.min.js&quot;&gt;&lt;/script&gt;
 
-\<link rel=\"stylesheet\" media=\"screen\" href=\"styles/basic.css\" /\>
+&lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href=&quot;styles/basic.css&quot; /&gt;
 
-\</head\>
+&lt;/head&gt;
 
-\<body\>
+&lt;body&gt;
 
-\<header\>
+&lt;header&gt;
 
-\<img src=\"images/logo.gif\" alt=\"Jay Skript and the Domsters\" /\>
+&lt;img src=&quot;images/logo.gif&quot; alt=&quot;Jay Skript and the Domsters&quot; /&gt;
 
-\<nav\>
+&lt;nav&gt;
 
-\<ul\>
+&lt;ul&gt;
 
-\<li\>\<a href=\"index.html\"\>Home\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"about.html\"\>About\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"photos.html\"\>Photos\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;photos.html&quot;&gt;Photos&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"live.html\"\>Live\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;live.html&quot;&gt;Live&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"contact.html\"\>Contact\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-\</nav\>
+&lt;/nav&gt;
 
-\</header\>
+&lt;/header&gt;
 
-\<article\>
+&lt;article&gt;
 
-\<h1\>Lorem Ipsum Dolor\</h1\>
+&lt;h1&gt;Lorem Ipsum Dolor&lt;/h1&gt;
 
-\<p\>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam
 iaculis vestibulum turpis. Pellentesque mattis rutrum nibh. Quisque
 orci, euismod sit amet, sollicitudin et, ullamcorper at, lorem.
 
@@ -14619,13 +14053,13 @@ Mauris egestas. Fusce in elit et sem aliquet pretium.
 
 Donec nunc erat, sodales ac, facilisis a, molestie eu, massa.
 
-Aenean nec justo eu neque malesuada aliquet.\</p\>
+Aenean nec justo eu neque malesuada aliquet.&lt;/p&gt;
 
-\</article\>
+&lt;/article&gt;
 
-\</body\>
+&lt;/body&gt;
 
-\</html\>
+&lt;/html&gt;
 
 You now have the basic template.
 
@@ -14634,7 +14068,7 @@ height="2.946667760279965in"}
 
 Color
 
-The c\|olor.css style sheet is the most straightforward. Make sure that
+The c&#124;olor.css style sheet is the most straightforward. Make sure that
 wherever you apply color to an element, you also specify a background
 color. Otherwise, there's a danger that you might accidentally make some
 of your text invisible.
@@ -14676,10 +14110,10 @@ a { background-color: transparent; }
 
 Now the template looks more colorful.
 
-> PUTTING IT ALL TOGETHER
+PUTTING IT ALL TOGETHER
 >
-> ![](./images/media/image139.png){width="3.4133333333333336in"
-> height="2.96in"}
+![](./images/media/image139.png){width="3.4133333333333336in"
+height="2.96in"}
 
 Layout
 
@@ -14700,7 +14134,7 @@ the playing field.
 
 section, header, article, nav { display: block;
 
-} \* { padding: 0; margin: 0;
+} &#42; { padding: 0; margin: 0;
 
 } body { margin: 1em 10%;
 
@@ -14736,7 +14170,7 @@ border-right: .1em solid;
 } article img { border-width: .1em; border-style: solid; outline-width:
 .1em; outline-style: solid; }
 
-> Color and layout have now been applied with CSS.
+Color and layout have now been applied with CSS.
 
 ![](./images/media/image140.png){width="3.45in"
 height="3.4466666666666668in"}
@@ -14752,15 +14186,15 @@ Margins are applied in typography.css.
 
 body { font-size: 76%;
 
-font-family: \"Helvetica\",\"Arial\",sans-serif;
+font-family: &quot;Helvetica&quot;,&quot;Arial&quot;,sans-serif;
 
-} body \* { font-size: 1em;
+} body &#42; { font-size: 1em;
 
 } a { font-weight: bold; text-decoration: none;
 
 } header nav {
 
-font-family: \"Lucida Grande\",\"Helvetica\",\"Arial\",sans-serif;
+font-family: &quot;Lucida Grande&quot;,&quot;Helvetica&quot;,&quot;Arial&quot;,sans-serif;
 
 } header nav a { text-decoration: none; font-weight: bold;
 
@@ -14770,19 +14204,19 @@ font-family: \"Lucida Grande\",\"Helvetica\",\"Arial\",sans-serif;
 
 } h1 {
 
-font-family: \"Georgia\",\"Times New Roman\",sans-serif;
+font-family: &quot;Georgia&quot;,&quot;Times New Roman&quot;,sans-serif;
 
 font: 2.4em normal;
 
 } h2 {
 
-font-family: \"Georgia\",\"Times New Roman\",sans-serif;
+font-family: &quot;Georgia&quot;,&quot;Times New Roman&quot;,sans-serif;
 
 font: 1.8em normal; margin-top: 1em;
 
 } h3 {
 
-font-family: \"Georgia\",\"Times New Roman\",sans-serif;
+font-family: &quot;Georgia&quot;,&quot;Times New Roman&quot;,sans-serif;
 
 font: 1.4em normal; margin-top: 1em; }
 
@@ -14790,11 +14224,11 @@ font: 1.4em normal; margin-top: 1em; }
 
 } textarea {
 
-font-family: \"Helvetica\",\"Arial\",sans-serif;
+font-family: &quot;Helvetica&quot;,&quot;Arial&quot;,sans-serif;
 
 }
 
-> Now the template has color, layout, and typography styles applied.
+Now the template has color, layout, and typography styles applied.
 
 ![](./images/media/image141.png){width="3.4133333333333336in"
 height="2.973333333333333in"}
@@ -14811,26 +14245,26 @@ can start to build the pages of the site.
 Begin with the home page, index.html. It contains a single introductory
 paragraph within the
 
-\<article\> element:
+&lt;article\element:
 
-\<p id=\"intro\"\>
+&lt;p id=&quot;intro&quot;&gt;
 
 Welcome to the official website of Jay Skript and the Domsters.
 
-Here, you can \<a href=\"about.html\" title=\"About\"\>learn more about
-the band\</a\>, view \<a href=\"photos.html\" title=\"Photos\"\>photos
-of the band\</a\>, find out about \<a href=\"live.html\" title=\"Tour
-Date\"\>tour dates\</a\> and \<a href=\"contact.html\"
-title=\"Contact\"\>get in touch with the band\</a\>.
+Here, you can &lt;a href=&quot;about.html&quot; title=&quot;About&quot;&gt;learn more about
+the band&lt;/a&gt;, view &lt;a href=&quot;photos.html&quot; title=&quot;Photos&quot;&gt;photos
+of the band&lt;/a&gt;, find out about &lt;a href=&quot;live.html&quot; title=&quot;Tour
+Date&quot;&gt;tour dates&lt;/a\and &lt;a href=&quot;contact.html&quot;
+title=&quot;Contact&quot;&gt;get in touch with the band&lt;/a&gt;.
 
-\</p\>
+&lt;/p&gt;
 
-> Here's the home page:
+Here's the home page:
 
 ![](./images/media/image142.png){width="3.4266666666666667in"
 height="2.7266666666666666in"}
 
-This paragraph has been marked up with an id of \"intro\". You might use
+This paragraph has been marked up with an id of &quot;intro&quot;. You might use
 this to style the introduction in a special way. You can also use it as
 a hook for some DOM scripting.
 
@@ -14839,7 +14273,7 @@ JavaScript
 Before you start adding enhancements with the DOM, you should think
 about how you are going to manage your JavaScript files. When your site
 requires a lot of long complicated scripts, it's generally a good idea
-to separate your files, as we\'ve done elsewhere in the book. However,
+to separate your files, as we&#39;ve done elsewhere in the book. However,
 this site is fairly simple, and the JavaScript code is short. To reduce
 the number of requests, you'll put all your code into one file called
 global.js. This will also make it easier to minify when you're finished.
@@ -14852,7 +14286,7 @@ You will need this whenever you write a function that should be executed
 when the document is fully loaded.
 
 function addLoadEvent(func) { var oldonload = window.onload; if (typeof
-window.onload != \'function\') { window.onload = func;
+window.onload != &#39;function&#39;) { window.onload = func;
 
 } else {
 
@@ -14884,23 +14318,23 @@ element.className = value;
 
 } else {
 
-newClassName = element.className; newClassName+= \" \"; newClassName+=
+newClassName = element.className; newClassName+= &quot; &quot;; newClassName+=
 value;
 
 element.className = newClassName;
 
 } }
 
-Call this file by adding a \<script\> tag to end of your template page
-as well as index.html, immediately before the closing \</body\> tag:
+Call this file by adding a &lt;script\tag to end of your template page
+as well as index.html, immediately before the closing &lt;/body\tag:
 
-\</article\>
+&lt;/article&gt;
 
-**\<script src=\"scripts/global.js\"\>\</script\>**
+**&lt;script src=&quot;scripts/global.js&quot;&gt;&lt;/script&gt;**
 
-\</body\>
+&lt;/body&gt;
 
-**\</html\>**
+**&lt;/html&gt;**
 
 The global.js file will be included on every page of the site so all the
 functions can be shared among the pages.
@@ -14911,10 +14345,10 @@ away: highlightPage, which you'll write in the next section.
 Page highlighting
 
 When you are creating each page from your existing template, you will be
-inserting markup into the \<article\> element. In your site, this is the
+inserting markup into the &lt;article\element. In your site, this is the
 part of the document that changes from page to page.
 
-Ideally, you should also be updating the list in the \<nav\> element as
+Ideally, you should also be updating the list in the &lt;nav\element as
 well. If the current page is index.html, then there's no reason for a
 link to index.html in the navigation list.
 
@@ -14924,29 +14358,29 @@ navigation will be dropped into each page using a server-side include.
 Let's assume that that's the case with this website. There could be a
 server-side include containing this chunk of markup:
 
-\<header\>
+&lt;header&gt;
 
-\<img src=\"images/logo.gif\" alt=\"Jay Skript and the Domsters\" /\>
+&lt;img src=&quot;images/logo.gif&quot; alt=&quot;Jay Skript and the Domsters&quot; /&gt;
 
-\<nav\>
+&lt;nav&gt;
 
-\<ul\>
+&lt;ul&gt;
 
-\<li\>\<a href=\"index.html\"\>Home\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"about.html\"\>About\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"photos.html\"\>Photos\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;photos.html&quot;&gt;Photos&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"live.html\"\>Live\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;live.html&quot;&gt;Live&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"contact.html\"\>Contact\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-\</nav\>
+&lt;/nav&gt;
 
-\</header\>
+&lt;/header&gt;
 
 This could be included using Apache Server Side Includes (SSIs), PHP,
 ASP, or a number of other server-side languages.
@@ -14959,23 +14393,23 @@ customize these chunks for each page.
 At the very least, the current page should be highlighted in some way.
 The visitor should have some kind of "you are here" message.
 
-> Update the color.css file to include styles for a class called here:
+Update the color.css file to include styles for a class called here:
 
 header nav a.here:link, header nav a.here:visited, header nav
 a.here:hover, header nav a.here:active { color: #eef;
 
 background-color: #799; }
 
-> To apply those colors, add the here class to the navigation link
-> pointing to the current page, like this:
+To apply those colors, add the here class to the navigation link
+pointing to the current page, like this:
 
-\<a href=\"index.html\" **class=\"here**\"\>Home\</a\>\</li\>
+&lt;a href=&quot;index.html&quot; **class=&quot;here**&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
 
 If you're using a server-side include, this might not be so easy.
 Ideally, the server-side technology will be robust enough to create the
 correct markup for each page. This isn't always the case, though.
 
-> JavaScript rides to the rescue.
+JavaScript rides to the rescue.
 
 In this case, JavaScript is a last resort. It would be much better if
 the here class were added directly in the markup. Use the JavaScript
@@ -14997,22 +14431,22 @@ function highlightPage() {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false; var headers =
-document.getElementsByTagName(\'header\'); if (headers.length == 0)
-return false; var navs = headers\[0\].getElementsByTagName(\'nav\'); if
+document.getElementsByTagName(&#39;header&#39;); if (headers.length == 0)
+return false; var navs = headers&#91;0&#93;.getElementsByTagName(&#39;nav&#39;); if
 (navs.length == 0) return false;
 
 Grab all the navigation links and loop through them:
 
-var links = navs\[0\].getElementsByTagName(\"a\"); var linkurl;
+var links = navs&#91;0&#93;.getElementsByTagName(&quot;a&quot;); var linkurl;
 
-for (var i=0; i\<links.length; i++) {
+for (var i=0; i&lt;links.length; i++) {
 
 Next, you're going to compare the URL of the link with the URL of the
 current page. You can get the URL of the link using
-getAttribute(\"href\"). You can get the URL of the current page using
+getAttribute(&quot;href&quot;). You can get the URL of the current page using
 window.location.href.
 
-linkurl = links\[i\].getAttribute(\"href\");
+linkurl = links&#91;i&#93;.getAttribute(&quot;href&quot;);
 
 JavaScript provides a number of methods for comparing strings. The
 indexOf method finds the position of a substring within a string:
@@ -15035,7 +14469,7 @@ if (window.location.href.indexOf(linkurl) != -1) {
 This link must be a link to the current page. Add the here class to the
 link:
 
-links\[i\].className = \"here\";
+links&#91;i&#93;.className = &quot;here&quot;;
 
 All that remains is to close the if statement, close the for loop, and
 close the function. Do this with closing curly braces. Then call
@@ -15045,18 +14479,18 @@ function highlightPage() {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false; var headers =
-document.getElementsByTagName(\'header\'); if (headers.length == 0)
-return false; var navs = headers\[0\].getElementsByTagName(\'nav\'); if
+document.getElementsByTagName(&#39;header&#39;); if (headers.length == 0)
+return false; var navs = headers&#91;0&#93;.getElementsByTagName(&#39;nav&#39;); if
 (navs.length == 0) return false; var links =
-navs\[0\].getElementsByTagName(\"a\");
+navs&#91;0&#93;.getElementsByTagName(&quot;a&quot;);
 
-for (var i=0; i\<links.length; i++) { var linkurl;
+for (var i=0; i&lt;links.length; i++) { var linkurl;
 
-for (var i=0; i\<links.length; i++) { linkurl =
-links\[i\].getAttribute(\"href\"); if
+for (var i=0; i&lt;links.length; i++) { linkurl =
+links&#91;i&#93;.getAttribute(&quot;href&quot;); if
 (window.location.href.indexOf(linkurl) != -1) {
 
-links\[i\].className = \"here\";
+links&#91;i&#93;.className = &quot;here&quot;;
 
 }
 
@@ -15070,8 +14504,8 @@ that the **Home** link is now highlighted.
 ![](./images/media/image143.png){width="3.4266666666666667in"
 height="2.77in"}
 
-> You can expand the highlightPage function to kill two birds with one
-> stone.
+You can expand the highlightPage function to kill two birds with one
+stone.
 
 By giving a unique id attribute to the body element of each page, you
 will be able to add styles specifically for that page. You can add a
@@ -15081,36 +14515,36 @@ JavaScript's toLowerCase
 
 method:
 
-var linktext = links\[i\].lastChild.nodeValue.toLowerCase();
+var linktext = links&#91;i&#93;.lastChild.nodeValue.toLowerCase();
 
 This takes the value of the last child of the current link, which is the
 link text, and converts it to lowercase. If the text within the link is
-"Home," then the linktext variable will be \"home\". Apply this variable
+"Home," then the linktext variable will be &quot;home&quot;. Apply this variable
 as the id attribute of the body element:
 
-document.body.setAttribute(\"id\",linktext);
+document.body.setAttribute(&quot;id&quot;,linktext);
 
-> This is the equivalent of writing id=\"home\" in the \<body\> tag. The
-> highlightPage function now looks like this:
+This is the equivalent of writing id=&quot;home&quot; in the &lt;body\tag. The
+highlightPage function now looks like this:
 
 function highlightPage( href ) {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false; var headers =
-document.getElementsByTagName(\'header\'); if (headers.length == 0)
-return false; var navs = headers\[0\].getElementsByTagName(\'nav\'); if
+document.getElementsByTagName(&#39;header&#39;); if (headers.length == 0)
+return false; var navs = headers&#91;0&#93;.getElementsByTagName(&#39;nav&#39;); if
 (navs.length == 0) return false; var links =
-navs\[0\].getElementsByTagName(\"a\"); for (var i=0; i\<links.length;
+navs&#91;0&#93;.getElementsByTagName(&quot;a&quot;); for (var i=0; i&lt;links.length;
 i++) { var linkurl;
 
-for (var i=0; i\<links.length; i++) { linkurl =
-links\[i\].getAttribute(\"href\"); if
+for (var i=0; i&lt;links.length; i++) { linkurl =
+links&#91;i&#93;.getAttribute(&quot;href&quot;); if
 (window.location.href.indexOf(linkurl) != -1) {
 
-links\[i\].className = \"here\";
+links&#91;i&#93;.className = &quot;here&quot;;
 
-var linktext = links\[i\].lastChild.nodeValue.toLowerCase();
-document.body.setAttribute(\"id\",linktext);
+var linktext = links&#91;i&#93;.lastChild.nodeValue.toLowerCase();
+document.body.setAttribute(&quot;id&quot;,linktext);
 
 }
 
@@ -15118,9 +14552,9 @@ document.body.setAttribute(\"id\",linktext);
 
 addLoadEvent(highlightPage);
 
-The index.html file now has an id of \"home\" on the body element; the
-about.html file has an id of \"about\"; the photos.html file has an id
-of \"photos\"; and so on.
+The index.html file now has an id of &quot;home&quot; on the body element; the
+about.html file has an id of &quot;about&quot;; the photos.html file has an id
+of &quot;photos&quot;; and so on.
 
 These newly inserted identifiers can act as hooks in your CSS. You can
 specify a different background image for the header of each individual
@@ -15166,7 +14600,7 @@ visitors to the site will see, so it's the ideal place to add some
 sizzle. The JavaScript slideshow that you built in Chapter 10 is perfect
 for this.
 
-The \"intro\" paragraph has links to all the other pages on the site.
+The &quot;intro&quot; paragraph has links to all the other pages on the site.
 When visitors hover over one of those links, it would be good to give
 them a glimpse of what awaits them. You could show smaller versions of
 the images from the headers of each page.
@@ -15175,7 +14609,7 @@ Shrink all the header images down to 150 by 150 pixels and combine them
 into one 750-pixel-long image called slideshow.gif. Place this image in
 the images folder. The montage image looks like this:
 
-> PUTTING IT ALL TOGETHER
+PUTTING IT ALL TOGETHER
 
 ![](./images/media/image144.png){width="3.9466666666666668in"
 height="0.8933333333333333in"}
@@ -15190,9 +14624,9 @@ document.getElementById(elementID); if (elem.movement) {
 
 clearTimeout(elem.movement);
 
-} if (!elem.style.left) { elem.style.left = \"0px\";
+} if (!elem.style.left) { elem.style.left = &quot;0px&quot;;
 
-} if (!elem.style.top) { elem.style.top = \"0px\";
+} if (!elem.style.top) { elem.style.top = &quot;0px&quot;;
 
 } var xpos = parseInt(elem.style.left); var ypos =
 parseInt(elem.style.top); if (xpos == final_x && ypos == final_y) {
@@ -15200,92 +14634,92 @@ return true;
 
 }
 
-if (xpos \< final_x) {
+if (xpos &lt; final_x) {
 
 var dist = Math.ceil((final_x - xpos)/10); xpos = xpos + dist;
 
 }
 
-if (xpos \> final_x) {
+if (xpos \final_x) {
 
 var dist = Math.ceil((xpos - final_x)/10); xpos = xpos - dist;
 
 }
 
-if (ypos \< final_y) {
+if (ypos &lt; final_y) {
 
 var dist = Math.ceil((final_y - ypos)/10); ypos = ypos + dist;
 
 }
 
-if (ypos \> final_y) {
+if (ypos \final_y) {
 
 var dist = Math.ceil((ypos - final_y)/10); ypos = ypos - dist;
 
-} elem.style.left = xpos + \"px\"; elem.style.top = ypos + \"px\";
+} elem.style.left = xpos + &quot;px&quot;; elem.style.top = ypos + &quot;px&quot;;
 
 var repeat =
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\";
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 elem.movement = setTimeout(repeat,interval);
 
 }
 
 Now you need to create the slideshow elements and prepare the links. In
-this case, the slideshow will be placed directly after the \"intro\"
+this case, the slideshow will be placed directly after the &quot;intro&quot;
 paragraph if it's found in the document.
 
 function prepareSlideshow() {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false; if
-(!document.getElementById(\"intro\")) return false; var intro =
-document.getElementById(\"intro\"); var slideshow =
-document.createElement(\"div\");
-slideshow.setAttribute(\"id\",\"slideshow\"); var preview =
-document.createElement(\"img\");
-preview.setAttribute(\"src\",\"images/slideshow.gif\");
-preview.setAttribute(\"alt\",\"a glimpse of what awaits you\");
-preview.setAttribute(\"id\",\"preview\");
+(!document.getElementById(&quot;intro&quot;)) return false; var intro =
+document.getElementById(&quot;intro&quot;); var slideshow =
+document.createElement(&quot;div&quot;);
+slideshow.setAttribute(&quot;id&quot;,&quot;slideshow&quot;); var preview =
+document.createElement(&quot;img&quot;);
+preview.setAttribute(&quot;src&quot;,&quot;images/slideshow.gif&quot;);
+preview.setAttribute(&quot;alt&quot;,&quot;a glimpse of what awaits you&quot;);
+preview.setAttribute(&quot;id&quot;,&quot;preview&quot;);
 slideshow.appendChild(preview); insertAfter(slideshow,intro);
 
-Now loop through all the links in the \"intro\" paragraph. Move the
+Now loop through all the links in the &quot;intro&quot; paragraph. Move the
 preview element based on which link is being moused over. For instance,
-if the href value of the link contains the string \"about.html\", move
+if the href value of the link contains the string &quot;about.html&quot;, move
 the preview element to --150 pixels; if the href value contains the
-string \"photos.html\", move the preview element to --300 pixels; and so
+string &quot;photos.html&quot;, move the preview element to --300 pixels; and so
 on.
 
 To make the animation snappy, pass the moveElement function an interval
 value of just five milliseconds:
 
-var links = intro.getElementsByTagName(\"a\"); var destination;
+var links = intro.getElementsByTagName(&quot;a&quot;); var destination;
 
-for (var i=0; i\<links.length; i++) { links\[i\].onmouseover =
-function() { destination = this.getAttribute(\"href\"); if
-(destination.indexOf(\"index.html\") != -1) {
-moveElement(\"preview\",0,0,5);
-
-}
-
-if (destination.indexOf(\"about.html\") != -1) {
-
-moveElement(\"preview\",-150,0,5);
+for (var i=0; i&lt;links.length; i++) { links&#91;i&#93;.onmouseover =
+function() { destination = this.getAttribute(&quot;href&quot;); if
+(destination.indexOf(&quot;index.html&quot;) != -1) {
+moveElement(&quot;preview&quot;,0,0,5);
 
 }
 
-if (destination.indexOf(\"photos.html\") != -1) {
+if (destination.indexOf(&quot;about.html&quot;) != -1) {
 
-moveElement(\"preview\",-300,0,5);
-
-}
-
-if (destination.indexOf(\"live.html\") != -1) {
-moveElement(\"preview\",-450,0,5);
+moveElement(&quot;preview&quot;,-150,0,5);
 
 }
 
-if (destination.indexOf(\"contact.html\") != -1) {
-moveElement(\"preview\",-600,0,5);
+if (destination.indexOf(&quot;photos.html&quot;) != -1) {
+
+moveElement(&quot;preview&quot;,-300,0,5);
+
+}
+
+if (destination.indexOf(&quot;live.html&quot;) != -1) {
+moveElement(&quot;preview&quot;,-450,0,5);
+
+}
+
+if (destination.indexOf(&quot;contact.html&quot;) != -1) {
+moveElement(&quot;preview&quot;,-600,0,5);
 
 }
 
@@ -15322,9 +14756,9 @@ div. Call it frame.gif and put it in the images folder.
 Add the following lines to the prepareSlideshow function in home.js. Put
 them right after the creation of the slideshow element:
 
-var frame = document.createElement(\"img\");
-frame.setAttribute(\"src\",\"images/frame.gif\");
-frame.setAttribute(\"alt\",\"\"); frame.setAttribute(\"id\",\"frame\");
+var frame = document.createElement(&quot;img&quot;);
+frame.setAttribute(&quot;src&quot;,&quot;images/frame.gif&quot;);
+frame.setAttribute(&quot;alt&quot;,&quot;&quot;); frame.setAttribute(&quot;id&quot;,&quot;frame&quot;);
 slideshow.appendChild(frame);
 
 To make sure that this container appears above the animation, add these
@@ -15334,67 +14768,67 @@ lines to layout.css:
 
 }
 
-> Refresh index.html to see the slideshow, complete with window frame.
+Refresh index.html to see the slideshow, complete with window frame.
 
 Right now, the slideshow animates whenever a visitor hovers over a link
-in the \"intro\" paragraph. If you want, the animation could also happen
+in the &quot;intro&quot; paragraph. If you want, the animation could also happen
 when a link in the navigation div is moused over. Change this line:
 
-var links = intro.getElementsByTagName(\"a\"); to this:
+var links = intro.getElementsByTagName(&quot;a&quot;); to this:
 
-var links = document.getElementsByTagName(\"a\");
+var links = document.getElementsByTagName(&quot;a&quot;);
 
-> The finished prepareSlideshow function now looks like this:
+The finished prepareSlideshow function now looks like this:
 
 function prepareSlideshow() {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false; if
-(!document.getElementById(\"intro\")) return false; var intro =
-document.getElementById(\"intro\"); var slideshow =
-document.createElement(\"div\");
-slideshow.setAttribute(\"id\",\"slideshow\"); **var frame =
-document.createElement(\"img\");
-frame.setAttribute(\"src\",\"images/frame.gif\");
-frame.setAttribute(\"alt\",\"\"); frame.setAttribute(\"id\",\"frame\");
+(!document.getElementById(&quot;intro&quot;)) return false; var intro =
+document.getElementById(&quot;intro&quot;); var slideshow =
+document.createElement(&quot;div&quot;);
+slideshow.setAttribute(&quot;id&quot;,&quot;slideshow&quot;); **var frame =
+document.createElement(&quot;img&quot;);
+frame.setAttribute(&quot;src&quot;,&quot;images/frame.gif&quot;);
+frame.setAttribute(&quot;alt&quot;,&quot;&quot;); frame.setAttribute(&quot;id&quot;,&quot;frame&quot;);
 slideshow.appendChild(frame);**
 
-var preview = document.createElement(\"img\");
-preview.setAttribute(\"src\",\"images/slideshow.gif\");
-preview.setAttribute(\"alt\",\"a glimpse of what awaits you\");
-preview.setAttribute(\"id\",\"preview\");
+var preview = document.createElement(&quot;img&quot;);
+preview.setAttribute(&quot;src&quot;,&quot;images/slideshow.gif&quot;);
+preview.setAttribute(&quot;alt&quot;,&quot;a glimpse of what awaits you&quot;);
+preview.setAttribute(&quot;id&quot;,&quot;preview&quot;);
 slideshow.appendChild(preview); insertAfter(slideshow,intro);
 
-**var links = document.getElementsByTagName(\"a\");** var destination;
+**var links = document.getElementsByTagName(&quot;a&quot;);** var destination;
 
-for (var i=0; i\<links.length; i++) { links\[i\].onmouseover =
-function() { destination = this.getAttribute(\"href\"); if
-(destination.indexOf(\"index.html\") != -1) {
-moveElement(\"preview\",0,0,5);
-
-}
-
-if (destination.indexOf(\"about.html\") != -1) {
-
-moveElement(\"preview\",-150,0,5);
+for (var i=0; i&lt;links.length; i++) { links&#91;i&#93;.onmouseover =
+function() { destination = this.getAttribute(&quot;href&quot;); if
+(destination.indexOf(&quot;index.html&quot;) != -1) {
+moveElement(&quot;preview&quot;,0,0,5);
 
 }
 
-if (destination.indexOf(\"photos.html\") != -1) {
+if (destination.indexOf(&quot;about.html&quot;) != -1) {
 
-moveElement(\"preview\",-300,0,5);
-
-}
-
-if (destination.indexOf(\"live.html\") != -1) {
-
-moveElement(\"preview\",-450,0,5);
+moveElement(&quot;preview&quot;,-150,0,5);
 
 }
 
-if (destination.indexOf(\"contact.html\") != -1) {
+if (destination.indexOf(&quot;photos.html&quot;) != -1) {
 
-moveElement(\"preview\",-600,0,5);
+moveElement(&quot;preview&quot;,-300,0,5);
+
+}
+
+if (destination.indexOf(&quot;live.html&quot;) != -1) {
+
+moveElement(&quot;preview&quot;,-450,0,5);
+
+}
+
+if (destination.indexOf(&quot;contact.html&quot;) != -1) {
+
+moveElement(&quot;preview&quot;,-600,0,5);
 
 }
 
@@ -15413,83 +14847,83 @@ height="3.1566666666666667in"}
 Internal navigation
 
 The next page in the site is the About page. Add this markup in the
-\<article\> element of about.html:
+&lt;article\element of about.html:
 
-\<h1\>About the band\</h1\>
+&lt;h1&gt;About the band&lt;/h1&gt;
 
-\<nav\>
+&lt;nav&gt;
 
-\<ul\>
+&lt;ul&gt;
 
-\<li\>\<a href=\"#jay\"\>Jay Skript\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;#jay&quot;&gt;Jay Skript&lt;/a&gt;&lt;/li&gt;
 
-\<li\>\<a href=\"#domsters\"\>The Domsters\</a\>\</li\>
+&lt;li&gt;&lt;a href=&quot;#domsters&quot;&gt;The Domsters&lt;/a&gt;&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-\</nav\>
+&lt;/nav&gt;
 
-\<section id=\"jay\"\>
+&lt;section id=&quot;jay&quot;&gt;
 
-\<h2\>Jay Skript\</h2\>
+&lt;h2&gt;Jay Skript&lt;/h2&gt;
 
-\<p\>Jay Skript is going to rock your world!\</p\> \<p\>Together with
+&lt;p&gt;Jay Skript is going to rock your world!&lt;/p\&lt;p&gt;Together with
 his compatriots the Domsters,
 
-Jay is set for world domination. Just you wait and see.\</p\>
+Jay is set for world domination. Just you wait and see.&lt;/p&gt;
 
-\<p\>Jay Skript has been on the scene since the mid 1990s.
+&lt;p&gt;Jay Skript has been on the scene since the mid 1990s.
 
-His talent hasn\'t always been recognized or fully appreciated. In the
+His talent hasn&#39;t always been recognized or fully appreciated. In the
 early days, he was often unfavorably compared to bigger, similarly named
-artists. That\'s all in the past now.\</p\>
+artists. That&#39;s all in the past now.&lt;/p&gt;
 
-\</section\>
+&lt;/section&gt;
 
-\<section id=\"domsters\"\> \<h2\>The Domsters\</h2\>
+&lt;section id=&quot;domsters&quot;\&lt;h2&gt;The Domsters&lt;/h2&gt;
 
-\<p\>The Domsters have been around, in one form or another, for almost
-as long. It\'s only in the past few years that the Domsters have settled
+&lt;p&gt;The Domsters have been around, in one form or another, for almost
+as long. It&#39;s only in the past few years that the Domsters have settled
 down to their current, stable lineup.
 
-Now they\'re a rock-solid bunch: methodical and dependable.\</p\>
-\</section\>
+Now they&#39;re a rock-solid bunch: methodical and dependable.&lt;/p&gt;
+&lt;/section&gt;
 
 The About page now looks like this:
 
 ![](./images/media/image146.png){width="3.45in" height="3.79in"}
 
 The page looks and works fine. It's a little long, though. That's why
-there are internal links inside the article's \<nav\> element. Each of
-these links leads to a \<section\> with a specific id attribute.
+there are internal links inside the article's &lt;nav\element. Each of
+these links leads to a &lt;section\with a specific id attribute.
 
 Using JavaScript and the DOM, you can selectively show and hide these
 sections so that only one is visible at any one time. Here's a function
-you can add to global.js that will show a \<section\> with a specified
+you can add to global.js that will show a &lt;section\with a specified
 id, while hiding all the other sections:
 
 function showSection(id) {
 
-var sections = document.getElementsByTagName(\"section\"); for (var i=0;
-i\<sections.length; i++ ) { if (sections\[i\].getAttribute(\"id\") !=
-id) { sections\[i\].style.display = \"none\";
+var sections = document.getElementsByTagName(&quot;section&quot;); for (var i=0;
+i&lt;sections.length; i++ ) { if (sections&#91;i&#93;.getAttribute(&quot;id&quot;) !=
+id) { sections&#91;i&#93;.style.display = &quot;none&quot;;
 
 } else {
 
-sections\[i\].style.display = \"block\";
+sections&#91;i&#93;.style.display = &quot;block&quot;;
 
 }
 
 } }
 
 The showSection function updates the display style property of each
-section. The display property is set to \"none\" on all the sections,
+section. The display property is set to &quot;none&quot; on all the sections,
 except for the one with the specified id. The id is passed as an
 argument to the function. The display property for the div with this id
-is set to \"block\".
+is set to &quot;block&quot;.
 
 The showSection function needs to be executed whenever someone clicks a
-link in the \<nav\> list in the \<article\> element.
+link in the &lt;nav\list in the &lt;article\element.
 
 Create a function called prepareInternalnav. Start looping through all
 the links in the article's navigation list:
@@ -15498,14 +14932,14 @@ function prepareInternalnav() {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false; var articles =
-document.getElementsByTagName(\"article\"); if (articles.length == 0)
-return false; var navs = articles\[0\].getElementsByTagName(\"nav\"); if
-(navs.length == 0) return false; var nav = navs\[0\];
+document.getElementsByTagName(&quot;article&quot;); if (articles.length == 0)
+return false; var navs = articles&#91;0&#93;.getElementsByTagName(&quot;nav&quot;); if
+(navs.length == 0) return false; var nav = navs&#91;0&#93;;
 
-var links = nav.getElementsByTagName(\"a\"); for (var i=0;
-i\<links.length; i++ ) {
+var links = nav.getElementsByTagName(&quot;a&quot;); for (var i=0;
+i&lt;links.length; i++ ) {
 
-The href value of each link is the id of a section, but with the \"#\"
+The href value of each link is the id of a section, but with the &quot;#&quot;
 symbol at the start to indicate that the link is internal. You can
 extract the id of the section by using the split method. This is a handy
 way of splitting a string into two or more parts based on a dividing
@@ -15513,15 +14947,15 @@ character:
 
 *array* = *string.*split*(character)*
 
-In this case, you want everything after the \"#\" character. Split the
+In this case, you want everything after the &quot;#&quot; character. Split the
 href value on this character. The resulting array contains two elements:
-the first is everything before the \"#\" character (in this case, an
+the first is everything before the &quot;#&quot; character (in this case, an
 empty string), and the second is everything afterward. Remember that the
 first element in an array has an index of 0. You're interested in the
 second element of the array, which has an index of 1: var sectionId =
-links\[i\].getAttribute(\"href\").split(\"#\")\[1\];
+links&#91;i&#93;.getAttribute(&quot;href&quot;).split(&quot;#&quot;)&#91;1&#93;;
 
-This will extract everything after the first \"#\" character and assign
+This will extract everything after the first &quot;#&quot; character and assign
 the result to the variable sectionId.
 
 Add a short test to make sure that an element with this id actually
@@ -15531,7 +14965,7 @@ if (!document.getElementById(sectionId)) continue;
 
 When the page loads, you'll want to hide all the sections by default. Do
 that by adding this line:
-document.getElementById(sectionId).style.display = \"none\";
+document.getElementById(sectionId).style.display = &quot;none&quot;;
 
 Now you can add the onclick event handler for the link. When the link is
 clicked, you want to pass the variable sectionId to the showSection
@@ -15543,12 +14977,12 @@ You can get around this problem by creating your own custom property for
 each link. Call the property destination and assign it the value of
 sectionId:
 
-links\[i\].destination = sectionId;
+links&#91;i&#93;.destination = sectionId;
 
-> That property has a persistent scope. You can query that property from
-> the event handler function:
+That property has a persistent scope. You can query that property from
+the event handler function:
 
-links\[i\].onclick = function() { showSection(this.destination); return
+links&#91;i&#93;.onclick = function() { showSection(this.destination); return
 false; }
 
 Close the prepareInternalnav function with some closing curly braces.
@@ -15556,25 +14990,25 @@ Call the function with addLoadEvent:
 
 addLoadEvent(prepareInternalnav);
 
-Here\'s what the final the prepareInternalnav function looks like in
+Here&#39;s what the final the prepareInternalnav function looks like in
 global.js:
 
 function prepareInternalnav() {
 
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false; var articles =
-document.getElementsByTagName(\"article\"); if (articles.length == 0)
-return false; var navs = articles\[0\].getElementsByTagName(\"nav\"); if
-(navs.length == 0) return false; var nav = navs\[0\];
+document.getElementsByTagName(&quot;article&quot;); if (articles.length == 0)
+return false; var navs = articles&#91;0&#93;.getElementsByTagName(&quot;nav&quot;); if
+(navs.length == 0) return false; var nav = navs&#91;0&#93;;
 
-var links = nav.getElementsByTagName(\"a\"); for (var i=0;
-i\<links.length; i++ ) {
+var links = nav.getElementsByTagName(&quot;a&quot;); for (var i=0;
+i&lt;links.length; i++ ) {
 
-var sectionId = links\[i\].getAttribute(\"href\").split(\"#\")\[1\];
+var sectionId = links&#91;i&#93;.getAttribute(&quot;href&quot;).split(&quot;#&quot;)&#91;1&#93;;
 
 if (!document.getElementById(sectionId)) continue;
-document.getElementById(sectionId).style.display = \"none\";
-links\[i\].destination = sectionId; links\[i\].onclick = function() {
+document.getElementById(sectionId).style.display = &quot;none&quot;;
+links&#91;i&#93;.destination = sectionId; links&#91;i&#93;.onclick = function() {
 showSection(this.destination); return false;
 
 }
@@ -15613,9 +15047,9 @@ Skript and the Domsters in action:
 
 -   crowd.jpg
 
-> Create a new folder called photos in the images folder. Put these four
-> images in the photos folder. Make 100-by-100-pixel thumbnails of each
-> image:
+Create a new folder called photos in the images folder. Put these four
+images in the photos folder. Make 100-by-100-pixel thumbnails of each
+image:
 
 -   thumbnail_concert.jpg
 
@@ -15625,71 +15059,71 @@ Skript and the Domsters in action:
 
 -   thumbnail_crowd.jpg
 
-> Place these in the photos folder, too.
+Place these in the photos folder, too.
 
 Create a list of links pointing to the full-sized images. Give this list
-the id \"imagegallery\". Put an \<img\> tag in each link. The src of
+the id &quot;imagegallery&quot;. Put an &lt;img\tag in each link. The src of
 each image is a thumbnail image.
 
-\<h1\>Photos of the band\</h1\>
+&lt;h1&gt;Photos of the band&lt;/h1&gt;
 
-\<ul id=\"imagegallery\"\>
+&lt;ul id=&quot;imagegallery&quot;&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/photos/concert.jpg\" title=\"The crowd goes wild\"\>
+&lt;a href=&quot;images/photos/concert.jpg&quot; title=&quot;The crowd goes wild&quot;&gt;
 
-\<img src=\"images/photos/thumbnail_concert.jpg\" alt=\"the band in
-concert\" /\>
+&lt;img src=&quot;images/photos/thumbnail_concert.jpg&quot; alt=&quot;the band in
+concert&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/photos/bassist.jpg\" title=\"An atmospheric moment\"\>
+&lt;a href=&quot;images/photos/bassist.jpg&quot; title=&quot;An atmospheric moment&quot;&gt;
 
-\<img src=\"images/photos/thumbnail_bassist.jpg\" alt=\"the bassist\"
-/\>
+&lt;img src=&quot;images/photos/thumbnail_bassist.jpg&quot; alt=&quot;the bassist&quot;
+/&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/photos/guitarist.jpg\" title=\"Rocking out\"\>
+&lt;a href=&quot;images/photos/guitarist.jpg&quot; title=&quot;Rocking out&quot;&gt;
 
-\<img src=\"images/photos/thumbnail_guitarist.jpg\" alt=\"the
-guitarist\" /\>
+&lt;img src=&quot;images/photos/thumbnail_guitarist.jpg&quot; alt=&quot;the
+guitarist&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a href=\"images/photos/crowd.jpg\" title=\"Encore! Encore!\"\>
+&lt;a href=&quot;images/photos/crowd.jpg&quot; title=&quot;Encore! Encore!&quot;&gt;
 
-\<img src=\"images/photos/thumbnail_crowd.jpg\" alt=\"the audience\" /\>
+&lt;img src=&quot;images/photos/thumbnail_crowd.jpg&quot; alt=&quot;the audience&quot; /&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\</ul\>
+&lt;/ul&gt;
 
-> Put this list within the \<article\> element of photos.html.
+Put this list within the &lt;article\element of photos.html.
 >
-> Update the layout.css file so that the thumbnails appear horizontally
-> rather than vertically:
+Update the layout.css file so that the thumbnails appear horizontally
+rather than vertically:
 
 #imagegallery li { display: inline;
 
 }
 
-> PUTTING IT ALL TOGETHER
+PUTTING IT ALL TOGETHER
 
 ![](./images/media/image148.png){width="3.4466666666666668in"
 height="2.97in"}
@@ -15703,21 +15137,21 @@ add them to your global.js file in the scripts folder.
 
 function showPic(whichpic) {
 
-if (!document.getElementById(\"placeholder\")) return true; var source =
-whichpic.getAttribute(\"href\");
+if (!document.getElementById(&quot;placeholder&quot;)) return true; var source =
+whichpic.getAttribute(&quot;href&quot;);
 
-var placeholder = document.getElementById(\"placeholder\");
-placeholder.setAttribute(\"src\",source);
+var placeholder = document.getElementById(&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,source);
 
-if (!document.getElementById(\"description\")) return false; if
-(whichpic.getAttribute(\"title\")) { var text =
-whichpic.getAttribute(\"title\");
+if (!document.getElementById(&quot;description&quot;)) return false; if
+(whichpic.getAttribute(&quot;title&quot;)) { var text =
+whichpic.getAttribute(&quot;title&quot;);
 
-} else { var text = \"\";
+} else { var text = &quot;&quot;;
 
 }
 
-var description = document.getElementById(\"description\"); if
+var description = document.getElementById(&quot;description&quot;); if
 (description.firstChild.nodeType == 3) {
 description.firstChild.nodeValue = text;
 
@@ -15731,17 +15165,17 @@ function preparePlaceholder() { if (!document.createElement) return
 false; if (!document.createTextNode) return false; if
 (!document.getElementById) return false;
 
-if (!document.getElementById(\"imagegallery\")) return false; var
-placeholder = document.createElement(\"img\");
-placeholder.setAttribute(\"id\",\"placeholder\");
-placeholder.setAttribute(\"src\",\"images/placeholder.gif\");
-placeholder.setAttribute(\"alt\",\"my image gallery\"); var description
-= document.createElement(\"p\");
-description.setAttribute(\"id\",\"description\"); var desctext =
-document.createTextNode(\"Choose an image\");
+if (!document.getElementById(&quot;imagegallery&quot;)) return false; var
+placeholder = document.createElement(&quot;img&quot;);
+placeholder.setAttribute(&quot;id&quot;,&quot;placeholder&quot;);
+placeholder.setAttribute(&quot;src&quot;,&quot;images/placeholder.gif&quot;);
+placeholder.setAttribute(&quot;alt&quot;,&quot;my image gallery&quot;); var description
+= document.createElement(&quot;p&quot;);
+description.setAttribute(&quot;id&quot;,&quot;description&quot;); var desctext =
+document.createTextNode(&quot;Choose an image&quot;);
 description.appendChild(desctext);
 
-var gallery = document.getElementById(\"imagegallery\");
+var gallery = document.getElementById(&quot;imagegallery&quot;);
 **insertAfter(description,gallery);
 insertAfter(placeholder,description);**
 
@@ -15752,10 +15186,10 @@ function prepareGallery() {
 if (!document.getElementsByTagName) return false; if
 (!document.getElementById) return false;
 
-if (!document.getElementById(\"imagegallery\")) return false; var
-gallery = document.getElementById(\"imagegallery\"); var links =
-gallery.getElementsByTagName(\"a\"); for ( var i=0; i \< links.length;
-i++) { links\[i\].onclick = function() { return showPic(this);
+if (!document.getElementById(&quot;imagegallery&quot;)) return false; var
+gallery = document.getElementById(&quot;imagegallery&quot;); var links =
+gallery.getElementsByTagName(&quot;a&quot;); for ( var i=0; i &lt; links.length;
+i++) { links&#91;i&#93;.onclick = function() { return showPic(this);
 
 }
 
@@ -15771,73 +15205,73 @@ Table enhancements
 
 You've been given a list of tour dates for Jay Skript and the Domsters.
 For each concert, there is a date, a city, and a venue. This is tabular
-data, so the Live page will consist of a \<table\> of concert dates.
+data, so the Live page will consist of a &lt;table\of concert dates.
 
-\<h1\>Tour dates\</h1\>
+&lt;h1&gt;Tour dates&lt;/h1&gt;
 
-\<table summary=\"when and where you can see the band\"\>
+&lt;table summary=&quot;when and where you can see the band&quot;&gt;
 
-\<thead\>
+&lt;thead&gt;
 
-\<tr\>
+&lt;tr&gt;
 
-\<th\>Date\</th\>
+&lt;th&gt;Date&lt;/th&gt;
 
-\<th\>City\</th\>
+&lt;th&gt;City&lt;/th&gt;
 
-\<th\>Venue\</th\>
+&lt;th&gt;Venue&lt;/th&gt;
 
-\</tr\>
+&lt;/tr&gt;
 
-\</thead\>
+&lt;/thead&gt;
 
-\<tbody\>
+&lt;tbody&gt;
 
-\<tr\>
+&lt;tr&gt;
 
-\<td\>June 9th\</td\>
+&lt;td&gt;June 9th&lt;/td&gt;
 
-\<td\>Portland, \<abbr title=\"Oregon\"\>OR\</abbr\>\</td\>
+&lt;td&gt;Portland, &lt;abbr title=&quot;Oregon&quot;&gt;OR&lt;/abbr&gt;&lt;/td&gt;
 
-\<td\>Crystal Ballroom\</td\>
+&lt;td&gt;Crystal Ballroom&lt;/td&gt;
 
-\</tr\>
+&lt;/tr&gt;
 
-\<tr\>
+&lt;tr&gt;
 
-\<td\>June 10th\</td\>
+&lt;td&gt;June 10th&lt;/td&gt;
 
-\<td\>Seattle, \<abbr title=\"Washington\"\>WA\</abbr\>\</td\>
+&lt;td&gt;Seattle, &lt;abbr title=&quot;Washington&quot;&gt;WA&lt;/abbr&gt;&lt;/td&gt;
 
-\<td\>Crocodile Cafe\</td\>
+&lt;td&gt;Crocodile Cafe&lt;/td&gt;
 
-\</tr\>
+&lt;/tr&gt;
 
-\<tr\>
+&lt;tr&gt;
 
-\<td\>June 12th\</td\>
+&lt;td&gt;June 12th&lt;/td&gt;
 
-\<td\>Sacramento, \<abbr title=\"California\"\>CA\</abbr\>\</td\>
+&lt;td&gt;Sacramento, &lt;abbr title=&quot;California&quot;&gt;CA&lt;/abbr&gt;&lt;/td&gt;
 
-\<td\>Torch Club\</td\>
+&lt;td&gt;Torch Club&lt;/td&gt;
 
-\</tr\>
+&lt;/tr&gt;
 
-\<tr\>
+&lt;tr&gt;
 
-\<td\>June 17th\</td\>
+&lt;td&gt;June 17th&lt;/td&gt;
 
-\<td\>Austin, \<abbr title=\"Texas\"\>TX\</abbr\>\</td\>
+&lt;td&gt;Austin, &lt;abbr title=&quot;Texas&quot;&gt;TX&lt;/abbr&gt;&lt;/td&gt;
 
-\<td\>Speakeasy\</td\>
+&lt;td&gt;Speakeasy&lt;/td&gt;
 
-\</tr\>
+&lt;/tr&gt;
 
-\</tbody\>
+&lt;/tbody&gt;
 
-\</table\>
+&lt;/table&gt;
 
-Put this \<table\> within the \<article\> element of live.html. You can
+Put this &lt;table\within the &lt;article\element of live.html. You can
 add some table cell styling to layout.css as well:
 
 td {
@@ -15856,8 +15290,8 @@ background-color: #455;
 
 background-color: #eb6; }
 
-> If you load live.html in a web browser, you will see a perfectly
-> normal, somewhat nondescript table.
+If you load live.html in a web browser, you will see a perfectly
+normal, somewhat nondescript table.
 
 ![](./images/media/image151.png){width="3.45in"
 height="2.946667760279965in"}
@@ -15870,11 +15304,11 @@ global.js file and call them with addLoadEvent:
 function stripeTables() {
 
 if (!document.getElementsByTagName) return false; var tables =
-document.getElementsByTagName(\"table\"); for (var i=0;
-i\<tables.length; i++) { var odd = false;
+document.getElementsByTagName(&quot;table&quot;); for (var i=0;
+i&lt;tables.length; i++) { var odd = false;
 
-var rows = tables\[i\].getElementsByTagName(\"tr\"); for (var j=0;
-j\<rows.length; j++) { if (odd == true) { addClass(rows\[j\],\"odd\");
+var rows = tables&#91;i&#93;.getElementsByTagName(&quot;tr&quot;); for (var j=0;
+j&lt;rows.length; j++) { if (odd == true) { addClass(rows&#91;j&#93;,&quot;odd&quot;);
 odd = false; } else { odd = true;
 
 }
@@ -15888,13 +15322,13 @@ odd = false; } else { odd = true;
 function highlightRows() {
 
 if(!document.getElementsByTagName) return false; var rows =
-document.getElementsByTagName(\"tr\"); for (var i=0; i\<rows.length;
-i++) { **rows\[i\].oldClassName = rows\[i\].className
-rows\[i\].onmouseover = function() { addClass(this,\"highlight\");**
+document.getElementsByTagName(&quot;tr&quot;); for (var i=0; i&lt;rows.length;
+i++) { **rows&#91;i&#93;.oldClassName = rows&#91;i&#93;.className
+rows&#91;i&#93;.onmouseover = function() { addClass(this,&quot;highlight&quot;);**
 
 **}**
 
-**rows\[i\].onmouseout = function() {**
+**rows&#91;i&#93;.onmouseout = function() {**
 
 **this.className = this.oldClassName**
 
@@ -15906,44 +15340,44 @@ rows\[i\].onmouseover = function() { addClass(this,\"highlight\");**
 
 function displayAbbreviations() {
 
-if (!document.getElementsByTagName \|\| !document.createElement
+if (!document.getElementsByTagName &#124;&#124; !document.createElement
 
-➥ \|\| !document.createTextNode) return false;
+➥ &#124;&#124; !document.createTextNode) return false;
 
-var abbreviations = document.getElementsByTagName(\"abbr\"); if
-(abbreviations.length \< 1) return false; var defs = new Array();
+var abbreviations = document.getElementsByTagName(&quot;abbr&quot;); if
+(abbreviations.length &lt; 1) return false; var defs = new Array();
 
-for (var i=0; i\<abbreviations.length; i++) { var current_abbr =
-abbreviations\[i\]; if (current_abbr.childNodes.length \< 1) continue;
-var definition = current_abbr.getAttribute(\"title\"); var key =
-current_abbr.lastChild.nodeValue; defs\[key\] = definition;
+for (var i=0; i&lt;abbreviations.length; i++) { var current_abbr =
+abbreviations&#91;i&#93;; if (current_abbr.childNodes.length &lt; 1) continue;
+var definition = current_abbr.getAttribute(&quot;title&quot;); var key =
+current_abbr.lastChild.nodeValue; defs&#91;key&#93; = definition;
 
 }
 
-var dlist = document.createElement(\"dl\"); for (key in defs) { var
-definition = defs\[key\];
+var dlist = document.createElement(&quot;dl&quot;); for (key in defs) { var
+definition = defs&#91;key&#93;;
 
-var dtitle = document.createElement(\"dt\"); var dtitle_text =
+var dtitle = document.createElement(&quot;dt&quot;); var dtitle_text =
 document.createTextNode(key); dtitle.appendChild(dtitle_text); var ddesc
-= document.createElement(\"dd\"); var ddesc_text =
+= document.createElement(&quot;dd&quot;); var ddesc_text =
 document.createTextNode(definition); ddesc.appendChild(ddesc_text);
 dlist.appendChild(dtitle); dlist.appendChild(ddesc);
 
-} if (dlist.childNodes.length \< 1) return false; var header =
-document.createElement(\"h3\");
+} if (dlist.childNodes.length &lt; 1) return false; var header =
+document.createElement(&quot;h3&quot;);
 
-var header_text = document.createTextNode(\"Abbreviations\");
+var header_text = document.createTextNode(&quot;Abbreviations&quot;);
 header.appendChild(header_text);
 
-var articles = document.getElementsByTagName(\"article\"); if
-(articles.length == 0) return false; var container = articles\[0\];
+var articles = document.getElementsByTagName(&quot;article&quot;); if
+(articles.length == 0) return false; var container = articles&#91;0&#93;;
 container.appendChild(header); container.appendChild(dlist);
 
 } addLoadEvent(stripeTables); addLoadEvent(highlightRows);
 addLoadEvent(displayAbbreviations);
 
-> The highlightRows and displayAbbreviations functions have been updated
-> slightly:
+The highlightRows and displayAbbreviations functions have been updated
+slightly:
 
 -   In highlightRows, instead of applying a style property directly, it
     uses the addClass function to apply the highlight class. This class
@@ -15952,7 +15386,7 @@ addLoadEvent(displayAbbreviations);
     it as a custom property called oldClassName. When the user moves off
     the table row, the className property is reset to the value of
 
-> oldClassName.
+oldClassName.
 
 -   In displayAbbreviations, the last few lines have been modified to
     find the article element, instead of the div with an id of content
@@ -16002,7 +15436,7 @@ background-color: #cba;
 
 }
 
-Load live.html in a web browser to see the enhanced \<table\>. Every
+Load live.html in a web browser to see the enhanced &lt;table&gt;. Every
 second row has been given a class of odd.
 
 ![](./images/media/image152.png){width="3.4033333333333333in"
@@ -16029,49 +15463,49 @@ the server-side script, and store the information in a database or email
 it to the appropriate people, before displaying a thank-you message.
 
 Make a file called contact.html. It should have the same structure as
-template.html, but with this \<form\> inside the \<article\>:
+template.html, but with this &lt;form\inside the &lt;article&gt;:
 
-\<h1\>Contact the band\</h1\>
+&lt;h1&gt;Contact the band&lt;/h1&gt;
 
-\<form method=\"post\" action=\"submit.html\"\>
+&lt;form method=&quot;post&quot; action=&quot;submit.html&quot;&gt;
 
-\<fieldset\>
+&lt;fieldset&gt;
 
-\<p\>
+&lt;p&gt;
 
-\<label for=\"name\"\>Name:\</label\>
+&lt;label for=&quot;name&quot;&gt;Name:&lt;/label&gt;
 
-\<input type=\"text\" id=\"name\" name=\"name\"
+&lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot;
 
-➥ placeholder=\"Your name\" required=\"required\" /\> \</p\>
+➥ placeholder=&quot;Your name&quot; required=&quot;required&quot; /\&lt;/p&gt;
 
-\<p\>
+&lt;p&gt;
 
-\<label for=\"email\"\>Email:\</label\>
+&lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
 
-\<input type=\"email\" id=\"email\" name=\"email\"
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;
 
-➥ placeholder=\"Your email address\" required=\"required\" /\>
+➥ placeholder=&quot;Your email address&quot; required=&quot;required&quot; /&gt;
 
-\</p\>
+&lt;/p&gt;
 
-\<p\>
+&lt;p&gt;
 
-\<label for=\"message\"\>Message:\</label\>
+&lt;label for=&quot;message&quot;&gt;Message:&lt;/label&gt;
 
-\<textarea cols=\"45\" rows=\"7\" id=\"message\"
+&lt;textarea cols=&quot;45&quot; rows=&quot;7&quot; id=&quot;message&quot;
 
-➥ name=\"message\" required=\"required\"
+➥ name=&quot;message&quot; required=&quot;required&quot;
 
-➥ placeholder=\"Write your message here.\"\>\</textarea\>
+➥ placeholder=&quot;Write your message here.&quot;&gt;&lt;/textarea&gt;
 
-\</p\>
+&lt;/p&gt;
 
-\<input type=\"submit\" value=\"Send\" /\>
+&lt;input type=&quot;submit&quot; value=&quot;Send&quot; /&gt;
 
-\</fieldset\>
+&lt;/fieldset&gt;
 
-\</form\>
+&lt;/form&gt;
 
 Update the layout.css file:
 
@@ -16087,12 +15521,12 @@ You now have a contact form.
 
 Next, make a file called submit.html. Again, it should have the same
 structure as template.html, but with a thank-you message inside the
-\<article\>.
+&lt;article&gt;.
 
-\<h1\>Thanks!\</h1\>
+&lt;h1&gt;Thanks!&lt;/h1&gt;
 
-\<p\>Thanks for contacting us. We\'ll get back to you as soon as we
-can.\</p\>
+&lt;p&gt;Thanks for contacting us. We&#39;ll get back to you as soon as we
+can.&lt;/p&gt;
 
 The submit.html thank-you page doesn't actually do anything with the
 form contents, but you get the idea.
@@ -16102,8 +15536,8 @@ height="3.75in"}
 
 Labels
 
-> There are three form fields, name, email, and message. Each field has
-> a corresponding \<label\> tag.
+There are three form fields, name, email, and message. Each field has
+a corresponding &lt;label\tag.
 
 The label element is a useful aid to accessibility. Using the for
 attribute, it specifically associates a piece of text with a form field.
@@ -16130,7 +15564,7 @@ JavaScript.
 
 5.  Bring that form element into focus.
 
-> PUTTING IT ALL TOGETHER
+PUTTING IT ALL TOGETHER
 
 Call the function focusLabels in global.js and execute the function when
 the page loads using addLoadEvent.
@@ -16138,10 +15572,10 @@ the page loads using addLoadEvent.
 function focusLabels() {
 
 if (!document.getElementsByTagName) return false; var labels =
-document.getElementsByTagName(\"label\"); for (var i=0;
-i\<labels.length; i++) { if (!labels\[i\].getAttribute(\"for\"))
-continue; labels\[i\].onclick = function() { var id =
-this.getAttribute(\"for\"); if (!document.getElementById(id)) return
+document.getElementsByTagName(&quot;label&quot;); for (var i=0;
+i&lt;labels.length; i++) { if (!labels&#91;i&#93;.getAttribute(&quot;for&quot;))
+continue; labels&#91;i&#93;.onclick = function() { var id =
+this.getAttribute(&quot;for&quot;); if (!document.getElementById(id)) return
 false; var element = document.getElementById(id); element.focus();
 
 }
@@ -16158,15 +15592,15 @@ playing field. All browsers will execute this behavior now.
 Placeholder values
 
 Each field in the contact form has some placeholder text in an HTML5
-placeholder attribute. The name field has \"your name\", the email field
-has \"your email\", and so on.
+placeholder attribute. The name field has &quot;your name&quot;, the email field
+has &quot;your email&quot;, and so on.
 
 ■ **Note** Placeholder values are also useful from an accessibility
 viewpoint. Checkpoint 10.4 of the Web
 
 Accessibility Initiative guidelines states, "Until user agents handle
 empty controls correctly, include default, placeholding characters in
-edit boxes and text areas. \[Priority 3\]." For more on the Web
+edit boxes and text areas. &#91;Priority 3&#93;." For more on the Web
 Accessibility Initiative, see
 [http://www.w3.org/WAI/.](http://www.w3.org/WAI)
 
@@ -16174,7 +15608,7 @@ Historically, some browsers have had problems recognizing empty form
 fields. This made keyboard navigation particularly difficult. Visitors
 were not able to tab to empty fields.
 
-Much like using \<label\> tags, this accessibility enhancement turns out
+Much like using &lt;label\tags, this accessibility enhancement turns out
 to be useful for everyone. Even if users are not navigating by keyboard,
 it's still very handy for them to be able to see what they should be
 writing in each form field.
@@ -16190,39 +15624,39 @@ the Form object.
 
 **THE FORM OBJECT**
 
-> As you know, every element in a document is an object. Each element
-> has DOM properties like nodeName, nodeType, and so on.
+As you know, every element in a document is an object. Each element
+has DOM properties like nodeName, nodeType, and so on.
 >
-> Some elements have even more properties than those provided by the DOM
-> Core. Every form element in a document is an object of the type Form.
-> Each Form object has a property called elements.length. This value
-> returns the number of form elements contained by a form:
+Some elements have even more properties than those provided by the DOM
+Core. Every form element in a document is an object of the type Form.
+Each Form object has a property called elements.length. This value
+returns the number of form elements contained by a form:
 >
-> form.elements.length
+form.elements.length
 >
-> This is different from childNodes.length, which returns the total
-> number of nodes contained by an element. The elements.length property
-> of a Form object returns only those elements that are form elements,
-> such as input elements, textarea elements, and so on.
+This is different from childNodes.length, which returns the total
+number of nodes contained by an element. The elements.length property
+of a Form object returns only those elements that are form elements,
+such as input elements, textarea elements, and so on.
 >
-> Collectively, all of these form fields are the elements property of a
-> Form object. This is an array that contains all the form elements:
+Collectively, all of these form fields are the elements property of a
+Form object. This is an array that contains all the form elements:
 >
-> form.elements
+form.elements
 >
-> Again, this differs from the childNodes property, which is also an
-> array. The childNodes array will return every node. The elements array
-> will return only input, select, textarea, and other form fields.
+Again, this differs from the childNodes property, which is also an
+array. The childNodes array will return every node. The elements array
+will return only input, select, textarea, and other form fields.
 >
-> Each form element in the elements array comes with its own set of
-> properties. The value property, for instance, gives you the current
-> value of a form element:
+Each form element in the elements array comes with its own set of
+properties. The value property, for instance, gives you the current
+value of a form element:
 >
-> element.value
+element.value
 >
-> This is equivalent to the following:
+This is equivalent to the following:
 >
-> element.getAttribute(\"value\")
+element.getAttribute(&quot;value&quot;)
 
 Every form field in contact.html has an initial placeholder attribute.
 You can grab these placeholders and temporarily insert them as the value
@@ -16257,20 +15691,20 @@ its single argument. It will do the following:
 Here's the function:
 
 function resetFields(whichform) { if (Modernizr.input.placeholder)
-return; for (var i=0; i\<whichform.elements.length; i++) { var element =
-whichform.elements\[i\]; if (element.type == \"submit\") continue;
+return; for (var i=0; i&lt;whichform.elements.length; i++) { var element =
+whichform.elements&#91;i&#93;; if (element.type == &quot;submit&quot;) continue;
 
-var check = element.placeholder \|\|
-element.getAttribute(\'placeholder\'); if (!check) continue;
+var check = element.placeholder &#124;&#124;
+element.getAttribute(&#39;placeholder&#39;); if (!check) continue;
 element.onfocus = function() {
 
-var text = this.placeholder \|\| this.getAttribute(\'placeholder\'); if
-(this.value == text) { this.className = \'\'; this.value = \"\";
+var text = this.placeholder &#124;&#124; this.getAttribute(&#39;placeholder&#39;); if
+(this.value == text) { this.className = &#39;&#39;; this.value = &quot;&quot;;
 
-} } element.onblur = function() { if (this.value == \"\") {
-this.className = \'placeholder\';
+} } element.onblur = function() { if (this.value == &quot;&quot;) {
+this.className = &#39;placeholder&#39;;
 
-this.value = this.placeholder \|\| this.getAttribute(\'placeholder\');
+this.value = this.placeholder &#124;&#124; this.getAttribute(&#39;placeholder&#39;);
 
 } }
 
@@ -16285,7 +15719,7 @@ onblur is called immediately after it is created to apply the
 placeholder value if necessary.
 
 ■ **Note** You need to use both the HTML-DOM placeholder attribute and
-the DOM getAttribute(\'placeholder\') method due to the different
+the DOM getAttribute(&#39;placeholder&#39;) method due to the different
 implementations of unknown attributes across different browsers.
 
 Add the resetFields function to your global.js file. You need to
@@ -16295,8 +15729,8 @@ document and passes each one to the resetFields function.
 
 function prepareForms() {
 
-for (var i=0; i\<document.forms.length; i++) { var thisform =
-document.forms\[i\]; resetFields(thisform);
+for (var i=0; i&lt;document.forms.length; i++) { var thisform =
+document.forms&#91;i&#93;; resetFields(thisform);
 
 }
 
@@ -16342,7 +15776,7 @@ height="1.2777777777777777in"}
 
 When you try to submit a form using an email input field, Opera
 automatically verifies it using RFCcompliant email validation, even if
-JavaScript isn\'t available. HTML5 also includes other types of
+JavaScript isn&#39;t available. HTML5 also includes other types of
 validation, such as URLs entered into URL input fields. In these cases,
 you don't need to add any additional markup to the form; the browser
 will just validate it based on the input type.
@@ -16363,8 +15797,8 @@ is. But if JavaScript form validation is implemented badly, it can cause
 more harm than good. If the code has been written sloppily, the user may
 end up never being able to submit the form.
 
-> There are three things to remember when you are writing JavaScript
-> form-validation functions:
+There are three things to remember when you are writing JavaScript
+form-validation functions:
 
 -   Bad form validation can be worse than no validation at all.
 
@@ -16385,16 +15819,16 @@ argument.
 
 function isFilled(field) {
 
-if (field.value.replace(\' \',\'\').length == 0) return false;
+if (field.value.replace(&#39; &#39;,&#39;&#39;).length == 0) return false;
 
-var placeholder = field.placeholder \|\|
-field.getAttribute(\'placeholder\'); return (field.value !=
+var placeholder = field.placeholder &#124;&#124;
+field.getAttribute(&#39;placeholder&#39;); return (field.value !=
 placeholder);
 
 }
 
 By checking the length of the value property after removing the spaces,
-you can see if the value has more than zero characters (and it\'s not
+you can see if the value has more than zero characters (and it&#39;s not
 all spaces). If it does not contain characters, the function returns a
 value of false. Otherwise, it continues on to the next comparison.
 
@@ -16409,7 +15843,7 @@ check if the value of a form field looks like an email address.
 
 function isEmail(field) {
 
-return (field.value.indexOf(\"@\") != -1 && field.value.indexOf(\".\")
+return (field.value.indexOf(&quot;@&quot;) != -1 && field.value.indexOf(&quot;.&quot;)
 != -1); }
 
 This function runs two tests using the indexOf method. This method finds
@@ -16440,15 +15874,15 @@ email addresses.
 
 In your markup, you're using the HTML5 required attribute:
 
-\<input type=\"text\" id=\"name\" name=\"name\" value=\"Your name\"
-**required=\"required\"** /\>
+&lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; value=&quot;Your name&quot;
+**required=&quot;required&quot;** /&gt;
 
 \...
 
-\<input type=\"email\" id=\"email\" name=\"email\" value=\"Your email
-address\" ➥ **required=\"required\"** /\>
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; value=&quot;Your email
+address&quot; ➥ **required=&quot;required&quot;** /&gt;
 
-■ **Note** In the markup shown here, I\'ve used required=\"required\",
+■ **Note** In the markup shown here, I&#39;ve used required=&quot;required&quot;,
 instead of just a required attribute without any value. In HTML5, either
 is valid due to the flexible syntax. However, I prefer to stick to the
 more strict XHTML syntax, which implies values for all attributes and a
@@ -16482,19 +15916,19 @@ Here's the finished validateForm function:
 
 function validateForm(whichform) {
 
-for (var i=0; i\<whichform.elements.length; i++) { var element =
-whichform.elements\[i\]; if (element.required == \'required\') { if
+for (var i=0; i&lt;whichform.elements.length; i++) { var element =
+whichform.elements&#91;i&#93;; if (element.required == &#39;required&#39;) { if
 (!isFilled(element)) {
 
-alert(\"Please fill in the \"+element.name+\" field.\"); return false;
+alert(&quot;Please fill in the &quot;+element.name+&quot; field.&quot;); return false;
 
 }
 
 }
 
-if (element.type == \'email\') { if (!isEmail(element)) {
+if (element.type == &#39;email&#39;) { if (!isEmail(element)) {
 
-alert(\"The \"+element.name+\" field must be a valid email address.\");
+alert(&quot;The &quot;+element.name+&quot; field must be a valid email address.&quot;);
 return false;
 
 }
@@ -16509,8 +15943,8 @@ handler in the prepareForms function:
 
 function prepareForms() {
 
-for (var i=0; i\<document.forms.length; i++) { var thisform =
-document.forms\[i\]; resetFields(thisform); **thisform.onsubmit =
+for (var i=0; i&lt;document.forms.length; i++) { var thisform =
+document.forms&#91;i&#93;; resetFields(thisform); **thisform.onsubmit =
 function() { return validateForm(this);**
 
 **}**
@@ -16523,7 +15957,7 @@ is passed to the validateForm function. If validateForm returns true,
 the form is submitted to the server. If validateForm returns false, the
 submission is canceled.
 
-> Save all of the form validation functions in global.js.
+Save all of the form validation functions in global.js.
 
 Refresh contact.html in a web browser. Try submitting the contact form
 with empty or default values. You will be greeted with a terse alert
@@ -16548,14 +15982,14 @@ global.js file:
 
 function getHTTPObject() {
 
-if (typeof XMLHttpRequest == \"undefined\") XMLHttpRequest = function ()
+if (typeof XMLHttpRequest == &quot;undefined&quot;) XMLHttpRequest = function ()
 {
 
-try { return new ActiveXObject(\"Msxml2.XMLHTTP.6.0\"); } catch (e) {}
+try { return new ActiveXObject(&quot;Msxml2.XMLHTTP.6.0&quot;); } catch (e) {}
 
-try { return new ActiveXObject(\"Msxml2.XMLHTTP.3.0\"); } catch (e) {}
+try { return new ActiveXObject(&quot;Msxml2.XMLHTTP.3.0&quot;); } catch (e) {}
 
-try { return new ActiveXObject(\"Msxml2.XMLHTTP\"); } catch (e) {}
+try { return new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;); } catch (e) {}
 return false;
 
 } return new XMLHttpRequest();
@@ -16576,9 +16010,9 @@ image with the loading.gif as the source.
 function displayAjaxLoading(element) { while (element.hasChildNodes()) {
 element.removeChild(element.lastChild);
 
-} var content = document.createElement(\"img\");
-content.setAttribute(\"src\",\"images/loading.gif\");
-content.setAttribute(\"alt\",\"Loading\...\");
+} var content = document.createElement(&quot;img&quot;);
+content.setAttribute(&quot;src&quot;,&quot;images/loading.gif&quot;);
+content.setAttribute(&quot;alt&quot;,&quot;Loading\...&quot;);
 element.appendChild(content);
 
 }
@@ -16621,8 +16055,8 @@ your string could look something like this:
 
 message=Why does 2+2=4?&name=me&email=me@example.com
 
-> The plus (+), equal (=), and question mark (?) characters now pose
-> problems in the string:
+The plus (+), equal (=), and question mark (?) characters now pose
+problems in the string:
 
 -   Does = mean that there is a field with the name 2 and a value of 4?
 
@@ -16635,30 +16069,30 @@ JavaScript function to encode the values to a URL-safe string. This
 function converts ambiguous characters into their ASCII equivalents:
 message=Why%20does%202%2B2%3D4%3F%26&name=Me&email=me%40example.com
 
-> p
+p
 
 To do this for your form elements, loop though the fields the same way
 you did when validating the form, but instead of the check, collect the
 name and encoded value for each field in an array:
 
-var dataParts = \[\]; var element;
+var dataParts = &#91;&#93;; var element;
 
-for (var i=0; i\<whichform.elements.length; i++) { element =
-whichform.elements\[i\];
+for (var i=0; i&lt;whichform.elements.length; i++) { element =
+whichform.elements&#91;i&#93;;
 
-dataParts\[i\] = element.name + \'=\' +
+dataParts&#91;i&#93; = element.name + &#39;=&#39; +
 encodeURIComponent(element.value); }
 
 Once you have all the parts, join them together with an ampersand (&):
 
-var data = dataParts.join(\'&\');
+var data = dataParts.join(&#39;&&#39;);
 
 Next, start your POST request using the original form's action:
-request.open(\'POST\', whichform.getAttribute(\"action\"), true); and
+request.open(&#39;POST&#39;, whichform.getAttribute(&quot;action&quot;), true); and
 the application/x-www-form-urlencoded header to the request:
 
-request.setRequestHeader(\"Content-type\",
-\"application/x-www-form-urlencoded\");
+request.setRequestHeader(&quot;Content-type&quot;,
+&quot;application/x-www-form-urlencoded&quot;);
 
 This header is required for POST requests and indicates that the request
 contains an URL-encoded form.
@@ -16671,7 +16105,7 @@ page. This page is just like all the other pages in the Domsters site.
 It contains a header, navigation, and content. Since you're loading the
 result back into the existing page, you don't need the header and
 navigation. All you're really interested in is the content within the
-\<article\> element. The rest of the markup is there for when Ajax is
+&lt;article\element. The rest of the markup is there for when Ajax is
 not available and submit.html loads as a regular page.
 
 If this were a server-side script in your favorite flavor of programming
@@ -16680,39 +16114,39 @@ For now, let's assume that you don't want to alter any serverside
 scripts. You just want to improve the user experience with a little
 Ajax.
 
-To extract the \<article\> from the response, you're going to use
+To extract the &lt;article\from the response, you're going to use
 something called a *regular expression*. In simple terms, a regular
 expression is a pattern that you can use to match various parts of a
 string.
 
-Here's the regular expression you'll be using to extract the \<article\>
+Here's the regular expression you'll be using to extract the &lt;article&gt;
 element's content:
 
-/\<article\>(\[\\s\\S\]+)\<\\/article\>/
+/&lt;article&gt;(&#91;\\s\\S&#93;+)&lt;\\/article&gt;/
 
 In JavaScript, a regular expression pattern begins and ends with a /,
 which denotes the start and end of a pattern. If the pattern itself
 contains a /, then it must be escaped with a \\, as done for the closing
-\</article\> tag in this pattern.
+&lt;/article\tag in this pattern.
 
 To match characters in a regular expression pattern, you simply enter
-the characters you're looking for. You want to begin with \<article\>
-and end with \</article\>, so you start and end your pattern the same
+the characters you're looking for. You want to begin with &lt;article&gt;
+and end with &lt;/article&gt;, so you start and end your pattern the same
 way.
 
 ■ **Note** Regular expressions use some special characters such as
 brackets and symbols. If you want to match them directly, they will need
 to be escaped, just like /. For example, if you want to include an
-asterisk (\*) in your pattern, you need to use \\\*, because \* is a
+asterisk (&#42;) in your pattern, you need to use \\&#42;, because &#42; is a
 quantifier used to indicate repetition. For a list of special
 characters, see
 [http://en.wikipedia.org/wiki/Regular_expression.](http://en.wikipedia.org/wiki/Regular_expression)
 
-> PUTTING IT ALL TOGETHER
+PUTTING IT ALL TOGETHER
 
-Between the \<article\> and \</article\>, you have two regular
+Between the &lt;article\and &lt;/article&gt;, you have two regular
 expression groupings to capture what is between the opening and closing
-article tags. Square brackets, \[\], contain lists of characters to
+article tags. Square brackets, &#91;&#93;, contain lists of characters to
 match. Round parentheses, (), group parts of the pattern so that you can
 extract them later.
 
@@ -16728,15 +16162,15 @@ words, nonwords, and more.
 
 Finally, after the characters-to-match group, before the closing
 parenthesis, you use a + to indicate that part of the pattern repeats
-one or more times. (A \* after a character or group indicates that it
+one or more times. (A &#42; after a character or group indicates that it
 should occur zero or more times.)
 
-> Basically the regular expression pattern
-> /\<article\>(\[\\s\\S\]+)\<\\/article\>/ breaks down to this:
+Basically the regular expression pattern
+/&lt;article&gt;(&#91;\\s\\S&#93;+)&lt;\\/article&gt;/ breaks down to this:
 
--   Look for the string \<article\> that is followed by one or more
+-   Look for the string &lt;article\that is followed by one or more
     whitespace or nonwhitespace characters, which are in turn followed
-    by \</article\>.
+    by &lt;/article&gt;.
 
 -   Group the whitespace and non-whitespace characters together so you
     can get them later.
@@ -16747,21 +16181,21 @@ onreadystatechange function:
 request.onreadystatechange = function () { if (request.readyState == 4)
 {
 
-if (request.status == 200 \|\| request.status == 0) {
+if (request.status == 200 &#124;&#124; request.status == 0) {
 
 var matches =
-request.responseText.match(/\<article\>(\[\\s\\S\]+)\<\\/article\>/); if
-(matches.length \> 0) {
+request.responseText.match(/&lt;article&gt;(&#91;\\s\\S&#93;+)&lt;\\/article&gt;/); if
+(matches.length \0) {
 
-thetarget.innerHTML = matches\[1\];
+thetarget.innerHTML = matches&#91;1&#93;;
 
 } else {
 
-thetarget.innerHTML = \'\<p\>Oops, there was an error. Sorry.\</p\>\';
+thetarget.innerHTML = &#39;&lt;p&gt;Oops, there was an error. Sorry.&lt;/p&gt;&#39;;
 
 } } else {
 
-thetarget.innerHTML = \'\<p\>\' + request.statusText + \'\</p\>\';
+thetarget.innerHTML = &#39;&lt;p&gt;&#39; + request.statusText + &#39;&lt;/p&gt;&#39;;
 
 }
 
@@ -16788,7 +16222,7 @@ In this case, you have only one, so the matches array has a maximum of
 only two indexes.
 
 Once you have your matches, you assign what you captured with
-matches\[1\] to the innerHTML of the target element, and the response is
+matches&#91;1&#93; to the innerHTML of the target element, and the response is
 complete.
 
 Now all that's left to do in the submitFormWithAjax function is to send
@@ -16803,39 +16237,39 @@ Your finished submitFormWithAjax function looks like this:
 
 function submitFormWithAjax( whichform, thetarget ) { var request =
 getHTTPObject(); if (!request) { return false; }
-displayAjaxLoading(thetarget); var dataParts = \[\]; var element;
+displayAjaxLoading(thetarget); var dataParts = &#91;&#93;; var element;
 
-for (var i=0; i\<whichform.elements.length; i++) { element =
-whichform.elements\[i\];
+for (var i=0; i&lt;whichform.elements.length; i++) { element =
+whichform.elements&#91;i&#93;;
 
-dataParts\[i\] = element.name + \'=\' +
+dataParts&#91;i&#93; = element.name + &#39;=&#39; +
 encodeURIComponent(element.value);
 
 }
 
-var data = dataParts.join(\'&\');
+var data = dataParts.join(&#39;&&#39;);
 
-request.open(\'POST\', whichform.getAttribute(\"action\"), true);
+request.open(&#39;POST&#39;, whichform.getAttribute(&quot;action&quot;), true);
 
-request.setRequestHeader(\"Content-type\",
-\"application/x-www-form-urlencoded\"); request.onreadystatechange =
+request.setRequestHeader(&quot;Content-type&quot;,
+&quot;application/x-www-form-urlencoded&quot;); request.onreadystatechange =
 function () { if (request.readyState == 4) {
 
-if (request.status == 200 \|\| request.status == 0) {
+if (request.status == 200 &#124;&#124; request.status == 0) {
 
 var matches =
-request.responseText.match(/\<article\>(\[\\s\\S\]+)\<\\/article\>/); if
-(matches.length \> 0) {
+request.responseText.match(/&lt;article&gt;(&#91;\\s\\S&#93;+)&lt;\\/article&gt;/); if
+(matches.length \0) {
 
-thetarget.innerHTML = matches\[1\];
+thetarget.innerHTML = matches&#91;1&#93;;
 
 } else {
 
-thetarget.innerHTML = \'\<p\>Oops, there was an error. Sorry.\</p\>\';
+thetarget.innerHTML = &#39;&lt;p&gt;Oops, there was an error. Sorry.&lt;/p&gt;&#39;;
 
 } } else {
 
-thetarget.innerHTML = \'\<p\>\' + request.statusText + \'\</p\>\';
+thetarget.innerHTML = &#39;&lt;p&gt;&#39; + request.statusText + &#39;&lt;/p&gt;&#39;;
 
 }
 
@@ -16844,7 +16278,7 @@ thetarget.innerHTML = \'\<p\>\' + request.statusText + \'\</p\>\';
 Now you need to actually Hijax the form submission with the
 submitFormWithAjax function. You must modify your existing prepareForms
 function to call submitFormWithAjax with the form and the current
-page\'s \<article\> element as the arguments. The modified function
+page&#39;s &lt;article\element as the arguments. The modified function
 should do the following:
 
 -   If the form is not validated, return false, because the validation
@@ -16858,18 +16292,18 @@ should do the following:
     Ajax request, return true from the onsubmit event handler and let
     the form submit as usual through a page load.
 
-Here\'s the modified prepareForms function that accomplishes the three
+Here&#39;s the modified prepareForms function that accomplishes the three
 points above:
 
 function prepareForms() {
 
-for (var i=0; i\<document.forms.length; i++) { var thisform =
-document.forms\[i\]; resetFields(thisform); thisform.onsubmit =
+for (var i=0; i&lt;document.forms.length; i++) { var thisform =
+document.forms&#91;i&#93;; resetFields(thisform); thisform.onsubmit =
 function() { if (!validateForm(this)) return false;
 
-var article = document.getElementsByTagName(\'article\')\[0\];
+var article = document.getElementsByTagName(&#39;article&#39;)&#91;0&#93;;
 
-> PUTTING IT ALL TOGETHER
+PUTTING IT ALL TOGETHER
 
 if (submitFormWithAjax(this, article)) return false; return true;
 
@@ -16885,7 +16319,7 @@ contact page is finished, and with it, the website.
 
 Minification
 
-Your website is now working as expected, but there\'s one last thing you
+Your website is now working as expected, but there&#39;s one last thing you
 can do to improve its overall performance. At the moment, the global.js
 file is about 13KB. That is not too big, but you can make it smaller by
 minifying it. As discussed in Chapter 5, several different minification
@@ -16915,7 +16349,7 @@ Depending on the number of comments and other code you've added, your
 results will vary.
 
 Copy and paste the minified version into a global.min.js file in your
-scripts folder, and update all the \<script\> tags in your files to use
+scripts folder, and update all the &lt;script\tags in your files to use
 this new minified version.
 
 What's next?
@@ -16951,8 +16385,8 @@ to step back occasionally and take a look at the bigger picture. The
 grand vision of the World Wide Web is the same today as when it was
 invented by Tim Berners Lee:
 
-> *The power of the Web is in its universality. Access by everyone
-> regardless of disability is an essential aspect.*
+*The power of the Web is in its universality. Access by everyone
+regardless of disability is an essential aspect.*
 
 Hypertext documents on the Web are inherently accessible. They become
 restricted only when we choose to make them that way. Using a
@@ -16982,13 +16416,13 @@ CHAPTER 12
 
 PUTTING IT ALL TOGETHER
 
-Throughout the book you\'ve focused on learning the basics of the DOM.
+Throughout the book you&#39;ve focused on learning the basics of the DOM.
 You used the standard set of DOM methods to perform common tasks and
 learned how best to apply those methods in your scripts. You may have
 noticed that sometimes your code was a little verbose and repetitive.
 Restricting yourself to only DOM methods such as document.getElementById
 can get tiring, especially when libraries provide almost magical
-functions like \$ that do even more.
+functions like &#36; that do even more.
 
 Libraries are packages of reusable code that offer a number of
 advantages.
@@ -17001,17 +16435,17 @@ advantages.
     day-to-day DOM scripting tasks, reducing multiple lines of code down
     to a single function.
 
--   They provide cross-browser solutions so you don\'t have to worry
+-   They provide cross-browser solutions so you don&#39;t have to worry
     about every different browser.
 
-> Libraries free you to work on the good stuff in your applications,
-> vastly increasing your productivity.
+Libraries free you to work on the good stuff in your applications,
+vastly increasing your productivity.
 
 They are wonderful, but using a library is not the bandage for every
 problem.
 
 -   Libraries are created by others, not you. That means you might not
-    understand what\'s going on inside and dealing with bugs or problems
+    understand what&#39;s going on inside and dealing with bugs or problems
     may be more difficult.
 
 **A P P E N D I X**
@@ -17041,7 +16475,7 @@ Just to be clear, I'm not personally affiliated with any of these
 libraries, so I have no personal bias towards one or the other. I'm also
 not saying these libraries are ultimately the best for every situation
 nor are they the only ones available. These examples simply provide some
-of the cleanest alternative solutions for tasks you\'ve already worked
+of the cleanest alternative solutions for tasks you&#39;ve already worked
 through in the book.
 
 We're going to revisit some of the topics you've already seen, including
@@ -17051,7 +16485,7 @@ these:
 
 -   Selecting elements
 
-> DOM SCRIPTING LIBRARIES
+DOM SCRIPTING LIBRARIES
 
 -   Manipulating the DOM document
 
@@ -17071,8 +16505,8 @@ best or most useful for each area---I won't be covering every aspect of
 each library, so be sure to check the documentation for each to find out
 what else is available.
 
-Before you begin to work with libraries, it\'s important to choose the
-right one. Let\'s look at a few things that might help you decide.
+Before you begin to work with libraries, it&#39;s important to choose the
+right one. Let&#39;s look at a few things that might help you decide.
 
 Choosing a library
 
@@ -17081,7 +16515,7 @@ is choosing among the hundreds that are available. There are several
 criteria you should consider in your decision:
 
 -   **Does it have all the features you're looking for?** Mixing and
-    matching libraries can be problematic. Common methods such as \$()
+    matching libraries can be problematic. Common methods such as &#36;()
     or get() often use the same syntax but handle things differently.
     Additionally, if you use more than one library at the same time,
     you'll usually end up with a lot of duplicated features and
@@ -17090,7 +16524,7 @@ criteria you should consider in your decision:
 -   **Does it have more features than you need?** Having too few
     features is one problem, but a bulky library with way too many is
     also a problem. When a library has more features than you need, or
-    you\'re not taking advantage of them all, you may want to consider a
+    you&#39;re not taking advantage of them all, you may want to consider a
     lighter version that won't take as long to download. This is
     especially important in mobile environments.
 
@@ -17120,7 +16554,7 @@ criteria you should consider in your decision:
 -   **Does it have the right license?** Just because you can view the
     source online doesn't mean it's free for the taking. Before using a
     library, verify that its license covers what you intended to do with
-    it and that you\'ve met any special requirements.
+    it and that you&#39;ve met any special requirements.
 
 Once you've chosen an appropriate library and you're producing great
 things, don't forget to try to contribute back to the community! These
@@ -17142,7 +16576,7 @@ similar features. Each has its own pros and cons as outlined here.
     itself as "a fast and concise JavaScript Library that simplifies
     HTML document traversing, event handling, animating, and Ajax
     interactions for rapid web development. jQuery is designed to change
-    the way that you write JavaScript." jQuery\'s extremely powerful
+    the way that you write JavaScript." jQuery&#39;s extremely powerful
     selection method, chaining syntax, and simplified Ajax and event
     methods will make your code compact and easy to follow. There is
     also a very large community behind jQuery with a number of different
@@ -17153,7 +16587,7 @@ similar features. Each has its own pros and cons as outlined here.
     development of dynamic web applications." Prototype has a number of
     great DOM-manipulation functions as well as one of the more popular
     Ajax objects. It was one of the first popular JavaScript libraries
-    and was the library that originated the \$() selector function.
+    and was the library that originated the &#36;() selector function.
 
 -   **The Yahoo! User Interface (YUI) Library**
     ([http://developer.yahoo.com/yui)](http://developer.yahoo.com/yui)
@@ -17177,7 +16611,7 @@ similar features. Each has its own pros and cons as outlined here.
     number of large companies. It has a large developer community, good
     documentation, and several books devoted to it.
 
-> DOM SCRIPTING LIBRARIES
+DOM SCRIPTING LIBRARIES
 
 -   **MooTools** ([http://mootools.net/)
     de](http://mootools.net/)scribes itself as "a compact, modular,
@@ -17190,9 +16624,9 @@ similar features. Each has its own pros and cons as outlined here.
     simple and complex animations.
 
 ■ **Note** Some libraries, such as Prototype and jQuery, share the same
-\$() function syntax. If you decide to use a library in your production
+&#36;() function syntax. If you decide to use a library in your production
 environment, be sure to read the documentation for your chosen library
-to see how it may differ from what I\'m presenting here or how it may
+to see how it may differ from what I&#39;m presenting here or how it may
 conflict with other libraries.
 
 Content delivery networks
@@ -17203,7 +16637,7 @@ you want to serve those files up as fast as possible. In the case of
 libraries, if a number of different sites use the same library, it would
 make sense to host that library in a common location that all sites
 could access and share. This way, if users go from site to site they
-don\'t need to download the same file over and over again.
+don&#39;t need to download the same file over and over again.
 
 A content delivery network (CDN) solves the problem of shared library
 distribution. The CDN is a network of servers whose sole responsibility
@@ -17232,29 +16666,29 @@ To use a CDN, you simply include the library like any other JavaScript
 file. For example, as of this writing the most recent Google CDN jQuery
 URL is
 [https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js,](https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js)
-so you can add the following \<script\> to your documents:
+so you can add the following &lt;script\to your documents:
 
-\<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/
 
-➥ 1.4.3/jquery.min.js\"\>\</script\>
+➥ 1.4.3/jquery.min.js&quot;&gt;&lt;/script&gt;
 
-If you\'re hesitant to rely solely on Google or another service as your
-distribution network, it\'s a good idea to provide a failsafe fallback
+If you&#39;re hesitant to rely solely on Google or another service as your
+distribution network, it&#39;s a good idea to provide a failsafe fallback
 to a local file on your server in case the CDN becomes unavailable. You
 can simply check to see if the appropriate objects are loaded and then
-include a local library if necessary: \<script
-src=\"https://ajax.googleapis.com/ajax/libs/jquery/
+include a local library if necessary: &lt;script
+src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/
 
-➥ 1.4.3/jquery.min.js\"\>\</script\>
+➥ 1.4.3/jquery.min.js&quot;&gt;&lt;/script&gt;
 
-\<script\>!window.jQuery && document.write(unescape(\'%3C
+&lt;script&gt;!window.jQuery && document.write(unescape(&#39;%3C
 
 ➥ script
-src=\"scripts/jquery-1.4.3.min.js\"%3E%3C/script%3E\'))\</script\>
+src=&quot;scripts/jquery-1.4.3.min.js&quot;%3E%3C/script%3E&#39;))&lt;/script&gt;
 
-■ **Note** This method uses document.write to add a \<script\> tag to
-the document if the jQuery library didn\'t create the global
-window.jQuery object. The \$ function used elsewhere in the Appendix is
+■ **Note** This method uses document.write to add a &lt;script\tag to
+the document if the jQuery library didn&#39;t create the global
+window.jQuery object. The &#36; function used elsewhere in the Appendix is
 the short form for the proper jQuery object name.
 
 With this code in place, if the server goes down it won't take your site
@@ -17266,47 +16700,47 @@ Before presenting some examples I should point out a few syntax options
 that many libraries rely on.
 
 ■ **Note** A number of libraries, such as jQuery, Prototype, MooTools
-and others, offer the dollar sign \$() function as a shortcut to their
+and others, offer the dollar sign &#36;() function as a shortcut to their
 selector method. I use this throughout the Appendix so that the code is
 more generic. Just remember that though the syntax of the function calls
 may appear similar, the underlying objects they create are drastically
 different. Make sure you read the documentation for your selected
-library to see how its \$ function works.
+library to see how its &#36; function works.
 
 Most libraries offer the ability to "chain" methods together using dot
-notation---a period joins the method calls---similar to the way you\'ve
+notation---a period joins the method calls---similar to the way you&#39;ve
 already seen when using methods such as getElemenById:
 
-document.getElementById(\'example\').nodeName;
+document.getElementById(&#39;example&#39;).nodeName;
 
 This is a fundamental aspect of libraries such as jQuery, in which
 methods are created specifically to allow you to write complicated
-scripts in very short chains. It\'s not uncommon to see one-line scripts
+scripts in very short chains. It&#39;s not uncommon to see one-line scripts
 that do a lot of work. For example, to remove and then add a class name
 to every paragraph in a document using jQuery, you can do this:
 
-\$(\'p\').removeClass(\'classFoo\').addClass(\'classBar\');
+&#36;(&#39;p&#39;).removeClass(&#39;classFoo&#39;).addClass(&#39;classBar&#39;);
 
-That\'s a lot cleaner than the add class function you created in Chapter
-9. We\'ll get more into that \$(\'p\') selector in a moment.
+That&#39;s a lot cleaner than the add class function you created in Chapter
+9. We&#39;ll get more into that &#36;(&#39;p&#39;) selector in a moment.
 
 One additional thing I will mention is iteration. Libraries offer
 looping structures for manipulating lists of elements, and the chaining
 syntax often provides a very clean way of doing this. For example, using
 jQuery again, you can replicate this loop from Chapter 3:
 
-var items = document.getElementsByTagName(\"li\"); for (var i=0; i \<
-items.length; i++) { alert(typeof items\[i\]);
+var items = document.getElementsByTagName(&quot;li&quot;); for (var i=0; i &lt;
+items.length; i++) { alert(typeof items&#91;i&#93;);
 
-> DOM SCRIPTING LIBRARIES
+DOM SCRIPTING LIBRARIES
 
 } with the jQuery each method:
 
-\$(\'li\').each(function(i){ alert( typeof this ); });
+&#36;(&#39;li&#39;).each(function(i){ alert( typeof this ); });
 
 The jQuery each method, as well as other looping methods, uses a
 callback applied to each element in the list. The callback receives only
-the element\'s index in the list as an argument and the method executes
+the element&#39;s index in the list as an argument and the method executes
 in the context of the node, so this in the example refers to the li
 element itself.
 
@@ -17315,146 +16749,146 @@ element selection a lot more powerful.
 
 Selecting elements
 
-So far you\'ve seen how you can select elements by ID, by tag, and by
+So far you&#39;ve seen how you can select elements by ID, by tag, and by
 class name using the built-in DOM methods getElementById,
 getElementsByTagName, and getElementsByClassName, respectively.
 
 Selecting elements by ID is great, but selecting elements using the full
 range of CSS selectors is even better. Many libraries incorporate
-advanced selector methods such as the \$ function in jQuery. With this
+advanced selector methods such as the &#36; function in jQuery. With this
 method you can select:
 
--   By ID with the pound sign \$(\'#elementid\')
+-   By ID with the pound sign &#36;(&#39;#elementid&#39;)
 
--   By class with a dot \$(\'.element-class)
+-   By class with a dot &#36;(&#39;.element-class)
 
--   By tag with a tag name \$(\'tag\')
+-   By tag with a tag name &#36;(&#39;tag&#39;)
 
-That\'s not really anything too special, but you can also use a variety
+That&#39;s not really anything too special, but you can also use a variety
 of CSS selectors
 ([http://www.w3.org/TR/css3-selectors/#selectors)](http://www.w3.org/TR/css3-selectors/#selectors)
 to select specific elements.
 
 ■ **Note** When an ID such as #elementid is used as the selector in the
-\$ function, that function still returns a list of objects, but the list
+&#36; function, that function still returns a list of objects, but the list
 will have only one element instead of multiple. This allows you to use
 each and other jQuery methods on single elements.
 
 CSS selectors
 
-Beyond an ID\'s class and tags, here are a few examples of the advanced
+Beyond an ID&#39;s class and tags, here are a few examples of the advanced
 selectors you can use in most libraries:
 
--   \$(\'\*\') selects all elements.
+-   &#36;(&#39;&#42;&#39;) selects all elements.
 
--   \$(\'*tag\')* selects all *tag* elements for each of the available
+-   &#36;(&#39;*tag&#39;)* selects all *tag* elements for each of the available
     HTML tags.
 
--   \$(\'*tagA* *tagB\')* selects all *tagB* elements that are
+-   &#36;(&#39;*tagA* *tagB&#39;)* selects all *tagB* elements that are
     descendants of *tagA* elements.
 
--   \$(\'*tagA*,*tagB*,*tagC\')* selects all *tagA* elements, *tagB*
+-   &#36;(&#39;*tagA*,*tagB*,*tagC&#39;)* selects all *tagA* elements, *tagB*
     elements, and *tagC* elements.
 
--   \$(\'#*id\')* and \$(\'*tag*\#*id\')* are ID selectors for any ID or
+-   &#36;(&#39;#*id&#39;)* and &#36;(&#39;*tag*\#*id&#39;)* are ID selectors for any ID or
     a specific tag-ID combination.
 
--   \$(\'.*className\')* and \$(\'*tag*.*className\')* are selectors
+-   &#36;(&#39;.*className&#39;)* and &#36;(&#39;*tag*.*className&#39;)* are selectors
     that can be used for any class or *tag* class combination.
 
-You can also combine selectors such as \$(\'#myList li\') or \$(\'ul li
-a.selectMe\') to select any mix of descendant selectors separated by a
+You can also combine selectors such as &#36;(&#39;#myList li&#39;) or &#36;(&#39;ul li
+a.selectMe&#39;) to select any mix of descendant selectors separated by a
 space.
 
 jQuery also includes the following CSS 2.1 attribute selectors:
 
--   \$(\'*tag*\[*attr*\]\') selects all *tag* elements that have
+-   &#36;(&#39;*tag*&#91;*attr*&#93;&#39;) selects all *tag* elements that have
     attribute *attr*.
 
--   \$(\'*tag*\[*attr*=*value*\]\') selects all *tag* elements where
+-   &#36;(&#39;*tag*&#91;*attr*=*value*&#93;&#39;) selects all *tag* elements where
     *value* is exactly equal to the *attr* attribute value.
 
--   \$(\'*tag*\[*attr*\*=*value*\]\') selects all *tag* elements where
+-   &#36;(&#39;*tag*&#91;*attr*&#42;=*value*&#93;&#39;) selects all *tag* elements where
     *value* is contained in the *attr* attribute value.
 
--   \$(\'*tag*\[*attr*\~=*value*\]\') selects all *tag* elements where
+-   &#36;(&#39;*tag*&#91;*attr*&#126;=*value*&#93;&#39;) selects all *tag* elements where
     *value* is a word contained in the *attr* attribute value (separated
     by spaces).
 
--   \$(\'*tag*\[*attr*\^=*value*\]\') selects all *tag* elements where
+-   &#36;(&#39;*tag*&#91;*attr*\^=*value*&#93;&#39;) selects all *tag* elements where
     *value* matches the beginning of the *attr* attribute value.
 
--   \$(\'*tag*\[*attr*\$=*value*\]\') selects all *tag* elements where
+-   &#36;(&#39;*tag*&#91;*attr*&#36;=*value*&#93;&#39;) selects all *tag* elements where
     *value* matches the end of the *attr* attribute value.
 
--   \$(\'*tag*\[*attr*\|=*value*\]\') selects all *tag* elements where
+-   &#36;(&#39;*tag*&#91;*attr*&#124;=*value*&#93;&#39;) selects all *tag* elements where
     *value* matches the first part of a hyphenated *attr* attribute
     value.
 
--   \$(\'*tag*\[*attr*!=*value*\]\') selects all *tag* elements where
+-   &#36;(&#39;*tag*&#91;*attr*!=*value*&#93;&#39;) selects all *tag* elements where
     *value* is not equal to *attr*.
 
-> You can also use a number of different child and sibling selectors, as
-> follows:
+You can also use a number of different child and sibling selectors, as
+follows:
 
--   \$(\'*tagA* \> *tagB*\') selects all *tagB* elements that are direct
+-   &#36;(&#39;*tagA* &#42;tagB*&#39;) selects all *tagB* elements that are direct
     child descendants of *tagA* elements.
 
--   \$(\'*tagA* + *tagB*\') selects all *tagB* sibling elements that
+-   &#36;(&#39;*tagA* + *tagB*&#39;) selects all *tagB* sibling elements that
     immediately follow *tagA* elements.
 
--   \$(\'*tagA* \~ *tagB*\') selects all elements with a preceding
+-   &#36;(&#39;*tagA* &#126; *tagB*&#39;) selects all elements with a preceding
     sibling *tagB* element.
 
 Also, you can use several pseudo-class and pseudo-element selectors
 including these:
 
--   \$(\'*tag*:root\') selects the *tag* element that is the root of the
+-   &#36;(&#39;*tag*:root&#39;) selects the *tag* element that is the root of the
     document.
 
--   \$(\'*tag*:nth-child(n)\') selects all *tag* elements that are the
+-   &#36;(&#39;*tag*:nth-child(n)&#39;) selects all *tag* elements that are the
     *n*th children of their parents, counting from the first one.
 
--   \$(\'*tag*:nth-last-child(n)\') selects all *tag* elements that are
+-   &#36;(&#39;*tag*:nth-last-child(n)&#39;) selects all *tag* elements that are
     the *n*th child of their parents, counting from the last one.
 
--   \$(\'*tag*:nth-of-type(n)\') selects all *tag* elements that are the
+-   &#36;(&#39;*tag*:nth-of-type(n)&#39;) selects all *tag* elements that are the
     *n*th sibling of their type, counting from the first one.
 
--   \$(\'*tag*:nth-last-of-type(n)\') selects all *tag* elements that
+-   &#36;(&#39;*tag*:nth-last-of-type(n)&#39;) selects all *tag* elements that
     are the *n*th sibling of their type, counting from the last one.
 
--   \$(\'*tag*:first-child\') selects any *tag* element that is the
+-   &#36;(&#39;*tag*:first-child&#39;) selects any *tag* element that is the
     first child of its parents.
 
--   \$(\'*tag*:last-child\') selects any *tag* element that is the last
+-   &#36;(&#39;*tag*:last-child&#39;) selects any *tag* element that is the last
     child of its parent.
 
--   \$(\'*tag*:first-of-type\') selects any *tag* element that is the
+-   &#36;(&#39;*tag*:first-of-type&#39;) selects any *tag* element that is the
     first sibling of its type.
 
--   \$(\'*tag*:last-of-type\') selects any *tag* element that is the
+-   &#36;(&#39;*tag*:last-of-type&#39;) selects any *tag* element that is the
     last sibling of its type.
 
--   \$(\'*tag*:only-child\') selects any *tag* element that is an only
+-   &#36;(&#39;*tag*:only-child&#39;) selects any *tag* element that is an only
     child of its parent.
 
--   \$(\'*tag*:only-of-type\') selects any *tag* element that is the
+-   &#36;(&#39;*tag*:only-of-type&#39;) selects any *tag* element that is the
     only sibling of its type.
 
--   \$(\'*tag*:empty\') selects all *tag* elements that have no
+-   &#36;(&#39;*tag*:empty&#39;) selects all *tag* elements that have no
     children.
 
--   \$(\'*tag*:enabled\') selects all user interface *tag* elements that
+-   &#36;(&#39;*tag*:enabled&#39;) selects all user interface *tag* elements that
     are enabled.
 
--   \$(\'*tag*:disabled\') selects all user interface *tag* elements
+-   &#36;(&#39;*tag*:disabled&#39;) selects all user interface *tag* elements
     that are disabled.
 
--   \$(\'*tag*:checked\') selects all user interface *tag* elements that
+-   &#36;(&#39;*tag*:checked&#39;) selects all user interface *tag* elements that
     are checked, such as check boxes and radio buttons.
 
--   \$(\'*tag*:not(s)\') selects all tag elements that don't match the
+-   &#36;(&#39;*tag*:not(s)&#39;) selects all tag elements that don't match the
     selectors.
 
 Different libraries have varying support for each selector type, so
@@ -17467,14 +16901,14 @@ as well as reduce your element selection code. For example, you can take
 this code that uses DOM methods to select all the links within nav
 elements within articles:
 
-var links = \[\];
+var links = &#91;&#93;;
 
-var articles = document.getElementsByTagName(\"article\"); for (var a =
-0; a \< articles.length; a++ ) { var navs =
-articles\[a\].getElementsByTagName(\"nav\"); for (var n = 0; n \<
-navs.length; n++ ) { var links = nav\[n\].getElementsByTagName(\"a\");
-for (var l = 0; l \< links.length; l++ ) { links\[links.lengh\] =
-links\[l\];
+var articles = document.getElementsByTagName(&quot;article&quot;); for (var a =
+0; a &lt; articles.length; a++ ) { var navs =
+articles&#91;a&#93;.getElementsByTagName(&quot;nav&quot;); for (var n = 0; n &lt;
+navs.length; n++ ) { var links = nav&#91;n&#93;.getElementsByTagName(&quot;a&quot;);
+for (var l = 0; l &lt; links.length; l++ ) { links&#91;links.lengh&#93; =
+links&#91;l&#93;;
 
 }
 
@@ -17484,27 +16918,27 @@ links\[l\];
 
 // Do something with links. and reduce it to just a few characters:
 
-var links = \$(\'article nav a\'); // Do something with links.
+var links = &#36;(&#39;article nav a&#39;); // Do something with links.
 
-> Now your code is much cleaner and much more readable.
+Now your code is much cleaner and much more readable.
 
 Library-specific selectors
 
 Some libraries also support their own set of selectors. For example,
-jQuery supports \$(\'*tag*:even\') and \$(\'*tag*:odd\') selectors for
+jQuery supports &#36;(&#39;*tag*:even&#39;) and &#36;(&#39;*tag*:odd&#39;) selectors for
 even and odd elements, and to replicate the table stripe table function
 from Chapter 12:
 
 function stripeTables() {
 
 if (!document.getElementsByTagName) return false; var tables =
-document.getElementsByTagName(\"table\"); for (var i=0;
-i\<tables.length; i++) {
+document.getElementsByTagName(&quot;table&quot;); for (var i=0;
+i&lt;tables.length; i++) {
 
 var odd = false;
 
-var rows = tables\[i\].getElementsByTagName(\"tr\"); for (var j=0;
-j\<rows.length; j++) { if (odd == true) { addClass(rows\[j\],\"odd\");
+var rows = tables&#91;i&#93;.getElementsByTagName(&quot;tr&quot;); for (var j=0;
+j&lt;rows.length; j++) { if (odd == true) { addClass(rows&#91;j&#93;,&quot;odd&quot;);
 odd = false; } else { odd = true;
 
 }
@@ -17516,85 +16950,85 @@ odd = false; } else { odd = true;
 } you can simply select every odd table row and apply CSS properties in
 one line of jQuery:
 
-\$(\"tr:odd\").addClass(\"odd\");
+&#36;(&quot;tr:odd&quot;).addClass(&quot;odd&quot;);
 
-As you can see, it\'s much more elegant.
+As you can see, it&#39;s much more elegant.
 
 Other custom selectors in jQuery include these:
 
--   \$(\'*tag*:even\') selects even-numbered elements from the matched
+-   &#36;(&#39;*tag*:even&#39;) selects even-numbered elements from the matched
     element set--- great for highlighting table rows!
 
--   \$(\'*tag*:odd\') selects odd-numbered elements from the matched
+-   &#36;(&#39;*tag*:odd&#39;) selects odd-numbered elements from the matched
     element set.
 
--   \$(\'*tag*:eq(0)\') and \$(\'*tag*:nth(0)\') select the *n*th
+-   &#36;(&#39;*tag*:eq(0)&#39;) and &#36;(&#39;*tag*:nth(0)&#39;) select the *n*th
     element from the matched element set, such as the first paragraph on
     the page.
 
--   \$(\'*tag*:gt(n)\') selects all matched elements whose index is
+-   &#36;(&#39;*tag*:gt(n)&#39;) selects all matched elements whose index is
     greater than *n*.
 
--   \$(\'*tag*:lt(n)\') selects all matched elements whose index is less
+-   &#36;(&#39;*tag*:lt(n)&#39;) selects all matched elements whose index is less
     than *n*.
 
--   \$(\'*tag*:first\') is equivalent to :eq(0).
+-   &#36;(&#39;*tag*:first&#39;) is equivalent to :eq(0).
 
--   \$(\'*tag*:last\') selects the last matched element.
+-   &#36;(&#39;*tag*:last&#39;) selects the last matched element.
 
--   \$(\'*tag*:parent\') selects all elements that have child elements
+-   &#36;(&#39;*tag*:parent&#39;) selects all elements that have child elements
     (including text).
 
--   \$(\'*tag*:contains(\'test\')\') selects all elements that contain
+-   &#36;(&#39;*tag*:contains(&#39;test&#39;)&#39;) selects all elements that contain
     the specified text.
 
--   \$(\'*tag*:visible\') selects all visible elements (this includes
+-   &#36;(&#39;*tag*:visible&#39;) selects all visible elements (this includes
     items that have a display property using block or inline or a
     visibility property using visible, and that aren't form elements of
     type hidden).
 
--   \$(\'*tag*:hidden\') selects all hidden elements (this includes
+-   &#36;(&#39;*tag*:hidden&#39;) selects all hidden elements (this includes
     items that have a display property using none, or a visibility
     property using hidden, or are form elements of type hidden).
 
 These allow you to quickly modify elements, such as the font weight of
 the first paragraph on the page:
 
-\$(\"p:first\").css(\"font-weight\",\"bold\");
+&#36;(&quot;p:first&quot;).css(&quot;font-weight&quot;,&quot;bold&quot;);
 
-Or you can quickly show all hidden \<div\> elements:
+Or you can quickly show all hidden &lt;div\elements:
 
-\$(\"div:hidden\").show();
+&#36;(&quot;div:hidden&quot;).show();
 
 You could even hide all the div elements that contain the word "scared":
 
-\$(\"div:contains(\'scared\')\").hide();
+&#36;(&quot;div:contains(&#39;scared&#39;)&quot;).hide();
 
 Finally, jQuery also includes a number of form-specific expressions you
 can use to access form elements:
 
 -   :input selects all form elements (input, select, textarea, button).
 
--   :text selects all text fields (type=\"text\").
+-   :text selects all text fields (type=&quot;text&quot;).
 
--   :password selects all password fields (type=\"password\").
+-   :password selects all password fields (type=&quot;password&quot;).
 
--   :radio selects all radio fields (type=\"radio\").
+-   :radio selects all radio fields (type=&quot;radio&quot;).
 
--   :checkbox selects all checkbox fields (type=\"checkbox\").
+-   :checkbox selects all checkbox fields (type=&quot;checkbox&quot;).
 
--   :submit selects all submit buttons (type=\"submit\").
+-   :submit selects all submit buttons (type=&quot;submit&quot;).
 
--   :image selects all form images (type=\"image\").
+-   :image selects all form images (type=&quot;image&quot;).
 
--   :reset selects all reset buttons (type=\"reset\").
+-   :reset selects all reset buttons (type=&quot;reset&quot;).
 
--   :button selects all other buttons (type=\"button\").
+-   :button selects all other buttons (type=&quot;button&quot;).
 
 Filtering with a callback
 
 When advanced expressions still can't provide what you need or a library
-doesn\'t support one, you can always walk the DOM with a callback
+doesn&#39;t support one, you can always walk the DOM with a callback
 function and run whatever code you like against each element. In all the
 following examples, returning true from the callback will include the
 element and returning false will exclude the element from the resulting
@@ -17606,74 +17040,74 @@ selector, so there's no way to select "All anchor tags that have a
 single image as a child." You can, however, accomplish this fairly
 easily with a callback. Let's use the following list as an example:
 
-\<ul\>
+&lt;ul&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a name=\"example1\"\>\<img src=\"example.gif\"
-alt=\"example\"/\>\</a\>
+&lt;a name=&quot;example1&quot;&gt;&lt;img src=&quot;example.gif&quot;
+alt=&quot;example&quot;/&gt;&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a name=\"example2\"\>No Images Here\</a\>
+&lt;a name=&quot;example2&quot;&gt;No Images Here&lt;/a&gt;
 
-\</li\>
+&lt;/li&gt;
 
-\<li\>
+&lt;li&gt;
 
-\<a name=\"example3\"\>
+&lt;a name=&quot;example3&quot;&gt;
 
 Two here!
 
-\<img src=\"example2.gif\" alt=\"example\"/\>
+&lt;img src=&quot;example2.gif&quot; alt=&quot;example&quot;/&gt;
 
-\<img src=\"example3.gif\" alt=\"example\"/\>
+&lt;img src=&quot;example3.gif&quot; alt=&quot;example&quot;/&gt;
 
-\</a\>
+&lt;/a&gt;
 
-\</li\> \</ul\>
+&lt;/li\&lt;/ul&gt;
 
 Using the YUI YAHOO.util.Dom.getElementBy method, you can simply use the
-existing DOM element properties you\'ve seen earlier in the book to
+existing DOM element properties you&#39;ve seen earlier in the book to
 filter your list:
 
 var singleImageAnchors = YAHOO.util.Dom.getElementsBy(function(e) {
 
-// Look for \<A\> nodes with one child image
+// Look for &lt;A\nodes with one child image
 
-return (e.nodeName == \'A\' && e.getElementsByTagName(\'img\').length ==
+return (e.nodeName == &#39;A&#39; && e.getElementsByTagName(&#39;img&#39;).length ==
 1);
 
 });
 
 The singleImageAnchors variable will contain a list with a reference to
-\<a name=\"example1\"\>, as it's the only anchor with one image as a
+&lt;a name=&quot;example1&quot;&gt;, as it's the only anchor with one image as a
 child in the example list.
 
 Prototype and jQuery provide findAll and filter methods, respectively.
 You use these last two in the chaining context to filter out elements
 returned from the expression.
 
-First, here's how it looks in Prototype (using the \$\$ selector
+First, here's how it looks in Prototype (using the &#36;&#36; selector
 function):
 
 // Prototype library callback filter
 
-var singleImageAnchors = \$\$(\'a\').findAll(function(e) { return
-(e.descendants().findAll(function(e) { return (e.nodeName == \'IMG\');
+var singleImageAnchors = &#36;&#36;(&#39;a&#39;).findAll(function(e) { return
+(e.descendants().findAll(function(e) { return (e.nodeName == &#39;IMG&#39;);
 
 }).length == 1);
 
 });
 
-> Here's the same method in jQuery:
+Here's the same method in jQuery:
 
 // jQuery library callback filter
 
-var singleImageAnchors = \$(\'a\').filter(function() { return
-(\$(\'img\',this).length == 1)
+var singleImageAnchors = &#36;(&#39;a&#39;).filter(function() { return
+(&#36;(&#39;img&#39;,this).length == 1)
 
 });
 
@@ -17684,28 +17118,28 @@ in-depth analysis of the elements, callbacks can be very powerful.
 Manipulating the DOM document
 
 Libraries are chock-full of different DOM-manipulation methods, as
-that\'s pretty much the point of the library in the first place. I'll
+that&#39;s pretty much the point of the library in the first place. I'll
 just point out a few and let you explore the documentation for each
 library to find the rest.
 
 Creating content
 
 Using jQuery to create new DOM elements is very easy. You can define
-HTML as the input to the \$ function to create nodes. For example here
-we\'ll append a new div to the body of a document. The div will have an
+HTML as the input to the &#36; function to create nodes. For example here
+we&#39;ll append a new div to the body of a document. The div will have an
 id of example and the content of Hello:
 
-\$(\'\<div id=\"example\"\>Hello\</div\>\').appendTo(document.body);
+&#36;(&#39;&lt;div id=&quot;example&quot;&gt;Hello&lt;/div&gt;&#39;).appendTo(document.body);
 
-> Or you can use the jQuery template plug-in
-> ([http://api.jquery.com/category/plugins/templates/).](http://api.jquery.com/category/plugins/templates)
+Or you can use the jQuery template plug-in
+([http://api.jquery.com/category/plugins/templates/).](http://api.jquery.com/category/plugins/templates)
 
 ■ **Note** You can use the Microsoft CDN to include the template plug-in
 in your document. The download URL at the time of writing is
 [http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js.](http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js)
 
 The jQuery template plug-in allows you to specify strings of HTML with
-special variables such as \${term}, which is then replaced using an
+special variables such as &#36;{term}, which is then replaced using an
 array of data or other templates.
 
 For example, you could take the displayAbbreviations function from
@@ -17713,37 +17147,37 @@ Chapter 8:
 
 function displayAbbreviations() {
 
-**if (!document.getElementsByTagName \|\| !document.createElement**
+**if (!document.getElementsByTagName &#124;&#124; !document.createElement**
 
-> e
+e
 
-➥**\|\| !document.createTextNode) return false;**
+➥**&#124;&#124; !document.createTextNode) return false;**
 
-var abbreviations = document.getElementsByTagName(\"abbr\"); if
-(abbreviations.length \< 1) return false; var defs = new Array();
+var abbreviations = document.getElementsByTagName(&quot;abbr&quot;); if
+(abbreviations.length &lt; 1) return false; var defs = new Array();
 
-for (var i=0; i\<abbreviations.length; i++) { var current_abbr =
-abbreviations\[i\];
+for (var i=0; i&lt;abbreviations.length; i++) { var current_abbr =
+abbreviations&#91;i&#93;;
 
-var definition = current_abbr.getAttribute(\"title\"); var key =
-current_abbr.lastChild.nodeValue; defs\[key\] = definition;
+var definition = current_abbr.getAttribute(&quot;title&quot;); var key =
+current_abbr.lastChild.nodeValue; defs&#91;key&#93; = definition;
 
 }
 
-var dlist = document.createElement(\"dl\"); for (key in defs) { var
-definition = defs\[key\];
+var dlist = document.createElement(&quot;dl&quot;); for (key in defs) { var
+definition = defs&#91;key&#93;;
 
-var dtitle = document.createElement(\"dt\"); var dtitle_text =
+var dtitle = document.createElement(&quot;dt&quot;); var dtitle_text =
 document.createTextNode(key); dtitle.appendChild(dtitle_text); var ddesc
-= document.createElement(\"dd\"); var ddesc_text =
+= document.createElement(&quot;dd&quot;); var ddesc_text =
 document.createTextNode(definition); ddesc.appendChild(ddesc_text);
 dlist.appendChild(dtitle); dlist.appendChild(ddesc);
 
 }
 
-var header = document.createElement(\"h2\");
+var header = document.createElement(&quot;h2&quot;);
 
-var header_text = document.createTextNode(\"Abbreviations\");
+var header_text = document.createTextNode(&quot;Abbreviations&quot;);
 header.appendChild(header_text); document.body.appendChild(header);
 document.body.appendChild(dlist);
 
@@ -17752,9 +17186,9 @@ document.body.appendChild(dlist);
 function displayAbbreviations() { // Create an array of the
 abbreviations.
 
-var data = \$(\'abbr\').map(function(){ return {
+var data = &#36;(&#39;abbr&#39;).map(function(){ return {
 
-desc:\$(this).attr(\'title\'), term:\$(this).text()
+desc:&#36;(this).attr(&#39;title&#39;), term:&#36;(this).text()
 
 };
 
@@ -17762,11 +17196,11 @@ desc:\$(this).attr(\'title\'), term:\$(this).text()
 
 // Append to the document and apply a template.
 
-\$(\'\<h2\>Abbreviations\</h2\>\').appendTo(document.body).after(
+&#36;(&#39;&lt;h2&gt;Abbreviations&lt;/h2&gt;&#39;).appendTo(document.body).after(
 
-\$.tmpl( \"\<dt\>\${term}\</dt\>\<dd\>\${desc}\</dd\>\", data )
+&#36;.tmpl( &quot;&lt;dt&gt;&#36;{term}&lt;/dt&gt;&lt;dd&gt;&#36;{desc}&lt;/dd&gt;&quot;, data )
 
-.wrapAll(\"\<dl/\>\")
+.wrapAll(&quot;&lt;dl/&gt;&quot;)
 
 ); }
 
@@ -17774,25 +17208,25 @@ This could be taken a step further by removing the template from the
 function itself and defining the abbreviations template on a
 page-by-page basis. See the template documentation at
 [http://api.jquery.com/tmpl/](http://api.jquery.com/tmpl) for more
-specifics about template abstraction using \<script\> elements.
+specifics about template abstraction using &lt;script\elements.
 
 Manipulating content
 
 To simply manipulate your existing document and move things around you
-can use methods such as jQuery\'s appendTo or insertAfter. These let you
+can use methods such as jQuery&#39;s appendTo or insertAfter. These let you
 locate large sets of elements and move them all to become children of
 another element.
 
 For example, you can relocate all the elements of one list to another:
 
-\$(\'ul#list1 li\').appendTo(\"ul#list2\");
+&#36;(&#39;ul#list1 li&#39;).appendTo(&quot;ul#list2&quot;);
 
 This works because each element has only one reference in a document. By
-telling an element to be the child of another, you\'re automatically
+telling an element to be the child of another, you&#39;re automatically
 removing it from its original parent. If you want to copy the element
 instead, you could use the jQuery clone method:
 
-\$(\'ul#list1 li\')**.clone()**.appendTo(\"ul#list2\");
+&#36;(&#39;ul#list1 li&#39;)**.clone()**.appendTo(&quot;ul#list2&quot;);
 
 DOM manipulation is well ingrained in almost every library, and they
 each have a number of other handy shortcuts to remove, insert, append,
@@ -17800,8 +17234,8 @@ prepend, and more.
 
 Handling events
 
-As you\'ve seen throughout the book, events are the lifeblood of user
-interaction. Without events, you couldn\'t interact with the page.
+As you&#39;ve seen throughout the book, events are the lifeblood of user
+interaction. Without events, you couldn&#39;t interact with the page.
 
 You already have some basic event methods in your arsenal. If you've
 chosen to use a library, many have their own event management built in.
@@ -17814,7 +17248,7 @@ You already have an event registration method for page load events in
 your addLoadEvent:
 
 function addLoadEvent(func) { var oldonload = window.onload; if (typeof
-window.onload != \'function\') { window.onload = func;
+window.onload != &#39;function&#39;) { window.onload = func;
 
 } else {
 
@@ -17824,7 +17258,7 @@ window.onload = function() { oldonload(); func();
 
 } }
 
-You\'ve used this function to execute other functions when the page
+You&#39;ve used this function to execute other functions when the page
 loads:
 
 function myFucntion() {
@@ -17850,13 +17284,13 @@ event type
 In the case of your addLoadEvent, jQuery supplies a ready method that
 works in a similar way:
 
-\$(document).ready(*handler*); \$(*handler*);
+&#36;(document).ready(*handler*); &#36;(*handler*);
 
 The second method assumes that the document object is the target of the
 ready method. The ready method is given an anonymous function to use as
 the event handler when the document is ready:
 
-\$(document).ready(function() {
+&#36;(document).ready(function() {
 
 // Do something after the page loads.
 
@@ -17866,7 +17300,7 @@ If ready is called after the DOM has already been initialized, the new
 callback will be executed immediately.
 
 To use the jQuery methods the same way as your addLoadEvent function,
-just replace addLoadEvent with \$:
+just replace addLoadEvent with &#36;:
 
 function myFucntion() {
 
@@ -17874,11 +17308,11 @@ function myFucntion() {
 
 }
 
-\$(myFunction);
+&#36;(myFunction);
 
-> or just
+or just
 
-\$(function() {
+&#36;(function() {
 
 // Do something after the page loads. });
 
@@ -17892,40 +17326,40 @@ Using these methods, you can register event handlers for each element in
 groups of DOM elements, such as a click event for every link on the
 page:
 
-\$(\'a\').click( function(event) {
+&#36;(&#39;a&#39;).click( function(event) {
 
 // Open the new window using the existing href value;
-window.open(this.getAttribute(\'href\')); // Prevent default action of
+window.open(this.getAttribute(&#39;href&#39;)); // Prevent default action of
 the link return false; });
 
 A very nice side effect of these methods is that you can invoke the
 event listener on the elements if you call the appropriate method
 without any input:
 
-\$(\'a:first\').click();
+&#36;(&#39;a:first&#39;).click();
 
-> For example, you could replicate the resetFields and prepareForms
-> functions from Chapter 12:
+For example, you could replicate the resetFields and prepareForms
+functions from Chapter 12:
 
 function resetFields(whichform) {
 
-for (var i=0; i\<whichform.elements.length; i++) { var element =
-whichform.elements\[i\]; if (element.type == \"submit\") continue;
+for (var i=0; i&lt;whichform.elements.length; i++) { var element =
+whichform.elements&#91;i&#93;; if (element.type == &quot;submit&quot;) continue;
 
-var hasPlaceholder = element.placeholder \|\|
-element.getAttribute(\'placeholder\');
+var hasPlaceholder = element.placeholder &#124;&#124;
+element.getAttribute(&#39;placeholder&#39;);
 
 if (!hasPlaceholder) continue; element.onfocus = function() {
 
-var text = element.placeholder \|\|
-element.getAttribute(\'placeholder\'); if (this.value == text) {
-this.className = \'\'; this.value = \"\";
+var text = element.placeholder &#124;&#124;
+element.getAttribute(&#39;placeholder&#39;); if (this.value == text) {
+this.className = &#39;&#39;; this.value = &quot;&quot;;
 
-} } element.onblur = function() { if (this.value == \"\") {
-this.className = \'placeholder\';
+} } element.onblur = function() { if (this.value == &quot;&quot;) {
+this.className = &#39;placeholder&#39;;
 
-this.value = element.placeholder \|\|
-element.getAttribute(\'placeholder\');;
+this.value = element.placeholder &#124;&#124;
+element.getAttribute(&#39;placeholder&#39;);;
 
 } }
 
@@ -17935,8 +17369,8 @@ element.onblur();
 
 function prepareForms() {
 
-for (var i=0; i\<document.forms.length; i++) { var thisform =
-document.forms\[i\]; resetFields(thisform);
+for (var i=0; i&lt;document.forms.length; i++) { var thisform =
+document.forms&#91;i&#93;; resetFields(thisform);
 
 }
 
@@ -17947,19 +17381,19 @@ addLoadEvent(prepareForms)
 Using jQuery selectors and event methods, all that form preparation can
 be reduced down to this:
 
-\$(function() {
+&#36;(function() {
 
-\$(\'form input\[placeholder\]\').focus(function(){ var input =
-\$(this);
+&#36;(&#39;form input&#91;placeholder&#93;&#39;).focus(function(){ var input =
+&#36;(this);
 
-if (input.val() == input.attr(\'placeholder\')) {
-input.val(\'\').removeClass(\'placeholder\').;
+if (input.val() == input.attr(&#39;placeholder&#39;)) {
+input.val(&#39;&#39;).removeClass(&#39;placeholder&#39;).;
 
 }
 
-}).blur(function(){ var input = \$(this); if (input.val() == \'\') {
+}).blur(function(){ var input = &#36;(this); if (input.val() == &#39;&#39;) {
 
-input.val(input.attr(\'placeholder\')).addClass(\'placeholder\');
+input.val(input.attr(&#39;placeholder&#39;)).addClass(&#39;placeholder&#39;);
 
 }
 
@@ -17977,7 +17411,7 @@ The Prototype library, originally part of the Ruby on Rails project,
 gained popularity because of its Ajax object. Prototype offers a few
 different flavors of Ajax methods:
 
-> DOM SCRIPTING LIBRARIES
+DOM SCRIPTING LIBRARIES
 
 -   Ajax.Request(*url*, *options*) performs a basic XMLHttpRequest
     request.
@@ -17990,7 +17424,7 @@ different flavors of Ajax methods:
     appends the content of the request to a given DOM node on a regular
     interval.
 
-> The options for each method include several properties:
+The options for each method include several properties:
 
 -   contentType is the Content Type header for your request. The default
     value is application/x-www-form-urlencoded.
@@ -18026,7 +17460,7 @@ different flavors of Ajax methods:
 -   X-Prototype-Version is set to Prototype's current version number.
 
 -   Accept, by default, is set to text/javascript, text/html,
-    application/xml, text/xml, and \*/\*.
+    application/xml, text/xml, and &#42;/&#42;.
 
 -   Content-type is built based on the contentType value and encoding
     options.
@@ -18092,20 +17526,20 @@ Here are a few examples of Prototype Ajax requests:
 
 // Create a new one-time request and alert its success new Ajax.Request(
 
-\'some-server-side-script.php\',
+&#39;some-server-side-script.php&#39;,
 
 {
 
-method:\'get\',
+method:&#39;get&#39;,
 
 onSuccess: function (transport) {
 
-var response = transport.responseText \|\| \"no response text\";
-alert(\'Ajax.Request was successful: \' + response);
+var response = transport.responseText &#124;&#124; &quot;no response text&quot;;
+alert(&#39;Ajax.Request was successful: &#39; + response);
 
 },
 
-onFailure: function (){ alert(\'Ajax.Request failed\');
+onFailure: function (){ alert(&#39;Ajax.Request failed&#39;);
 
 }
 
@@ -18119,13 +17553,13 @@ onFailure: function (){ alert(\'Ajax.Request failed\');
 
 // element with the content of the responseText new Ajax.Updater(
 
-\$(\'ajax-updater-target\'),
+&#36;(&#39;ajax-updater-target&#39;),
 
-\'some-server-side-script.php\',
+&#39;some-server-side-script.php&#39;,
 
 {
 
-method: \'get\',
+method: &#39;get&#39;,
 
 // Append it to the top of the target element insertion: Insertion.Top
 
@@ -18138,13 +17572,13 @@ method: \'get\',
 // Create a periodic request that will automatically populate
 
 // the #ajax-target-element every 10 seconds new Ajax.PeriodicalUpdater(
-\$(\'ajax-periodic-target\'),
+&#36;(&#39;ajax-periodic-target&#39;),
 
-\'some-server-side-script.php \',
+&#39;some-server-side-script.php &#39;,
 
 {
 
-method: \'GET\',
+method: &#39;GET&#39;,
 
 // Append it to the top of the existing content insertion:
 Insertion.Top, // Run every 10 seconds frequency: 10
@@ -18164,15 +17598,15 @@ hard work:
 
 // Save the content of the #autosave-form every 30 seconds // and update
 the #autosave-status to indicate the save setTimeout(function() { new
-Ajax.Updater( \$(\'autosave-status\'),
+Ajax.Updater( &#36;(&#39;autosave-status&#39;),
 
-\' some-server-side-autosave-script.php \',
+&#39; some-server-side-autosave-script.php &#39;,
 
 {
 
-method:\'post\',
+method:&#39;post&#39;,
 
-parameters : \$(\'autosave-form\').serialize(true)
+parameters : &#36;(&#39;autosave-form&#39;).serialize(true)
 
 }
 
@@ -18183,29 +17617,29 @@ parameters : \$(\'autosave-form\').serialize(true)
 Ajax with jQuery
 
 For a comparison with a different syntax, jQuery also includes a
-low-level \$.ajax method that you can use to specify all sorts of
-properties, but let\'s look at a few quick and easy methods you can use
+low-level &#36;.ajax method that you can use to specify all sorts of
+properties, but let&#39;s look at a few quick and easy methods you can use
 with minimal effort:
 
--   \$.post(*url*, *params*, *callback*) retrieves data through a POST
+-   &#36;.post(*url*, *params*, *callback*) retrieves data through a POST
     request.
 
--   \$.get(*url*, *params*, *callback*) retrieves data through a GET
+-   &#36;.get(*url*, *params*, *callback*) retrieves data through a GET
     request.
 
--   \$.getJSON(*url*, *params*, *callback*) retrieves a JSON object.
+-   &#36;.getJSON(*url*, *params*, *callback*) retrieves a JSON object.
 
--   \$.getScript(*url*, *callback*) retrieves and execute a JavaScript
+-   &#36;.getScript(*url*, *callback*) retrieves and execute a JavaScript
     file.
 
-These methods are all wrappers for the \$.ajax() method, and their
-callback methods in all cases are invoked as the \$.ajax() success
+These methods are all wrappers for the &#36;.ajax() method, and their
+callback methods in all cases are invoked as the &#36;.ajax() success
 callback. Each receives two arguments that define the request's
 responseText and the status of the request, respectively:
 
-\$.get(\'some-server-side-script.php\',
+&#36;.get(&#39;some-server-side-script.php&#39;,
 
-{ key: \'value\' },
+{ key: &#39;value&#39; },
 
 function(responseText, status){
 
@@ -18215,7 +17649,7 @@ function(responseText, status){
 
 );
 
-> The status will be one of these:
+The status will be one of these:
 
 -   success
 
@@ -18229,70 +17663,70 @@ object.
 
 Again, you can see some of these methods in action here:
 
-// \$.get() for quick Ajax calls
+// &#36;.get() for quick Ajax calls
 
 // Create a one-time request and alert its success
 
-\$.get(\'some-server-side-script.php\',
+&#36;.get(&#39;some-server-side-script.php&#39;,
 
-{ key: \'value\' }, function(responseText,status){
+{ key: &#39;value&#39; }, function(responseText,status){
 
-alert(\'successful: \' + responseText);
+alert(&#39;successful: &#39; + responseText);
 
 }
 
 );
 
-// \$.getJSON() to load a JSON object
+// &#36;.getJSON() to load a JSON object
 
 // Create a one-time request to load a JSON file and alert its success
 
-\$.getJSON(\'some-server-side-script.php\', function(json){
-alert(\'successful: \' + json.type);
+&#36;.getJSON(&#39;some-server-side-script.php&#39;, function(json){
+alert(&#39;successful: &#39; + json.type);
 
 }); jQuery also includes an additional load() method:
 
-> • \$(*expression*).load(*url*, *params*, *callback*) loads the result
-> of the URL into the DOM element.
+• &#36;(*expression*).load(*url*, *params*, *callback*) loads the result
+of the URL into the DOM element.
 >
-> This method will automatically populate the element or elements with
-> the result:
+This method will automatically populate the element or elements with
+the result:
 
-// \$(\...).load() to automatically populate an element
+// &#36;(\...).load() to automatically populate an element
 
 // Create a one-time request that populates the #ajax-updater-target
 
 // element with the content of the responseText
 
-\$(\"#ajax-updater-target\").load(
+&#36;(&quot;#ajax-updater-target&quot;).load(
 
-\'some-server-side-script.php\',
+&#39;some-server-side-script.php&#39;,
 
-{ key: \'value\' },
+{ key: &#39;value&#39; },
 
-function(responseText,status) { alert(\'successful: \' + responseText);
+function(responseText,status) { alert(&#39;successful: &#39; + responseText);
 
 }
 
 );
 
-> The Prototype Ajax.updater() method acts in the same way.
+The Prototype Ajax.updater() method acts in the same way.
 >
-> The \$() method can be used equally well for the periodic saving
-> mechanism:
+The &#36;() method can be used equally well for the periodic saving
+mechanism:
 
 // Autosave using jQuery
 
 // Save the content of the #autosave-form every 30 seconds // and update
 the #autosave-status to indicate the save setTimeout(function() {
-\$(\'autosave-status\').load(
+&#36;(&#39;autosave-status&#39;).load(
 
-\'some-server-side-script.php\',
+&#39;some-server-side-script.php&#39;,
 
-\$.param({
+&#36;.param({
 
-title:\$(\'#autosave-form input\[@name=title\]\').val(),
-story:\$(\'#autosave-form textarea\[@name=story\]\').val()
+title:&#36;(&#39;#autosave-form input&#91;@name=title&#93;&#39;).val(),
+story:&#36;(&#39;#autosave-form textarea&#91;@name=story&#93;&#39;).val()
 
 })
 
@@ -18305,8 +17739,8 @@ Alsup's Ajax Form plug-in
 dealing with forms and Ajax even easier. Need to submit a comment form
 via Ajax as you did in Chapter 12? It's as simple as this:
 
-\$(\'#commentForm\').ajaxForm(function() { alert(\"Thank you for your
-comment!\");
+&#36;(&#39;#commentForm&#39;).ajaxForm(function() { alert(&quot;Thank you for your
+comment!&quot;);
 
 });
 
@@ -18315,14 +17749,14 @@ whatever script is referenced in the form's action attribute.
 
 Animation and effects
 
-So far you\'ve seen how libraries can help you solve a lot of your DOM
+So far you&#39;ve seen how libraries can help you solve a lot of your DOM
 manipulations and scripting tasks.
 
-Now let\'s look at visual aesthetics and interactivity.
+Now let&#39;s look at visual aesthetics and interactivity.
 
 Some libraries, such as jQuery, have effect properties built in, while
 others rely on add-ons for their effect methods. If your library
-doesn\'t have effects, two you might want to consider are Moo.fx and
+doesn&#39;t have effects, two you might want to consider are Moo.fx and
 Script.aculo.us:
 
 -   **Moof.fx** ([http://moofx.mad4milk.net/)
@@ -18347,15 +17781,15 @@ Script.aculo.us:
     such as Effect.Scale on a paragraph, the font size will be scaled
     along with the physical width and height of the bounding element and
     any child elements within the paragraph. These high-level groupings
-    make it simple to apply large, complicated effects, as it\'s all
+    make it simple to apply large, complicated effects, as it&#39;s all
     done for you.
 
 Both of these libraries are built on top of Prototype, but in the case
 of Moo.fx, it's also available as part of the MooTools JavaScript
 library ([http://mootools.net](http://mootools.net/)).
 
-■ **Note** Moo.fx relies on the \$() and \$\$() methods to retrieve
-elements so again, if you\'re using these, be careful when mixing and
+■ **Note** Moo.fx relies on the &#36;() and &#36;&#36;() methods to retrieve
+elements so again, if you&#39;re using these, be careful when mixing and
 matching libraries and be sure to check the documentation for the best
 ways to avoid conflicts.
 
@@ -18373,9 +17807,9 @@ clearTimeout(elem.movement);
 
 }
 
-**if (!elem.style.left) { elem.style.left = \"0px\";**
+**if (!elem.style.left) { elem.style.left = &quot;0px&quot;;**
 
-**} if (!elem.style.top) { elem.style.top = \"0px\";**
+**} if (!elem.style.top) { elem.style.top = &quot;0px&quot;;**
 
 **}**
 
@@ -18386,55 +17820,55 @@ if (xpos == final_x && ypos == final_y) { return true;
 
 }
 
-if (xpos \< final_x) {
+if (xpos &lt; final_x) {
 
 dist = Math.ceil((final_x - xpos)/10); xpos = xpos + dist;
 
 }
 
-if (xpos \> final_x) {
+if (xpos \final_x) {
 
 dist = Math.ceil((xpos - final_x)/10); xpos = xpos - dist;
 
 }
 
-if (ypos \< final_y) {
+if (ypos &lt; final_y) {
 
 dist = Math.ceil((final_y - ypos)/10); ypos = ypos + dist;
 
 }
 
-if (ypos \> final_y) {
+if (ypos \final_y) {
 
 dist = Math.ceil((ypos - final_y)/10); ypos = ypos - dist;
 
-} elem.style.left = xpos + \"px\"; elem.style.top = ypos + \"px\";
+} elem.style.left = xpos + &quot;px&quot;; elem.style.top = ypos + &quot;px&quot;;
 
 var repeat =
-\"moveElement(\'\"+elementID+\"\',\"+final_x+\",\"+final_y+\",\"+interval+\")\";
+&quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 elem.movement = setTimeout(repeat,interval);
 
 }
 
-> The problem with using timers and math is that the code quickly gets
-> very long and complicated.
+The problem with using timers and math is that the code quickly gets
+very long and complicated.
 
 Thankfully, libraries such as jQuery can be a big help here.
 
-> Your moveElement function was called with mouse events on links like
-> this:
+Your moveElement function was called with mouse events on links like
+this:
 
-var links = list.getElementsByTagName(\"a\");
+var links = list.getElementsByTagName(&quot;a&quot;);
 
 // Attach the animation behavior to the mouseover event
-links\[0\].onmouseover = function() {
-moveElement(\"preview\",-100,0,10);
+links&#91;0&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-100,0,10);
 
-} links\[1\].onmouseover = function() {
-moveElement(\"preview\",-200,0,10);
+} links&#91;1&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-200,0,10);
 
-} links\[2\].onmouseover = function() {
-moveElement(\"preview\",-300,0,10);
+} links&#91;2&#93;.onmouseover = function() {
+moveElement(&quot;preview&quot;,-300,0,10);
 
 }
 
@@ -18444,20 +17878,20 @@ method. This method takes a list of CSS properties and their final
 values and alters those values from their current value over a specified
 duration:
 
-\$(\'a\').each(function(i) { var preview = \$(\'#preview\'); var final_x
-= i \* -100; \$(this).mouseover(function(){
+&#36;(&#39;a&#39;).each(function(i) { var preview = &#36;(&#39;#preview&#39;); var final_x
+= i &#42; -100; &#36;(this).mouseover(function(){
 preview.animate({left:final_x}, 10);
 
 }); });
 
-That\'s much easier that what you had in Chapter 10. jQuery uses only a
+That&#39;s much easier that what you had in Chapter 10. jQuery uses only a
 few lines of code with no complicated math or timers to worry about.
 
 You can go even further and tweak the motion applied to the animation.
 The jQuery animation method takes an additional argument to allow you to
 do this:
 
-\$(*expression*).animate( *properties*, *duration*, *easing* )
+&#36;(*expression*).animate( *properties*, *duration*, *easing* )
 
 The *easing* argument lets you specify a function to calculate the speed
 of the animation at a specific period of time. These functions can get
@@ -18485,8 +17919,8 @@ plug-ins, jQuery includes methods to
 -   slideToggle, slideDown, and slideUp hide and reveal matched elements
     with a sliding motion
 
-> Other libraries, such as Script.aculo.us, include more advanced
-> animations, such as these:
+Other libraries, such as Script.aculo.us, include more advanced
+animations, such as these:
 
 -   Effect.Appear, Effect.Fade
 
@@ -18527,138 +17961,138 @@ problem.
 
 Summary
 
-In this Appendix, I\'ve touched on how libraries can help you accomplish
+In this Appendix, I&#39;ve touched on how libraries can help you accomplish
 your daily scripting tasks. This was by no means a complete description
 of every library or a complete list of their features. I highly suggest
 that you browse the documentation for each library to see what else each
-of them has and pick the one that\'s best for you.
+of them has and pick the one that&#39;s best for you.
 
 When evaluating which library is right for you, be sure to take a good
-look at each one you\'re considering. Check for things like how they
+look at each one you&#39;re considering. Check for things like how they
 deal with library conflicts, too little or too many features, a strong
-community, and good support. Once you\'ve chosen one, make sure to take
+community, and good support. Once you&#39;ve chosen one, make sure to take
 advantage of all it has to offer but at the same time, take the time to
 learn how and why the libraries work the way they do. Relying on a
 library is fine as long as you're not taking it for granted.
 
-> ■ **Special Characters and Numerics**
+■ **Special Characters and Numerics**
 >
-> ! operator, 22
+! operator, 22
 >
-> && operator, 22
+&& operator, 22
 >
-> \$(\'\*\') function, 284
+&#36;(&#39;&#42;&#39;) function, 284
 >
-> \$( ) method, 282--284, 289, 298--299
+&#36;( ) method, 282--284, 289, 298--299
 >
-> \$.ajax( ) method, 296--297
+&#36;.ajax( ) method, 296--297
 >
-> \$(\'.className\') function, 285
+&#36;(&#39;.className&#39;) function, 285
 >
-> \$(expression).load(url, params, callback) method, 297
+&#36;(expression).load(url, params, callback) method, 297
 >
-> \$.getJSON(url, params, callback) method, 296
+&#36;.getJSON(url, params, callback) method, 296
 >
-> \$.getScript(url, callback) method, 297
+&#36;.getScript(url, callback) method, 297
 >
-> \$.get(url, params, callback) method, 296
+&#36;.get(url, params, callback) method, 296
 >
-> \$.post(url, params, callback) method, 296
+&#36;.post(url, params, callback) method, 296
 >
-> \$(\'tag\') function, 284
+&#36;(&#39;tag&#39;) function, 284
 >
-> \$(\'tagA tagB\') function, 284
+&#36;(&#39;tagA tagB&#39;) function, 284
 >
-> \$(\'tagA + tagB\') function, 285
+&#36;(&#39;tagA + tagB&#39;) function, 285
 >
-> \$(\'tagA \> tagB\') function, 285
+&#36;(&#39;tagA \tagB&#39;) function, 285
 >
-> \$(\'tagA \~ tagB\') function, 285
+&#36;(&#39;tagA &#126; tagB&#39;) function, 285
 >
-> \$(\'tagA,tagB,tagC\') function, 284
+&#36;(&#39;tagA,tagB,tagC&#39;) function, 284
 >
-> \$(\'tag\[attr\]\') function, 285
+&#36;(&#39;tag&#91;attr&#93;&#39;) function, 285
 >
-> \$(\'tag\[attr!=value\]\') function, 285
+&#36;(&#39;tag&#91;attr!=value&#93;&#39;) function, 285
 >
-> \$(\'tag\[attr\$=value\]\') function, 285 \$(\'tag\[attr\^=value\]\')
-> function, 285
+&#36;(&#39;tag&#91;attr&#36;=value&#93;&#39;) function, 285 &#36;(&#39;tag&#91;attr\^=value&#93;&#39;)
+function, 285
 >
-> \$(\'tag\[attr\|=value\]\') function, 285
+&#36;(&#39;tag&#91;attr&#124;=value&#93;&#39;) function, 285
 >
-> \$(\'tag\[attr=value\]\') function, 285
+&#36;(&#39;tag&#91;attr=value&#93;&#39;) function, 285
 >
-> \$(\'tag\[attr\~=value\]\') function, 285
+&#36;(&#39;tag&#91;attr&#126;=value&#93;&#39;) function, 285
 >
-> \$(\'tag\[attr\*=value\]\') function, 285
+&#36;(&#39;tag&#91;attr&#42;=value&#93;&#39;) function, 285
 >
-> \$(\'tag:checked\') function, 286
+&#36;(&#39;tag:checked&#39;) function, 286
 >
-> \$(\'tag.className\') function, 285
+&#36;(&#39;tag.className&#39;) function, 285
 >
-> \$(\'tag:contains(\'test\')\') function, 287
+&#36;(&#39;tag:contains(&#39;test&#39;)&#39;) function, 287
 
 **Index**
 
 ■ ■ ■
 
-> \$(\'tag:disabled\') function, 286
+&#36;(&#39;tag:disabled&#39;) function, 286
 
-\$(\'tag:empty\') function, 286
+&#36;(&#39;tag:empty&#39;) function, 286
 
-\$(\'tag:enabled\') function, 286
+&#36;(&#39;tag:enabled&#39;) function, 286
 
-\$(\'tag:eq(0)\') function, 287
+&#36;(&#39;tag:eq(0)&#39;) function, 287
 
-\$(\'tag:even\') function, 287
+&#36;(&#39;tag:even&#39;) function, 287
 
-\$(\'tag:first-child\') function, 285
+&#36;(&#39;tag:first-child&#39;) function, 285
 
-\$(\'tag:first\') function, 287
+&#36;(&#39;tag:first&#39;) function, 287
 
-\$(\'tag:first-of-type\') function, 286
+&#36;(&#39;tag:first-of-type&#39;) function, 286
 
-\$(\'tag:gt(n)\') function, 287
+&#36;(&#39;tag:gt(n)&#39;) function, 287
 
-\$(\'tag:hidden\') function, 287
+&#36;(&#39;tag:hidden&#39;) function, 287
 
-\$(\'tag#id\') function, 284
+&#36;(&#39;tag#id&#39;) function, 284
 
-\$(\'tag:last-child\') function, 285
+&#36;(&#39;tag:last-child&#39;) function, 285
 
-\$(\'tag:last\') function, 287
+&#36;(&#39;tag:last&#39;) function, 287
 
-\$(\'tag:last-of-type\') function, 286
+&#36;(&#39;tag:last-of-type&#39;) function, 286
 
-\$(\'tag:lt(n)\') function, 287
+&#36;(&#39;tag:lt(n)&#39;) function, 287
 
-\$(\'tag:not(s)\') function, 286
+&#36;(&#39;tag:not(s)&#39;) function, 286
 
-\$(\'tag:nth-child(n)\') function, 285
+&#36;(&#39;tag:nth-child(n)&#39;) function, 285
 
-\$(\'tag:nth-last-child(n)\') function, 285
+&#36;(&#39;tag:nth-last-child(n)&#39;) function, 285
 
-\$(\'tag:nth-last-of-type(n)\') function, 285
+&#36;(&#39;tag:nth-last-of-type(n)&#39;) function, 285
 
-\$(\'tag:nth-of-type(n)\') function, 285
+&#36;(&#39;tag:nth-of-type(n)&#39;) function, 285
 
-\$(\'tag:nth(0)\') function, 287
+&#36;(&#39;tag:nth(0)&#39;) function, 287
 
-\$(\'tag:odd\') function, 287
+&#36;(&#39;tag:odd&#39;) function, 287
 
-\$(\'tag:only-child\') function, 286
+&#36;(&#39;tag:only-child&#39;) function, 286
 
-\$(\'tag:only-of-type\') function, 286
+&#36;(&#39;tag:only-of-type&#39;) function, 286
 
-\$(\'tag:parent\') function, 287
+&#36;(&#39;tag:parent&#39;) function, 287
 
-\$(\'tag:root\') function, 285
+&#36;(&#39;tag:root&#39;) function, 285
 
-\$(\'tag:visible\') function, 287
+&#36;(&#39;tag:visible&#39;) function, 287
 
 \_method parameter, 294
 
-\|\| operator, 22
+&#124;&#124; operator, 22
 
 ++ operator, 18, 23
 
@@ -18666,66 +18100,66 @@ library is fine as long as you're not taking it for granted.
 
 INDEX
 
-> ■ **A**
+■ **A**
 >
-> \<a\> element, 48--49, 62, 69 abbr element, 125, 128--130, 137, 139,
-> 145 abbreviations, displaying, 128--139
+&lt;a\element, 48--49, 62, 69 abbr element, 125, 128--130, 137, 139,
+145 abbreviations, displaying, 128--139
 >
-> checking for compatibility, 134--135 definition list for, 132--133
-> displayAbbreviations function, 129--131
+checking for compatibility, 134--135 definition list for, 132--133
+displayAbbreviations function, 129--131
 >
-> Internet Explorer 6 workarounds, 136--139 About page, 248--249, 252
+Internet Explorer 6 workarounds, 136--139 About page, 248--249, 252
 >
-> about.html file, 243, 248, 251 abstracting, functions, 173--174
-> abstraction, of functions, 181--187 Accept property, 294
+about.html file, 243, 248, 251 abstracting, functions, 173--174
+abstraction, of functions, 181--187 Accept property, 294
 >
-> access keys, displaying, 145--147 accessibility statement, 145
-> accesskey attribute, 145--146
+access keys, displaying, 145--147 accessibility statement, 145
+accesskey attribute, 145--146
 >
-> acronym element, 137 \<acronym\> tag, 125 addClass function, 171--172,
-> 239, 259
+acronym element, 137 &lt;acronym\tag, 125 addClass function, 171--172,
+239, 259
 >
-> addControls function, 218--219 addEventListener method, 220
+addControls function, 218--219 addEventListener method, 220
 >
-> addLoadEvent function, 81--82, 112, 143, 163,
+addLoadEvent function, 81--82, 112, 143, 163,
 >
-> 239, 241, 250, 264, 266 addLoadEvent.js file, 116, 135, 163, 167,
-> 184--185, 194
+239, 241, 250, 264, 266 addLoadEvent.js file, 116, 135, 163, 167,
+184--185, 194
 >
-> Ai-\>Canvas plug-in, 209
+Ai-&gt;Canvas plug-in, 209
 >
-> Ajax and Hijax, 121 libraries for, 293--298 jQuery, 296--298
+Ajax and Hijax, 121 libraries for, 293--298 jQuery, 296--298
 >
-> Prototype, 293--296 on-the-fly markup creation using, 116--121
+Prototype, 293--296 on-the-fly markup creation using, 116--121
 >
-> progressive enhancement with, 121
+progressive enhancement with, 121
 >
-> XMLHttpRequest object, 116--120 ajax.html file, 116, 118
+XMLHttpRequest object, 116--120 ajax.html file, 116, 118
 >
-> Ajax.PeriodicalUpdater(element, url, options) method, 294
+Ajax.PeriodicalUpdater(element, url, options) method, 294
 >
-> Ajax.Request(url, options) method, 294
+Ajax.Request(url, options) method, 294
 >
-> Ajax.Responders method, 295
+Ajax.Responders method, 295
 >
-> Ajax.updater( ) method, 298
+Ajax.updater( ) method, 298
 >
-> Ajax.Updater(element, url, options) method,
+Ajax.Updater(element, url, options) method,
 >
-> 294 alt attribute, 108, 124 AND operator, 22 animate method, 300
+294 alt attribute, 108, 124 AND operator, 22 animate method, 300
 >
-> animation, 175--204
+animation, 175--204
 >
-> abstraction of function for, 181--187 incremental movement, 178--181
-> libraries for, 298--301
+abstraction of function for, 181--187 incremental movement, 178--181
+libraries for, 298--301
 >
-> CSS property-based, 299--300 packaged animations, 300--301
+CSS property-based, 299--300 packaged animations, 300--301
 >
-> position of element, 175--178 setTimeout method, 178 sneak peek of
-> links example, 187--203 CSS for, 190--192 generating markup for,
-> 201--203 global variable for, 195--197
+position of element, 175--178 setTimeout method, 178 sneak peek of
+links example, 187--203 CSS for, 190--192 generating markup for,
+201--203 global variable for, 195--197
 >
-> JavaScript for, 192--195 overview, 188--190
+JavaScript for, 192--195 overview, 188--190
 
 anonymous functions, 79 API (application programming interface), 4
 appendChild method, for on-the-fly markup creation, 102
@@ -18737,7 +18171,7 @@ arithmetic operators, in JavaScript, 17--19 array.length property, 24
 
 arrays, in JavaScript, 14--16
 
-\<article\> element, 229, 231, 240, 248, 253, 257,
+&lt;article\element, 229, 231, 240, 248, 253, 257,
 
 261, 273--275 assignment operator, 158--159, 171
 
@@ -18754,7 +18188,7 @@ autofocus attribute, 222
 [background.gif file,backward compatibility, of JavaScript
 [230](#_Toc290184)](#_Toc290184)
 
-> by browser sniffing, 68 with object detection, 67--68
+by browser sniffing, 68 with object detection, 67--68
 
 basic.css file, 231, 237 basshead.gif file, images folder, 243
 bassist.gif file, images folder, 243
@@ -18769,64 +18203,64 @@ black variable, 159
 
 blockquote element, 139--141, 145
 
-\<body\> element, 33, 35, 97, 125, 146, 242
+&lt;body\element, 33, 35, 97, 125, 146, 242
 
 body property, 133
 
-> \</body\> tag, 8, 37, 66, 108, 133, 135, 163, 169,
+&lt;/body\tag, 8, 37, 66, 108, 133, 135, 163, 169,
 >
-> 194, 239 body_element variable, 52
+194, 239 body_element variable, 52
 >
-> Boolean values, in JavaScript, 14 \<br\> element, 125
+Boolean values, in JavaScript, 14 &lt;br\element, 125
 >
-> browser sniffing, backward compatibility of
+browser sniffing, backward compatibility of
 >
-> JavaScript by, 68 browser wars, over DOM, 3--5
+JavaScript by, 68 browser wars, over DOM, 3--5
 >
-> browsers clash, 3--4
+browsers clash, 3--4
 >
-> and DHTML, 3
+and DHTML, 3
 >
-> ■ **C**
+■ **C**
 >
-> callback, filtering elements with, 288--289
+callback, filtering elements with, 288--289
 >
-> \<canvas\> element, in HTML5, 208--213
+&lt;canvas\element, in HTML5, 208--213
 >
-> Cascading Style Sheets. *See* CSS
+Cascading Style Sheets. *See* CSS
 >
-> CDNs (content delivery networks), for shared libraries, 282--283
+CDNs (content delivery networks), for shared libraries, 282--283
 >
-> ceil property, 198 checkpoints, for image gallery example, 76--78
-> childNodes property, image gallery example using, 51--52
+ceil property, 198 checkpoints, for image gallery example, 76--78
+childNodes property, image gallery example using, 51--52
 >
-> childNodes.length property, 265
+childNodes.length property, 265
 >
-> citations, displayCitations function, 140--144
+citations, displayCitations function, 140--144
 >
-> checking for compatibility, 143 creating link, 142 finding element,
-> 140--142 inserting link, 142--143
+checking for compatibility, 143 creating link, 142 finding element,
+140--142 inserting link, 142--143
 >
-> cite attribute, 139--140 class attribute, 36, 64--65, 160, 163, 166,
+cite attribute, 139--140 class attribute, 36, 64--65, 160, 163, 166,
 >
-> 170--171, 207, 240 className property, 170--174, 259
+170--171, 207, 240 className property, 170--174, 259
 >
-> clearTimeout function, 196--197 click event, 219 clone method, 291
+clearTimeout function, 196--197 click event, 219 clone method, 291
 >
-> CMS (Content Management System), 163 color property, 153, 155,
-> 158--159 color type, 222
+CMS (Content Management System), 163 color property, 153, 155,
+158--159 color type, 222
 >
-> color.css file, 237, 240, 257, 260, 267
+color.css file, 237, 240, 257, 260, 267
 >
-> comments, in JavaScript, 10
+comments, in JavaScript, 10
 >
-> comparison operators, in JavaScript, 20--21 Compile button, 276
+comparison operators, in JavaScript, 20--21 Compile button, 276
 >
-> concatenation, 18
+concatenation, 18
 >
-> conditional statements, in JavaScript, 19--22
+conditional statements, in JavaScript, 19--22
 >
-> comparison operators, 20--21 logical operators, 21--22
+comparison operators, 20--21 logical operators, 21--22
 
 contact.html file, 264--265, 270, 276
 
@@ -18863,12 +18297,12 @@ Crockford, Douglas, 71
 
 CSS (Cascading Style Sheets), 63--65 and DOM, 35--37
 
-> class attribute, 36 id attribute, 36--37
+class attribute, 36 id attribute, 36--37
 >
-> progressive enhancement with, 64--65 selectors for, in libraries,
-> 284--286
+progressive enhancement with, 64--65 selectors for, in libraries,
+284--286
 >
-> and separation of structure and style,
+and separation of structure and style,
 
 63--64 ctx variable, 209
 
@@ -18908,9 +18342,9 @@ div element, 98--99, 101, 191, 201, 287 dl element, 132 dlist variable,
 131--132
 
 document fragment, 101 Document Object Model. *See* DOM
-document.getElementById(\"imagegallery\") function, 48
+document.getElementById(&quot;imagegallery&quot;) function, 48
 
-document.getElementById(\"placeholder\") method, 78
+document.getElementById(&quot;placeholder&quot;) method, 78
 
 document.write method, on-the-fly markup creation using, 95--97
 
@@ -18920,41 +18354,41 @@ DOM (Document Object Model) browser wars over, 3--5 browsers clash, 3--4
 
 and DHTML, 3
 
-> className property of, 170--174
+className property of, 170--174
 >
-> document defined, 31 getAttribute method, 41--43 methods for
-> on-the-fly markup creation,
+document defined, 31 getAttribute method, 41--43 methods for
+on-the-fly markup creation,
 >
-> 100--107
+100--107
 >
-> appendChild method, 102 createElement method, 101--102 createTextNode
-> method, 103--104 examples of, 105--107 insertAfter method, 110--112
+appendChild method, 102 createElement method, 101--102 createTextNode
+method, 103--104 examples of, 105--107 insertAfter method, 110--112
 >
-> insertBefore method, 109
+insertBefore method, 109
 >
-> model defined, 32--33 nodes of, 33--41 attribute nodes, 34--35 and
-> CSS, 35--37
+model defined, 32--33 nodes of, 33--41 attribute nodes, 34--35 and
+CSS, 35--37
 >
-> element nodes, 34 getElementById method, 37--38 getElementsByClassName
-> method,
+element nodes, 34 getElementById method, 37--38 getElementsByClassName
+method,
 >
-> 39--41
+39--41
 >
-> getElementsByTagName method,
+getElementsByTagName method,
 >
-> 38--39 text nodes, 34
+38--39 text nodes, 34
 >
-> object defined, 31--32 setAttribute method, 43--44
+object defined, 31--32 setAttribute method, 43--44
 >
-> standard for, 4--5 style property of, 152--160
+standard for, 4--5 style property of, 152--160
 >
-> getting styles from, 153--158 retrives styles set inline only,
-> 157--158 setting styles with, 158--160
+getting styles from, 153--158 retrives styles set inline only,
+157--158 setting styles with, 158--160
 >
-> styling with
+styling with
 >
-> elements in node tree, 160--164 repetitive styling, 164--167
-> responding to events, 168--170
+elements in node tree, 160--164 repetitive styling, 164--167
+responding to events, 168--170
 
 doSomething function, 118 do.while loop, in JavaScript, 23 drummer.gif
 file, images folder, 243
@@ -18974,12 +18408,12 @@ property, 265 elements.length property, 265
 elementSupportsAttribute function, 224 em element, 105--106 em unit, 156
 email field, 264
 
-email type, 221 \<embed\> element, 213 embedding audio and video in
+email type, 221 &lt;embed\element, 213 embedding audio and video in
 HTML5,
 
-> 213--221
+213--221
 >
-> and compatible formats, 214--215 customizing controls for, 216--221
+and compatible formats, 214--215 customizing controls for, 216--221
 
 emphasis variable, 106 encodeURIComponent function, 272
 
@@ -18989,19 +18423,19 @@ European Computer Manufacturers
 
 Association (ECMA), 1 event handlers
 
-> for image gallery example, 75--80
+for image gallery example, 75--80
 >
-> checkpoints for, 76--78 click behavior, 79 loop for, 78--79
+checkpoints for, 76--78 click behavior, 79 loop for, 78--79
 >
-> variable for, 78
+variable for, 78
 >
-> image gallery example using, 49--51
+image gallery example using, 49--51
 
 events
 
-> element-specific, 292--293
+element-specific, 292--293
 >
-> loading, 291--292
+loading, 291--292
 
 example.html file, 152, 154--155, 157--158 example.js file, 8, 99,
 103--104, 106 example.txt file, 118--119
@@ -19028,7 +18462,7 @@ floor property, 198
 
 focusLabels function, 264
 
-font property, 159 \<font\> tag, 64, 97 fontFamily property, 154--156,
+font property, 159 &lt;font\tag, 64, 97 fontFamily property, 154--156,
 159 fontSize property, 156, 159
 
 fontWeight property, 155
@@ -19049,17 +18483,17 @@ formats, and embedding audio and video in
 
 HTML5, 214--215 forms, 261--276
 
-> in HTML5, 221--225 labels for, 263--264 placeholder values for,
-> 264--267 submission of, 271--276
+in HTML5, 221--225 labels for, 263--264 placeholder values for,
+264--267 submission of, 271--276
 >
-> validation of, 267--270
+validation of, 267--270
 
 frame.gif file, 246 functionA.js file, 70 functionB.js file, 70
 functionC.js file, 70 functionD.js file, 70
 
 functions
 
-> abstracting, 173--174, 181--187 in JavaScript, 24--27
+abstracting, 173--174, 181--187 in JavaScript, 24--27
 
 ■ **G**
 
@@ -19070,7 +18504,7 @@ Garrett, Jesse James, 116 GET request, 118, 296
 
 getAttribute method, 41--43, 48, 51, 54, 63, 65,
 
-84, 130, 140 getAttribute(\'placeholder\') method, 266 getElementById
+84, 130, 140 getAttribute(&#39;placeholder&#39;) method, 266 getElementById
 method, 37--38, 48, 65, 67, 76,
 
 82, 95, 102, 152 getElementsByClassName method, for DOM,
@@ -19100,9 +18534,9 @@ Gustafson, Aaron, 80
 
 h1 element, 33, 52, 148, 161, 163, 173 h2 element, 148
 
-\<head\> element, 7, 33, 35, 57, 62, 70, 88, 127,
+&lt;head\element, 7, 33, 35, 57, 62, 70, 88, 127,
 
-208, 229 \<header\> tag, 229 here class, 240--242 highlight class, 259
+208, 229 &lt;header\tag, 229 here class, 240--242 highlight class, 259
 
 highlighting current page, Jay Skript and the
 
@@ -19119,7 +18553,7 @@ hover class, 69, 168
 
 href attribute, 53, 62--63, 74, 92, 142
 
-\<html\> element, 33--34, 125, 207
+&lt;html\element, 33--34, 125, 207
 
 HTML (Hypertext Markup Language), 125--127
 
@@ -19127,21 +18561,21 @@ html namespace, 137
 
 HTML5, 205--226
 
-\<canvas\> element in, 208--213 embedding audio and video in, 213--221
+&lt;canvas\element in, 208--213 embedding audio and video in, 213--221
 and compatible formats, 214--215
 
 customizing controls for, 216--221
 
-> forms in, 221--225 vs. HTML, 125--127 and Modernizr library, 206--208
-> overview, 205--206 resources for, 225
+forms in, 221--225 vs. HTML, 125--127 and Modernizr library, 206--208
+overview, 205--206 resources for, 225
 >
-> vs. XHTML, 125--127
+vs. XHTML, 125--127
 
 Hypertext Markup Language, 125--127
 
 ■ **I**
 
-id attribute, 36--37, 64, 98, 108, 119, 160, 186, 242, 249 \$(\'#id\')
+id attribute, 36--37, 64, 98, 108, 119, 160, 186, 242, 249 &#36;(&#39;#id&#39;)
 function, 284
 
 image gallery example, 45--58 degrading gracefully, 74 and DOM core,
@@ -19152,23 +18586,23 @@ loop for, 78--79
 
 variable for, 78
 
-> JavaScript for adding to document, 49--51 changing description with,
-> 54
+JavaScript for adding to document, 49--51 changing description with,
+54
 >
-> childNodes property, 51--52 event handlers, 49--51 firstChild
-> property, 55 lastChild property, 55
+childNodes property, 51--52 event handlers, 49--51 firstChild
+property, 55 lastChild property, 55
 >
-> nodetype property, 52--53 nodeValue method, 55--57
+nodetype property, 52--53 nodeValue method, 55--57
 >
-> nodeValue property, 54 setAttribute method, 48--49
+nodeValue property, 54 setAttribute method, 48--49
 >
-> keyboard access, 86--88
+keyboard access, 86--88
 >
-> markup for
+markup for
 >
-> adding description in, 53 overview, 45--47
+adding description in, 53 overview, 45--47
 >
-> onload event for, 80--82 sharing hooks with CSS, 88--91
+onload event for, 80--82 sharing hooks with CSS, 88--91
 
 imagegallery element, 77--78, 80, 83 images folder, 227, 243, 246, 252
 img element, 52, 125, 201, 231, 253 incremental, movement, 178--181
@@ -19200,61 +18634,61 @@ itinerary.html file, 165--169
 
 JavaScript backward compatibility of
 
-> by browser sniffing, 68 with object detection, 67--68
+by browser sniffing, 68 with object detection, 67--68
 >
-> conditional statements in, 19--22
+conditional statements in, 19--22
 >
-> comparison operators, 20--21 logical operators, 21--22
+comparison operators, 20--21 logical operators, 21--22
 >
-> functions in, 24--27 graceful degradation of, 61--63
+functions in, 24--27 graceful degradation of, 61--63
 >
-> looping statements in, 22--24
+looping statements in, 22--24
 >
-> do.while loop, 23 for loop, 24
+do.while loop, 23 for loop, 24
 >
-> while loop, 22--23
+while loop, 22--23
 >
-> objects in, 27--29
+objects in, 27--29
 >
-> host objects, 29 native objects, 28--29
+host objects, 29 native objects, 28--29
 >
-> operations in, 17--19 origins of, 1--2 performance considerations of,
-> 69--71
+operations in, 17--19 origins of, 1--2 performance considerations of,
+69--71
 >
-> minification of scripts, 70--71
+minification of scripts, 70--71
 >
-> minimizing DOM access, 69
+minimizing DOM access, 69
 >
-> reducing script requests, 70
+reducing script requests, 70
 >
-> requirements for, 7--9 syntax of, 9--17 arrays, 14--16 comments, 10
-> data types, 12--14 objects, 16--17
+requirements for, 7--9 syntax of, 9--17 arrays, 14--16 comments, 10
+data types, 12--14 objects, 16--17
 >
-> statements, 9 variables, 10--12
+statements, 9 variables, 10--12
 >
-> unobtrusive, 65--66
+unobtrusive, 65--66
 
 Jay Skript and the Domsters website example,
 
-> 227--277
+227--277
 >
-> CSS for, 230--237
+CSS for, 230--237
 >
-> color, 232--233 layout, 234--235 typography, 236--237
+color, 232--233 layout, 234--235 typography, 236--237
 >
-> design of, 229--230 form in, 261--276
+design of, 229--230 form in, 261--276
 >
-> labels for, 263--264 placeholder values for, 264--267 submission of,
-> 271--276
+labels for, 263--264 placeholder values for, 264--267 submission of,
+271--276
 >
-> validation of, 267--270
+validation of, 267--270
 >
-> highlighting current page, 240--243 image gallery for, 252--255
-> internal navigation for, 248--252 markup for, 238 minification of,
-> 276--277
+highlighting current page, 240--243 image gallery for, 252--255
+internal navigation for, 248--252 markup for, 238 minification of,
+276--277
 >
-> page structure of, 229 site structure of, 227--228 slideshow for,
-> 243--247 tables in, 256--260
+page structure of, 229 site structure of, 227--228 slideshow for,
+243--247 tables in, 256--260
 
 jQuery, library for Ajax, 281, 296--298
 
@@ -19272,37 +18706,37 @@ lastChild property, 55, 110, 130, 140--141 lastChildElement property,
 layout.css file, 90, 191, 203, 236, 243, 245, 253,
 
 257, 260, 262 left property, 180, 182--183, 193, 200 length property, 79
-\<li\> element, 33--34, 64, 124--125 libraries, 279--301
+&lt;li\element, 33--34, 64, 124--125 libraries, 279--301
 
-> for Ajax, 293--298
+for Ajax, 293--298
 >
-> jQuery, 296--298
+jQuery, 296--298
 >
-> Prototype, 293--296 for animation and effects, 298--301
+Prototype, 293--296 for animation and effects, 298--301
 >
-> CSS property-based, 299--300 packaged animations, 300--301
+CSS property-based, 299--300 packaged animations, 300--301
 >
-> CDNs for, 282--283 creating content with, 289--290
+CDNs for, 282--283 creating content with, 289--290
 >
-> CSS selectors in, 284--286 element-specific events, 292--293
+CSS selectors in, 284--286 element-specific events, 292--293
 >
-> filtering elements with callback, 288--289 how to choose, 280--283
-> library-specific selectors, 286--288 loading events, 291--292
-> manipulating content with, 291
+filtering elements with callback, 288--289 how to choose, 280--283
+library-specific selectors, 286--288 loading events, 291--292
+manipulating content with, 291
 >
-> syntax in, 283--284
+syntax in, 283--284
 
-lineup.gif file, images folder, 243 link element, 157 \<link\> tag, 57,
+lineup.gif file, images folder, 243 link element, 157 &lt;link\tag, 57,
 64, 191, 231
 
-linklist element, 193 links variable, 78, 142, 193 links\[i\] variable,
+linklist element, 193 links variable, 78, 142, 193 links&#91;i&#93; variable,
 79
 
 link_text variable, 142
 
 list.html file, 188--189, 191, 194, 197, 199,
 
-> 201--203
+201--203
 
 live.html file, 257, 260 load( ) method, 297
 
@@ -19315,9 +18749,9 @@ logo.gif file, 230
 
 looping statements, in JavaScript, 22--24
 
-> do.while loop, 23 for loop, 24
+do.while loop, 23 for loop, 24
 >
-> while loop, 22--23
+while loop, 22--23
 
 loops, for image gallery example, 78--79
 
@@ -19325,7 +18759,7 @@ loops, for image gallery example, 78--79
 
 marginTopWidth property, 155 match method, 274
 
-max attribute, 222 message.html file, 184--187 \<meta\> element, 33
+max attribute, 222 message.html file, 184--187 &lt;meta\element, 33
 method property, 294
 
 min attribute, 222
@@ -19353,7 +18787,7 @@ function, 25
 
 name field, 264
 
-native objects, in JavaScript, 28--29 \<nav\> element, 229, 240, 249
+native objects, in JavaScript, 28--29 &lt;nav\element, 229, 240, 249
 
 navbar.gif file, 230 new keyword, 28 newElement variable, 110
 nextSibling property, 111, 161 no-feature class, 207 no-js class, 207
@@ -19384,7 +18818,7 @@ Nyman, Robert, 41
 
 object detection, backward compatibility of JavaScript with, 67--68
 
-\<object\> element, 213
+&lt;object\element, 213
 
 Object keyword, 17
 
@@ -19398,18 +18832,18 @@ oldonload variable, 81
 
 on-the-fly markup creation, 95--122
 
-> DOM methods for, 100--107 appendChild method, 102 createElement
-> method, 101--102 createTextNode method, 103--104 examples of, 105--107
-> insertAfter method, 110--112
+DOM methods for, 100--107 appendChild method, 102 createElement
+method, 101--102 createTextNode method, 103--104 examples of, 105--107
+insertAfter method, 110--112
 >
-> insertBefore method, 109
+insertBefore method, 109
 >
-> using Ajax, 116--121
+using Ajax, 116--121
 >
-> and Hijax, 121 progressive enhancement with, 121
+and Hijax, 121 progressive enhancement with, 121
 >
-> XMLHttpRequest object, 116--120 using document.write method, 95--97
-> using innerHTML property, 97--100
+XMLHttpRequest object, 116--120 using document.write method, 95--97
+using innerHTML property, 97--100
 
 onblur event, 266
 
@@ -19450,7 +18884,7 @@ origins, of JavaScript, 1--2 overflow property, 190
 
 ■ **P**
 
-p element, 33--34, 42--43, 64, 96--98, 141 \</p\> tag, 96--97, 125 page
+p element, 33--34, 42--43, 64, 96--98, 141 &lt;/p\tag, 96--97, 125 page
 element, 187
 
 para element, 153--154 para variable, 105--106, 152--153, 158 paragraph
@@ -19535,7 +18969,7 @@ property, 118--119 response.txt file, 116 responseXML property, 118 RGB
 
 sale class, 40
 
-\<script\> element, 7, 37, 40, 70, 135, 147, 185,
+&lt;script\element, 7, 37, 40, 70, 135, 147, 185,
 
 202, 277, 283 Script.aculo.us library, 298, 301
 
@@ -19543,12 +18977,12 @@ scripts folder, 135, 163, 184--185, 194, 203, 227,
 
 229, 238, 277 scrubber bar, 216 search type, 221
 
-secondFunction function, 81 \<section\> tag, 249 sectionId variable, 250
+secondFunction function, 81 &lt;section\tag, 249 sectionId variable, 250
 
 Server Side Includes (SSIs), 240 sessionStorage feature, 225
 setAttribute method
 
-> for DOM, 43--44 image gallery example using, 48--49
+for DOM, 43--44 image gallery example using, 48--49
 
 setTimeout method, 178, 183, 196 shared libraries. *See* libraries
 showPic function, 47, 49, 53, 55, 79, 83--84,
@@ -19576,7 +19010,7 @@ style property, 152--160
 getting styles from, 153--158 retrives styles set inline only, 157--158
 setting styles with, 158--160
 
-\<style\> tag, 35, 158
+&lt;style\tag, 35, 158
 
 styleElementSiblings function, 173--174 styleHeaderSiblings function,
 161, 163, 170--174
@@ -19594,9 +19028,9 @@ submitFormWithAjax function, 272, 274--275
 submit.html file, 262--263, 271--273, 276 superscript variable, 142
 syntax, of JavaScript, 9--17
 
-> arrays, 14--16 comments, 10 data types, 12--14 objects, 16--17
+arrays, 14--16 comments, 10 data types, 12--14 objects, 16--17
 >
-> statements, 9 variables, 10--12
+statements, 9 variables, 10--12
 
 ■ **T**
 
@@ -19620,13 +19054,13 @@ this.href property, 63
 
 title attribute, 42--43, 54--55, 124, 128--130, 137, 139
 
-\<title\> element, 33 toLowerCase method, 242
+&lt;title\element, 33 toLowerCase method, 242
 
 top property, 180, 182--183, 193, 200 topics.gif image, 189, 192--193,
 195 total variable, 27 txt variable, 103 txt1 variable, 105--106 txt2
 variable, 105--106 txt3 variable, 105--106 typeof keyword, 152
 
-type=\"text/javascript\" attribute, 8
+type=&quot;text/javascript&quot; attribute, 8
 
 typography.css file, 127, 236--237, 260
 
@@ -19640,9 +19074,9 @@ validateForm function, 269--270 validation, of forms, 267--270
 
 value property, 265, 269 var keyword, 12, 26, 178 variables
 
-> for image gallery example, 78 in JavaScript
+for image gallery example, 78 in JavaScript
 >
-> overview, 10--12 scope of, 26--27
+overview, 10--12 scope of, 26--27
 
 visibility, of content, 124
 
