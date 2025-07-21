@@ -17172,36 +17172,22 @@ document.createTextNode(key); dtitle.appendChild(dtitle_text); var ddesc
 = document.createElement(&quot;dd&quot;); var ddesc_text =
 document.createTextNode(definition); ddesc.appendChild(ddesc_text);
 dlist.appendChild(dtitle); dlist.appendChild(ddesc);
-
 }
-
 var header = document.createElement(&quot;h2&quot;);
-
 var header_text = document.createTextNode(&quot;Abbreviations&quot;);
 header.appendChild(header_text); document.body.appendChild(header);
 document.body.appendChild(dlist);
-
 } and rewrite it using jQuery and the jQuery template plug-in:
-
 function displayAbbreviations() { // Create an array of the
 abbreviations.
-
 var data = &#36;(&#39;abbr&#39;).map(function(){ return {
-
 desc:&#36;(this).attr(&#39;title&#39;), term:&#36;(this).text()
-
 };
-
 }).toArray();
-
 // Append to the document and apply a template.
-
 &#36;(&#39;&lt;h2&gt;Abbreviations&lt;/h2&gt;&#39;).appendTo(document.body).after(
-
 &#36;.tmpl( &quot;&lt;dt&gt;&#36;{term}&lt;/dt&gt;&lt;dd&gt;&#36;{desc}&lt;/dd&gt;&quot;, data )
-
 .wrapAll(&quot;&lt;dl/&gt;&quot;)
-
 ); }
 
 This could be taken a step further by removing the template from the
@@ -17249,30 +17235,21 @@ your addLoadEvent:
 
 function addLoadEvent(func) { var oldonload = window.onload; if (typeof
 window.onload != &#39;function&#39;) { window.onload = func;
-
 } else {
-
 window.onload = function() { oldonload(); func();
-
 }
-
 } }
 
 You&#39;ve used this function to execute other functions when the page
 loads:
 
 function myFucntion() {
-
 // Do something after the page loads.
-
 }
-
 addLoadEvent(myFunction);
 
 This could also have been written as addLoadEvent(function() {
-
 // Do something after the page loads.
-
 });
 
 The various libraries have similar methods, but each may take a
@@ -17291,9 +17268,7 @@ ready method. The ready method is given an anonymous function to use as
 the event handler when the document is ready:
 
 &#36;(document).ready(function() {
-
 // Do something after the page loads.
-
 });
 
 If ready is called after the DOM has already been initialized, the new
@@ -17303,21 +17278,16 @@ To use the jQuery methods the same way as your addLoadEvent function,
 just replace addLoadEvent with &#36;:
 
 function myFucntion() {
-
 // Do something after the page loads.
-
 }
-
 &#36;(myFunction);
 
 or just
 
 &#36;(function() {
-
 // Do something after the page loads. });
 
 Other events
-
 Along with load events, libraries such as jQuery include a number of
 element-specific events, such as blur, focus, click, dblclick,
 mouseover, mouseout, and submit, to name a few.
@@ -17342,61 +17312,38 @@ For example, you could replicate the resetFields and prepareForms
 functions from Chapter 12:
 
 function resetFields(whichform) {
-
 for (var i=0; i&lt;whichform.elements.length; i++) { var element =
 whichform.elements&#91;i&#93;; if (element.type == &quot;submit&quot;) continue;
-
 var hasPlaceholder = element.placeholder &#124;&#124;
 element.getAttribute(&#39;placeholder&#39;);
-
 if (!hasPlaceholder) continue; element.onfocus = function() {
-
 var text = element.placeholder &#124;&#124;
 element.getAttribute(&#39;placeholder&#39;); if (this.value == text) {
 this.className = &#39;&#39;; this.value = &quot;&quot;;
-
 } } element.onblur = function() { if (this.value == &quot;&quot;) {
 this.className = &#39;placeholder&#39;;
-
 this.value = element.placeholder &#124;&#124;
 element.getAttribute(&#39;placeholder&#39;);;
-
 } }
-
 element.onblur();
-
 } }
-
 function prepareForms() {
-
 for (var i=0; i&lt;document.forms.length; i++) { var thisform =
 document.forms&#91;i&#93;; resetFields(thisform);
-
 }
-
 } }
-
 addLoadEvent(prepareForms)
-
 Using jQuery selectors and event methods, all that form preparation can
 be reduced down to this:
-
 &#36;(function() {
-
 &#36;(&#39;form input&#91;placeholder&#93;&#39;).focus(function(){ var input =
 &#36;(this);
-
 if (input.val() == input.attr(&#39;placeholder&#39;)) {
 input.val(&#39;&#39;).removeClass(&#39;placeholder&#39;).;
-
 }
-
 }).blur(function(){ var input = &#36;(this); if (input.val() == &#39;&#39;) {
-
 input.val(input.attr(&#39;placeholder&#39;)).addClass(&#39;placeholder&#39;);
-
 }
-
 }).blur(); });
 
 Ajax
@@ -17523,66 +17470,38 @@ Prototype online documentation at
 Here are a few examples of Prototype Ajax requests:
 
 // Prototype Ajax.Request
-
 // Create a new one-time request and alert its success new Ajax.Request(
-
 &#39;some-server-side-script.php&#39;,
-
 {
-
 method:&#39;get&#39;,
-
 onSuccess: function (transport) {
-
 var response = transport.responseText &#124;&#124; &quot;no response text&quot;;
 alert(&#39;Ajax.Request was successful: &#39; + response);
-
 },
-
 onFailure: function (){ alert(&#39;Ajax.Request failed&#39;);
-
 }
-
 }
-
 );
-
 // Prototype Ajax.Updater
-
 // Create a one-time request that populates the #ajax-updater-target
-
 // element with the content of the responseText new Ajax.Updater(
-
 &#36;(&#39;ajax-updater-target&#39;),
-
 &#39;some-server-side-script.php&#39;,
-
 {
-
 method: &#39;get&#39;,
-
 // Append it to the top of the target element insertion: Insertion.Top
-
 }
-
 );
-
 // Prototype Ajax.periodicalUpdater
 
 // Create a periodic request that will automatically populate
-
 // the #ajax-target-element every 10 seconds new Ajax.PeriodicalUpdater(
 &#36;(&#39;ajax-periodic-target&#39;),
-
 &#39;some-server-side-script.php &#39;,
-
 {
-
 method: &#39;GET&#39;,
-
 // Append it to the top of the existing content insertion:
 Insertion.Top, // Run every 10 seconds frequency: 10
-
 } );
 
 Another very simple, yet very good, use of the Ajax.Request object is
@@ -17595,23 +17514,15 @@ to the server every few minutes, ensuring that you don't lose all your
 hard work:
 
 // autosave using Prototype
-
 // Save the content of the #autosave-form every 30 seconds // and update
 the #autosave-status to indicate the save setTimeout(function() { new
 Ajax.Updater( &#36;(&#39;autosave-status&#39;),
-
 &#39; some-server-side-autosave-script.php &#39;,
-
 {
-
 method:&#39;post&#39;,
-
 parameters : &#36;(&#39;autosave-form&#39;).serialize(true)
-
 }
-
 );
-
 },30000);
 
 Ajax with jQuery
@@ -17638,15 +17549,10 @@ callback. Each receives two arguments that define the request's
 responseText and the status of the request, respectively:
 
 &#36;.get(&#39;some-server-side-script.php&#39;,
-
 { key: &#39;value&#39; },
-
 function(responseText, status){
-
 // Your Code
-
 }
-
 );
 
 The status will be one of these:
@@ -17664,84 +17570,54 @@ object.
 Again, you can see some of these methods in action here:
 
 // &#36;.get() for quick Ajax calls
-
 // Create a one-time request and alert its success
-
 &#36;.get(&#39;some-server-side-script.php&#39;,
-
 { key: &#39;value&#39; }, function(responseText,status){
-
 alert(&#39;successful: &#39; + responseText);
-
 }
-
 );
-
 // &#36;.getJSON() to load a JSON object
-
 // Create a one-time request to load a JSON file and alert its success
-
 &#36;.getJSON(&#39;some-server-side-script.php&#39;, function(json){
 alert(&#39;successful: &#39; + json.type);
-
 }); jQuery also includes an additional load() method:
-
 • &#36;(*expression*).load(*url*, *params*, *callback*) loads the result
 of the URL into the DOM element.
 >
 This method will automatically populate the element or elements with
 the result:
-
 // &#36;(\...).load() to automatically populate an element
-
 // Create a one-time request that populates the #ajax-updater-target
-
 // element with the content of the responseText
-
 &#36;(&quot;#ajax-updater-target&quot;).load(
-
 &#39;some-server-side-script.php&#39;,
-
 { key: &#39;value&#39; },
-
 function(responseText,status) { alert(&#39;successful: &#39; + responseText);
-
 }
-
 );
 
 The Prototype Ajax.updater() method acts in the same way.
->
+
 The &#36;() method can be used equally well for the periodic saving
 mechanism:
 
 // Autosave using jQuery
-
 // Save the content of the #autosave-form every 30 seconds // and update
 the #autosave-status to indicate the save setTimeout(function() {
 &#36;(&#39;autosave-status&#39;).load(
-
 &#39;some-server-side-script.php&#39;,
-
 &#36;.param({
-
 title:&#36;(&#39;#autosave-form input&#91;@name=title&#93;&#39;).val(),
 story:&#36;(&#39;#autosave-form textarea&#91;@name=story&#93;&#39;).val()
-
 })
-
 );
-
 },30000); jQuery also has a number of plug-ins available, such as Mike
 Alsup's Ajax Form plug-in
-
 ([http://plugins.jquery.com/),](http://plugins.jquery.com/) which make
 dealing with forms and Ajax even easier. Need to submit a comment form
 via Ajax as you did in Chapter 12? It's as simple as this:
-
 &#36;(&#39;#commentForm&#39;).ajaxForm(function() { alert(&quot;Thank you for your
 comment!&quot;);
-
 });
 
 This method serializes the contents of the form and sends the result to
@@ -17788,7 +17664,7 @@ Both of these libraries are built on top of Prototype, but in the case
 of Moo.fx, it's also available as part of the MooTools JavaScript
 library ([http://mootools.net](http://mootools.net/)).
 
-■ **Note** Moo.fx relies on the &#36;() and &#36;&#36;() methods to retrieve
+**Note** Moo.fx relies on the &#36;() and &#36;&#36;() methods to retrieve
 elements so again, if you&#39;re using these, be careful when mixing and
 matching libraries and be sure to check the documentation for the best
 ways to avoid conflicts.
@@ -17802,52 +17678,30 @@ function moveElement(elementID,final_x,final_y,interval) { if
 (!document.getElementById) return false; if
 (!document.getElementById(elementID)) return false; var elem =
 document.getElementById(elementID); if (elem.movement) {
-
 clearTimeout(elem.movement);
-
 }
-
 **if (!elem.style.left) { elem.style.left = &quot;0px&quot;;**
-
 **} if (!elem.style.top) { elem.style.top = &quot;0px&quot;;**
-
 **}**
-
 var xpos = parseInt(elem.style.left); var ypos =
 parseInt(elem.style.top); var dist = 0;
-
 if (xpos == final_x && ypos == final_y) { return true;
-
 }
-
 if (xpos &lt; final_x) {
-
 dist = Math.ceil((final_x - xpos)/10); xpos = xpos + dist;
-
 }
-
 if (xpos \final_x) {
-
 dist = Math.ceil((xpos - final_x)/10); xpos = xpos - dist;
-
 }
-
 if (ypos &lt; final_y) {
-
 dist = Math.ceil((final_y - ypos)/10); ypos = ypos + dist;
-
 }
-
 if (ypos \final_y) {
-
 dist = Math.ceil((ypos - final_y)/10); ypos = ypos - dist;
-
 } elem.style.left = xpos + &quot;px&quot;; elem.style.top = ypos + &quot;px&quot;;
-
 var repeat =
 &quot;moveElement(&#39;&quot;+elementID+&quot;&#39;,&quot;+final_x+&quot;,&quot;+final_y+&quot;,&quot;+interval+&quot;)&quot;;
 elem.movement = setTimeout(repeat,interval);
-
 }
 
 The problem with using timers and math is that the code quickly gets
@@ -17975,66 +17829,66 @@ advantage of all it has to offer but at the same time, take the time to
 learn how and why the libraries work the way they do. Relying on a
 library is fine as long as you're not taking it for granted.
 
-■ **Special Characters and Numerics**
->
+**Special Characters and Numerics**
+
 ! operator, 22
->
+
 && operator, 22
->
+
 &#36;(&#39;&#42;&#39;) function, 284
->
+
 &#36;( ) method, 282--284, 289, 298--299
->
+
 &#36;.ajax( ) method, 296--297
->
+
 &#36;(&#39;.className&#39;) function, 285
->
+
 &#36;(expression).load(url, params, callback) method, 297
->
+
 &#36;.getJSON(url, params, callback) method, 296
->
+
 &#36;.getScript(url, callback) method, 297
->
+
 &#36;.get(url, params, callback) method, 296
->
+
 &#36;.post(url, params, callback) method, 296
->
+
 &#36;(&#39;tag&#39;) function, 284
->
+
 &#36;(&#39;tagA tagB&#39;) function, 284
->
+
 &#36;(&#39;tagA + tagB&#39;) function, 285
->
+
 &#36;(&#39;tagA \tagB&#39;) function, 285
->
+
 &#36;(&#39;tagA &#126; tagB&#39;) function, 285
->
+
 &#36;(&#39;tagA,tagB,tagC&#39;) function, 284
->
+
 &#36;(&#39;tag&#91;attr&#93;&#39;) function, 285
->
+
 &#36;(&#39;tag&#91;attr!=value&#93;&#39;) function, 285
->
+
 &#36;(&#39;tag&#91;attr&#36;=value&#93;&#39;) function, 285 &#36;(&#39;tag&#91;attr\^=value&#93;&#39;)
 function, 285
->
+
 &#36;(&#39;tag&#91;attr&#124;=value&#93;&#39;) function, 285
->
+
 &#36;(&#39;tag&#91;attr=value&#93;&#39;) function, 285
->
+
 &#36;(&#39;tag&#91;attr&#126;=value&#93;&#39;) function, 285
->
+
 &#36;(&#39;tag&#91;attr&#42;=value&#93;&#39;) function, 285
->
+
 &#36;(&#39;tag:checked&#39;) function, 286
->
+
 &#36;(&#39;tag.className&#39;) function, 285
->
+
 &#36;(&#39;tag:contains(&#39;test&#39;)&#39;) function, 287
 
 **Index**
 
-■ ■ ■
+
 
 &#36;(&#39;tag:disabled&#39;) function, 286
 
@@ -18100,65 +17954,65 @@ function, 285
 
 INDEX
 
-■ **A**
->
+**A**
+
 &lt;a\element, 48--49, 62, 69 abbr element, 125, 128--130, 137, 139,
 145 abbreviations, displaying, 128--139
->
+
 checking for compatibility, 134--135 definition list for, 132--133
 displayAbbreviations function, 129--131
->
+
 Internet Explorer 6 workarounds, 136--139 About page, 248--249, 252
->
+
 about.html file, 243, 248, 251 abstracting, functions, 173--174
 abstraction, of functions, 181--187 Accept property, 294
->
+
 access keys, displaying, 145--147 accessibility statement, 145
 accesskey attribute, 145--146
->
+
 acronym element, 137 &lt;acronym\tag, 125 addClass function, 171--172,
 239, 259
->
+
 addControls function, 218--219 addEventListener method, 220
->
+
 addLoadEvent function, 81--82, 112, 143, 163,
->
+
 239, 241, 250, 264, 266 addLoadEvent.js file, 116, 135, 163, 167,
 184--185, 194
->
+
 Ai-&gt;Canvas plug-in, 209
->
+
 Ajax and Hijax, 121 libraries for, 293--298 jQuery, 296--298
->
+
 Prototype, 293--296 on-the-fly markup creation using, 116--121
->
+
 progressive enhancement with, 121
->
+
 XMLHttpRequest object, 116--120 ajax.html file, 116, 118
->
+
 Ajax.PeriodicalUpdater(element, url, options) method, 294
->
+
 Ajax.Request(url, options) method, 294
->
+
 Ajax.Responders method, 295
->
+
 Ajax.updater( ) method, 298
->
+
 Ajax.Updater(element, url, options) method,
->
+
 294 alt attribute, 108, 124 AND operator, 22 animate method, 300
->
+
 animation, 175--204
->
+
 abstraction of function for, 181--187 incremental movement, 178--181
 libraries for, 298--301
->
+
 CSS property-based, 299--300 packaged animations, 300--301
->
+
 position of element, 175--178 setTimeout method, 178 sneak peek of
 links example, 187--203 CSS for, 190--192 generating markup for,
 201--203 global variable for, 195--197
->
+
 JavaScript for, 192--195 overview, 188--190
 
 anonymous functions, 79 API (application programming interface), 4
@@ -18181,7 +18035,7 @@ attribute nodes, of DOM, 34--35 autocomplete attribute, 222
 
 autofocus attribute, 222
 
-[■ [**B**](#contents)](#contents)
+ [**B**](#contents)](#contents)
 
 [backgroundColor property, [155](#object.property)](#object.property)
 
@@ -18208,58 +18062,58 @@ blockquote element, 139--141, 145
 body property, 133
 
 &lt;/body\tag, 8, 37, 66, 108, 133, 135, 163, 169,
->
+
 194, 239 body_element variable, 52
->
+
 Boolean values, in JavaScript, 14 &lt;br\element, 125
->
+
 browser sniffing, backward compatibility of
->
+
 JavaScript by, 68 browser wars, over DOM, 3--5
->
+
 browsers clash, 3--4
->
+
 and DHTML, 3
->
-■ **C**
->
+
+**C**
+
 callback, filtering elements with, 288--289
->
+
 &lt;canvas\element, in HTML5, 208--213
->
+
 Cascading Style Sheets. *See* CSS
->
+
 CDNs (content delivery networks), for shared libraries, 282--283
->
+
 ceil property, 198 checkpoints, for image gallery example, 76--78
 childNodes property, image gallery example using, 51--52
->
+
 childNodes.length property, 265
->
+
 citations, displayCitations function, 140--144
->
+
 checking for compatibility, 143 creating link, 142 finding element,
 140--142 inserting link, 142--143
->
+
 cite attribute, 139--140 class attribute, 36, 64--65, 160, 163, 166,
->
+
 170--171, 207, 240 className property, 170--174, 259
->
+
 clearTimeout function, 196--197 click event, 219 clone method, 291
->
+
 CMS (Content Management System), 163 color property, 153, 155,
 158--159 color type, 222
->
+
 color.css file, 237, 240, 257, 260, 267
->
+
 comments, in JavaScript, 10
->
+
 comparison operators, in JavaScript, 20--21 Compile button, 276
->
+
 concatenation, 18
->
+
 conditional statements, in JavaScript, 19--22
->
+
 comparison operators, 20--21 logical operators, 21--22
 
 contact.html file, 264--265, 270, 276
@@ -18298,10 +18152,10 @@ Crockford, Douglas, 71
 CSS (Cascading Style Sheets), 63--65 and DOM, 35--37
 
 class attribute, 36 id attribute, 36--37
->
+
 progressive enhancement with, 64--65 selectors for, in libraries,
 284--286
->
+
 and separation of structure and style,
 
 63--64 ctx variable, 209
@@ -18310,7 +18164,7 @@ current_abbr variable, 130
 
 currentTime property, 216
 
-■ **D**
+**D**
 
 data types, in JavaScript, 12--14 Boolean values, 14 numbers, 14
 
@@ -18355,38 +18209,38 @@ DOM (Document Object Model) browser wars over, 3--5 browsers clash, 3--4
 and DHTML, 3
 
 className property of, 170--174
->
+
 document defined, 31 getAttribute method, 41--43 methods for
 on-the-fly markup creation,
->
+
 100--107
->
+
 appendChild method, 102 createElement method, 101--102 createTextNode
 method, 103--104 examples of, 105--107 insertAfter method, 110--112
->
+
 insertBefore method, 109
->
+
 model defined, 32--33 nodes of, 33--41 attribute nodes, 34--35 and
 CSS, 35--37
->
+
 element nodes, 34 getElementById method, 37--38 getElementsByClassName
 method,
->
+
 39--41
->
+
 getElementsByTagName method,
->
+
 38--39 text nodes, 34
->
+
 object defined, 31--32 setAttribute method, 43--44
->
+
 standard for, 4--5 style property of, 152--160
->
+
 getting styles from, 153--158 retrives styles set inline only,
 157--158 setting styles with, 158--160
->
+
 styling with
->
+
 elements in node tree, 160--164 repetitive styling, 164--167
 responding to events, 168--170
 
@@ -18395,7 +18249,7 @@ file, images folder, 243
 
 dt element, 131--132 dtitle_text variable, 132 duration property, 216
 
-■ **E**
+**E**
 
 each method, jQuery library, 284
 
@@ -18412,7 +18266,7 @@ email type, 221 &lt;embed\element, 213 embedding audio and video in
 HTML5,
 
 213--221
->
+
 and compatible formats, 214--215 customizing controls for, 216--221
 
 emphasis variable, 106 encodeURIComponent function, 272
@@ -18424,17 +18278,17 @@ European Computer Manufacturers
 Association (ECMA), 1 event handlers
 
 for image gallery example, 75--80
->
+
 checkpoints for, 76--78 click behavior, 79 loop for, 78--79
->
+
 variable for, 78
->
+
 image gallery example using, 49--51
 
 events
 
 element-specific, 292--293
->
+
 loading, 291--292
 
 example.html file, 152, 154--155, 157--158 example.js file, 8, 99,
@@ -18444,7 +18298,7 @@ explanation.html page, 127, 130, 133, 135, 139,
 
 144, 146--148 extension.js file, 49
 
-■ **F**
+**F**
 
 family variable, 154 feature class, 207 filter method, 289 findAll
 method, 289
@@ -18485,7 +18339,7 @@ HTML5, 214--215 forms, 261--276
 
 in HTML5, 221--225 labels for, 263--264 placeholder values for,
 264--267 submission of, 271--276
->
+
 validation of, 267--270
 
 frame.gif file, 246 functionA.js file, 70 functionB.js file, 70
@@ -18495,7 +18349,7 @@ functions
 
 abstracting, 173--174, 181--187 in JavaScript, 24--27
 
-■ **G**
+**G**
 
 gallery variable, 78 gallery.html file, 46, 52--53, 56--57, 88, 107,
 111, 114
@@ -18530,7 +18384,7 @@ guitarist.gif file, 230
 
 Gustafson, Aaron, 80
 
-■ **H**
+**H**
 
 h1 element, 33, 52, 148, 161, 163, 173 h2 element, 148
 
@@ -18568,12 +18422,12 @@ customizing controls for, 216--221
 
 forms in, 221--225 vs. HTML, 125--127 and Modernizr library, 206--208
 overview, 205--206 resources for, 225
->
+
 vs. XHTML, 125--127
 
 Hypertext Markup Language, 125--127
 
-■ **I**
+**I**
 
 id attribute, 36--37, 64, 98, 108, 119, 160, 186, 242, 249 &#36;(&#39;#id&#39;)
 function, 284
@@ -18588,20 +18442,20 @@ variable for, 78
 
 JavaScript for adding to document, 49--51 changing description with,
 54
->
+
 childNodes property, 51--52 event handlers, 49--51 firstChild
 property, 55 lastChild property, 55
->
+
 nodetype property, 52--53 nodeValue method, 55--57
->
+
 nodeValue property, 54 setAttribute method, 48--49
->
+
 keyboard access, 86--88
->
+
 markup for
->
+
 adding description in, 53 overview, 45--47
->
+
 onload event for, 80--82 sharing hooks with CSS, 88--91
 
 imagegallery element, 77--78, 80, 83 images folder, 227, 243, 246, 252
@@ -18630,73 +18484,73 @@ isFilled function, 268--269
 
 itinerary.html file, 165--169
 
-■ **J**
+**J**
 
 JavaScript backward compatibility of
 
 by browser sniffing, 68 with object detection, 67--68
->
+
 conditional statements in, 19--22
->
+
 comparison operators, 20--21 logical operators, 21--22
->
+
 functions in, 24--27 graceful degradation of, 61--63
->
+
 looping statements in, 22--24
->
+
 do.while loop, 23 for loop, 24
->
+
 while loop, 22--23
->
+
 objects in, 27--29
->
+
 host objects, 29 native objects, 28--29
->
+
 operations in, 17--19 origins of, 1--2 performance considerations of,
 69--71
->
+
 minification of scripts, 70--71
->
+
 minimizing DOM access, 69
->
+
 reducing script requests, 70
->
+
 requirements for, 7--9 syntax of, 9--17 arrays, 14--16 comments, 10
 data types, 12--14 objects, 16--17
->
+
 statements, 9 variables, 10--12
->
+
 unobtrusive, 65--66
 
 Jay Skript and the Domsters website example,
 
 227--277
->
+
 CSS for, 230--237
->
+
 color, 232--233 layout, 234--235 typography, 236--237
->
+
 design of, 229--230 form in, 261--276
->
+
 labels for, 263--264 placeholder values for, 264--267 submission of,
 271--276
->
+
 validation of, 267--270
->
+
 highlighting current page, 240--243 image gallery for, 252--255
 internal navigation for, 248--252 markup for, 238 minification of,
 276--277
->
+
 page structure of, 229 site structure of, 227--228 slideshow for,
 243--247 tables in, 256--260
 
 jQuery, library for Ajax, 281, 296--298
 
-■ **K**
+**K**
 
 key variable, 130--132 keyboard access, for image gallery example, 88
 
-■ **L**
+**L**
 
 label element, 263--264 labels, for forms, 263--264
 
@@ -18709,21 +18563,21 @@ layout.css file, 90, 191, 203, 236, 243, 245, 253,
 &lt;li\element, 33--34, 64, 124--125 libraries, 279--301
 
 for Ajax, 293--298
->
+
 jQuery, 296--298
->
+
 Prototype, 293--296 for animation and effects, 298--301
->
+
 CSS property-based, 299--300 packaged animations, 300--301
->
+
 CDNs for, 282--283 creating content with, 289--290
->
+
 CSS selectors in, 284--286 element-specific events, 292--293
->
+
 filtering elements with callback, 288--289 how to choose, 280--283
 library-specific selectors, 286--288 loading events, 291--292
 manipulating content with, 291
->
+
 syntax in, 283--284
 
 lineup.gif file, images folder, 243 link element, 157 &lt;link\tag, 57,
@@ -18755,7 +18609,7 @@ while loop, 22--23
 
 loops, for image gallery example, 78--79
 
-■ **M**
+**M**
 
 marginTopWidth property, 155 match method, 274
 
@@ -18783,7 +18637,7 @@ movement, incremental, 178--181 movement property, 197 movement
 variable, 178 moveMessage function, 178--183, 185, 195 multiply( )
 function, 25
 
-■ **N**
+**N**
 
 name field, 264
 
@@ -18814,7 +18668,7 @@ numbers, in JavaScript, 14
 
 Nyman, Robert, 41
 
-■ **O**
+**O**
 
 object detection, backward compatibility of JavaScript with, 67--68
 
@@ -18835,13 +18689,13 @@ on-the-fly markup creation, 95--122
 DOM methods for, 100--107 appendChild method, 102 createElement
 method, 101--102 createTextNode method, 103--104 examples of, 105--107
 insertAfter method, 110--112
->
+
 insertBefore method, 109
->
+
 using Ajax, 116--121
->
+
 and Hijax, 121 progressive enhancement with, 121
->
+
 XMLHttpRequest object, 116--120 using document.write method, 95--97
 using innerHTML property, 97--100
 
@@ -18882,7 +18736,7 @@ operator, 22, 68
 
 origins, of JavaScript, 1--2 overflow property, 190
 
-■ **P**
+**P**
 
 p element, 33--34, 42--43, 64, 96--98, 141 &lt;/p\tag, 96--97, 125 page
 element, 187
@@ -18943,13 +18797,13 @@ pseudo-protocol, and graceful degradation of
 
 JavaScript, 62 purchases list, 40
 
-■ **Q**
+**Q**
 
 quoteElements variable, 141
 
 quotes variable, 140
 
-■ **R**
+**R**
 
 range type, 221 ready method, 292
 
@@ -18965,7 +18819,7 @@ required attribute, 222, 269 resetFields function, 265--267 responseText
 property, 118--119 response.txt file, 116 responseXML property, 118 RGB
 (Red Green Blue), 155
 
-■ **S**
+**S**
 
 sale class, 40
 
@@ -19032,7 +18886,7 @@ arrays, 14--16 comments, 10 data types, 12--14 objects, 16--17
 >
 statements, 9 variables, 10--12
 
-■ **T**
+**T**
 
 table element, 63--64, 164, 166, 256--257, 260 tag attribute, 124 tag
 class, 285
@@ -19064,11 +18918,11 @@ type=&quot;text/javascript&quot; attribute, 8
 
 typography.css file, 127, 236--237, 260
 
-■ **U**
+**U**
 
 ul element, 33--34, 52 url type, 221 url variable, 140, 142, 272
 
-■ **V**
+**V**
 
 validateForm function, 269--270 validation, of forms, 267--270
 
@@ -19080,7 +18934,7 @@ overview, 10--12 scope of, 26--27
 
 visibility, of content, 124
 
-■ **W**
+**W**
 
 W3C (World Wide Web Consortium), 1 warning class, 65
 
@@ -19095,7 +18949,7 @@ World Wide Web Consortium (W3C), 1
 
 WYSIWYG (What You See Is What You Get), 59
 
-■ **X**
+**X**
 
 X-Prototype-Version property, 294
 
@@ -19108,7 +18962,7 @@ INDEX
 XMLHttpRequest object, 116 XMLHttpRequest request, 119 xpos variable, 3,
 179--180, 182--183, 197--198
 
-■ **Y, Z**
+**Y, Z**
 
 Yahoo! User Interface (YUI), 281--282 YAHOO.util.Dom.getElementBy
 method, 288
